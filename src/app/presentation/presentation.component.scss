@@ -1,0 +1,15 @@
+.presentation-main{
+    display: grid;
+    background-color: lighten($color: lightblue, $amount: 18);
+}
+img{
+    border-radius: 50%;
+    border-color: #B0BEC5;
+    border-width: 50px;
+    max-width: 50%;
+    height: auto;
+}
+
+mat-grid-tile{
+    align-content: center;
+}
