@@ -70,7 +70,7 @@ function AppComponent_pre_90_Template(rf, ctx) { if (rf & 1) {
 } }
 class AppComponent {
     constructor() {
-        this.title = 'arthuro-portf';
+        this.title = 'arthuro-portfolio';
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(); };
