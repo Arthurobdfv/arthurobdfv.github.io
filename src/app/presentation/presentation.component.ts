@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 
-import { MatSliderModule } from '@angular/material/slider';
+
 
 @Component({
   selector: 'app-presentation',

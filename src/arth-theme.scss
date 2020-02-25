@@ -1,0 +1,9 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$arth-theme-primary: mat-palette($mat-light-blue);
+$arth-theme-accent: mat-palette($mat-orange, A200, A100, A400);
+$arth-theme-warn: mat-palette($mat-red);
+
+$arth-theme: mat-light-theme($arth-theme-primary,$arth-theme-accent,$arth-theme-warn);
+@include angular-material-theme($arth-theme);
