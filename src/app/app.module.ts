@@ -6,6 +6,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatButtonModule} from '@angular/material/button'
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent, PresentationComponent],

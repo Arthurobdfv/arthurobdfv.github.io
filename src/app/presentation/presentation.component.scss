@@ -1,10 +1,10 @@
 .presentation-main{
     display: grid;
+    background-color: lightseagreen;
 }
 img{
     border-radius: 50%;
-    //border-color: $primary;
-    border-width: 10px;
+    border: 10px solid whitesmoke;
     max-width: 50%;
     height: auto;
 }
