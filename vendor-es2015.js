@@ -13614,51 +13614,6 @@ function _supportsShadowDom() {
 
 /***/ }),
 
-/***/ "./node_modules/@angular/cdk/fesm2015/cdk.js":
-/*!***************************************************!*\
-  !*** ./node_modules/@angular/cdk/fesm2015/cdk.js ***!
-  \***************************************************/
-/*! exports provided: VERSION */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/** Current version of the Angular Component Development Kit. */
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('9.0.1');
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
-
-//# sourceMappingURL=cdk.js.map
-
-
-/***/ }),
-
 /***/ "./node_modules/@angular/cdk/fesm2015/coercion.js":
 /*!********************************************************!*\
   !*** ./node_modules/@angular/cdk/fesm2015/coercion.js ***!
@@ -63274,128 +63229,26 @@ if (ngDevMode) {
 
 /***/ }),
 
-/***/ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js ***!
-  \**********************************************************************/
-/*! exports provided: APR, AUG, AnimationCurves, AnimationDurations, DEC, DateAdapter, ErrorStateMatcher, FEB, GestureConfig, JAN, JUL, JUN, MAR, MATERIAL_SANITY_CHECKS, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MAT_DATE_LOCALE_FACTORY, MAT_DATE_LOCALE_PROVIDER, MAT_HAMMER_OPTIONS, MAT_LABEL_GLOBAL_OPTIONS, MAT_NATIVE_DATE_FORMATS, MAT_OPTION_PARENT_COMPONENT, MAT_RIPPLE_GLOBAL_OPTIONS, MAY, MatCommonModule, MatLine, MatLineModule, MatLineSetter, MatNativeDateModule, MatOptgroup, MatOption, MatOptionModule, MatOptionSelectionChange, MatPseudoCheckbox, MatPseudoCheckboxModule, MatRipple, MatRippleModule, NOV, NativeDateAdapter, NativeDateModule, OCT, RippleRef, RippleRenderer, RippleState, SEP, ShowOnDirtyErrorStateMatcher, VERSION, _countGroupLabelsBeforeOption, _getOptionScrollPosition, defaultRippleAnimationConfig, mixinColor, mixinDisableRipple, mixinDisabled, mixinErrorState, mixinInitialized, mixinTabIndex, setLines, ɵangular_material_src_material_core_core_a */
+/***/ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/button.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@angular/material/__ivy_ngcc__/esm2015/button.js ***!
+  \***********************************************************************/
+/*! exports provided: MatButtonModule, MatButtonBase, _MatButtonMixinBase, MatButton, MatAnchor */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APR", function() { return APR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUG", function() { return AUG; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationCurves", function() { return AnimationCurves; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationDurations", function() { return AnimationDurations; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEC", function() { return DEC; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DateAdapter", function() { return DateAdapter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorStateMatcher", function() { return ErrorStateMatcher; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FEB", function() { return FEB; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GestureConfig", function() { return GestureConfig; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JAN", function() { return JAN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUL", function() { return JUL; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUN", function() { return JUN; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAR", function() { return MAR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MATERIAL_SANITY_CHECKS", function() { return MATERIAL_SANITY_CHECKS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_FORMATS", function() { return MAT_DATE_FORMATS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE", function() { return MAT_DATE_LOCALE; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_FACTORY", function() { return MAT_DATE_LOCALE_FACTORY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_PROVIDER", function() { return MAT_DATE_LOCALE_PROVIDER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_HAMMER_OPTIONS", function() { return MAT_HAMMER_OPTIONS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_LABEL_GLOBAL_OPTIONS", function() { return MAT_LABEL_GLOBAL_OPTIONS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_NATIVE_DATE_FORMATS", function() { return MAT_NATIVE_DATE_FORMATS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_OPTION_PARENT_COMPONENT", function() { return MAT_OPTION_PARENT_COMPONENT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_RIPPLE_GLOBAL_OPTIONS", function() { return MAT_RIPPLE_GLOBAL_OPTIONS; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAY", function() { return MAY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatCommonModule", function() { return MatCommonModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLine", function() { return MatLine; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLineModule", function() { return MatLineModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLineSetter", function() { return MatLineSetter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatNativeDateModule", function() { return MatNativeDateModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptgroup", function() { return MatOptgroup; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOption", function() { return MatOption; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptionModule", function() { return MatOptionModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptionSelectionChange", function() { return MatOptionSelectionChange; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatPseudoCheckbox", function() { return MatPseudoCheckbox; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatPseudoCheckboxModule", function() { return MatPseudoCheckboxModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatRipple", function() { return MatRipple; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatRippleModule", function() { return MatRippleModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NOV", function() { return NOV; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NativeDateAdapter", function() { return NativeDateAdapter; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NativeDateModule", function() { return NativeDateModule; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OCT", function() { return OCT; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleRef", function() { return RippleRef; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleRenderer", function() { return RippleRenderer; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleState", function() { return RippleState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEP", function() { return SEP; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowOnDirtyErrorStateMatcher", function() { return ShowOnDirtyErrorStateMatcher; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_countGroupLabelsBeforeOption", function() { return _countGroupLabelsBeforeOption; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_getOptionScrollPosition", function() { return _getOptionScrollPosition; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultRippleAnimationConfig", function() { return defaultRippleAnimationConfig; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinColor", function() { return mixinColor; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinDisableRipple", function() { return mixinDisableRipple; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinDisabled", function() { return mixinDisabled; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinErrorState", function() { return mixinErrorState; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinInitialized", function() { return mixinInitialized; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinTabIndex", function() { return mixinTabIndex; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setLines", function() { return setLines; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_material_src_material_core_core_a", function() { return MATERIAL_SANITY_CHECKS_FACTORY; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/a11y */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/a11y.js");
-/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
-/* harmony import */ var _angular_cdk__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk */ "./node_modules/@angular/cdk/fesm2015/cdk.js");
-/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/coercion */ "./node_modules/@angular/cdk/fesm2015/coercion.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/platform */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js");
-/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/cdk/keycodes */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js");
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * @fileoverview added by tsickle
- * Generated from: src/material/core/version.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * Current version of Angular Material.
- * @type {?}
- */
-
-
-
-
-
-const _c0 = ["*", [["mat-option"], ["ng-container"]]];
-const _c1 = ["*", "mat-option, ng-container"];
-function MatOption_mat_pseudo_checkbox_0_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-pseudo-checkbox", 3);
-} if (rf & 2) {
-    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("state", ctx_r0.selected ? "checked" : "unchecked")("disabled", ctx_r0.disabled);
-} }
-const _c2 = ["*"];
-const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('9.0.1');
-
-/**
- * @fileoverview added by tsickle
- * Generated from: src/material/core/animation/animation.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatButtonModule", function() { return MatButtonModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatButtonBase", function() { return MatButtonBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MatButtonMixinBase", function() { return _MatButtonMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatButton", function() { return MatButton; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatAnchor", function() { return MatAnchor; });
+/* harmony import */ var _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/cdk/a11y */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/a11y.js");
+/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/platform */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/core.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -63403,16 +63256,439 @@ const VERSION = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('9.0.1
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
+
+
+
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Default color palette for round buttons (mat-fab and mat-mini-fab)
+ */
+
+
+
+
+
+const _c0 = ["mat-button", ""];
+const _c1 = ["*"];
+const /** @type {?} */ DEFAULT_ROUND_BUTTON_COLOR = 'accent';
+/**
+ * Default color palette for flat buttons (mat-flat-button)
+ */
+const /** @type {?} */ DEFAULT_FLAT_BUTTON_COLOR = 'primary';
+/**
+ * List of classes to add to MatButton instances based on host attributes to
+ * style as different variants.
+ */
+const /** @type {?} */ BUTTON_HOST_ATTRIBUTES = [
+    'mat-button',
+    'mat-flat-button',
+    'mat-icon-button',
+    'mat-raised-button',
+    'mat-stroked-button',
+    'mat-mini-fab',
+    'mat-fab',
+];
 /**
  * \@docs-private
  */
+class MatButtonBase {
+    /**
+     * @param {?} _elementRef
+     */
+    constructor(_elementRef) {
+        this._elementRef = _elementRef;
+    }
+}
+const /** @type {?} */ _MatButtonMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinColor"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisabled"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["mixinDisableRipple"])(MatButtonBase)));
+/**
+ * Material design button.
+ */
+class MatButton extends _MatButtonMixinBase {
+    /**
+     * @param {?} elementRef
+     * @param {?} _platform
+     * @param {?} _focusMonitor
+     * @param {?=} _animationMode
+     */
+    constructor(elementRef, _platform, _focusMonitor, 
+    // @deletion-target 7.0.0 `_animationMode` parameter to be made required.
+    _animationMode) {
+        super(elementRef);
+        this._platform = _platform;
+        this._focusMonitor = _focusMonitor;
+        this._animationMode = _animationMode;
+        /**
+         * Whether the button is round.
+         */
+        this.isRoundButton = this._hasHostAttributes('mat-fab', 'mat-mini-fab');
+        /**
+         * Whether the button is icon button.
+         */
+        this.isIconButton = this._hasHostAttributes('mat-icon-button');
+        // For each of the variant selectors that is prevent in the button's host
+        // attributes, add the correct corresponding class.
+        for (const /** @type {?} */ attr of BUTTON_HOST_ATTRIBUTES) {
+            if (this._hasHostAttributes(attr)) {
+                (/** @type {?} */ (elementRef.nativeElement)).classList.add(attr);
+            }
+        }
+        this._focusMonitor.monitor(this._elementRef.nativeElement, true);
+        if (this.isRoundButton) {
+            this.color = DEFAULT_ROUND_BUTTON_COLOR;
+        }
+        else if (this._hasHostAttributes('mat-flat-button')) {
+            this.color = DEFAULT_FLAT_BUTTON_COLOR;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._focusMonitor.stopMonitoring(this._elementRef.nativeElement);
+    }
+    /**
+     * Focuses the button.
+     * @return {?}
+     */
+    focus() {
+        this._getHostElement().focus();
+    }
+    /**
+     * @return {?}
+     */
+    _getHostElement() {
+        return this._elementRef.nativeElement;
+    }
+    /**
+     * @return {?}
+     */
+    _isRippleDisabled() {
+        return this.disableRipple || this.disabled;
+    }
+    /**
+     * Gets whether the button has one of the given attributes.
+     * @param {...?} attributes
+     * @return {?}
+     */
+    _hasHostAttributes(...attributes) {
+        return attributes.some(attribute => this._getHostElement().hasAttribute(attribute));
+    }
+}
+MatButton.ɵfac = function MatButton_Factory(t) { return new (t || MatButton)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["ANIMATION_MODULE_TYPE"], 8)); };
+MatButton.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: MatButton, selectors: [["button", "mat-button", ""], ["button", "mat-raised-button", ""], ["button", "mat-icon-button", ""], ["button", "mat-fab", ""], ["button", "mat-mini-fab", ""], ["button", "mat-stroked-button", ""], ["button", "mat-flat-button", ""]], viewQuery: function MatButton_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵviewQuery"](_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRipple"], true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵloadQuery"]()) && (ctx.ripple = _t.first);
+    } }, hostVars: 3, hostBindings: function MatButton_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵhostProperty"]("disabled", ctx.disabled || null);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("_mat-animation-noopable", ctx._animationMode === "NoopAnimations");
+    } }, inputs: { disabled: "disabled", disableRipple: "disableRipple", color: "color" }, exportAs: ["matButton"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵInheritDefinitionFeature"]], attrs: _c0, ngContentSelectors: _c1, decls: 4, vars: 5, consts: [[1, "mat-button-wrapper"], ["matRipple", "", 1, "mat-button-ripple", 3, "matRippleDisabled", "matRippleCentered", "matRippleTrigger"], [1, "mat-button-focus-overlay"]], template: function MatButton_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojectionDef"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojection"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](3, "div", 2);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("mat-button-ripple-round", ctx.isRoundButton || ctx.isIconButton);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("matRippleDisabled", ctx._isRippleDisabled())("matRippleCentered", ctx.isIconButton)("matRippleTrigger", ctx._getHostElement());
+    } }, directives: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRipple"]], styles: [".mat-button,.mat-flat-button,.mat-icon-button,.mat-stroked-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible}.mat-button[disabled],.mat-flat-button[disabled],.mat-icon-button[disabled],.mat-stroked-button[disabled]{cursor:default}.mat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-button.cdk-program-focused .mat-button-focus-overlay,.mat-flat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-flat-button.cdk-program-focused .mat-button-focus-overlay,.mat-icon-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-icon-button.cdk-program-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-button::-moz-focus-inner,.mat-flat-button::-moz-focus-inner,.mat-icon-button::-moz-focus-inner,.mat-stroked-button::-moz-focus-inner{border:0}.mat-button .mat-button-focus-overlay,.mat-icon-button .mat-button-focus-overlay{transition:none;opacity:0}.mat-button:hover .mat-button-focus-overlay,.mat-stroked-button:hover .mat-button-focus-overlay{opacity:1}.mat-raised-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1)}.mat-raised-button[disabled]{cursor:default}.mat-raised-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-raised-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-raised-button::-moz-focus-inner{border:0}.mat-raised-button:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-raised-button{transition:none;animation:none}.mat-raised-button:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-raised-button[disabled]{box-shadow:none}.mat-stroked-button{border:1px solid currentColor;padding:0 15px;line-height:34px}.mat-stroked-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-flat-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:56px;height:56px;padding:0;flex-shrink:0}.mat-fab[disabled]{cursor:default}.mat-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-fab::-moz-focus-inner{border:0}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-fab{transition:none;animation:none}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-fab[disabled]{box-shadow:none}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-fab .mat-button-wrapper{padding:16px 0;display:inline-block;line-height:24px}.mat-mini-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:40px;height:40px;padding:0;flex-shrink:0}.mat-mini-fab[disabled]{cursor:default}.mat-mini-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-mini-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-mini-fab::-moz-focus-inner{border:0}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-mini-fab{transition:none;animation:none}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-mini-fab[disabled]{box-shadow:none}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-mini-fab .mat-button-wrapper{padding:8px 0;display:inline-block;line-height:24px}.mat-icon-button{padding:0;min-width:0;width:40px;height:40px;flex-shrink:0;line-height:40px;border-radius:50%}.mat-icon-button .mat-icon,.mat-icon-button i{line-height:24px}.mat-button-focus-overlay,.mat-button-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none;border-radius:inherit}.mat-button-focus-overlay{background-color:rgba(0,0,0,.12);border-radius:inherit;opacity:0;transition:opacity .2s cubic-bezier(.35,0,.25,1),background-color .2s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable .mat-button-focus-overlay{transition:none}@media screen and (-ms-high-contrast:active){.mat-button-focus-overlay{background-color:rgba(255,255,255,.5)}}.mat-button-ripple-round{border-radius:50%;z-index:1}.mat-button .mat-button-wrapper>*,.mat-fab .mat-button-wrapper>*,.mat-flat-button .mat-button-wrapper>*,.mat-icon-button .mat-button-wrapper>*,.mat-mini-fab .mat-button-wrapper>*,.mat-raised-button .mat-button-wrapper>*,.mat-stroked-button .mat-button-wrapper>*{vertical-align:middle}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button{display:block;font-size:inherit;width:2.5em;height:2.5em}@media screen and (-ms-high-contrast:active){.mat-button,.mat-fab,.mat-flat-button,.mat-icon-button,.mat-mini-fab,.mat-raised-button{outline:solid 1px}}"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+MatButton.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"], },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"], },
+    { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"], },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"], args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["ANIMATION_MODULE_TYPE"],] },] },
+];
+MatButton.propDecorators = {
+    "ripple": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"], args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRipple"],] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](MatButton, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"],
+        args: [{ selector: `button[mat-button], button[mat-raised-button], button[mat-icon-button],
+             button[mat-fab], button[mat-mini-fab], button[mat-stroked-button],
+             button[mat-flat-button]`,
+                exportAs: 'matButton',
+                host: {
+                    '[disabled]': 'disabled || null',
+                    '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"'
+                },
+                template: "<span class=\"mat-button-wrapper\"><ng-content></ng-content></span><div matRipple class=\"mat-button-ripple\" [class.mat-button-ripple-round]=\"isRoundButton || isIconButton\" [matRippleDisabled]=\"_isRippleDisabled()\" [matRippleCentered]=\"isIconButton\" [matRippleTrigger]=\"_getHostElement()\"></div><div class=\"mat-button-focus-overlay\"></div>",
+                styles: [".mat-button,.mat-flat-button,.mat-icon-button,.mat-stroked-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible}.mat-button[disabled],.mat-flat-button[disabled],.mat-icon-button[disabled],.mat-stroked-button[disabled]{cursor:default}.mat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-button.cdk-program-focused .mat-button-focus-overlay,.mat-flat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-flat-button.cdk-program-focused .mat-button-focus-overlay,.mat-icon-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-icon-button.cdk-program-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-button::-moz-focus-inner,.mat-flat-button::-moz-focus-inner,.mat-icon-button::-moz-focus-inner,.mat-stroked-button::-moz-focus-inner{border:0}.mat-button .mat-button-focus-overlay,.mat-icon-button .mat-button-focus-overlay{transition:none;opacity:0}.mat-button:hover .mat-button-focus-overlay,.mat-stroked-button:hover .mat-button-focus-overlay{opacity:1}.mat-raised-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1)}.mat-raised-button[disabled]{cursor:default}.mat-raised-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-raised-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-raised-button::-moz-focus-inner{border:0}.mat-raised-button:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-raised-button{transition:none;animation:none}.mat-raised-button:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-raised-button[disabled]{box-shadow:none}.mat-stroked-button{border:1px solid currentColor;padding:0 15px;line-height:34px}.mat-stroked-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-flat-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:56px;height:56px;padding:0;flex-shrink:0}.mat-fab[disabled]{cursor:default}.mat-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-fab::-moz-focus-inner{border:0}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-fab{transition:none;animation:none}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-fab[disabled]{box-shadow:none}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-fab .mat-button-wrapper{padding:16px 0;display:inline-block;line-height:24px}.mat-mini-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:40px;height:40px;padding:0;flex-shrink:0}.mat-mini-fab[disabled]{cursor:default}.mat-mini-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-mini-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-mini-fab::-moz-focus-inner{border:0}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-mini-fab{transition:none;animation:none}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-mini-fab[disabled]{box-shadow:none}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-mini-fab .mat-button-wrapper{padding:8px 0;display:inline-block;line-height:24px}.mat-icon-button{padding:0;min-width:0;width:40px;height:40px;flex-shrink:0;line-height:40px;border-radius:50%}.mat-icon-button .mat-icon,.mat-icon-button i{line-height:24px}.mat-button-focus-overlay,.mat-button-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none;border-radius:inherit}.mat-button-focus-overlay{background-color:rgba(0,0,0,.12);border-radius:inherit;opacity:0;transition:opacity .2s cubic-bezier(.35,0,.25,1),background-color .2s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable .mat-button-focus-overlay{transition:none}@media screen and (-ms-high-contrast:active){.mat-button-focus-overlay{background-color:rgba(255,255,255,.5)}}.mat-button-ripple-round{border-radius:50%;z-index:1}.mat-button .mat-button-wrapper>*,.mat-fab .mat-button-wrapper>*,.mat-flat-button .mat-button-wrapper>*,.mat-icon-button .mat-button-wrapper>*,.mat-mini-fab .mat-button-wrapper>*,.mat-raised-button .mat-button-wrapper>*,.mat-stroked-button .mat-button-wrapper>*{vertical-align:middle}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button{display:block;font-size:inherit;width:2.5em;height:2.5em}@media screen and (-ms-high-contrast:active){.mat-button,.mat-fab,.mat-flat-button,.mat-icon-button,.mat-mini-fab,.mat-raised-button{outline:solid 1px}}"],
+                inputs: ['disabled', 'disableRipple', 'color'],
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ChangeDetectionStrategy"].OnPush
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"] }, { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"],
+                args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["ANIMATION_MODULE_TYPE"]]
+            }] }]; }, { ripple: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"],
+            args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRipple"]]
+        }] }); })();
+/**
+ * Raised Material design button.
+ */
+class MatAnchor extends MatButton {
+    /**
+     * @param {?} platform
+     * @param {?} focusMonitor
+     * @param {?} elementRef
+     * @param {?=} animationMode
+     */
+    constructor(platform, focusMonitor, elementRef, 
+    // @deletion-target 7.0.0 `animationMode` parameter to be made required.
+    animationMode) {
+        super(elementRef, platform, focusMonitor, animationMode);
+    }
+    /**
+     * @param {?} event
+     * @return {?}
+     */
+    _haltDisabledEvents(event) {
+        // A disabled button shouldn't apply any actions
+        if (this.disabled) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }
+    }
+}
+MatAnchor.ɵfac = function MatAnchor_Factory(t) { return new (t || MatAnchor)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["ANIMATION_MODULE_TYPE"], 8)); };
+MatAnchor.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: MatAnchor, selectors: [["a", "mat-button", ""], ["a", "mat-raised-button", ""], ["a", "mat-icon-button", ""], ["a", "mat-fab", ""], ["a", "mat-mini-fab", ""], ["a", "mat-stroked-button", ""], ["a", "mat-flat-button", ""]], hostVars: 5, hostBindings: function MatAnchor_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵlistener"]("click", function MatAnchor_click_HostBindingHandler($event) { return ctx._haltDisabledEvents($event); });
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵattribute"]("tabindex", ctx.disabled ? 0 - 1 : 0)("disabled", ctx.disabled || null)("aria-disabled", ctx.disabled.toString());
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("_mat-animation-noopable", ctx._animationMode === "NoopAnimations");
+    } }, inputs: { disabled: "disabled", disableRipple: "disableRipple", color: "color" }, exportAs: ["matButton", "matAnchor"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵInheritDefinitionFeature"]], attrs: _c0, ngContentSelectors: _c1, decls: 4, vars: 5, consts: [[1, "mat-button-wrapper"], ["matRipple", "", 1, "mat-button-ripple", 3, "matRippleDisabled", "matRippleCentered", "matRippleTrigger"], [1, "mat-button-focus-overlay"]], template: function MatAnchor_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojectionDef"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "span", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojection"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](2, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](3, "div", 2);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("mat-button-ripple-round", ctx.isRoundButton || ctx.isIconButton);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("matRippleDisabled", ctx._isRippleDisabled())("matRippleCentered", ctx.isIconButton)("matRippleTrigger", ctx._getHostElement());
+    } }, directives: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRipple"]], styles: [".mat-button,.mat-flat-button,.mat-icon-button,.mat-stroked-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible}.mat-button[disabled],.mat-flat-button[disabled],.mat-icon-button[disabled],.mat-stroked-button[disabled]{cursor:default}.mat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-button.cdk-program-focused .mat-button-focus-overlay,.mat-flat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-flat-button.cdk-program-focused .mat-button-focus-overlay,.mat-icon-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-icon-button.cdk-program-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-button::-moz-focus-inner,.mat-flat-button::-moz-focus-inner,.mat-icon-button::-moz-focus-inner,.mat-stroked-button::-moz-focus-inner{border:0}.mat-button .mat-button-focus-overlay,.mat-icon-button .mat-button-focus-overlay{transition:none;opacity:0}.mat-button:hover .mat-button-focus-overlay,.mat-stroked-button:hover .mat-button-focus-overlay{opacity:1}.mat-raised-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1)}.mat-raised-button[disabled]{cursor:default}.mat-raised-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-raised-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-raised-button::-moz-focus-inner{border:0}.mat-raised-button:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-raised-button{transition:none;animation:none}.mat-raised-button:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-raised-button[disabled]{box-shadow:none}.mat-stroked-button{border:1px solid currentColor;padding:0 15px;line-height:34px}.mat-stroked-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-flat-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:56px;height:56px;padding:0;flex-shrink:0}.mat-fab[disabled]{cursor:default}.mat-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-fab::-moz-focus-inner{border:0}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-fab{transition:none;animation:none}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-fab[disabled]{box-shadow:none}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-fab .mat-button-wrapper{padding:16px 0;display:inline-block;line-height:24px}.mat-mini-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:40px;height:40px;padding:0;flex-shrink:0}.mat-mini-fab[disabled]{cursor:default}.mat-mini-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-mini-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-mini-fab::-moz-focus-inner{border:0}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-mini-fab{transition:none;animation:none}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-mini-fab[disabled]{box-shadow:none}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-mini-fab .mat-button-wrapper{padding:8px 0;display:inline-block;line-height:24px}.mat-icon-button{padding:0;min-width:0;width:40px;height:40px;flex-shrink:0;line-height:40px;border-radius:50%}.mat-icon-button .mat-icon,.mat-icon-button i{line-height:24px}.mat-button-focus-overlay,.mat-button-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none;border-radius:inherit}.mat-button-focus-overlay{background-color:rgba(0,0,0,.12);border-radius:inherit;opacity:0;transition:opacity .2s cubic-bezier(.35,0,.25,1),background-color .2s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable .mat-button-focus-overlay{transition:none}@media screen and (-ms-high-contrast:active){.mat-button-focus-overlay{background-color:rgba(255,255,255,.5)}}.mat-button-ripple-round{border-radius:50%;z-index:1}.mat-button .mat-button-wrapper>*,.mat-fab .mat-button-wrapper>*,.mat-flat-button .mat-button-wrapper>*,.mat-icon-button .mat-button-wrapper>*,.mat-mini-fab .mat-button-wrapper>*,.mat-raised-button .mat-button-wrapper>*,.mat-stroked-button .mat-button-wrapper>*{vertical-align:middle}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button{display:block;font-size:inherit;width:2.5em;height:2.5em}@media screen and (-ms-high-contrast:active){.mat-button,.mat-fab,.mat-flat-button,.mat-icon-button,.mat-mini-fab,.mat-raised-button{outline:solid 1px}}"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+MatAnchor.ctorParameters = () => [
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"], },
+    { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"], },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"], args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["ANIMATION_MODULE_TYPE"],] },] },
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](MatAnchor, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"],
+        args: [{ selector: `a[mat-button], a[mat-raised-button], a[mat-icon-button], a[mat-fab],
+             a[mat-mini-fab], a[mat-stroked-button], a[mat-flat-button]`,
+                exportAs: 'matButton, matAnchor',
+                host: {
+                    '[attr.tabindex]': 'disabled ? -1 : 0',
+                    '[attr.disabled]': 'disabled || null',
+                    '[attr.aria-disabled]': 'disabled.toString()',
+                    '(click)': '_haltDisabledEvents($event)',
+                    '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"'
+                },
+                inputs: ['disabled', 'disableRipple', 'color'],
+                template: "<span class=\"mat-button-wrapper\"><ng-content></ng-content></span><div matRipple class=\"mat-button-ripple\" [class.mat-button-ripple-round]=\"isRoundButton || isIconButton\" [matRippleDisabled]=\"_isRippleDisabled()\" [matRippleCentered]=\"isIconButton\" [matRippleTrigger]=\"_getHostElement()\"></div><div class=\"mat-button-focus-overlay\"></div>",
+                styles: [".mat-button,.mat-flat-button,.mat-icon-button,.mat-stroked-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible}.mat-button[disabled],.mat-flat-button[disabled],.mat-icon-button[disabled],.mat-stroked-button[disabled]{cursor:default}.mat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-button.cdk-program-focused .mat-button-focus-overlay,.mat-flat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-flat-button.cdk-program-focused .mat-button-focus-overlay,.mat-icon-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-icon-button.cdk-program-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-button::-moz-focus-inner,.mat-flat-button::-moz-focus-inner,.mat-icon-button::-moz-focus-inner,.mat-stroked-button::-moz-focus-inner{border:0}.mat-button .mat-button-focus-overlay,.mat-icon-button .mat-button-focus-overlay{transition:none;opacity:0}.mat-button:hover .mat-button-focus-overlay,.mat-stroked-button:hover .mat-button-focus-overlay{opacity:1}.mat-raised-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1)}.mat-raised-button[disabled]{cursor:default}.mat-raised-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-raised-button.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-raised-button::-moz-focus-inner{border:0}.mat-raised-button:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-raised-button{transition:none;animation:none}.mat-raised-button:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-raised-button[disabled]{box-shadow:none}.mat-stroked-button{border:1px solid currentColor;padding:0 15px;line-height:34px}.mat-stroked-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-flat-button:not([class*=mat-elevation-z]){box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0 0 0 rgba(0,0,0,.14),0 0 0 0 rgba(0,0,0,.12)}.mat-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:56px;height:56px;padding:0;flex-shrink:0}.mat-fab[disabled]{cursor:default}.mat-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-fab::-moz-focus-inner{border:0}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-fab{transition:none;animation:none}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-fab[disabled]{box-shadow:none}.mat-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-fab .mat-button-wrapper{padding:16px 0;display:inline-block;line-height:24px}.mat-mini-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:88px;line-height:36px;padding:0 16px;border-radius:2px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:40px;height:40px;padding:0;flex-shrink:0}.mat-mini-fab[disabled]{cursor:default}.mat-mini-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-mini-fab.cdk-program-focused .mat-button-focus-overlay{opacity:1}.mat-mini-fab::-moz-focus-inner{border:0}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12)}._mat-animation-noopable.mat-mini-fab{transition:none;animation:none}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)}.mat-mini-fab[disabled]{box-shadow:none}.mat-mini-fab:not([class*=mat-elevation-z]){box-shadow:0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12)}.mat-mini-fab:not([disabled]):active:not([class*=mat-elevation-z]){box-shadow:0 7px 8px -4px rgba(0,0,0,.2),0 12px 17px 2px rgba(0,0,0,.14),0 5px 22px 4px rgba(0,0,0,.12)}.mat-mini-fab .mat-button-wrapper{padding:8px 0;display:inline-block;line-height:24px}.mat-icon-button{padding:0;min-width:0;width:40px;height:40px;flex-shrink:0;line-height:40px;border-radius:50%}.mat-icon-button .mat-icon,.mat-icon-button i{line-height:24px}.mat-button-focus-overlay,.mat-button-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none;border-radius:inherit}.mat-button-focus-overlay{background-color:rgba(0,0,0,.12);border-radius:inherit;opacity:0;transition:opacity .2s cubic-bezier(.35,0,.25,1),background-color .2s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable .mat-button-focus-overlay{transition:none}@media screen and (-ms-high-contrast:active){.mat-button-focus-overlay{background-color:rgba(255,255,255,.5)}}.mat-button-ripple-round{border-radius:50%;z-index:1}.mat-button .mat-button-wrapper>*,.mat-fab .mat-button-wrapper>*,.mat-flat-button .mat-button-wrapper>*,.mat-icon-button .mat-button-wrapper>*,.mat-mini-fab .mat-button-wrapper>*,.mat-raised-button .mat-button-wrapper>*,.mat-stroked-button .mat-button-wrapper>*{vertical-align:middle}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button{display:block;font-size:inherit;width:2.5em;height:2.5em}@media screen and (-ms-high-contrast:active){.mat-button,.mat-fab,.mat-flat-button,.mat-icon-button,.mat-mini-fab,.mat-raised-button{outline:solid 1px}}"],
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ChangeDetectionStrategy"].OnPush
+            }]
+    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_1__["Platform"] }, { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_0__["FocusMonitor"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"],
+                args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_4__["ANIMATION_MODULE_TYPE"]]
+            }] }]; }, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+class MatButtonModule {
+}
+MatButtonModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineNgModule"]({ type: MatButtonModule });
+MatButtonModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector"]({ factory: function MatButtonModule_Factory(t) { return new (t || MatButtonModule)(); }, imports: [[
+            _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"],
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRippleModule"],
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"],
+        ],
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsetNgModuleScope"](MatButtonModule, { declarations: function () { return [MatButton,
+        MatAnchor]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"],
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRippleModule"],
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"]]; }, exports: function () { return [MatButton,
+        MatAnchor,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"]]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](MatButtonModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
+        args: [{
+                imports: [
+                    _angular_common__WEBPACK_IMPORTED_MODULE_5__["CommonModule"],
+                    _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatRippleModule"],
+                    _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"],
+                ],
+                exports: [
+                    MatButton,
+                    MatAnchor,
+                    _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MatCommonModule"],
+                ],
+                declarations: [
+                    MatButton,
+                    MatAnchor,
+                ]
+            }]
+    }], null, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+
+
+//# sourceMappingURL=button.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/core.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@angular/material/__ivy_ngcc__/esm2015/core.js ***!
+  \*********************************************************************/
+/*! exports provided: AnimationCurves, AnimationDurations, MatCommonModule, MATERIAL_SANITY_CHECKS, mixinDisabled, mixinColor, mixinDisableRipple, mixinTabIndex, mixinErrorState, mixinInitialized, NativeDateModule, MatNativeDateModule, MAT_DATE_LOCALE, MAT_DATE_LOCALE_FACTORY, MAT_DATE_LOCALE_PROVIDER, DateAdapter, MAT_DATE_FORMATS, NativeDateAdapter, MAT_NATIVE_DATE_FORMATS, ShowOnDirtyErrorStateMatcher, ErrorStateMatcher, MAT_HAMMER_OPTIONS, GestureConfig, MatLine, MatLineSetter, MatLineModule, MatOptionModule, MatOptionSelectionChange, MAT_OPTION_PARENT_COMPONENT, MatOption, _countGroupLabelsBeforeOption, _getOptionScrollPosition, MatOptgroupBase, _MatOptgroupMixinBase, MatOptgroup, MAT_LABEL_GLOBAL_OPTIONS, MatRippleModule, MAT_RIPPLE_GLOBAL_OPTIONS, MatRipple, RippleState, RippleRef, defaultRippleAnimationConfig, RippleRenderer, MatPseudoCheckboxModule, MatPseudoCheckbox, JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC, ɵa1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationCurves", function() { return AnimationCurves; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AnimationDurations", function() { return AnimationDurations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatCommonModule", function() { return MatCommonModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MATERIAL_SANITY_CHECKS", function() { return MATERIAL_SANITY_CHECKS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinDisabled", function() { return mixinDisabled; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinColor", function() { return mixinColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinDisableRipple", function() { return mixinDisableRipple; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinTabIndex", function() { return mixinTabIndex; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinErrorState", function() { return mixinErrorState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mixinInitialized", function() { return mixinInitialized; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NativeDateModule", function() { return NativeDateModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatNativeDateModule", function() { return MatNativeDateModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE", function() { return MAT_DATE_LOCALE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_FACTORY", function() { return MAT_DATE_LOCALE_FACTORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_LOCALE_PROVIDER", function() { return MAT_DATE_LOCALE_PROVIDER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DateAdapter", function() { return DateAdapter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_DATE_FORMATS", function() { return MAT_DATE_FORMATS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NativeDateAdapter", function() { return NativeDateAdapter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_NATIVE_DATE_FORMATS", function() { return MAT_NATIVE_DATE_FORMATS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShowOnDirtyErrorStateMatcher", function() { return ShowOnDirtyErrorStateMatcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ErrorStateMatcher", function() { return ErrorStateMatcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_HAMMER_OPTIONS", function() { return MAT_HAMMER_OPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GestureConfig", function() { return GestureConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLine", function() { return MatLine; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLineSetter", function() { return MatLineSetter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatLineModule", function() { return MatLineModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptionModule", function() { return MatOptionModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptionSelectionChange", function() { return MatOptionSelectionChange; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_OPTION_PARENT_COMPONENT", function() { return MAT_OPTION_PARENT_COMPONENT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOption", function() { return MatOption; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_countGroupLabelsBeforeOption", function() { return _countGroupLabelsBeforeOption; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_getOptionScrollPosition", function() { return _getOptionScrollPosition; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptgroupBase", function() { return MatOptgroupBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MatOptgroupMixinBase", function() { return _MatOptgroupMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatOptgroup", function() { return MatOptgroup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_LABEL_GLOBAL_OPTIONS", function() { return MAT_LABEL_GLOBAL_OPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatRippleModule", function() { return MatRippleModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAT_RIPPLE_GLOBAL_OPTIONS", function() { return MAT_RIPPLE_GLOBAL_OPTIONS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatRipple", function() { return MatRipple; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleState", function() { return RippleState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleRef", function() { return RippleRef; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultRippleAnimationConfig", function() { return defaultRippleAnimationConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RippleRenderer", function() { return RippleRenderer; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatPseudoCheckboxModule", function() { return MatPseudoCheckboxModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatPseudoCheckbox", function() { return MatPseudoCheckbox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JAN", function() { return JAN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FEB", function() { return FEB; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAR", function() { return MAR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "APR", function() { return APR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MAY", function() { return MAY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUN", function() { return JUN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "JUL", function() { return JUL; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUG", function() { return AUG; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SEP", function() { return SEP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OCT", function() { return OCT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NOV", function() { return NOV; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEC", function() { return DEC; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵa1", function() { return MATERIAL_SANITY_CHECKS_FACTORY; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
+/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/coercion */ "./node_modules/@angular/cdk/fesm2015/coercion.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/platform */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/animations.js");
+/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/cdk/keycodes */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+
+
+
+
+
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * \@docs-private
+ */
+
+
+
+
+const _c0 = [[["mat-option"], ["ng-container"]]];
+const _c1 = ["mat-option, ng-container"];
+function MatOption_mat_pseudo_checkbox_0_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "mat-pseudo-checkbox", 3);
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("state", ctx_r0.selected ? "checked" : "")("disabled", ctx_r0.disabled);
+} }
+const _c2 = ["*"];
 class AnimationCurves {
 }
 AnimationCurves.STANDARD_CURVE = 'cubic-bezier(0.4,0.0,0.2,1)';
 AnimationCurves.DECELERATION_CURVE = 'cubic-bezier(0.0,0.0,0.2,1)';
 AnimationCurves.ACCELERATION_CURVE = 'cubic-bezier(0.4,0.0,1,1)';
 AnimationCurves.SHARP_CURVE = 'cubic-bezier(0.4,0.0,0.6,1)';
-if (false) {}
 /**
  * \@docs-private
  */
@@ -63421,19 +63697,18 @@ class AnimationDurations {
 AnimationDurations.COMPLEX = '375ms';
 AnimationDurations.ENTERING = '225ms';
 AnimationDurations.EXITING = '195ms';
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/common-module.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-// Private version constant to circumvent test/build issues,
-// i.e. avoid core to depend on the @angular/material primary entry-point
-// Can be removed once the Material primary entry-point no longer
-// re-exports all secondary entry-points
-/** @type {?} */
-const VERSION$1 = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Version"]('9.0.1');
+/**
+ * Injection token that configures whether the Material sanity checks are enabled.
+ */
+const /** @type {?} */ MATERIAL_SANITY_CHECKS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-sanity-checks', {
+    providedIn: 'root',
+    factory: MATERIAL_SANITY_CHECKS_FACTORY,
+});
 /**
  * \@docs-private
  * @return {?}
@@ -63442,20 +63717,6 @@ function MATERIAL_SANITY_CHECKS_FACTORY() {
     return true;
 }
 /**
- * Injection token that configures whether the Material sanity checks are enabled.
- * @type {?}
- */
-const MATERIAL_SANITY_CHECKS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-sanity-checks', {
-    providedIn: 'root',
-    factory: MATERIAL_SANITY_CHECKS_FACTORY,
-});
-/**
- * Object that can be used to configure the sanity checks granularly.
- * @record
- */
-function GranularSanityChecks() { }
-if (false) {}
-/**
  * Module that captures anything that should be loaded and/or run for *all* Angular Material
  * components. This includes Bidi, etc.
  *
@@ -63463,14 +63724,18 @@ if (false) {}
  */
 class MatCommonModule {
     /**
-     * @param {?} highContrastModeDetector
-     * @param {?} sanityChecks
+     * @param {?} _sanityChecksEnabled
      */
-    constructor(highContrastModeDetector, sanityChecks) {
+    constructor(_sanityChecksEnabled) {
+        this._sanityChecksEnabled = _sanityChecksEnabled;
         /**
          * Whether we've done the global sanity checks (e.g. a theme is loaded, there is a doctype).
          */
         this._hasDoneGlobalChecks = false;
+        /**
+         * Whether we've already checked for HammerJs availability.
+         */
+        this._hasCheckedHammer = false;
         /**
          * Reference to the global `document` object.
          */
@@ -63479,130 +63744,94 @@ class MatCommonModule {
          * Reference to the global 'window' object.
          */
         this._window = typeof window === 'object' && window ? window : null;
-        // While A11yModule also does this, we repeat it here to avoid importing A11yModule
-        // in MatCommonModule.
-        highContrastModeDetector._applyBodyHighContrastModeCssClasses();
-        // Note that `_sanityChecks` is typed to `any`, because AoT
-        // throws an error if we use the `SanityChecks` type directly.
-        this._sanityChecks = sanityChecks;
-        if (!this._hasDoneGlobalChecks) {
+        if (this._areChecksEnabled() && !this._hasDoneGlobalChecks) {
             this._checkDoctypeIsDefined();
             this._checkThemeIsPresent();
-            this._checkCdkVersionMatch();
             this._hasDoneGlobalChecks = true;
         }
     }
     /**
-     * Whether any sanity checks are enabled.
-     * @private
+     * Whether any sanity checks are enabled
      * @return {?}
      */
-    _checksAreEnabled() {
-        return Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["isDevMode"])() && !this._isTestEnv();
+    _areChecksEnabled() {
+        return this._sanityChecksEnabled && Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["isDevMode"])() && !this._isTestEnv();
     }
     /**
      * Whether the code is running in tests.
-     * @private
      * @return {?}
      */
     _isTestEnv() {
-        /** @type {?} */
-        const window = (/** @type {?} */ (this._window));
-        return window && (window.__karma__ || window.jasmine);
+        return this._window && (this._window['__karma__'] || this._window['jasmine']);
     }
     /**
-     * @private
      * @return {?}
      */
     _checkDoctypeIsDefined() {
-        /** @type {?} */
-        const isEnabled = this._checksAreEnabled() &&
-            (this._sanityChecks === true || ((/** @type {?} */ (this._sanityChecks))).doctype);
-        if (isEnabled && this._document && !this._document.doctype) {
+        if (this._document && !this._document.doctype) {
             console.warn('Current document does not have a doctype. This may cause ' +
                 'some Angular Material components not to behave as expected.');
         }
     }
     /**
-     * @private
      * @return {?}
      */
     _checkThemeIsPresent() {
-        // We need to assert that the `body` is defined, because these checks run very early
-        // and the `body` won't be defined if the consumer put their scripts in the `head`.
-        /** @type {?} */
-        const isDisabled = !this._checksAreEnabled() ||
-            (this._sanityChecks === false || !((/** @type {?} */ (this._sanityChecks))).theme);
-        if (isDisabled || !this._document || !this._document.body ||
-            typeof getComputedStyle !== 'function') {
-            return;
+        if (this._document && typeof getComputedStyle === 'function') {
+            const /** @type {?} */ testElement = this._document.createElement('div');
+            testElement.classList.add('mat-theme-loaded-marker');
+            this._document.body.appendChild(testElement);
+            const /** @type {?} */ computedStyle = getComputedStyle(testElement);
+            // In some situations, the computed style of the test element can be null. For example in
+            // Firefox, the computed style is null if an application is running inside of a hidden iframe.
+            // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+            if (computedStyle && computedStyle.display !== 'none') {
+                console.warn('Could not find Angular Material core theme. Most Material ' +
+                    'components may not work as expected. For more info refer ' +
+                    'to the theming guide: https://material.angular.io/guide/theming');
+            }
+            this._document.body.removeChild(testElement);
         }
-        /** @type {?} */
-        const testElement = this._document.createElement('div');
-        testElement.classList.add('mat-theme-loaded-marker');
-        this._document.body.appendChild(testElement);
-        /** @type {?} */
-        const computedStyle = getComputedStyle(testElement);
-        // In some situations the computed style of the test element can be null. For example in
-        // Firefox, the computed style is null if an application is running inside of a hidden iframe.
-        // See: https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-        if (computedStyle && computedStyle.display !== 'none') {
-            console.warn('Could not find Angular Material core theme. Most Material ' +
-                'components may not work as expected. For more info refer ' +
-                'to the theming guide: https://material.angular.io/guide/theming');
-        }
-        this._document.body.removeChild(testElement);
     }
     /**
-     * Checks whether the material version matches the cdk version
-     * @private
+     * Checks whether HammerJS is available.
      * @return {?}
      */
-    _checkCdkVersionMatch() {
-        /** @type {?} */
-        const isEnabled = this._checksAreEnabled() &&
-            (this._sanityChecks === true || ((/** @type {?} */ (this._sanityChecks))).version);
-        if (isEnabled && VERSION$1.full !== _angular_cdk__WEBPACK_IMPORTED_MODULE_3__["VERSION"].full) {
-            console.warn('The Angular Material version (' + VERSION$1.full + ') does not match ' +
-                'the Angular CDK version (' + _angular_cdk__WEBPACK_IMPORTED_MODULE_3__["VERSION"].full + ').\n' +
-                'Please ensure the versions of these two packages exactly match.');
+    _checkHammerIsAvailable() {
+        if (this._hasCheckedHammer || !this._window) {
+            return;
         }
+        if (this._areChecksEnabled() && !this._window['Hammer']) {
+            console.warn('Could not find HammerJS. Certain Angular Material components may not work correctly.');
+        }
+        this._hasCheckedHammer = true;
     }
 }
 MatCommonModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatCommonModule });
-MatCommonModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatCommonModule_Factory(t) { return new (t || MatCommonModule)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["HighContrastModeDetector"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](MATERIAL_SANITY_CHECKS, 8)); }, imports: [[_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]],
-        _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]] });
+MatCommonModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatCommonModule_Factory(t) { return new (t || MatCommonModule)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](MATERIAL_SANITY_CHECKS, 8)); }, imports: [[_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__["BidiModule"]],
+        _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__["BidiModule"]] });
 /** @nocollapse */
 MatCommonModule.ctorParameters = () => [
-    { type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["HighContrastModeDetector"] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MATERIAL_SANITY_CHECKS,] }] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MATERIAL_SANITY_CHECKS,] },] },
 ];
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatCommonModule, { imports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]]; }, exports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]]; } }); })();
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatCommonModule, { imports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__["BidiModule"]]; }, exports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__["BidiModule"]]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatCommonModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                imports: [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]],
-                exports: [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["BidiModule"]]
+                imports: [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__["BidiModule"]],
+                exports: [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_1__["BidiModule"]]
             }]
-    }], function () { return [{ type: _angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["HighContrastModeDetector"] }, { type: undefined, decorators: [{
+    }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
                 args: [MATERIAL_SANITY_CHECKS]
             }] }]; }, null); })();
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/disabled.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * \@docs-private
- * @record
- */
-function CanDisable() { }
-if (false) {}
 /**
  * Mixin to augment a directive with a `disabled` property.
  * @template T
@@ -63626,34 +63855,14 @@ function mixinDisabled(base) {
          * @param {?} value
          * @return {?}
          */
-        set disabled(value) { this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_4__["coerceBooleanProperty"])(value); }
+        set disabled(value) { this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value); }
     };
 }
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/color.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * \@docs-private
- * @record
- */
-function CanColor() { }
-if (false) {}
-/**
- * \@docs-private
- * @record
- */
-function HasElementRef() { }
-if (false) {}
 /**
  * Mixin to augment a directive with a `color` property.
  * @template T
@@ -63664,14 +63873,6 @@ if (false) {}
 function mixinColor(base, defaultColor) {
     return class extends base {
         /**
-         * @param {...?} args
-         */
-        constructor(...args) {
-            super(...args);
-            // Set the default color that can be specified from the mixin.
-            this.color = defaultColor;
-        }
-        /**
          * @return {?}
          */
         get color() { return this._color; }
@@ -63680,8 +63881,7 @@ function mixinColor(base, defaultColor) {
          * @return {?}
          */
         set color(value) {
-            /** @type {?} */
-            const colorPalette = value || defaultColor;
+            const /** @type {?} */ colorPalette = value || defaultColor;
             if (colorPalette !== this._color) {
                 if (this._color) {
                     this._elementRef.nativeElement.classList.remove(`mat-${this._color}`);
@@ -63692,20 +63892,21 @@ function mixinColor(base, defaultColor) {
                 this._color = colorPalette;
             }
         }
+        /**
+         * @param {...?} args
+         */
+        constructor(...args) {
+            super(...args);
+            // Set the default color that can be specified from the mixin.
+            this.color = defaultColor;
+        }
     };
 }
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/disable-ripple.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * \@docs-private
- * @record
- */
-function CanDisableRipple() { }
-if (false) {}
 /**
  * Mixin to augment a directive with a `disableRipple` property.
  * @template T
@@ -63730,28 +63931,14 @@ function mixinDisableRipple(base) {
          * @param {?} value
          * @return {?}
          */
-        set disableRipple(value) { this._disableRipple = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_4__["coerceBooleanProperty"])(value); }
+        set disableRipple(value) { this._disableRipple = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value); }
     };
 }
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/tabindex.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * \@docs-private
- * @record
- */
-function HasTabIndex() { }
-if (false) {}
 /**
  * Mixin to augment a directive with a `tabIndex` property.
  * @template T
@@ -63785,21 +63972,8 @@ function mixinTabIndex(base, defaultTabIndex = 0) {
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/error-state.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * \@docs-private
- * @record
- */
-function CanUpdateErrorState() { }
-if (false) {}
-/**
- * \@docs-private
- * @record
- */
-function HasErrorState() { }
-if (false) {}
 /**
  * Mixin to augment a directive with updateErrorState method.
  * For component with `errorState` and need to update `errorState`.
@@ -63822,22 +63996,17 @@ function mixinErrorState(base) {
              * Stream that emits whenever the state of the input changes such that the wrapping
              * `MatFormField` needs to run change detection.
              */
-            this.stateChanges = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
+            this.stateChanges = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
         }
         /**
          * @return {?}
          */
         updateErrorState() {
-            /** @type {?} */
-            const oldState = this.errorState;
-            /** @type {?} */
-            const parent = this._parentFormGroup || this._parentForm;
-            /** @type {?} */
-            const matcher = this.errorStateMatcher || this._defaultErrorStateMatcher;
-            /** @type {?} */
-            const control = this.ngControl ? (/** @type {?} */ (this.ngControl.control)) : null;
-            /** @type {?} */
-            const newState = matcher.isErrorState(control, parent);
+            const /** @type {?} */ oldState = this.errorState;
+            const /** @type {?} */ parent = this._parentFormGroup || this._parentForm;
+            const /** @type {?} */ matcher = this.errorStateMatcher || this._defaultErrorStateMatcher;
+            const /** @type {?} */ control = this.ngControl ? /** @type {?} */ (this.ngControl.control) : null;
+            const /** @type {?} */ newState = matcher.isErrorState(control, parent);
             if (newState !== oldState) {
                 this.errorState = newState;
                 this.stateChanges.next();
@@ -63848,19 +64017,8 @@ function mixinErrorState(base) {
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/initialized.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * Mixin that adds an initialized property to a directive which, when subscribed to, will emit a
- * value once markInitialized has been called, which should be done during the ngOnInit function.
- * If the subscription is made after it has already been marked as initialized, then it will trigger
- * an emit immediately.
- * \@docs-private
- * @record
- */
-function HasInitialized() { }
-if (false) {}
 /**
  * Mixin to augment a directive with an initialized property that will emits when ngOnInit ends.
  * @template T
@@ -63888,20 +64046,16 @@ function mixinInitialized(base) {
              * Observable stream that emits when the directive initializes. If already initialized, the
              * subscriber is stored to be notified once _markInitialized is called.
              */
-            this.initialized = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Observable"]((/**
-             * @param {?} subscriber
-             * @return {?}
-             */
-            subscriber => {
+            this.initialized = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Observable"](subscriber => {
                 // If initialized, immediately notify the subscriber. Otherwise store the subscriber to notify
                 // when _markInitialized is called.
                 if (this._isInitialized) {
                     this._notifySubscriber(subscriber);
                 }
                 else {
-                    (/** @type {?} */ (this._pendingSubscribers)).push(subscriber);
+                    /** @type {?} */ ((this._pendingSubscribers)).push(subscriber);
                 }
-            }));
+            });
         }
         /**
          * Marks the state as initialized and notifies pending subscribers. Should be called at the end
@@ -63914,8 +64068,8 @@ function mixinInitialized(base) {
                 throw Error('This directive has already been marked as initialized and ' +
                     'should not be called twice.');
             }
-            this._isInitialized = true;
-            (/** @type {?} */ (this._pendingSubscribers)).forEach(this._notifySubscriber);
+            this._isInitialized = true; /** @type {?} */
+            ((this._pendingSubscribers)).forEach(this._notifySubscriber);
             this._pendingSubscribers = null;
         }
         /**
@@ -63932,20 +64086,17 @@ function mixinInitialized(base) {
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/common-behaviors/index.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/datetime/date-adapter.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * InjectionToken for datepicker that can be used to override default locale code.
- * @type {?}
  */
-const MAT_DATE_LOCALE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_DATE_LOCALE', {
+const /** @type {?} */ MAT_DATE_LOCALE = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_DATE_LOCALE', {
     providedIn: 'root',
     factory: MAT_DATE_LOCALE_FACTORY,
 });
@@ -63960,10 +64111,9 @@ function MAT_DATE_LOCALE_FACTORY() {
  * No longer needed since MAT_DATE_LOCALE has been changed to a scoped injectable.
  * If you are importing and providing this in your code you can simply remove it.
  * @deprecated
- * \@breaking-change 8.0.0
- * @type {?}
+ * \@deletion-target 7.0.0
  */
-const MAT_DATE_LOCALE_PROVIDER = { provide: MAT_DATE_LOCALE, useExisting: _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"] };
+const /** @type {?} */ MAT_DATE_LOCALE_PROVIDER = { provide: MAT_DATE_LOCALE, useExisting: _angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"] };
 /**
  * Adapts type `D` to be usable as a date by cdk-based components that work with dates.
  * @abstract
@@ -63971,7 +64121,7 @@ const MAT_DATE_LOCALE_PROVIDER = { provide: MAT_DATE_LOCALE, useExisting: _angul
  */
 class DateAdapter {
     constructor() {
-        this._localeChanges = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
+        this._localeChanges = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
     }
     /**
      * A stream that emits when the locale changes.
@@ -63983,7 +64133,7 @@ class DateAdapter {
      * deserialize should only accept non-ambiguous, locale-independent formats (e.g. a ISO 8601
      * string). The default implementation does not allow any deserialization, it simply checks that
      * the given value is already a valid date object or null. The `<mat-datepicker>` will call this
-     * method on all of its `\@Input()` properties that accept dates. It is therefore possible to
+     * method on all of it's `\@Input()` properties that accept dates. It is therefore possible to
      * support passing values from your backend directly to these properties by overriding this method
      * to also deserialize the format used by your backend.
      * @param {?} value The value to be deserialized into a date object.
@@ -64026,10 +64176,8 @@ class DateAdapter {
      */
     sameDate(first, second) {
         if (first && second) {
-            /** @type {?} */
-            let firstValid = this.isValid(first);
-            /** @type {?} */
-            let secondValid = this.isValid(second);
+            let /** @type {?} */ firstValid = this.isValid(first);
+            let /** @type {?} */ secondValid = this.isValid(second);
             if (firstValid && secondValid) {
                 return !this.compareDate(first, second);
             }
@@ -64055,43 +64203,25 @@ class DateAdapter {
         return date;
     }
 }
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/datetime/date-formats.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/** @type {?} */
-const MAT_DATE_FORMATS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-date-formats');
+const /** @type {?} */ MAT_DATE_FORMATS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-date-formats');
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/datetime/native-date-adapter.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-// TODO(mmalerba): Remove when we no longer support safari 9.
 /**
  * Whether the browser supports the Intl API.
- * @type {?}
  */
-let SUPPORTS_INTL_API;
-// We need a try/catch around the reference to `Intl`, because accessing it in some cases can
-// cause IE to throw. These cases are tied to particular versions of Windows and can happen if
-// the consumer is providing a polyfilled `Map`. See:
-// https://github.com/Microsoft/ChakraCore/issues/3189
-// https://github.com/angular/components/issues/15687
-try {
-    SUPPORTS_INTL_API = typeof Intl != 'undefined';
-}
-catch (_a) {
-    SUPPORTS_INTL_API = false;
-}
+const /** @type {?} */ SUPPORTS_INTL_API = typeof Intl != 'undefined';
 /**
  * The default month names to use if Intl API is not available.
- * @type {?}
  */
-const DEFAULT_MONTH_NAMES = {
+const /** @type {?} */ DEFAULT_MONTH_NAMES = {
     'long': [
         'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
         'October', 'November', 'December'
@@ -64099,21 +64229,15 @@ const DEFAULT_MONTH_NAMES = {
     'short': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     'narrow': ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D']
 };
-const ɵ0 = /**
- * @param {?} i
- * @return {?}
- */
-i => String(i + 1);
+const ɵ0 = i => String(i + 1);
 /**
  * The default date names to use if Intl API is not available.
- * @type {?}
  */
-const DEFAULT_DATE_NAMES = range(31, (ɵ0));
+const /** @type {?} */ DEFAULT_DATE_NAMES = range(31, ɵ0);
 /**
  * The default day of the week names to use if Intl API is not available.
- * @type {?}
  */
-const DEFAULT_DAY_OF_WEEK_NAMES = {
+const /** @type {?} */ DEFAULT_DAY_OF_WEEK_NAMES = {
     'long': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     'short': ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
     'narrow': ['S', 'M', 'T', 'W', 'T', 'F', 'S']
@@ -64122,9 +64246,8 @@ const DEFAULT_DAY_OF_WEEK_NAMES = {
  * Matches strings that have the form of a valid RFC 3339 string
  * (https://tools.ietf.org/html/rfc3339). Note that the string may not actually be a valid date
  * because the regex will match strings an with out of bounds month, date, etc.
- * @type {?}
  */
-const ISO_8601_REGEX = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|(?:(?:\+|-)\d{2}:\d{2}))?)?$/;
+const /** @type {?} */ ISO_8601_REGEX = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|(?:(?:\+|-)\d{2}:\d{2}))?)?$/;
 /**
  * Creates an array and fills it with values.
  * @template T
@@ -64133,9 +64256,8 @@ const ISO_8601_REGEX = /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|(?
  * @return {?}
  */
 function range(length, valueFunction) {
-    /** @type {?} */
-    const valuesArray = Array(length);
-    for (let i = 0; i < length; i++) {
+    const /** @type {?} */ valuesArray = Array(length);
+    for (let /** @type {?} */ i = 0; i < length; i++) {
         valuesArray[i] = valueFunction(i);
     }
     return valuesArray;
@@ -64157,7 +64279,7 @@ class NativeDateAdapter extends DateAdapter {
          * will produce `'8/13/1800'`.
          *
          * TODO(mmalerba): drop this variable. It's not being used in the code right now. We're now
-         * getting the string representation of a Date object from its utc representation. We're keeping
+         * getting the string representation of a Date object from it's utc representation. We're keeping
          * it here for sometime, just for precaution, in case we decide to revert some of these changes
          * though.
          */
@@ -64201,13 +64323,8 @@ class NativeDateAdapter extends DateAdapter {
      */
     getMonthNames(style) {
         if (SUPPORTS_INTL_API) {
-            /** @type {?} */
-            const dtf = new Intl.DateTimeFormat(this.locale, { month: style, timeZone: 'utc' });
-            return range(12, (/**
-             * @param {?} i
-             * @return {?}
-             */
-            i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, i, 1)))));
+            const /** @type {?} */ dtf = new Intl.DateTimeFormat(this.locale, { month: style, timeZone: 'utc' });
+            return range(12, i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, i, 1))));
         }
         return DEFAULT_MONTH_NAMES[style];
     }
@@ -64216,13 +64333,8 @@ class NativeDateAdapter extends DateAdapter {
      */
     getDateNames() {
         if (SUPPORTS_INTL_API) {
-            /** @type {?} */
-            const dtf = new Intl.DateTimeFormat(this.locale, { day: 'numeric', timeZone: 'utc' });
-            return range(31, (/**
-             * @param {?} i
-             * @return {?}
-             */
-            i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, 0, i + 1)))));
+            const /** @type {?} */ dtf = new Intl.DateTimeFormat(this.locale, { day: 'numeric', timeZone: 'utc' });
+            return range(31, i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, 0, i + 1))));
         }
         return DEFAULT_DATE_NAMES;
     }
@@ -64232,13 +64344,8 @@ class NativeDateAdapter extends DateAdapter {
      */
     getDayOfWeekNames(style) {
         if (SUPPORTS_INTL_API) {
-            /** @type {?} */
-            const dtf = new Intl.DateTimeFormat(this.locale, { weekday: style, timeZone: 'utc' });
-            return range(7, (/**
-             * @param {?} i
-             * @return {?}
-             */
-            i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, 0, i + 1)))));
+            const /** @type {?} */ dtf = new Intl.DateTimeFormat(this.locale, { weekday: style, timeZone: 'utc' });
+            return range(7, i => this._stripDirectionalityCharacters(this._format(dtf, new Date(2017, 0, i + 1))));
         }
         return DEFAULT_DAY_OF_WEEK_NAMES[style];
     }
@@ -64248,8 +64355,7 @@ class NativeDateAdapter extends DateAdapter {
      */
     getYearName(date) {
         if (SUPPORTS_INTL_API) {
-            /** @type {?} */
-            const dtf = new Intl.DateTimeFormat(this.locale, { year: 'numeric', timeZone: 'utc' });
+            const /** @type {?} */ dtf = new Intl.DateTimeFormat(this.locale, { year: 'numeric', timeZone: 'utc' });
             return this._stripDirectionalityCharacters(this._format(dtf, date));
         }
         return String(this.getYear(date));
@@ -64273,7 +64379,7 @@ class NativeDateAdapter extends DateAdapter {
      * @return {?}
      */
     clone(date) {
-        return new Date(date.getTime());
+        return this.createDate(this.getYear(date), this.getMonth(date), this.getDate(date));
     }
     /**
      * @param {?} year
@@ -64290,8 +64396,7 @@ class NativeDateAdapter extends DateAdapter {
         if (date < 1) {
             throw Error(`Invalid date "${date}". Date has to be greater than 0.`);
         }
-        /** @type {?} */
-        let result = this._createDateWithOverflow(year, month, date);
+        let /** @type {?} */ result = this._createDateWithOverflow(year, month, date);
         // Check that the date wasn't above the upper bound for the month, causing the month to overflow
         if (result.getMonth() != month) {
             throw Error(`Invalid date "${date}" for month with index "${month}".`);
@@ -64332,9 +64437,8 @@ class NativeDateAdapter extends DateAdapter {
                 date = this.clone(date);
                 date.setFullYear(Math.max(1, Math.min(9999, date.getFullYear())));
             }
-            displayFormat = Object.assign(Object.assign({}, displayFormat), { timeZone: 'utc' });
-            /** @type {?} */
-            const dtf = new Intl.DateTimeFormat(this.locale, displayFormat);
+            displayFormat = Object.assign({}, displayFormat, { timeZone: 'utc' });
+            const /** @type {?} */ dtf = new Intl.DateTimeFormat(this.locale, displayFormat);
             return this._stripDirectionalityCharacters(this._format(dtf, date));
         }
         return this._stripDirectionalityCharacters(date.toDateString());
@@ -64353,8 +64457,7 @@ class NativeDateAdapter extends DateAdapter {
      * @return {?}
      */
     addCalendarMonths(date, months) {
-        /** @type {?} */
-        let newDate = this._createDateWithOverflow(this.getYear(date), this.getMonth(date) + months, this.getDate(date));
+        let /** @type {?} */ newDate = this._createDateWithOverflow(this.getYear(date), this.getMonth(date) + months, this.getDate(date));
         // It's possible to wind up in the wrong month if the original month has more days than the new
         // month. In this case we want to go to the last day of the desired month.
         // Note: the additional + 12 % 12 ensures we end up with a positive number, since JS % doesn't
@@ -64398,8 +64501,7 @@ class NativeDateAdapter extends DateAdapter {
             // The `Date` constructor accepts formats other than ISO 8601, so we need to make sure the
             // string is the right format first.
             if (ISO_8601_REGEX.test(value)) {
-                /** @type {?} */
-                let date = new Date(value);
+                let /** @type {?} */ date = new Date(value);
                 if (this.isValid(date)) {
                     return date;
                 }
@@ -64429,15 +64531,13 @@ class NativeDateAdapter extends DateAdapter {
     }
     /**
      * Creates a date but allows the month and date to overflow.
-     * @private
      * @param {?} year
      * @param {?} month
      * @param {?} date
      * @return {?}
      */
     _createDateWithOverflow(year, month, date) {
-        /** @type {?} */
-        const result = new Date(year, month, date);
+        const /** @type {?} */ result = new Date(year, month, date);
         // We need to correct for the fact that JS native Date treats years in range [0, 99] as
         // abbreviations for 19xx.
         if (year >= 0 && year < 100) {
@@ -64447,7 +64547,6 @@ class NativeDateAdapter extends DateAdapter {
     }
     /**
      * Pads a number to make it two digits.
-     * @private
      * @param {?} n The number to pad.
      * @return {?} The padded number.
      */
@@ -64458,7 +64557,6 @@ class NativeDateAdapter extends DateAdapter {
      * Strip out unicode LTR and RTL characters. Edge and IE insert these into formatted dates while
      * other browsers do not. We remove them to make output consistent and because they interfere with
      * date parsing.
-     * @private
      * @param {?} str The string to strip direction characters from.
      * @return {?} The stripped string.
      */
@@ -64471,49 +64569,38 @@ class NativeDateAdapter extends DateAdapter {
      * very frequently, and the current valid rule is not always valid in previous years though.
      * We work around this problem building a new Date object which has its internal UTC
      * representation with the local date and time.
-     * @private
      * @param {?} dtf Intl.DateTimeFormat object, containg the desired string format. It must have
      *    timeZone set to 'utc' to work fine.
      * @param {?} date Date from which we want to get the string representation according to dtf
      * @return {?} A Date object with its UTC representation based on the passed in date info
      */
     _format(dtf, date) {
-        /** @type {?} */
-        const d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()));
+        const /** @type {?} */ d = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds()));
         return dtf.format(d);
     }
 }
-NativeDateAdapter.ɵfac = function NativeDateAdapter_Factory(t) { return new (t || NativeDateAdapter)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](MAT_DATE_LOCALE, 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"])); };
+NativeDateAdapter.ɵfac = function NativeDateAdapter_Factory(t) { return new (t || NativeDateAdapter)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](MAT_DATE_LOCALE, 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"])); };
 NativeDateAdapter.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: NativeDateAdapter, factory: NativeDateAdapter.ɵfac });
 /** @nocollapse */
 NativeDateAdapter.ctorParameters = () => [
-    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_DATE_LOCALE,] }] },
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_DATE_LOCALE,] },] },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"], },
 ];
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NativeDateAdapter, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
-    }], function () { return [{ type: String, decorators: [{
+    }], function () { return [{ type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
                 args: [MAT_DATE_LOCALE]
-            }] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }]; }, null); })();
-if (false) {}
+            }] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }]; }, null); })();
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/datetime/native-date-formats.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/** @type {?} */
-const MAT_NATIVE_DATE_FORMATS = {
+
+const /** @type {?} */ MAT_NATIVE_DATE_FORMATS = {
     parse: {
         dateInput: null,
     },
@@ -64527,20 +64614,19 @@ const MAT_NATIVE_DATE_FORMATS = {
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/datetime/index.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 class NativeDateModule {
 }
 NativeDateModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: NativeDateModule });
 NativeDateModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function NativeDateModule_Factory(t) { return new (t || NativeDateModule)(); }, providers: [
         { provide: DateAdapter, useClass: NativeDateAdapter },
-    ], imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"]]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NativeDateModule, { imports: function () { return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"]]; } }); })();
+    ], imports: [[_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](NativeDateModule, { imports: function () { return [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](NativeDateModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"]],
+                imports: [_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]],
                 providers: [
                     { provide: DateAdapter, useClass: NativeDateAdapter },
                 ]
@@ -64562,8 +64648,7 @@ MatNativeDateModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/error/error-options.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Error state matcher that matches when a control is invalid and dirty.
@@ -64597,7 +64682,8 @@ class ErrorStateMatcher {
     }
 }
 ErrorStateMatcher.ɵfac = function ErrorStateMatcher_Factory(t) { return new (t || ErrorStateMatcher)(); };
-/** @nocollapse */ ErrorStateMatcher.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"])({ factory: function ErrorStateMatcher_Factory() { return new ErrorStateMatcher(); }, token: ErrorStateMatcher, providedIn: "root" });
+ErrorStateMatcher.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: ErrorStateMatcher, factory: ErrorStateMatcher.ɵfac, providedIn: 'root' });
+/** @nocollapse */ ErrorStateMatcher.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["defineInjectable"])({ factory: function ErrorStateMatcher_Factory() { return new ErrorStateMatcher(); }, token: ErrorStateMatcher, providedIn: "root" });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ErrorStateMatcher, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{ providedIn: 'root' }]
@@ -64605,132 +64691,39 @@ ErrorStateMatcher.ɵfac = function ErrorStateMatcher_Factory(t) { return new (t 
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/gestures/gesture-annotations.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
- */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * Stripped-down HammerJS annotations to be used within Material, which are necessary,
- * because HammerJS is an optional dependency. For the full annotations see:
- * https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/hammerjs/index.d.ts
- */
-/**
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * \@docs-private
- * @record
- */
-function HammerInput() { }
-if (false) {}
-/**
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * \@docs-private
- * @record
- */
-function HammerStatic() { }
-if (false) {}
-/**
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * \@docs-private
- * @record
- */
-function Recognizer() { }
-if (false) {}
-/**
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * \@docs-private
- * @record
- */
-function RecognizerStatic() { }
-/**
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * \@docs-private
- * @record
- */
-function HammerInstance() { }
-if (false) {}
-/**
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * \@docs-private
- * @record
- */
-function HammerManager() { }
-if (false) {}
-/**
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * \@docs-private
- * @record
- */
-function HammerOptions() { }
-if (false) {}
-
-/**
- * @fileoverview added by tsickle
- * Generated from: src/material/core/gestures/gesture-config.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Injection token that can be used to provide options to the Hammerjs instance.
  * More info at http://hammerjs.github.io/api/.
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
- * @type {?}
  */
-const MAT_HAMMER_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_HAMMER_OPTIONS');
-/** @type {?} */
-const ANGULAR_MATERIAL_SUPPORTED_HAMMER_GESTURES = [
-    'longpress',
-    'slide',
-    'slidestart',
-    'slideend',
-    'slideright',
-    'slideleft'
-];
-const ɵ0$2 = /**
- * @return {?}
- */
-() => { }, ɵ1 = /**
- * @return {?}
- */
-() => { };
-/**
- * Fake HammerInstance that is used when a Hammer instance is requested when HammerJS has not
- * been loaded on the page.
- * @type {?}
- */
-const noopHammerInstance = {
-    on: (ɵ0$2),
-    off: (ɵ1),
-};
+const /** @type {?} */ MAT_HAMMER_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_HAMMER_OPTIONS');
 /**
  * Adjusts configuration of our gesture library, Hammer.
- * @deprecated No longer being used. To be removed.
- * \@breaking-change 10.0.0
  */
-class GestureConfig extends _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7__["HammerGestureConfig"] {
+class GestureConfig extends _angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["HammerGestureConfig"] {
     /**
      * @param {?=} _hammerOptions
-     * @param {?=} _commonModule
+     * @param {?=} commonModule
      */
-    constructor(_hammerOptions, _commonModule) {
+    constructor(_hammerOptions, commonModule) {
         super();
         this._hammerOptions = _hammerOptions;
+        this._hammer = typeof window !== 'undefined' ? (/** @type {?} */ (window)).Hammer : null;
         /**
          * List of new event names to add to the gesture support list
          */
-        this.events = ANGULAR_MATERIAL_SUPPORTED_HAMMER_GESTURES;
+        this.events = this._hammer ? [
+            'longpress',
+            'slide',
+            'slidestart',
+            'slideend',
+            'slideright',
+            'slideleft'
+        ] : [];
+        if (commonModule) {
+            commonModule._checkHammerIsAvailable();
+        }
     }
     /**
      * Builds Hammer instance manually to add custom recognizers that match the Material Design spec.
@@ -64746,64 +64739,33 @@ class GestureConfig extends _angular_platform_browser__WEBPACK_IMPORTED_MODULE_7
      * @return {?} Newly-created HammerJS instance.
      */
     buildHammer(element) {
-        /** @type {?} */
-        const hammer = typeof window !== 'undefined' ? ((/** @type {?} */ (window))).Hammer : null;
-        if (!hammer) {
-            // If HammerJS is not loaded here, return the noop HammerInstance. This is necessary to
-            // ensure that omitting HammerJS completely will not cause any errors while *also* supporting
-            // the lazy-loading of HammerJS via the HAMMER_LOADER token introduced in Angular 6.1.
-            // Because we can't depend on HAMMER_LOADER's existance until 7.0, we have to always set
-            // `this.events` to the set we support, instead of conditionally setting it to `[]` if
-            // `HAMMER_LOADER` is present (and then throwing an Error here if `window.Hammer` is
-            // undefined).
-            // @breaking-change 8.0.0
-            return noopHammerInstance;
-        }
-        /** @type {?} */
-        const mc = new hammer(element, this._hammerOptions || undefined);
+        const /** @type {?} */ mc = new this._hammer(element, this._hammerOptions || undefined);
         // Default Hammer Recognizers.
-        /** @type {?} */
-        const pan = new hammer.Pan();
-        /** @type {?} */
-        const swipe = new hammer.Swipe();
-        /** @type {?} */
-        const press = new hammer.Press();
+        const /** @type {?} */ pan = new this._hammer.Pan();
+        const /** @type {?} */ swipe = new this._hammer.Swipe();
+        const /** @type {?} */ press = new this._hammer.Press();
         // Notice that a HammerJS recognizer can only depend on one other recognizer once.
         // Otherwise the previous `recognizeWith` will be dropped.
         // TODO: Confirm threshold numbers with Material Design UX Team
-        /** @type {?} */
-        const slide = this._createRecognizer(pan, { event: 'slide', threshold: 0 }, swipe);
-        /** @type {?} */
-        const longpress = this._createRecognizer(press, { event: 'longpress', time: 500 });
+        const /** @type {?} */ slide = this._createRecognizer(pan, { event: 'slide', threshold: 0 }, swipe);
+        const /** @type {?} */ longpress = this._createRecognizer(press, { event: 'longpress', time: 500 });
         // Overwrite the default `pan` event to use the swipe event.
         pan.recognizeWith(swipe);
-        // Since the slide event threshold is set to zero, the slide recognizer can fire and
-        // accidentally reset the longpress recognizer. In order to make sure that the two
-        // recognizers can run simultaneously but don't affect each other, we allow the slide
-        // recognizer to recognize while a longpress is being processed.
-        // See: https://github.com/hammerjs/hammer.js/blob/master/src/manager.js#L123-L124
-        longpress.recognizeWith(slide);
         // Add customized gestures to Hammer manager
         mc.add([swipe, press, pan, slide, longpress]);
-        return (/** @type {?} */ (mc));
+        return /** @type {?} */ (mc);
     }
     /**
      * Creates a new recognizer, without affecting the default recognizers of HammerJS
-     * @private
      * @param {?} base
      * @param {?} options
      * @param {...?} inheritances
      * @return {?}
      */
     _createRecognizer(base, options, ...inheritances) {
-        /** @type {?} */
-        let recognizer = new ((/** @type {?} */ (base.constructor)))(options);
+        let /** @type {?} */ recognizer = new (/** @type {?} */ (base.constructor))(options);
         inheritances.push(base);
-        inheritances.forEach((/**
-         * @param {?} item
-         * @return {?}
-         */
-        item => recognizer.recognizeWith(item)));
+        inheritances.forEach(item => recognizer.recognizeWith(item));
         return recognizer;
     }
 }
@@ -64811,8 +64773,8 @@ GestureConfig.ɵfac = function GestureConfig_Factory(t) { return new (t || Gestu
 GestureConfig.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: GestureConfig, factory: GestureConfig.ɵfac });
 /** @nocollapse */
 GestureConfig.ctorParameters = () => [
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_HAMMER_OPTIONS,] }] },
-    { type: MatCommonModule, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] }
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_HAMMER_OPTIONS,] },] },
+    { type: MatCommonModule, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] },] },
 ];
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](GestureConfig, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"]
@@ -64824,12 +64786,10 @@ GestureConfig.ctorParameters = () => [
             }] }, { type: MatCommonModule, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
             }] }]; }, null); })();
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/line/line.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Shared directive to count lines inside a text area, such as a list item.
@@ -64850,54 +64810,53 @@ MatLine.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"
 /**
  * Helper that takes a query list of lines and sets the correct class on the host.
  * \@docs-private
- * @param {?} lines
- * @param {?} element
- * @return {?}
- */
-function setLines(lines, element) {
-    // Note: doesn't need to unsubscribe, because `changes`
-    // gets completed by Angular when the view is destroyed.
-    lines.changes.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_8__["startWith"])(lines)).subscribe((/**
-     * @param {?} __0
-     * @return {?}
-     */
-    ({ length }) => {
-        setClass(element, 'mat-2-line', false);
-        setClass(element, 'mat-3-line', false);
-        setClass(element, 'mat-multi-line', false);
-        if (length === 2 || length === 3) {
-            setClass(element, `mat-${length}-line`, true);
-        }
-        else if (length > 3) {
-            setClass(element, `mat-multi-line`, true);
-        }
-    }));
-}
-/**
- * Adds or removes a class from an element.
- * @param {?} element
- * @param {?} className
- * @param {?} isAdd
- * @return {?}
- */
-function setClass(element, className, isAdd) {
-    /** @type {?} */
-    const classList = element.nativeElement.classList;
-    isAdd ? classList.add(className) : classList.remove(className);
-}
-/**
- * Helper that takes a query list of lines and sets the correct class on the host.
- * \@docs-private
- * @deprecated Use `setLines` instead.
- * \@breaking-change 8.0.0
  */
 class MatLineSetter {
     /**
-     * @param {?} lines
-     * @param {?} element
+     * @param {?} _lines
+     * @param {?} _element
      */
-    constructor(lines, element) {
-        setLines(lines, element);
+    constructor(_lines, _element) {
+        this._lines = _lines;
+        this._element = _element;
+        this._setLineClass(this._lines.length);
+        this._lines.changes.subscribe(() => {
+            this._setLineClass(this._lines.length);
+        });
+    }
+    /**
+     * @param {?} count
+     * @return {?}
+     */
+    _setLineClass(count) {
+        this._resetClasses();
+        if (count === 2 || count === 3) {
+            this._setClass(`mat-${count}-line`, true);
+        }
+        else if (count > 3) {
+            this._setClass(`mat-multi-line`, true);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    _resetClasses() {
+        this._setClass('mat-2-line', false);
+        this._setClass('mat-3-line', false);
+        this._setClass('mat-multi-line', false);
+    }
+    /**
+     * @param {?} className
+     * @param {?} isAdd
+     * @return {?}
+     */
+    _setClass(className, isAdd) {
+        if (isAdd) {
+            this._element.nativeElement.classList.add(className);
+        }
+        else {
+            this._element.nativeElement.classList.remove(className);
+        }
     }
 }
 class MatLineModule {
@@ -64918,24 +64877,20 @@ MatLineModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInje
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/ripple/ripple-ref.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
+
 /** @enum {number} */
 const RippleState = {
-    FADING_IN: 0, VISIBLE: 1, FADING_OUT: 2, HIDDEN: 3,
+    FADING_IN: 0,
+    VISIBLE: 1,
+    FADING_OUT: 2,
+    HIDDEN: 3,
 };
-RippleState[RippleState.FADING_IN] = 'FADING_IN';
-RippleState[RippleState.VISIBLE] = 'VISIBLE';
-RippleState[RippleState.FADING_OUT] = 'FADING_OUT';
-RippleState[RippleState.HIDDEN] = 'HIDDEN';
+RippleState[RippleState.FADING_IN] = "FADING_IN";
+RippleState[RippleState.VISIBLE] = "VISIBLE";
+RippleState[RippleState.FADING_OUT] = "FADING_OUT";
+RippleState[RippleState.HIDDEN] = "HIDDEN";
 /**
  * Reference to a previously launched ripple element.
  */
@@ -64950,7 +64905,7 @@ class RippleRef {
         this.element = element;
         this.config = config;
         /**
-         * Current state of the ripple.
+         * Current state of the ripple reference.
          */
         this.state = RippleState.HIDDEN;
     }
@@ -64962,48 +64917,24 @@ class RippleRef {
         this._renderer.fadeOutRipple(this);
     }
 }
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/ripple/ripple-renderer.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * Interface that describes the configuration for the animation of a ripple.
- * There are two animation phases with different durations for the ripples.
- * @record
- */
-function RippleAnimationConfig() { }
-if (false) {}
-/**
- * Interface that describes the target for launching ripples.
- * It defines the ripple configuration and disabled state for interaction ripples.
- * \@docs-private
- * @record
- */
-function RippleTarget() { }
-if (false) {}
 /**
  * Default ripple animation configuration for ripples without an explicit
  * animation config specified.
- * @type {?}
  */
-const defaultRippleAnimationConfig = {
+const /** @type {?} */ defaultRippleAnimationConfig = {
     enterDuration: 450,
     exitDuration: 400
 };
 /**
  * Timeout for ignoring mouse events. Mouse events will be temporary ignored after touch
  * events to avoid synthetic mouse events.
- * @type {?}
  */
-const ignoreMouseEventsTimeout = 800;
-/**
- * Options that apply to all the event listeners that are bound by the ripple renderer.
- * @type {?}
- */
-const passiveEventOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["normalizePassiveListenerOptions"])({ passive: true });
+const /** @type {?} */ ignoreMouseEventsTimeout = 800;
 /**
  * Helper service that performs DOM manipulations. Not intended to be used outside this module.
  * The constructor takes a reference to the ripple directive's host element and a map of DOM
@@ -65015,10 +64946,10 @@ class RippleRenderer {
     /**
      * @param {?} _target
      * @param {?} _ngZone
-     * @param {?} elementOrElementRef
+     * @param {?} elementRef
      * @param {?} platform
      */
-    constructor(_target, _ngZone, elementOrElementRef, platform) {
+    constructor(_target, _ngZone, elementRef, platform) {
         this._target = _target;
         this._ngZone = _ngZone;
         /**
@@ -65034,86 +64965,61 @@ class RippleRenderer {
          */
         this._activeRipples = new Set();
         /**
+         * Options that apply to all the event listeners that are bound by the renderer.
+         */
+        this._eventOptions = Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["supportsPassiveEventListeners"])() ? (/** @type {?} */ ({ passive: true })) : false;
+        /**
          * Function being called whenever the trigger is being pressed using mouse.
          */
-        this._onMousedown = (/**
-         * @param {?} event
-         * @return {?}
-         */
-        (event) => {
-            // Screen readers will fire fake mouse events for space/enter. Skip launching a
-            // ripple in this case for consistency with the non-screen-reader experience.
-            /** @type {?} */
-            const isFakeMousedown = Object(_angular_cdk_a11y__WEBPACK_IMPORTED_MODULE_1__["isFakeMousedownFromScreenReader"])(event);
-            /** @type {?} */
-            const isSyntheticEvent = this._lastTouchStartEvent &&
+        this.onMousedown = (event) => {
+            const /** @type {?} */ isSyntheticEvent = this._lastTouchStartEvent &&
                 Date.now() < this._lastTouchStartEvent + ignoreMouseEventsTimeout;
-            if (!this._target.rippleDisabled && !isFakeMousedown && !isSyntheticEvent) {
+            if (!this._target.rippleDisabled && !isSyntheticEvent) {
                 this._isPointerDown = true;
                 this.fadeInRipple(event.clientX, event.clientY, this._target.rippleConfig);
             }
-        });
+        };
         /**
          * Function being called whenever the trigger is being pressed using touch.
          */
-        this._onTouchStart = (/**
-         * @param {?} event
-         * @return {?}
-         */
-        (event) => {
+        this.onTouchStart = (event) => {
             if (!this._target.rippleDisabled) {
                 // Some browsers fire mouse events after a `touchstart` event. Those synthetic mouse
                 // events will launch a second ripple if we don't ignore mouse events for a specific
                 // time after a touchstart event.
                 this._lastTouchStartEvent = Date.now();
                 this._isPointerDown = true;
-                // Use `changedTouches` so we skip any touches where the user put
-                // their finger down, but used another finger to tap the element again.
-                /** @type {?} */
-                const touches = event.changedTouches;
-                for (let i = 0; i < touches.length; i++) {
-                    this.fadeInRipple(touches[i].clientX, touches[i].clientY, this._target.rippleConfig);
-                }
+                this.fadeInRipple(event.touches[0].clientX, event.touches[0].clientY, this._target.rippleConfig);
             }
-        });
+        };
         /**
          * Function being called whenever the trigger is being released.
          */
-        this._onPointerUp = (/**
-         * @return {?}
-         */
-        () => {
+        this.onPointerUp = () => {
             if (!this._isPointerDown) {
                 return;
             }
             this._isPointerDown = false;
             // Fade-out all ripples that are visible and not persistent.
-            this._activeRipples.forEach((/**
-             * @param {?} ripple
-             * @return {?}
-             */
-            ripple => {
+            this._activeRipples.forEach(ripple => {
                 // By default, only ripples that are completely visible will fade out on pointer release.
                 // If the `terminateOnPointerUp` option is set, ripples that still fade in will also fade out.
-                /** @type {?} */
-                const isVisible = ripple.state === RippleState.VISIBLE ||
+                const /** @type {?} */ isVisible = ripple.state === RippleState.VISIBLE ||
                     ripple.config.terminateOnPointerUp && ripple.state === RippleState.FADING_IN;
                 if (!ripple.config.persistent && isVisible) {
                     ripple.fadeOut();
                 }
-            }));
-        });
+            });
+        };
         // Only do anything if we're on the browser.
         if (platform.isBrowser) {
-            this._containerElement = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_4__["coerceElement"])(elementOrElementRef);
+            this._containerElement = elementRef.nativeElement;
             // Specify events which need to be registered on the trigger.
-            this._triggerEvents
-                .set('mousedown', this._onMousedown)
-                .set('mouseup', this._onPointerUp)
-                .set('mouseleave', this._onPointerUp)
-                .set('touchstart', this._onTouchStart)
-                .set('touchend', this._onPointerUp)
-                .set('touchcancel', this._onPointerUp);
+            this._triggerEvents.set('mousedown', this.onMousedown);
+            this._triggerEvents.set('mouseup', this.onPointerUp);
+            this._triggerEvents.set('mouseleave', this.onPointerUp);
+            this._triggerEvents.set('touchstart', this.onTouchStart);
+            this._triggerEvents.set('touchend', this.onPointerUp);
         }
     }
     /**
@@ -65124,35 +65030,25 @@ class RippleRenderer {
      * @return {?}
      */
     fadeInRipple(x, y, config = {}) {
-        /** @type {?} */
-        const containerRect = this._containerRect =
+        const /** @type {?} */ containerRect = this._containerRect =
             this._containerRect || this._containerElement.getBoundingClientRect();
-        /** @type {?} */
-        const animationConfig = Object.assign(Object.assign({}, defaultRippleAnimationConfig), config.animation);
+        const /** @type {?} */ animationConfig = Object.assign({}, defaultRippleAnimationConfig, config.animation);
         if (config.centered) {
             x = containerRect.left + containerRect.width / 2;
             y = containerRect.top + containerRect.height / 2;
         }
-        /** @type {?} */
-        const radius = config.radius || distanceToFurthestCorner(x, y, containerRect);
-        /** @type {?} */
-        const offsetX = x - containerRect.left;
-        /** @type {?} */
-        const offsetY = y - containerRect.top;
-        /** @type {?} */
-        const duration = animationConfig.enterDuration;
-        /** @type {?} */
-        const ripple = document.createElement('div');
+        const /** @type {?} */ radius = config.radius || distanceToFurthestCorner(x, y, containerRect);
+        const /** @type {?} */ offsetX = x - containerRect.left;
+        const /** @type {?} */ offsetY = y - containerRect.top;
+        const /** @type {?} */ duration = animationConfig.enterDuration / (config.speedFactor || 1);
+        const /** @type {?} */ ripple = document.createElement('div');
         ripple.classList.add('mat-ripple-element');
         ripple.style.left = `${offsetX - radius}px`;
         ripple.style.top = `${offsetY - radius}px`;
         ripple.style.height = `${radius * 2}px`;
         ripple.style.width = `${radius * 2}px`;
-        // If a custom color has been specified, set it as inline style. If no color is
-        // set, the default color will be applied through the ripple theme styles.
-        if (config.color != null) {
-            ripple.style.backgroundColor = config.color;
-        }
+        // If the color is not set, the default CSS color will be used.
+        ripple.style.backgroundColor = config.color || null;
         ripple.style.transitionDuration = `${duration}ms`;
         this._containerElement.appendChild(ripple);
         // By default the browser does not recalculate the styles of dynamically created
@@ -65160,8 +65056,7 @@ class RippleRenderer {
         enforceStyleRecalculation(ripple);
         ripple.style.transform = 'scale(1)';
         // Exposed reference to the ripple that will be returned.
-        /** @type {?} */
-        const rippleRef = new RippleRef(this, ripple, config);
+        const /** @type {?} */ rippleRef = new RippleRef(this, ripple, config);
         rippleRef.state = RippleState.FADING_IN;
         // Add the ripple reference to the list of all active ripples.
         this._activeRipples.add(rippleRef);
@@ -65170,12 +65065,8 @@ class RippleRenderer {
         }
         // Wait for the ripple element to be completely faded in.
         // Once it's faded in, the ripple can be hidden immediately if the mouse is released.
-        this._runTimeoutOutsideZone((/**
-         * @return {?}
-         */
-        () => {
-            /** @type {?} */
-            const isMostRecentTransientRipple = rippleRef === this._mostRecentTransientRipple;
+        this.runTimeoutOutsideZone(() => {
+            const /** @type {?} */ isMostRecentTransientRipple = rippleRef === this._mostRecentTransientRipple;
             rippleRef.state = RippleState.VISIBLE;
             // When the timer runs out while the user has kept their pointer down, we want to
             // keep only the persistent ripples and the latest transient ripple. We do this,
@@ -65184,7 +65075,7 @@ class RippleRenderer {
             if (!config.persistent && (!isMostRecentTransientRipple || !this._isPointerDown)) {
                 rippleRef.fadeOut();
             }
-        }), duration);
+        }, duration);
         return rippleRef;
     }
     /**
@@ -65193,8 +65084,7 @@ class RippleRenderer {
      * @return {?}
      */
     fadeOutRipple(rippleRef) {
-        /** @type {?} */
-        const wasActive = this._activeRipples.delete(rippleRef);
+        const /** @type {?} */ wasActive = this._activeRipples.delete(rippleRef);
         if (rippleRef === this._mostRecentTransientRipple) {
             this._mostRecentTransientRipple = null;
         }
@@ -65202,77 +65092,52 @@ class RippleRenderer {
         if (!this._activeRipples.size) {
             this._containerRect = null;
         }
-        // For ripples that are not active anymore, don't re-run the fade-out animation.
+        // For ripples that are not active anymore, don't re-un the fade-out animation.
         if (!wasActive) {
             return;
         }
-        /** @type {?} */
-        const rippleEl = rippleRef.element;
-        /** @type {?} */
-        const animationConfig = Object.assign(Object.assign({}, defaultRippleAnimationConfig), rippleRef.config.animation);
+        const /** @type {?} */ rippleEl = rippleRef.element;
+        const /** @type {?} */ animationConfig = Object.assign({}, defaultRippleAnimationConfig, rippleRef.config.animation);
         rippleEl.style.transitionDuration = `${animationConfig.exitDuration}ms`;
         rippleEl.style.opacity = '0';
         rippleRef.state = RippleState.FADING_OUT;
         // Once the ripple faded out, the ripple can be safely removed from the DOM.
-        this._runTimeoutOutsideZone((/**
-         * @return {?}
-         */
-        () => {
-            rippleRef.state = RippleState.HIDDEN;
-            (/** @type {?} */ (rippleEl.parentNode)).removeChild(rippleEl);
-        }), animationConfig.exitDuration);
+        this.runTimeoutOutsideZone(() => {
+            rippleRef.state = RippleState.HIDDEN; /** @type {?} */
+            ((rippleEl.parentNode)).removeChild(rippleEl);
+        }, animationConfig.exitDuration);
     }
     /**
      * Fades out all currently active ripples.
      * @return {?}
      */
     fadeOutAll() {
-        this._activeRipples.forEach((/**
-         * @param {?} ripple
-         * @return {?}
-         */
-        ripple => ripple.fadeOut()));
+        this._activeRipples.forEach(ripple => ripple.fadeOut());
     }
     /**
      * Sets up the trigger event listeners
-     * @param {?} elementOrElementRef
+     * @param {?} element
      * @return {?}
      */
-    setupTriggerEvents(elementOrElementRef) {
-        /** @type {?} */
-        const element = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_4__["coerceElement"])(elementOrElementRef);
+    setupTriggerEvents(element) {
         if (!element || element === this._triggerElement) {
             return;
         }
         // Remove all previously registered event listeners from the trigger element.
         this._removeTriggerEvents();
-        this._ngZone.runOutsideAngular((/**
-         * @return {?}
-         */
-        () => {
-            this._triggerEvents.forEach((/**
-             * @param {?} fn
-             * @param {?} type
-             * @return {?}
-             */
-            (fn, type) => {
-                element.addEventListener(type, fn, passiveEventOptions);
-            }));
-        }));
+        this._ngZone.runOutsideAngular(() => {
+            this._triggerEvents.forEach((fn, type) => element.addEventListener(type, fn, this._eventOptions));
+        });
         this._triggerElement = element;
     }
     /**
      * Runs a timeout outside of the Angular zone to avoid triggering the change detection.
-     * @private
      * @param {?} fn
      * @param {?=} delay
      * @return {?}
      */
-    _runTimeoutOutsideZone(fn, delay = 0) {
-        this._ngZone.runOutsideAngular((/**
-         * @return {?}
-         */
-        () => setTimeout(fn, delay)));
+    runTimeoutOutsideZone(fn, delay = 0) {
+        this._ngZone.runOutsideAngular(() => setTimeout(fn, delay));
     }
     /**
      * Removes previously registered event listeners from the trigger element.
@@ -65280,18 +65145,12 @@ class RippleRenderer {
      */
     _removeTriggerEvents() {
         if (this._triggerElement) {
-            this._triggerEvents.forEach((/**
-             * @param {?} fn
-             * @param {?} type
-             * @return {?}
-             */
-            (fn, type) => {
-                (/** @type {?} */ (this._triggerElement)).removeEventListener(type, fn, passiveEventOptions);
-            }));
+            this._triggerEvents.forEach((fn, type) => {
+                /** @type {?} */ ((this._triggerElement)).removeEventListener(type, fn, this._eventOptions);
+            });
         }
     }
 }
-if (false) {}
 /**
  * Enforces a style recalculation of a DOM element by computing its styles.
  * @param {?} element
@@ -65311,45 +65170,44 @@ function enforceStyleRecalculation(element) {
  * @return {?}
  */
 function distanceToFurthestCorner(x, y, rect) {
-    /** @type {?} */
-    const distX = Math.max(Math.abs(x - rect.left), Math.abs(x - rect.right));
-    /** @type {?} */
-    const distY = Math.max(Math.abs(y - rect.top), Math.abs(y - rect.bottom));
+    const /** @type {?} */ distX = Math.max(Math.abs(x - rect.left), Math.abs(x - rect.right));
+    const /** @type {?} */ distY = Math.max(Math.abs(y - rect.top), Math.abs(y - rect.bottom));
     return Math.sqrt(distX * distX + distY * distY);
 }
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/ripple/ripple.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * Configurable options for `matRipple`.
- * @record
- */
-function RippleGlobalOptions() { }
-if (false) {}
 /**
  * Injection token that can be used to specify the global ripple options.
- * @type {?}
  */
-const MAT_RIPPLE_GLOBAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-ripple-global-options');
+const /** @type {?} */ MAT_RIPPLE_GLOBAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-ripple-global-options');
 class MatRipple {
     /**
      * @param {?} _elementRef
      * @param {?} ngZone
      * @param {?} platform
-     * @param {?=} globalOptions
-     * @param {?=} animationMode
+     * @param {?} globalOptions
+     * @param {?=} _animationMode
      */
-    constructor(_elementRef, ngZone, platform, globalOptions, animationMode) {
+    constructor(_elementRef, ngZone, platform, globalOptions, _animationMode) {
         this._elementRef = _elementRef;
+        this._animationMode = _animationMode;
         /**
          * If set, the radius in pixels of foreground ripples when fully expanded. If unset, the radius
          * will be the distance from the center of the ripple to the furthest corner of the host element's
          * bounding rectangle.
          */
         this.radius = 0;
+        /**
+         * If set, the normal duration of ripple animations is divided by this value. For example,
+         * setting it to 0.5 will cause the animations to take twice as long.
+         * A changed speedFactor will not modify the fade-out duration of the ripples.
+         * @deprecated Use the [matRippleAnimation] binding instead.
+         * \@deletion-target 7.0.0
+         */
+        this.speedFactor = 1;
         this._disabled = false;
         /**
          * Whether ripple directive is initialized and the input bindings are set.
@@ -65357,9 +65215,6 @@ class MatRipple {
         this._isInitialized = false;
         this._globalOptions = globalOptions || {};
         this._rippleRenderer = new RippleRenderer(this, ngZone, _elementRef, platform);
-        if (animationMode === 'NoopAnimations') {
-            this._globalOptions.animation = { enterDuration: 0, exitDuration: 0 };
-        }
     }
     /**
      * Whether click events will not trigger the ripple. Ripples can be still launched manually
@@ -65411,7 +65266,6 @@ class MatRipple {
     }
     /**
      * Ripple configuration from the directive's input values.
-     * \@docs-private Implemented as part of RippleTarget
      * @return {?}
      */
     get rippleConfig() {
@@ -65419,21 +65273,21 @@ class MatRipple {
             centered: this.centered,
             radius: this.radius,
             color: this.color,
-            animation: Object.assign(Object.assign({}, this._globalOptions.animation), this.animation),
+            animation: this._animationMode === 'NoopAnimations' ?
+                { enterDuration: 0, exitDuration: 0 } : Object.assign({}, this._globalOptions.animation, this.animation),
             terminateOnPointerUp: this._globalOptions.terminateOnPointerUp,
+            speedFactor: this.speedFactor * (this._globalOptions.baseSpeedFactor || 1),
         };
     }
     /**
      * Whether ripples on pointer-down are disabled or not.
-     * \@docs-private Implemented as part of RippleTarget
      * @return {?}
      */
     get rippleDisabled() {
         return this.disabled || !!this._globalOptions.disabled;
     }
     /**
-     * Sets up the trigger event listeners if ripples are enabled.
-     * @private
+     * Sets up the the trigger event listeners if ripples are enabled.
      * @return {?}
      */
     _setupTriggerEventsIfEnabled() {
@@ -65450,33 +65304,34 @@ class MatRipple {
      */
     launch(configOrX, y = 0, config) {
         if (typeof configOrX === 'number') {
-            return this._rippleRenderer.fadeInRipple(configOrX, y, Object.assign(Object.assign({}, this.rippleConfig), config));
+            return this._rippleRenderer.fadeInRipple(configOrX, y, Object.assign({}, this.rippleConfig, config));
         }
         else {
-            return this._rippleRenderer.fadeInRipple(0, 0, Object.assign(Object.assign({}, this.rippleConfig), configOrX));
+            return this._rippleRenderer.fadeInRipple(0, 0, Object.assign({}, this.rippleConfig, configOrX));
         }
     }
 }
-MatRipple.ɵfac = function MatRipple_Factory(t) { return new (t || MatRipple)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MAT_RIPPLE_GLOBAL_OPTIONS, 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["ANIMATION_MODULE_TYPE"], 8)); };
+MatRipple.ɵfac = function MatRipple_Factory(t) { return new (t || MatRipple)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MAT_RIPPLE_GLOBAL_OPTIONS, 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["ANIMATION_MODULE_TYPE"], 8)); };
 MatRipple.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatRipple, selectors: [["", "mat-ripple", ""], ["", "matRipple", ""]], hostAttrs: [1, "mat-ripple"], hostVars: 2, hostBindings: function MatRipple_HostBindings(rf, ctx) { if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-ripple-unbounded", ctx.unbounded);
-    } }, inputs: { radius: ["matRippleRadius", "radius"], disabled: ["matRippleDisabled", "disabled"], trigger: ["matRippleTrigger", "trigger"], color: ["matRippleColor", "color"], unbounded: ["matRippleUnbounded", "unbounded"], centered: ["matRippleCentered", "centered"], animation: ["matRippleAnimation", "animation"] }, exportAs: ["matRipple"] });
+    } }, inputs: { radius: ["matRippleRadius", "radius"], speedFactor: ["matRippleSpeedFactor", "speedFactor"], disabled: ["matRippleDisabled", "disabled"], trigger: ["matRippleTrigger", "trigger"], color: ["matRippleColor", "color"], unbounded: ["matRippleUnbounded", "unbounded"], centered: ["matRippleCentered", "centered"], animation: ["matRippleAnimation", "animation"] }, exportAs: ["matRipple"] });
 /** @nocollapse */
 MatRipple.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] },
-    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_RIPPLE_GLOBAL_OPTIONS,] }] },
-    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["ANIMATION_MODULE_TYPE"],] }] }
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"], },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_RIPPLE_GLOBAL_OPTIONS,] },] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["ANIMATION_MODULE_TYPE"],] },] },
 ];
 MatRipple.propDecorators = {
-    color: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleColor',] }],
-    unbounded: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleUnbounded',] }],
-    centered: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleCentered',] }],
-    radius: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleRadius',] }],
-    animation: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleAnimation',] }],
-    disabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleDisabled',] }],
-    trigger: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleTrigger',] }]
+    "color": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleColor',] },],
+    "unbounded": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleUnbounded',] },],
+    "centered": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleCentered',] },],
+    "radius": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleRadius',] },],
+    "speedFactor": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleSpeedFactor',] },],
+    "animation": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleAnimation',] },],
+    "disabled": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleDisabled',] },],
+    "trigger": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['matRippleTrigger',] },],
 };
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRipple, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
@@ -65488,19 +65343,22 @@ MatRipple.propDecorators = {
                     '[class.mat-ripple-unbounded]': 'unbounded'
                 }
             }]
-    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["Platform"] }, { type: undefined, decorators: [{
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
                 args: [MAT_RIPPLE_GLOBAL_OPTIONS]
-            }] }, { type: String, decorators: [{
+            }] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
             }, {
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
-                args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["ANIMATION_MODULE_TYPE"]]
+                args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["ANIMATION_MODULE_TYPE"]]
             }] }]; }, { radius: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
             args: ['matRippleRadius']
+        }], speedFactor: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+            args: ['matRippleSpeedFactor']
         }], disabled: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
             args: ['matRippleDisabled']
@@ -65520,25 +65378,23 @@ MatRipple.propDecorators = {
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
             args: ['matRippleAnimation']
         }] }); })();
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/ripple/index.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 class MatRippleModule {
 }
 MatRippleModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatRippleModule });
-MatRippleModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatRippleModule_Factory(t) { return new (t || MatRippleModule)(); }, imports: [[MatCommonModule, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"]],
+MatRippleModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatRippleModule_Factory(t) { return new (t || MatRippleModule)(); }, imports: [[MatCommonModule, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]],
         MatCommonModule] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatRippleModule, { declarations: function () { return [MatRipple]; }, imports: function () { return [MatCommonModule,
-        _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"]]; }, exports: function () { return [MatRipple,
+        _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]]; }, exports: function () { return [MatRipple,
         MatCommonModule]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatRippleModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                imports: [MatCommonModule, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_6__["PlatformModule"]],
+                imports: [MatCommonModule, _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]],
                 exports: [MatRipple, MatCommonModule],
                 declarations: [MatRipple]
             }]
@@ -65546,8 +65402,7 @@ MatRippleModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineIn
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/selection/pseudo-checkbox/pseudo-checkbox.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Component that shows a simplified checkbox without including any kind of "real" checkbox.
@@ -65563,11 +65418,7 @@ MatRippleModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineIn
  * \@docs-private
  */
 class MatPseudoCheckbox {
-    /**
-     * @param {?=} _animationMode
-     */
-    constructor(_animationMode) {
-        this._animationMode = _animationMode;
+    constructor() {
         /**
          * Display state of the checkbox.
          */
@@ -65578,50 +65429,38 @@ class MatPseudoCheckbox {
         this.disabled = false;
     }
 }
-MatPseudoCheckbox.ɵfac = function MatPseudoCheckbox_Factory(t) { return new (t || MatPseudoCheckbox)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["ANIMATION_MODULE_TYPE"], 8)); };
-MatPseudoCheckbox.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatPseudoCheckbox, selectors: [["mat-pseudo-checkbox"]], hostAttrs: [1, "mat-pseudo-checkbox"], hostVars: 8, hostBindings: function MatPseudoCheckbox_HostBindings(rf, ctx) { if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-pseudo-checkbox-indeterminate", ctx.state === "indeterminate")("mat-pseudo-checkbox-checked", ctx.state === "checked")("mat-pseudo-checkbox-disabled", ctx.disabled)("_mat-animation-noopable", ctx._animationMode === "NoopAnimations");
-    } }, inputs: { state: "state", disabled: "disabled" }, decls: 0, vars: 0, template: function MatPseudoCheckbox_Template(rf, ctx) { }, styles: [".mat-pseudo-checkbox{width:16px;height:16px;border:2px solid;border-radius:2px;cursor:pointer;display:inline-block;vertical-align:middle;box-sizing:border-box;position:relative;flex-shrink:0;transition:border-color 90ms cubic-bezier(0, 0, 0.2, 0.1),background-color 90ms cubic-bezier(0, 0, 0.2, 0.1)}.mat-pseudo-checkbox::after{position:absolute;opacity:0;content:\"\";border-bottom:2px solid currentColor;transition:opacity 90ms cubic-bezier(0, 0, 0.2, 0.1)}.mat-pseudo-checkbox.mat-pseudo-checkbox-checked,.mat-pseudo-checkbox.mat-pseudo-checkbox-indeterminate{border-color:transparent}._mat-animation-noopable.mat-pseudo-checkbox{transition:none;animation:none}._mat-animation-noopable.mat-pseudo-checkbox::after{transition:none}.mat-pseudo-checkbox-disabled{cursor:default}.mat-pseudo-checkbox-indeterminate::after{top:5px;left:1px;width:10px;opacity:1;border-radius:2px}.mat-pseudo-checkbox-checked::after{top:2.4px;left:1px;width:8px;height:3px;border-left:2px solid currentColor;transform:rotate(-45deg);opacity:1;box-sizing:content-box}\n"], encapsulation: 2, changeDetection: 0 });
+MatPseudoCheckbox.ɵfac = function MatPseudoCheckbox_Factory(t) { return new (t || MatPseudoCheckbox)(); };
+MatPseudoCheckbox.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatPseudoCheckbox, selectors: [["mat-pseudo-checkbox"]], hostAttrs: [1, "mat-pseudo-checkbox"], hostVars: 6, hostBindings: function MatPseudoCheckbox_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-pseudo-checkbox-indeterminate", ctx.state === "indeterminate")("mat-pseudo-checkbox-checked", ctx.state === "checked")("mat-pseudo-checkbox-disabled", ctx.disabled);
+    } }, inputs: { state: "state", disabled: "disabled" }, decls: 0, vars: 0, template: function MatPseudoCheckbox_Template(rf, ctx) { }, styles: [".mat-pseudo-checkbox{width:20px;height:20px;border:2px solid;border-radius:2px;cursor:pointer;display:inline-block;vertical-align:middle;box-sizing:border-box;position:relative;flex-shrink:0;transition:border-color 90ms cubic-bezier(0,0,.2,.1),background-color 90ms cubic-bezier(0,0,.2,.1)}.mat-pseudo-checkbox::after{position:absolute;opacity:0;content:'';border-bottom:2px solid currentColor;transition:opacity 90ms cubic-bezier(0,0,.2,.1)}.mat-pseudo-checkbox.mat-pseudo-checkbox-checked,.mat-pseudo-checkbox.mat-pseudo-checkbox-indeterminate{border:none}.mat-pseudo-checkbox-disabled{cursor:default}.mat-pseudo-checkbox-indeterminate::after{top:9px;left:2px;width:16px;opacity:1}.mat-pseudo-checkbox-checked::after{top:5px;left:3px;width:12px;height:5px;border-left:2px solid currentColor;transform:rotate(-45deg);opacity:1}"], encapsulation: 2, changeDetection: 0 });
 /** @nocollapse */
-MatPseudoCheckbox.ctorParameters = () => [
-    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["ANIMATION_MODULE_TYPE"],] }] }
-];
 MatPseudoCheckbox.propDecorators = {
-    state: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    disabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+    "state": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "disabled": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
 };
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatPseudoCheckbox, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+        args: [{ encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
                 selector: 'mat-pseudo-checkbox',
+                styles: [".mat-pseudo-checkbox{width:20px;height:20px;border:2px solid;border-radius:2px;cursor:pointer;display:inline-block;vertical-align:middle;box-sizing:border-box;position:relative;flex-shrink:0;transition:border-color 90ms cubic-bezier(0,0,.2,.1),background-color 90ms cubic-bezier(0,0,.2,.1)}.mat-pseudo-checkbox::after{position:absolute;opacity:0;content:'';border-bottom:2px solid currentColor;transition:opacity 90ms cubic-bezier(0,0,.2,.1)}.mat-pseudo-checkbox.mat-pseudo-checkbox-checked,.mat-pseudo-checkbox.mat-pseudo-checkbox-indeterminate{border:none}.mat-pseudo-checkbox-disabled{cursor:default}.mat-pseudo-checkbox-indeterminate::after{top:9px;left:2px;width:16px;opacity:1}.mat-pseudo-checkbox-checked::after{top:5px;left:3px;width:12px;height:5px;border-left:2px solid currentColor;transform:rotate(-45deg);opacity:1}"],
                 template: '',
                 host: {
                     'class': 'mat-pseudo-checkbox',
                     '[class.mat-pseudo-checkbox-indeterminate]': 'state === "indeterminate"',
                     '[class.mat-pseudo-checkbox-checked]': 'state === "checked"',
-                    '[class.mat-pseudo-checkbox-disabled]': 'disabled',
-                    '[class._mat-animation-noopable]': '_animationMode === "NoopAnimations"'
-                },
-                styles: [".mat-pseudo-checkbox{width:16px;height:16px;border:2px solid;border-radius:2px;cursor:pointer;display:inline-block;vertical-align:middle;box-sizing:border-box;position:relative;flex-shrink:0;transition:border-color 90ms cubic-bezier(0, 0, 0.2, 0.1),background-color 90ms cubic-bezier(0, 0, 0.2, 0.1)}.mat-pseudo-checkbox::after{position:absolute;opacity:0;content:\"\";border-bottom:2px solid currentColor;transition:opacity 90ms cubic-bezier(0, 0, 0.2, 0.1)}.mat-pseudo-checkbox.mat-pseudo-checkbox-checked,.mat-pseudo-checkbox.mat-pseudo-checkbox-indeterminate{border-color:transparent}._mat-animation-noopable.mat-pseudo-checkbox{transition:none;animation:none}._mat-animation-noopable.mat-pseudo-checkbox::after{transition:none}.mat-pseudo-checkbox-disabled{cursor:default}.mat-pseudo-checkbox-indeterminate::after{top:5px;left:1px;width:10px;opacity:1;border-radius:2px}.mat-pseudo-checkbox-checked::after{top:2.4px;left:1px;width:8px;height:3px;border-left:2px solid currentColor;transform:rotate(-45deg);opacity:1;box-sizing:content-box}\n"]
+                    '[class.mat-pseudo-checkbox-disabled]': 'disabled'
+                }
             }]
-    }], function () { return [{ type: String, decorators: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
-            }, {
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
-                args: [_angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["ANIMATION_MODULE_TYPE"]]
-            }] }]; }, { state: [{
+    }], function () { return []; }, { state: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], disabled: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }] }); })();
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/selection/index.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 class MatPseudoCheckboxModule {
 }
@@ -65638,20 +65477,16 @@ MatPseudoCheckboxModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/option/optgroup.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-// Boilerplate for applying mixins to MatOptgroup.
 /**
  * \@docs-private
  */
 class MatOptgroupBase {
 }
-/** @type {?} */
-const _MatOptgroupMixinBase = mixinDisabled(MatOptgroupBase);
+const /** @type {?} */ _MatOptgroupMixinBase = mixinDisabled(MatOptgroupBase);
 // Counter for unique group ids.
-/** @type {?} */
-let _uniqueOptgroupIdCounter = 0;
+let /** @type {?} */ _uniqueOptgroupIdCounter = 0;
 /**
  * Component that is used to group instances of `mat-option`.
  */
@@ -65668,56 +65503,52 @@ MatOptgroup.ɵfac = function MatOptgroup_Factory(t) { return ɵMatOptgroup_BaseF
 MatOptgroup.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatOptgroup, selectors: [["mat-optgroup"]], hostAttrs: ["role", "group", 1, "mat-optgroup"], hostVars: 4, hostBindings: function MatOptgroup_HostBindings(rf, ctx) { if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("aria-disabled", ctx.disabled.toString())("aria-labelledby", ctx._labelId);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-optgroup-disabled", ctx.disabled);
-    } }, inputs: { disabled: "disabled", label: "label" }, exportAs: ["matOptgroup"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c1, decls: 4, vars: 2, consts: [[1, "mat-optgroup-label", 3, "id"]], template: function MatOptgroup_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { disabled: "disabled", label: "label" }, exportAs: ["matOptgroup"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c1, decls: 3, vars: 2, consts: [[1, "mat-optgroup-label", 3, "id"]], template: function MatOptgroup_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"](_c0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "label", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](3, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](2);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("id", ctx._labelId);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", ctx.label, " ");
-    } }, styles: [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}\n"], encapsulation: 2, changeDetection: 0 });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.label);
+    } }, styles: [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
 MatOptgroup.propDecorators = {
-    label: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+    "label": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
 };
 const ɵMatOptgroup_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](MatOptgroup);
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOptgroup, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'mat-optgroup',
+        args: [{ selector: 'mat-optgroup',
                 exportAs: 'matOptgroup',
-                template: "<label class=\"mat-optgroup-label\" [id]=\"_labelId\">{{ label }} <ng-content></ng-content></label>\n<ng-content select=\"mat-option, ng-container\"></ng-content>\n",
+                template: "<label class=\"mat-optgroup-label\" [id]=\"_labelId\">{{ label }}</label><ng-content select=\"mat-option, ng-container\"></ng-content>",
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
                 inputs: ['disabled'],
+                styles: [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}"],
                 host: {
                     'class': 'mat-optgroup',
                     'role': 'group',
                     '[class.mat-optgroup-disabled]': 'disabled',
                     '[attr.aria-disabled]': 'disabled.toString()',
                     '[attr.aria-labelledby]': '_labelId'
-                },
-                styles: [".mat-optgroup-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup-label[disabled]{cursor:default}[dir=rtl] .mat-optgroup-label{text-align:right}.mat-optgroup-label .mat-icon{margin-right:16px;vertical-align:middle}.mat-optgroup-label .mat-icon svg{vertical-align:top}[dir=rtl] .mat-optgroup-label .mat-icon{margin-left:16px;margin-right:0}\n"]
+                }
             }]
     }], null, { label: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }] }); })();
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/option/option.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * Option IDs need to be unique across components, so this counter exists outside of
  * the component definition.
- * @type {?}
  */
-let _uniqueIdCounter = 0;
+let /** @type {?} */ _uniqueIdCounter = 0;
 /**
  * Event object emitted by MatOption when selected or deselected.
  */
@@ -65731,20 +65562,10 @@ class MatOptionSelectionChange {
         this.isUserInput = isUserInput;
     }
 }
-if (false) {}
-/**
- * Describes a parent component that manages a list of options.
- * Contains properties that the options can inherit.
- * \@docs-private
- * @record
- */
-function MatOptionParentComponent() { }
-if (false) {}
 /**
  * Injection token used to provide the parent component to options.
- * @type {?}
  */
-const MAT_OPTION_PARENT_COMPONENT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_OPTION_PARENT_COMPONENT');
+const /** @type {?} */ MAT_OPTION_PARENT_COMPONENT = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_OPTION_PARENT_COMPONENT');
 /**
  * Single option inside of a `<mat-select>` element.
  */
@@ -65763,26 +65584,27 @@ class MatOption {
         this._selected = false;
         this._active = false;
         this._disabled = false;
+        this._id = `mat-option-${_uniqueIdCounter++}`;
         this._mostRecentViewValue = '';
-        /**
-         * The unique ID of the option.
-         */
-        this.id = `mat-option-${_uniqueIdCounter++}`;
         /**
          * Event emitted when the option is selected or deselected.
          */
-        // tslint:disable-next-line:no-output-on-prefix
         this.onSelectionChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
         /**
          * Emits when the state of the option changes and any parents have to be notified.
          */
-        this._stateChanges = new rxjs__WEBPACK_IMPORTED_MODULE_5__["Subject"]();
+        this._stateChanges = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
     }
     /**
      * Whether the wrapping component is in multiple selection mode.
      * @return {?}
      */
     get multiple() { return this._parent && this._parent.multiple; }
+    /**
+     * The unique ID of the option.
+     * @return {?}
+     */
+    get id() { return this._id; }
     /**
      * Whether or not the option is currently selected.
      * @return {?}
@@ -65797,7 +65619,7 @@ class MatOption {
      * @param {?} value
      * @return {?}
      */
-    set disabled(value) { this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_4__["coerceBooleanProperty"])(value); }
+    set disabled(value) { this._disabled = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceBooleanProperty"])(value); }
     /**
      * Whether ripples for the option are disabled.
      * @return {?}
@@ -65827,36 +65649,27 @@ class MatOption {
      * @return {?}
      */
     select() {
-        if (!this._selected) {
-            this._selected = true;
-            this._changeDetectorRef.markForCheck();
-            this._emitSelectionChangeEvent();
-        }
+        this._selected = true;
+        this._changeDetectorRef.markForCheck();
+        this._emitSelectionChangeEvent();
     }
     /**
      * Deselects the option.
      * @return {?}
      */
     deselect() {
-        if (this._selected) {
-            this._selected = false;
-            this._changeDetectorRef.markForCheck();
-            this._emitSelectionChangeEvent();
-        }
+        this._selected = false;
+        this._changeDetectorRef.markForCheck();
+        this._emitSelectionChangeEvent();
     }
     /**
      * Sets focus onto this option.
-     * @param {?=} _origin
-     * @param {?=} options
      * @return {?}
      */
-    focus(_origin, options) {
-        // Note that we aren't using `_origin`, but we need to keep it because some internal consumers
-        // use `MatOption` in a `FocusKeyManager` and we need it to match `FocusableOption`.
-        /** @type {?} */
-        const element = this._getHostElement();
+    focus() {
+        const /** @type {?} */ element = this._getHostElement();
         if (typeof element.focus === 'function') {
-            element.focus(options);
+            element.focus();
         }
     }
     /**
@@ -65896,7 +65709,7 @@ class MatOption {
      * @return {?}
      */
     _handleKeydown(event) {
-        if ((event.keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["ENTER"] || event.keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["SPACE"]) && !Object(_angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_11__["hasModifierKey"])(event)) {
+        if (event.keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_7__["ENTER"] || event.keyCode === _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_7__["SPACE"]) {
             this._selectViaInteraction();
             // Prevent the page from scrolling down and form submits.
             event.preventDefault();
@@ -65913,16 +65726,6 @@ class MatOption {
             this._changeDetectorRef.markForCheck();
             this._emitSelectionChangeEvent(true);
         }
-    }
-    /**
-     * Gets the `aria-selected` value for the option. We explicitly omit the `aria-selected`
-     * attribute from single-selection, unselected options. Including the `aria-selected="false"`
-     * attributes adds a significant amount of noise to screen-reader users without providing useful
-     * information.
-     * @return {?}
-     */
-    _getAriaSelected() {
-        return this.selected || (this.multiple ? false : null);
     }
     /**
      * Returns the correct tabindex for the option depending on disabled state.
@@ -65948,8 +65751,7 @@ class MatOption {
         // relatively cheap, however we still limit them only to selected options in order to avoid
         // hitting the DOM too often.
         if (this._selected) {
-            /** @type {?} */
-            const viewValue = this.viewValue;
+            const /** @type {?} */ viewValue = this.viewValue;
             if (viewValue !== this._mostRecentViewValue) {
                 this._mostRecentViewValue = viewValue;
                 this._stateChanges.next();
@@ -65964,7 +65766,6 @@ class MatOption {
     }
     /**
      * Emits the selection change event.
-     * @private
      * @param {?=} isUserInput
      * @return {?}
      */
@@ -65977,9 +65778,9 @@ MatOption.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponen
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MatOption_click_HostBindingHandler($event) { return ctx._selectViaInteraction(); })("keydown", function MatOption_keydown_HostBindingHandler($event) { return ctx._handleKeydown($event); });
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵhostProperty"]("id", ctx.id);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("tabindex", ctx._getTabIndex())("aria-selected", ctx._getAriaSelected())("aria-disabled", ctx.disabled.toString());
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("tabindex", ctx._getTabIndex())("aria-selected", ctx.selected.toString())("aria-disabled", ctx.disabled.toString());
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-selected", ctx.selected)("mat-option-multiple", ctx.multiple)("mat-active", ctx.active)("mat-option-disabled", ctx.disabled);
-    } }, inputs: { id: "id", disabled: "disabled", value: "value" }, outputs: { onSelectionChange: "onSelectionChange" }, exportAs: ["matOption"], ngContentSelectors: _c2, decls: 4, vars: 3, consts: [["class", "mat-option-pseudo-checkbox", 3, "state", "disabled", 4, "ngIf"], [1, "mat-option-text"], ["mat-ripple", "", 1, "mat-option-ripple", 3, "matRippleTrigger", "matRippleDisabled"], [1, "mat-option-pseudo-checkbox", 3, "state", "disabled"]], template: function MatOption_Template(rf, ctx) { if (rf & 1) {
+    } }, inputs: { disabled: "disabled", value: "value" }, outputs: { onSelectionChange: "onSelectionChange" }, exportAs: ["matOption"], ngContentSelectors: _c2, decls: 4, vars: 3, consts: [["class", "mat-option-pseudo-checkbox", 3, "state", "disabled", 4, "ngIf"], [1, "mat-option-text"], ["mat-ripple", "", 1, "mat-option-ripple", 3, "matRippleTrigger", "matRippleDisabled"], [1, "mat-option-pseudo-checkbox", 3, "state", "disabled"]], template: function MatOption_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MatOption_mat_pseudo_checkbox_0_Template, 1, 2, "mat-pseudo-checkbox", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "span", 1);
@@ -65990,25 +65791,23 @@ MatOption.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponen
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.multiple);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matRippleTrigger", ctx._getHostElement())("matRippleDisabled", ctx.disabled || ctx.disableRipple);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_9__["NgIf"], MatRipple,
-        MatPseudoCheckbox], styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.cdk-high-contrast-active .mat-option .mat-option-ripple{opacity:.5}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"], encapsulation: 2, changeDetection: 0 });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_8__["NgIf"], MatRipple,
+        MatPseudoCheckbox], styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;position:relative;cursor:pointer;outline:0;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}@media screen and (-ms-high-contrast:active){.mat-option{margin:0 1px}.mat-option.mat-active{border:solid 1px currentColor;margin:0}}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}@media screen and (-ms-high-contrast:active){.mat-option-ripple{opacity:.5}}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}"], encapsulation: 2, changeDetection: 0 });
 /** @nocollapse */
 MatOption.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_OPTION_PARENT_COMPONENT,] }] },
-    { type: MatOptgroup, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] }
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"], },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_OPTION_PARENT_COMPONENT,] },] },
+    { type: MatOptgroup, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] },] },
 ];
 MatOption.propDecorators = {
-    value: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    id: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    disabled: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    onSelectionChange: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
+    "value": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "disabled": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "onSelectionChange": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
 };
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOption, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'mat-option',
+        args: [{ selector: 'mat-option',
                 exportAs: 'matOption',
                 host: {
                     'role': 'option',
@@ -66017,17 +65816,17 @@ MatOption.propDecorators = {
                     '[class.mat-option-multiple]': 'multiple',
                     '[class.mat-active]': 'active',
                     '[id]': 'id',
-                    '[attr.aria-selected]': '_getAriaSelected()',
+                    '[attr.aria-selected]': 'selected.toString()',
                     '[attr.aria-disabled]': 'disabled.toString()',
                     '[class.mat-option-disabled]': 'disabled',
                     '(click)': '_selectViaInteraction()',
                     '(keydown)': '_handleKeydown($event)',
                     'class': 'mat-option'
                 },
-                template: "<mat-pseudo-checkbox *ngIf=\"multiple\" class=\"mat-option-pseudo-checkbox\"\n    [state]=\"selected ? 'checked' : 'unchecked'\" [disabled]=\"disabled\"></mat-pseudo-checkbox>\n\n<span class=\"mat-option-text\"><ng-content></ng-content></span>\n\n<div class=\"mat-option-ripple\" mat-ripple\n     [matRippleTrigger]=\"_getHostElement()\"\n     [matRippleDisabled]=\"disabled || disableRipple\">\n</div>\n",
+                styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;position:relative;cursor:pointer;outline:0;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}@media screen and (-ms-high-contrast:active){.mat-option{margin:0 1px}.mat-option.mat-active{border:solid 1px currentColor;margin:0}}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}@media screen and (-ms-high-contrast:active){.mat-option-ripple{opacity:.5}}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}"],
+                template: "<mat-pseudo-checkbox *ngIf=\"multiple\" class=\"mat-option-pseudo-checkbox\" [state]=\"selected ? 'checked' : ''\" [disabled]=\"disabled\"></mat-pseudo-checkbox><span class=\"mat-option-text\"><ng-content></ng-content></span><div class=\"mat-option-ripple\" mat-ripple [matRippleTrigger]=\"_getHostElement()\" [matRippleDisabled]=\"disabled || disableRipple\"></div>",
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
-                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
-                styles: [".mat-option{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;line-height:48px;height:48px;padding:0 16px;text-align:left;text-decoration:none;max-width:100%;position:relative;cursor:pointer;outline:none;display:flex;flex-direction:row;max-width:100%;box-sizing:border-box;align-items:center;-webkit-tap-highlight-color:transparent}.mat-option[disabled]{cursor:default}[dir=rtl] .mat-option{text-align:right}.mat-option .mat-icon{margin-right:16px;vertical-align:middle}.mat-option .mat-icon svg{vertical-align:top}[dir=rtl] .mat-option .mat-icon{margin-left:16px;margin-right:0}.mat-option[aria-disabled=true]{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:default}.mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:32px}[dir=rtl] .mat-optgroup .mat-option:not(.mat-option-multiple){padding-left:16px;padding-right:32px}.cdk-high-contrast-active .mat-option{margin:0 1px}.cdk-high-contrast-active .mat-option.mat-active{border:solid 1px currentColor;margin:0}.mat-option-text{display:inline-block;flex-grow:1;overflow:hidden;text-overflow:ellipsis}.mat-option .mat-option-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none}.cdk-high-contrast-active .mat-option .mat-option-ripple{opacity:.5}.mat-option-pseudo-checkbox{margin-right:8px}[dir=rtl] .mat-option-pseudo-checkbox{margin-left:8px;margin-right:0}\n"]
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
             }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }, { type: undefined, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
@@ -66036,16 +65835,13 @@ MatOption.propDecorators = {
                 args: [MAT_OPTION_PARENT_COMPONENT]
             }] }, { type: MatOptgroup, decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
-            }] }]; }, { id: [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
-        }], onSelectionChange: [{
+            }] }]; }, { onSelectionChange: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
         }], disabled: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], value: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }] }); })();
-if (false) {}
 /**
  * Counts the amount of option group labels that precede the specified option.
  * \@docs-private
@@ -66056,13 +65852,10 @@ if (false) {}
  */
 function _countGroupLabelsBeforeOption(optionIndex, options, optionGroups) {
     if (optionGroups.length) {
-        /** @type {?} */
-        let optionsArray = options.toArray();
-        /** @type {?} */
-        let groups = optionGroups.toArray();
-        /** @type {?} */
-        let groupCounter = 0;
-        for (let i = 0; i < optionIndex + 1; i++) {
+        let /** @type {?} */ optionsArray = options.toArray();
+        let /** @type {?} */ groups = optionGroups.toArray();
+        let /** @type {?} */ groupCounter = 0;
+        for (let /** @type {?} */ i = 0; i < optionIndex + 1; i++) {
             if (optionsArray[i].group && optionsArray[i].group === groups[groupCounter]) {
                 groupCounter++;
             }
@@ -66081,8 +65874,7 @@ function _countGroupLabelsBeforeOption(optionIndex, options, optionGroups) {
  * @return {?}
  */
 function _getOptionScrollPosition(optionIndex, optionHeight, currentScrollPosition, panelHeight) {
-    /** @type {?} */
-    const optionOffset = optionIndex * optionHeight;
+    const /** @type {?} */ optionOffset = optionIndex * optionHeight;
     if (optionOffset < currentScrollPosition) {
         return optionOffset;
     }
@@ -66094,22 +65886,21 @@ function _getOptionScrollPosition(optionIndex, optionHeight, currentScrollPositi
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/option/index.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 class MatOptionModule {
 }
 MatOptionModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatOptionModule });
-MatOptionModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatOptionModule_Factory(t) { return new (t || MatOptionModule)(); }, imports: [[MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"], MatPseudoCheckboxModule]] });
+MatOptionModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatOptionModule_Factory(t) { return new (t || MatOptionModule)(); }, imports: [[MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"], MatPseudoCheckboxModule]] });
 (function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatOptionModule, { declarations: function () { return [MatOption,
         MatOptgroup]; }, imports: function () { return [MatRippleModule,
-        _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"],
+        _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"],
         MatPseudoCheckboxModule]; }, exports: function () { return [MatOption,
         MatOptgroup]; } }); })();
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatOptionModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-                imports: [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_9__["CommonModule"], MatPseudoCheckboxModule],
+                imports: [MatRippleModule, _angular_common__WEBPACK_IMPORTED_MODULE_8__["CommonModule"], MatPseudoCheckboxModule],
                 exports: [MatOption, MatOptgroup],
                 declarations: [MatOption, MatOptgroup]
             }]
@@ -66117,72 +65908,33 @@ MatOptionModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineIn
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/label/label-options.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 /**
  * InjectionToken that can be used to specify the global label options.
- * @type {?}
  */
-const MAT_LABEL_GLOBAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-label-global-options');
-/**
- * Configurable options for floating labels.
- * @record
- */
-function LabelOptions() { }
-if (false) {}
+const /** @type {?} */ MAT_LABEL_GLOBAL_OPTIONS = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('mat-label-global-options');
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/month-constants.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
+
 /**
  * When constructing a Date, the month is zero-based. This can be confusing, since people are
  * used to seeing them one-based. So we create these aliases to make writing the tests easier.
- * \@docs-private
- * \@breaking-change 8.0.0 Remove this with V8 since it was only targeted for testing.
- * @type {?}
  */
-const JAN = 0;
-/** @type {?} */
-const FEB = 1;
-/** @type {?} */
-const MAR = 2;
-/** @type {?} */
-const APR = 3;
-/** @type {?} */
-const MAY = 4;
-/** @type {?} */
-const JUN = 5;
-/** @type {?} */
-const JUL = 6;
-/** @type {?} */
-const AUG = 7;
-/** @type {?} */
-const SEP = 8;
-/** @type {?} */
-const OCT = 9;
-/** @type {?} */
-const NOV = 10;
-/** @type {?} */
-const DEC = 11;
+const /** @type {?} */ JAN = 0, /** @type {?} */ FEB = 1, /** @type {?} */ MAR = 2, /** @type {?} */ APR = 3, /** @type {?} */ MAY = 4, /** @type {?} */ JUN = 5, /** @type {?} */ JUL = 6, /** @type {?} */ AUG = 7, /** @type {?} */ SEP = 8, /** @type {?} */
+OCT = 9, /** @type {?} */ NOV = 10, /** @type {?} */ DEC = 11;
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/core/public-api.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 
 /**
- * Generated bundle index. Do not edit.
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 
 
@@ -66191,42 +65943,46 @@ const DEC = 11;
 
 /***/ }),
 
-/***/ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/grid-list.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@angular/material/__ivy_ngcc__/fesm2015/grid-list.js ***!
-  \***************************************************************************/
-/*! exports provided: MatGridAvatarCssMatStyler, MatGridList, MatGridListModule, MatGridTile, MatGridTileFooterCssMatStyler, MatGridTileHeaderCssMatStyler, MatGridTileText, ɵTileCoordinator, ɵangular_material_src_material_grid_list_grid_list_a */
+/***/ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/grid-list.js":
+/*!**************************************************************************!*\
+  !*** ./node_modules/@angular/material/__ivy_ngcc__/esm2015/grid-list.js ***!
+  \**************************************************************************/
+/*! exports provided: MatGridListModule, MatGridList, MatGridTile, MatGridTileText, MatGridAvatarCssMatStyler, MatGridTileHeaderCssMatStyler, MatGridTileFooterCssMatStyler */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridAvatarCssMatStyler", function() { return MatGridAvatarCssMatStyler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridList", function() { return MatGridList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridListModule", function() { return MatGridListModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridList", function() { return MatGridList; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTile", function() { return MatGridTile; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTileFooterCssMatStyler", function() { return MatGridTileFooterCssMatStyler; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTileHeaderCssMatStyler", function() { return MatGridTileHeaderCssMatStyler; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTileText", function() { return MatGridTileText; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵTileCoordinator", function() { return TileCoordinator; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵangular_material_src_material_grid_list_grid_list_a", function() { return MAT_GRID_LIST; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridAvatarCssMatStyler", function() { return MatGridAvatarCssMatStyler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTileHeaderCssMatStyler", function() { return MatGridTileHeaderCssMatStyler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatGridTileFooterCssMatStyler", function() { return MatGridTileFooterCssMatStyler; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/core.js");
-/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/coercion */ "./node_modules/@angular/cdk/fesm2015/coercion.js");
-/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
-
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/core.js");
+/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
 
 
 
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/grid-list/grid-list-base.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
+
 /**
- * Injection token used to provide a grid list to a tile and to avoid circular imports.
+ * Converts values into strings. Falsy values become empty strings.
  * \@docs-private
- * @type {?}
+ * @param {?} value
+ * @return {?}
  */
 
 
@@ -66234,28 +65990,29 @@ __webpack_require__.r(__webpack_exports__);
 const _c0 = ["*"];
 const _c1 = [[["", "mat-grid-avatar", ""], ["", "matGridAvatar", ""]], [["", "mat-line", ""], ["", "matLine", ""]], "*"];
 const _c2 = ["[mat-grid-avatar], [matGridAvatar]", "[mat-line], [matLine]", "*"];
-const MAT_GRID_LIST = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MAT_GRID_LIST');
+function coerceToString(value) {
+    return `${value || ''}`;
+}
 /**
- * Base interface for a `MatGridList`.
+ * Converts a value that might be a string into a number.
  * \@docs-private
- * @record
+ * @param {?} value
+ * @return {?}
  */
-function MatGridListBase() { }
-if (false) {}
+function coerceToNumber(value) {
+    return typeof value === 'string' ? parseInt(value, 10) : value;
+}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/grid-list/grid-tile.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 class MatGridTile {
     /**
      * @param {?} _element
-     * @param {?=} _gridList
      */
-    constructor(_element, _gridList) {
+    constructor(_element) {
         this._element = _element;
-        this._gridList = _gridList;
         this._rowspan = 1;
         this._colspan = 1;
     }
@@ -66268,7 +66025,7 @@ class MatGridTile {
      * @param {?} value
      * @return {?}
      */
-    set rowspan(value) { this._rowspan = Math.round(Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(value)); }
+    set rowspan(value) { this._rowspan = coerceToNumber(value); }
     /**
      * Amount of columns that the grid tile takes up.
      * @return {?}
@@ -66278,7 +66035,7 @@ class MatGridTile {
      * @param {?} value
      * @return {?}
      */
-    set colspan(value) { this._colspan = Math.round(Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(value)); }
+    set colspan(value) { this._colspan = coerceToNumber(value); }
     /**
      * Sets the style of the grid-tile element.  Needs to be set manually to avoid
      * "Changed after checked" errors that would occur with HostBinding.
@@ -66287,55 +66044,41 @@ class MatGridTile {
      * @return {?}
      */
     _setStyle(property, value) {
-        ((/** @type {?} */ (this._element.nativeElement.style)))[property] = value;
+        this._element.nativeElement.style[property] = value;
     }
 }
-MatGridTile.ɵfac = function MatGridTile_Factory(t) { return new (t || MatGridTile)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MAT_GRID_LIST, 8)); };
-MatGridTile.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatGridTile, selectors: [["mat-grid-tile"]], hostAttrs: [1, "mat-grid-tile"], hostVars: 2, hostBindings: function MatGridTile_HostBindings(rf, ctx) { if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("rowspan", ctx.rowspan)("colspan", ctx.colspan);
-    } }, inputs: { rowspan: "rowspan", colspan: "colspan" }, exportAs: ["matGridTile"], ngContentSelectors: _c0, decls: 2, vars: 0, consts: [[1, "mat-figure"]], template: function MatGridTile_Template(rf, ctx) { if (rf & 1) {
+MatGridTile.ɵfac = function MatGridTile_Factory(t) { return new (t || MatGridTile)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])); };
+MatGridTile.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatGridTile, selectors: [["mat-grid-tile"]], hostAttrs: [1, "mat-grid-tile"], inputs: { rowspan: "rowspan", colspan: "colspan" }, exportAs: ["matGridTile"], ngContentSelectors: _c0, decls: 2, vars: 0, consts: [[1, "mat-figure"]], template: function MatGridTile_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "figure", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-header,.mat-grid-tile .mat-grid-tile-footer{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-header>*,.mat-grid-tile .mat-grid-tile-footer>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-tile-header.mat-2-line,.mat-grid-tile .mat-grid-tile-footer.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}\n"], encapsulation: 2, changeDetection: 0 });
+    } }, styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-footer,.mat-grid-tile .mat-grid-tile-header{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-footer>*,.mat-grid-tile .mat-grid-tile-header>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-tile-footer.mat-2-line,.mat-grid-tile .mat-grid-tile-header.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}"], encapsulation: 2, changeDetection: 0 });
 /** @nocollapse */
 MatGridTile.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
-    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [MAT_GRID_LIST,] }] }
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
 ];
 MatGridTile.propDecorators = {
-    rowspan: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    colspan: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+    "rowspan": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "colspan": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
 };
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatGridTile, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'mat-grid-tile',
+        args: [{ selector: 'mat-grid-tile',
                 exportAs: 'matGridTile',
                 host: {
-                    'class': 'mat-grid-tile',
-                    // Ensures that the "rowspan" and "colspan" input value is reflected in
-                    // the DOM. This is needed for the grid-tile harness.
-                    '[attr.rowspan]': 'rowspan',
-                    '[attr.colspan]': 'colspan'
+                    'class': 'mat-grid-tile'
                 },
-                template: "<!-- TODO(kara): Revisit why this is a figure.-->\n<figure class=\"mat-figure\">\n  <ng-content></ng-content>\n</figure>",
+                template: "<figure class=\"mat-figure\"><ng-content></ng-content></figure>",
+                styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-footer,.mat-grid-tile .mat-grid-tile-header{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-footer>*,.mat-grid-tile .mat-grid-tile-header>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-tile-footer.mat-2-line,.mat-grid-tile .mat-grid-tile-header.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}"],
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
-                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
-                styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-header,.mat-grid-tile .mat-grid-tile-footer{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-header>*,.mat-grid-tile .mat-grid-tile-footer>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-tile-header.mat-2-line,.mat-grid-tile .mat-grid-tile-footer.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}\n"]
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
             }]
-    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: undefined, decorators: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
-            }, {
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
-                args: [MAT_GRID_LIST]
-            }] }]; }, { rowspan: [{
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }]; }, { rowspan: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], colspan: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }] }); })();
-if (false) {}
 class MatGridTileText {
     /**
      * @param {?} _element
@@ -66347,12 +66090,12 @@ class MatGridTileText {
      * @return {?}
      */
     ngAfterContentInit() {
-        Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["setLines"])(this._lines, this._element);
+        this._lineSetter = new _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLineSetter"](this._lines, this._element);
     }
 }
 MatGridTileText.ɵfac = function MatGridTileText_Factory(t) { return new (t || MatGridTileText)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])); };
 MatGridTileText.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatGridTileText, selectors: [["mat-grid-tile-header"], ["mat-grid-tile-footer"]], contentQueries: function MatGridTileText_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLine"], true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, _angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLine"], false);
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._lines = _t);
@@ -66366,24 +66109,22 @@ MatGridTileText.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
     } }, encapsulation: 2, changeDetection: 0 });
 /** @nocollapse */
 MatGridTileText.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
 ];
 MatGridTileText.propDecorators = {
-    _lines: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"], args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLine"], { descendants: true },] }]
+    "_lines": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"], args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLine"],] },],
 };
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatGridTileText, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'mat-grid-tile-header, mat-grid-tile-footer',
-                template: "<ng-content select=\"[mat-grid-avatar], [matGridAvatar]\"></ng-content>\n<div class=\"mat-grid-list-text\"><ng-content select=\"[mat-line], [matLine]\"></ng-content></div>\n<ng-content></ng-content>\n",
+        args: [{ selector: 'mat-grid-tile-header, mat-grid-tile-footer',
+                template: "<ng-content select=\"[mat-grid-avatar], [matGridAvatar]\"></ng-content><div class=\"mat-grid-list-text\"><ng-content select=\"[mat-line], [matLine]\"></ng-content></div><ng-content></ng-content>",
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
                 encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
             }]
     }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }]; }, { _lines: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
-            args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLine"], { descendants: true }]
+            args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_1__["MatLine"]]
         }] }); })();
-if (false) {}
 /**
  * Directive whose purpose is to add the mat- CSS styling to this selector.
  * \@docs-private
@@ -66432,23 +66173,9 @@ MatGridTileFooterCssMatStyler.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/grid-list/tile-coordinator.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * Interface describing a tile.
- * \@docs-private
- * @record
- */
-function Tile() { }
-if (false) {}
+
 /**
  * Class for determining, from a list of tiles, the (row, col) position of each of those tiles
  * in the grid. This is necessary (rather than just rendering the tiles in normal document flow)
@@ -66467,7 +66194,11 @@ if (false) {}
  * \@docs-private
  */
 class TileCoordinator {
-    constructor() {
+    /**
+     * @param {?} numColumns
+     * @param {?} tiles
+     */
+    constructor(numColumns, tiles) {
         /**
          * Index at which the search for the next gap will start.
          */
@@ -66476,6 +66207,9 @@ class TileCoordinator {
          * The current row index.
          */
         this.rowIndex = 0;
+        this.tracker = new Array(numColumns);
+        this.tracker.fill(0, 0, this.tracker.length);
+        this.positions = tiles.map(tile => this._trackTile(tile));
     }
     /**
      * Gets the total number of rows occupied by tiles
@@ -66488,39 +66222,19 @@ class TileCoordinator {
      * @return {?}
      */
     get rowspan() {
-        /** @type {?} */
-        const lastRowMax = Math.max(...this.tracker);
+        let /** @type {?} */ lastRowMax = Math.max(...this.tracker);
         // if any of the tiles has a rowspan that pushes it beyond the total row count,
         // add the difference to the rowcount
         return lastRowMax > 1 ? this.rowCount + lastRowMax - 1 : this.rowCount;
     }
     /**
-     * Updates the tile positions.
-     * @param {?} numColumns Amount of columns in the grid.
-     * @param {?} tiles Tiles to be positioned.
-     * @return {?}
-     */
-    update(numColumns, tiles) {
-        this.columnIndex = 0;
-        this.rowIndex = 0;
-        this.tracker = new Array(numColumns);
-        this.tracker.fill(0, 0, this.tracker.length);
-        this.positions = tiles.map((/**
-         * @param {?} tile
-         * @return {?}
-         */
-        tile => this._trackTile(tile)));
-    }
-    /**
      * Calculates the row and col position of a tile.
-     * @private
      * @param {?} tile
      * @return {?}
      */
     _trackTile(tile) {
         // Find a gap large enough for this tile.
-        /** @type {?} */
-        const gapStartIndex = this._findMatchingGap(tile.colspan);
+        let /** @type {?} */ gapStartIndex = this._findMatchingGap(tile.colspan);
         // Place tile in the resulting gap.
         this._markTilePosition(gapStartIndex, tile);
         // The next time we look for a gap, the search will start at columnIndex, which should be
@@ -66530,7 +66244,6 @@ class TileCoordinator {
     }
     /**
      * Finds the next available space large enough to fit the tile.
-     * @private
      * @param {?} tileCols
      * @return {?}
      */
@@ -66540,60 +66253,51 @@ class TileCoordinator {
                 `grid with cols="${this.tracker.length}".`);
         }
         // Start index is inclusive, end index is exclusive.
-        /** @type {?} */
-        let gapStartIndex = -1;
-        /** @type {?} */
-        let gapEndIndex = -1;
+        let /** @type {?} */ gapStartIndex = -1;
+        let /** @type {?} */ gapEndIndex = -1;
         // Look for a gap large enough to fit the given tile. Empty spaces are marked with a zero.
         do {
             // If we've reached the end of the row, go to the next row.
             if (this.columnIndex + tileCols > this.tracker.length) {
                 this._nextRow();
-                gapStartIndex = this.tracker.indexOf(0, this.columnIndex);
-                gapEndIndex = this._findGapEndIndex(gapStartIndex);
                 continue;
             }
             gapStartIndex = this.tracker.indexOf(0, this.columnIndex);
             // If there are no more empty spaces in this row at all, move on to the next row.
             if (gapStartIndex == -1) {
                 this._nextRow();
-                gapStartIndex = this.tracker.indexOf(0, this.columnIndex);
-                gapEndIndex = this._findGapEndIndex(gapStartIndex);
                 continue;
             }
             gapEndIndex = this._findGapEndIndex(gapStartIndex);
             // If a gap large enough isn't found, we want to start looking immediately after the current
             // gap on the next iteration.
             this.columnIndex = gapStartIndex + 1;
-            // Continue iterating until we find a gap wide enough for this tile. Since gapEndIndex is
-            // exclusive, gapEndIndex is 0 means we didn't find a gap and should continue.
-        } while ((gapEndIndex - gapStartIndex < tileCols) || (gapEndIndex == 0));
+            // Continue iterating until we find a gap wide enough for this tile.
+        } while (gapEndIndex - gapStartIndex < tileCols);
         // If we still didn't manage to find a gap, ensure that the index is
         // at least zero so the tile doesn't get pulled out of the grid.
         return Math.max(gapStartIndex, 0);
     }
     /**
      * Move "down" to the next row.
-     * @private
      * @return {?}
      */
     _nextRow() {
         this.columnIndex = 0;
         this.rowIndex++;
         // Decrement all spaces by one to reflect moving down one row.
-        for (let i = 0; i < this.tracker.length; i++) {
+        for (let /** @type {?} */ i = 0; i < this.tracker.length; i++) {
             this.tracker[i] = Math.max(0, this.tracker[i] - 1);
         }
     }
     /**
      * Finds the end index (exclusive) of a gap given the index from which to start looking.
      * The gap ends when a non-zero value is found.
-     * @private
      * @param {?} gapStartIndex
      * @return {?}
      */
     _findGapEndIndex(gapStartIndex) {
-        for (let i = gapStartIndex + 1; i < this.tracker.length; i++) {
+        for (let /** @type {?} */ i = gapStartIndex + 1; i < this.tracker.length; i++) {
             if (this.tracker[i] != 0) {
                 return i;
             }
@@ -66603,18 +66307,16 @@ class TileCoordinator {
     }
     /**
      * Update the tile tracker to account for the given tile in the given space.
-     * @private
      * @param {?} start
      * @param {?} tile
      * @return {?}
      */
     _markTilePosition(start, tile) {
-        for (let i = 0; i < tile.colspan; i++) {
+        for (let /** @type {?} */ i = 0; i < tile.colspan; i++) {
             this.tracker[start + i] = tile.rowspan;
         }
     }
 }
-if (false) {}
 /**
  * Simple data structure for tile position (row, col).
  * \@docs-private
@@ -66629,26 +66331,12 @@ class TilePosition {
         this.col = col;
     }
 }
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/grid-list/tile-styler.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
-/**
- * @license
- * Copyright Google LLC All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-/**
- * RegExp that can be used to check whether a value will
- * be allowed inside a CSS `calc()` expression.
- * @type {?}
- */
-const cssCalcAllowedValue = /^-?\d+((\.\d+)?[A-Za-z%$]?)+$/;
+
 /**
  * Sets the style properties for an individual tile, given the position calculated by the
  * Tile Coordinator.
@@ -66721,12 +66409,10 @@ class TileStyler {
      */
     setStyle(tile, rowIndex, colIndex) {
         // Percent of the available horizontal space that one column takes up.
-        /** @type {?} */
-        let percentWidthPerTile = 100 / this._cols;
+        let /** @type {?} */ percentWidthPerTile = 100 / this._cols;
         // Fraction of the vertical gutter size that each column takes up.
         // For example, if there are 5 columns, each column uses 4/5 = 0.8 times the gutter width.
-        /** @type {?} */
-        let gutterWidthFractionPerTile = (this._cols - 1) / this._cols;
+        let /** @type {?} */ gutterWidthFractionPerTile = (this._cols - 1) / this._cols;
         this.setColStyles(tile, colIndex, percentWidthPerTile, gutterWidthFractionPerTile);
         this.setRowStyles(tile, rowIndex, percentWidthPerTile, gutterWidthFractionPerTile);
     }
@@ -66740,12 +66426,10 @@ class TileStyler {
      */
     setColStyles(tile, colIndex, percentWidth, gutterWidth) {
         // Base horizontal size of a column.
-        /** @type {?} */
-        let baseTileWidth = this.getBaseTileSize(percentWidth, gutterWidth);
+        let /** @type {?} */ baseTileWidth = this.getBaseTileSize(percentWidth, gutterWidth);
         // The width and horizontal position of each tile is always calculated the same way, but the
         // height and vertical position depends on the rowMode.
-        /** @type {?} */
-        let side = this._direction === 'rtl' ? 'right' : 'left';
+        let /** @type {?} */ side = this._direction === 'rtl' ? 'right' : 'left';
         tile._setStyle(side, this.getTilePosition(baseTileWidth, colIndex));
         tile._setStyle('width', calc(this.getTileSize(baseTileWidth, tile.colspan)));
     }
@@ -66772,7 +66456,6 @@ class TileStyler {
      */
     getComputedHeight() { return null; }
 }
-if (false) {}
 /**
  * This type of styler is instantiated when the user passes in a fixed row height.
  * Example `<mat-grid-list cols="3" rowHeight="100px">`
@@ -66796,9 +66479,6 @@ class FixedTileStyler extends TileStyler {
     init(gutterSize, tracker, cols, direction) {
         super.init(gutterSize, tracker, cols, direction);
         this.fixedRowHeight = normalizeUnits(this.fixedRowHeight);
-        if (!cssCalcAllowedValue.test(this.fixedRowHeight)) {
-            throw Error(`Invalid value "${this.fixedRowHeight}" set as rowHeight.`);
-        }
     }
     /**
      * @param {?} tile
@@ -66823,19 +66503,12 @@ class FixedTileStyler extends TileStyler {
      */
     reset(list) {
         list._setListStyle(['height', null]);
-        if (list._tiles) {
-            list._tiles.forEach((/**
-             * @param {?} tile
-             * @return {?}
-             */
-            tile => {
-                tile._setStyle('top', null);
-                tile._setStyle('height', null);
-            }));
-        }
+        list._tiles.forEach(tile => {
+            tile._setStyle('top', null);
+            tile._setStyle('height', null);
+        });
     }
 }
-if (false) {}
 /**
  * This type of styler is instantiated when the user passes in a width:height ratio
  * for the row height.  Example `<mat-grid-list cols="3" rowHeight="3:1">`
@@ -66857,8 +66530,7 @@ class RatioTileStyler extends TileStyler {
      * @return {?}
      */
     setRowStyles(tile, rowIndex, percentWidth, gutterWidth) {
-        /** @type {?} */
-        let percentHeightPerTile = percentWidth / this.rowHeightRatio;
+        let /** @type {?} */ percentHeightPerTile = percentWidth / this.rowHeightRatio;
         this.baseTileHeight = this.getBaseTileSize(percentHeightPerTile, gutterWidth);
         // Use padding-top and margin-top to maintain the given aspect ratio, as
         // a percentage-based value for these properties is applied versus the *width* of the
@@ -66880,30 +66552,23 @@ class RatioTileStyler extends TileStyler {
      */
     reset(list) {
         list._setListStyle(['paddingBottom', null]);
-        list._tiles.forEach((/**
-         * @param {?} tile
-         * @return {?}
-         */
-        tile => {
+        list._tiles.forEach(tile => {
             tile._setStyle('marginTop', null);
             tile._setStyle('paddingTop', null);
-        }));
+        });
     }
     /**
-     * @private
      * @param {?} value
      * @return {?}
      */
     _parseRatio(value) {
-        /** @type {?} */
-        const ratioParts = value.split(':');
+        const /** @type {?} */ ratioParts = value.split(':');
         if (ratioParts.length !== 2) {
             throw Error(`mat-grid-list: invalid ratio given for row-height: "${value}"`);
         }
         this.rowHeightRatio = parseFloat(ratioParts[0]) / parseFloat(ratioParts[1]);
     }
 }
-if (false) {}
 /**
  * This type of styler is instantiated when the user selects a "fit" row height mode.
  * In other words, the row height will reflect the total height of the container divided
@@ -66919,14 +66584,11 @@ class FitTileStyler extends TileStyler {
      */
     setRowStyles(tile, rowIndex) {
         // Percent of the available vertical space that one row takes up.
-        /** @type {?} */
-        let percentHeightPerTile = 100 / this._rowspan;
+        let /** @type {?} */ percentHeightPerTile = 100 / this._rowspan;
         // Fraction of the horizontal gutter size that each column takes up.
-        /** @type {?} */
-        let gutterHeightPerTile = (this._rows - 1) / this._rows;
+        let /** @type {?} */ gutterHeightPerTile = (this._rows - 1) / this._rows;
         // Base vertical size of a column.
-        /** @type {?} */
-        let baseTileHeight = this.getBaseTileSize(percentHeightPerTile, gutterHeightPerTile);
+        let /** @type {?} */ baseTileHeight = this.getBaseTileSize(percentHeightPerTile, gutterHeightPerTile);
         tile._setStyle('top', this.getTilePosition(baseTileHeight, rowIndex));
         tile._setStyle('height', calc(this.getTileSize(baseTileHeight, tile.rowspan)));
     }
@@ -66935,16 +66597,10 @@ class FitTileStyler extends TileStyler {
      * @return {?}
      */
     reset(list) {
-        if (list._tiles) {
-            list._tiles.forEach((/**
-             * @param {?} tile
-             * @return {?}
-             */
-            tile => {
-                tile._setStyle('top', null);
-                tile._setStyle('height', null);
-            }));
-        }
+        list._tiles.forEach(tile => {
+            tile._setStyle('top', null);
+            tile._setStyle('height', null);
+        });
     }
 }
 /**
@@ -66952,28 +66608,24 @@ class FitTileStyler extends TileStyler {
  * @param {?} exp
  * @return {?}
  */
-function calc(exp) {
-    return `calc(${exp})`;
-}
+function calc(exp) { return `calc(${exp})`; }
 /**
  * Appends pixels to a CSS string if no units are given.
  * @param {?} value
  * @return {?}
  */
 function normalizeUnits(value) {
-    return value.match(/([A-Za-z%]+)$/) ? value : `${value}px`;
+    return (value.match(/px|em|rem/)) ? value : value + 'px';
 }
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/grid-list/grid-list.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 // TODO(kara): Conditional (responsive) column count / row size.
 // TODO(kara): Re-layout on window resize / media change (debounced).
 // TODO(kara): gridTileHeader and gridTileFooter.
-/** @type {?} */
-const MAT_FIT_MODE = 'fit';
+const /** @type {?} */ MAT_FIT_MODE = 'fit';
 class MatGridList {
     /**
      * @param {?} _element
@@ -66996,9 +66648,7 @@ class MatGridList {
      * @param {?} value
      * @return {?}
      */
-    set cols(value) {
-        this._cols = Math.max(1, Math.round(Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_2__["coerceNumberProperty"])(value)));
-    }
+    set cols(value) { this._cols = coerceToNumber(value); }
     /**
      * Size of the grid list's gutter in pixels.
      * @return {?}
@@ -67008,19 +66658,14 @@ class MatGridList {
      * @param {?} value
      * @return {?}
      */
-    set gutterSize(value) { this._gutter = `${value == null ? '' : value}`; }
+    set gutterSize(value) { this._gutter = coerceToString(value); }
     /**
      * Set internal representation of row height from the user-provided value.
-     * @return {?}
-     */
-    get rowHeight() { return this._rowHeight; }
-    /**
      * @param {?} value
      * @return {?}
      */
     set rowHeight(value) {
-        /** @type {?} */
-        const newValue = `${value == null ? '' : value}`;
+        const /** @type {?} */ newValue = coerceToString(value);
         if (newValue !== this._rowHeight) {
             this._rowHeight = newValue;
             this._setTileStyler(this._rowHeight);
@@ -67043,7 +66688,6 @@ class MatGridList {
     }
     /**
      * Throw a friendly error if cols property is missing
-     * @private
      * @return {?}
      */
     _checkCols() {
@@ -67054,7 +66698,6 @@ class MatGridList {
     }
     /**
      * Default to equal width:height if rowHeight property is missing
-     * @private
      * @return {?}
      */
     _checkRowHeight() {
@@ -67064,7 +66707,6 @@ class MatGridList {
     }
     /**
      * Creates correct Tile Styler subtype based on rowHeight passed in by user
-     * @private
      * @param {?} rowHeight
      * @return {?}
      */
@@ -67084,35 +66726,16 @@ class MatGridList {
     }
     /**
      * Computes and applies the size and position for all children grid tiles.
-     * @private
      * @return {?}
      */
     _layoutTiles() {
-        if (!this._tileCoordinator) {
-            this._tileCoordinator = new TileCoordinator();
-        }
-        /** @type {?} */
-        const tracker = this._tileCoordinator;
-        /** @type {?} */
-        const tiles = this._tiles.filter((/**
-         * @param {?} tile
-         * @return {?}
-         */
-        tile => !tile._gridList || tile._gridList === this));
-        /** @type {?} */
-        const direction = this._dir ? this._dir.value : 'ltr';
-        this._tileCoordinator.update(this.cols, tiles);
+        const /** @type {?} */ tracker = new TileCoordinator(this.cols, this._tiles);
+        const /** @type {?} */ direction = this._dir ? this._dir.value : 'ltr';
         this._tileStyler.init(this.gutterSize, tracker, this.cols, direction);
-        tiles.forEach((/**
-         * @param {?} tile
-         * @param {?} index
-         * @return {?}
-         */
-        (tile, index) => {
-            /** @type {?} */
-            const pos = tracker.positions[index];
+        this._tiles.forEach((tile, index) => {
+            const /** @type {?} */ pos = tracker.positions[index];
             this._tileStyler.setStyle(tile, pos.row, pos.col);
-        }));
+        });
         this._setListStyle(this._tileStyler.getComputedHeight());
     }
     /**
@@ -67122,59 +66745,46 @@ class MatGridList {
      */
     _setListStyle(style) {
         if (style) {
-            ((/** @type {?} */ (this._element.nativeElement.style)))[style[0]] = style[1];
+            this._element.nativeElement.style[style[0]] = style[1];
         }
     }
 }
-MatGridList.ɵfac = function MatGridList_Factory(t) { return new (t || MatGridList)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["Directionality"], 8)); };
+MatGridList.ɵfac = function MatGridList_Factory(t) { return new (t || MatGridList)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["Directionality"], 8)); };
 MatGridList.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatGridList, selectors: [["mat-grid-list"]], contentQueries: function MatGridList_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, MatGridTile, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, MatGridTile, false);
     } if (rf & 2) {
         var _t;
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._tiles = _t);
-    } }, hostAttrs: [1, "mat-grid-list"], hostVars: 1, hostBindings: function MatGridList_HostBindings(rf, ctx) { if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("cols", ctx.cols);
-    } }, inputs: { cols: "cols", gutterSize: "gutterSize", rowHeight: "rowHeight" }, exportAs: ["matGridList"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{
-                provide: MAT_GRID_LIST,
-                useExisting: MatGridList
-            }])], ngContentSelectors: _c0, decls: 2, vars: 0, template: function MatGridList_Template(rf, ctx) { if (rf & 1) {
+    } }, hostAttrs: [1, "mat-grid-list"], inputs: { cols: "cols", gutterSize: "gutterSize", rowHeight: "rowHeight" }, exportAs: ["matGridList"], ngContentSelectors: _c0, decls: 2, vars: 0, template: function MatGridList_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-header,.mat-grid-tile .mat-grid-tile-footer{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-header>*,.mat-grid-tile .mat-grid-tile-footer>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-tile-header.mat-2-line,.mat-grid-tile .mat-grid-tile-footer.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}\n"], encapsulation: 2, changeDetection: 0 });
+    } }, styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-footer,.mat-grid-tile .mat-grid-tile-header{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-footer>*,.mat-grid-tile .mat-grid-tile-header>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-tile-footer.mat-2-line,.mat-grid-tile .mat-grid-tile-header.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}"], encapsulation: 2, changeDetection: 0 });
 /** @nocollapse */
 MatGridList.ctorParameters = () => [
-    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] },
-    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }] }
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] },] },
 ];
 MatGridList.propDecorators = {
-    _tiles: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"], args: [MatGridTile, { descendants: true },] }],
-    cols: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    gutterSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }],
-    rowHeight: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] }]
+    "_tiles": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"], args: [MatGridTile,] },],
+    "cols": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "gutterSize": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "rowHeight": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
 };
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatGridList, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-                selector: 'mat-grid-list',
+        args: [{ selector: 'mat-grid-list',
                 exportAs: 'matGridList',
-                template: "<div>\n  <ng-content></ng-content>\n</div>",
+                template: "<div><ng-content></ng-content></div>",
+                styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-footer,.mat-grid-tile .mat-grid-tile-header{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-footer>*,.mat-grid-tile .mat-grid-tile-header>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-tile-footer.mat-2-line,.mat-grid-tile .mat-grid-tile-header.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:400;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}"],
                 host: {
-                    'class': 'mat-grid-list',
-                    // Ensures that the "cols" input value is reflected in the DOM. This is
-                    // needed for the grid-list harness.
-                    '[attr.cols]': 'cols'
+                    'class': 'mat-grid-list'
                 },
-                providers: [{
-                        provide: MAT_GRID_LIST,
-                        useExisting: MatGridList
-                    }],
                 changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
-                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
-                styles: [".mat-grid-list{display:block;position:relative}.mat-grid-tile{display:block;position:absolute;overflow:hidden}.mat-grid-tile .mat-figure{top:0;left:0;right:0;bottom:0;position:absolute;display:flex;align-items:center;justify-content:center;height:100%;padding:0;margin:0}.mat-grid-tile .mat-grid-tile-header,.mat-grid-tile .mat-grid-tile-footer{display:flex;align-items:center;height:48px;color:#fff;background:rgba(0,0,0,.38);overflow:hidden;padding:0 16px;position:absolute;left:0;right:0}.mat-grid-tile .mat-grid-tile-header>*,.mat-grid-tile .mat-grid-tile-footer>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-tile-header.mat-2-line,.mat-grid-tile .mat-grid-tile-footer.mat-2-line{height:68px}.mat-grid-tile .mat-grid-list-text{display:flex;flex-direction:column;width:100%;box-sizing:border-box;overflow:hidden}.mat-grid-tile .mat-grid-list-text>*{margin:0;padding:0;font-weight:normal;font-size:inherit}.mat-grid-tile .mat-grid-list-text:empty{display:none}.mat-grid-tile .mat-grid-tile-header{top:0}.mat-grid-tile .mat-grid-tile-footer{bottom:0}.mat-grid-tile .mat-grid-avatar{padding-right:16px}[dir=rtl] .mat-grid-tile .mat-grid-avatar{padding-right:0;padding-left:16px}.mat-grid-tile .mat-grid-avatar:empty{display:none}\n"]
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None
             }]
-    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_3__["Directionality"], decorators: [{
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_2__["Directionality"], decorators: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
             }] }]; }, { cols: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
@@ -67184,14 +66794,12 @@ MatGridList.propDecorators = {
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
         }], _tiles: [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
-            args: [MatGridTile, { descendants: true }]
+            args: [MatGridTile]
         }] }); })();
-if (false) {}
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/grid-list/grid-list-module.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 class MatGridListModule {
 }
@@ -67239,12 +66847,12 @@ MatGridListModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
 
 /**
  * @fileoverview added by tsickle
- * Generated from: src/material/grid-list/public-api.ts
- * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ * @suppress {checkTypes} checked by tsc
  */
 
 /**
- * Generated bundle index. Do not edit.
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
  */
 
 
