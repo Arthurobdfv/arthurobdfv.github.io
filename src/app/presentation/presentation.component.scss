@@ -1,6 +1,8 @@
+@import '../../arth-theme.scss';
+
 .presentation-main{
     display: grid;
-    background-color: lightseagreen;
+    background: radial-gradient(circle, $primary 0%, mat-color($arth-theme-primary,700) 100%);
 }
 img{
     border-radius: 50%;
@@ -11,4 +13,10 @@ img{
 
 mat-grid-tile{
     align-content: center;
+}
+
+.presentation-text {
+    font-style: {
+        color: whitesmoke;
+    };
 }
