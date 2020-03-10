@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
@@ -19,7 +20,9 @@ import { GameProjectsComponent } from './game-projects/game-projects.component'
     BrowserModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule,
+    HttpClientJsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent, PresentationComponent],
