@@ -6,12 +6,14 @@ import { PresentationComponent } from './presentation/presentation.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatButtonModule} from '@angular/material/button'
+import {MatButtonModule} from '@angular/material/button';
+import { GameProjectsComponent } from './game-projects/game-projects.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    PresentationComponent
+    PresentationComponent,
+    GameProjectsComponent
   ],
   imports: [
     BrowserModule,
