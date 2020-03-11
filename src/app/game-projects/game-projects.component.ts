@@ -20,7 +20,7 @@ export class GameProjectsComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
-    this.http.get("https://itch.io/api/1/DJg2wXLElfwueKfkYj2dgiim0Zq4JPZobGKUEvh7/my-games").subscribe((resp: GameProject[]) => {
+    this.http.get("/apiproxy/https://itch.io/api/1/DJg2wXLElfwueKfkYj2dgiim0Zq4JPZobGKUEvh7/my-games").subscribe((resp: GameProject[]) => {
       this.m_gameProjects = resp;
     });
   }
