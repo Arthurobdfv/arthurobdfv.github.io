@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 
-import { GameProject } from '../../models';
+import { GameProject, GameList } from '../../models';
 import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
 import { mapToMapExpression } from '@angular/compiler/src/render3/util';
 import { Observable } from 'rxjs';
@@ -27,17 +27,15 @@ export class GameProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     var x = this.getProjHttp().subscribe((data) => {
-        console.log(data);
+        this.m_gameProjects = data;
     });
 }
 
-  getProjects(){
-    return this.http.jsonp<GameProject[]>(this.m_itchBaseUrl,'JSONP_CALLBACK').pipe(
-      tap(data => console.log(data),error => console.log(error)));
-  }
-
   getProjHttp(){
-    return this.http.get("https://cors-anywhere.herokuapp.com/https://itch.io/api/1/DJg2wXLElfwueKfkYj2dgiim0Zq4JPZobGKUEvh7/my-games");
+    return this.http.get<GameProject[]>("https://cors-anywhere.herokuapp.com/https://itch.io/api/1/DJg2wXLElfwueKfkYj2dgiim0Zq4JPZobGKUEvh7/my-games")
+    .pipe(map((data)=>{
+      return (data as any).games;
+    }));
   }
 
 

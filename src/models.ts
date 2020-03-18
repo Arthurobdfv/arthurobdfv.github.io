@@ -4,3 +4,7 @@ export interface GameProject{
     title?:string;
     views_count?:string;
 }
+
+export interface GameList{
+    games?:GameProject[];
+}
