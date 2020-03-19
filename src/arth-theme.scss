@@ -11,3 +11,8 @@ $warn:      mat-color($arth-theme-warn);
 
 $arth-theme: mat-light-theme($arth-theme-primary,$arth-theme-accent,$arth-theme-warn);
 @include angular-material-theme($arth-theme);
+
+$custom-typography: mat-typography-config(
+    $font-family: 'Verdana'
+);
+@include mat-core($custom-typography);

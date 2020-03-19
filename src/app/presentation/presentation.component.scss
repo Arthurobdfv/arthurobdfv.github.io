@@ -1,21 +1,32 @@
 @import '../../arth-theme.scss';
 
 .presentation-main{
-    display: grid;
-    background: radial-gradient(circle, $primary 0%, mat-color($arth-theme-primary,700) 100%);
-}
-img{
-    border-radius: 50%;
-    border: 10px solid whitesmoke;
-    max-width: 50%;
-    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5%;
 }
 
-mat-grid-tile{
-    align-content: center;
+.backGround{
+    background: radial-gradient(circle, $primary 0%, mat-color($arth-theme-primary,700) 100%);
+    height: 40%;
+}
+
+.myImage{
+    flex:1;
+    flex-basis:30%;
+    img{
+        border-radius: 50%;
+        border: 10px solid whitesmoke;
+        max-width: 60%;
+        height: auto;
+    }
+    align-items: center;
 }
 
 .presentation-text {
+    flex:3;
+    flex-basis: 60%;
     font-style: {
         color: whitesmoke;
     };

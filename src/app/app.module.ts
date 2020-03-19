@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
 import { GameProjectsComponent } from './game-projects/game-projects.component';
 import { PortfolioComponent } from './portfolio/portfolio.component'
 
@@ -24,6 +25,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,
+    MatDividerModule,
     MatButtonModule,
     HttpClientModule,
     HttpClientJsonpModule

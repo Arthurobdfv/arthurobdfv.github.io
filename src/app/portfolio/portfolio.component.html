@@ -1,14 +1,16 @@
-<div class="Projects-Div">
-    <div class="Projects-Title">
-        <h3 class="mat-display-3">Projects</h3>
-    </div>
-    <div class="Project-Display" *ngFor="let item of m_projectList; let indexOfelement=index;">
-        <div class="Project-Image-Display {{InvertBasedOnIndex(indexOfelement)}}">
-            <img src='{{item.imageUrl}}'>
+<div class="Projects-Div" >
+        <div class="Projects-Title">
+            <h3 class="mat-display-3">Projects</h3>
         </div>
-        <div class="Project-Infos-Display">
-            <h2 class="mat-display-1">{{item.title}}</h2>
+        <div class="project-display {{InvertBasedOnIndex(indexOfelement)}}" *ngFor="let item of m_projectList; let indexOfelement=index;" >
+            <div class="project-image-display">
+                <img [class.mat-elevation-z3]='true' src='{{item.imageUrl}}'/>
+            </div>
+            <div class="project-infos-display">
+                <h2 class="mat-display-1">{{item.title}}</h2>
+                <p class="mat-body-4">{{item.description}}</p>
+                <mat-divider></mat-divider>
+                <p class="Links mat-body-1">Links will be placed here</p>
+            </div>
         </div>
-    </div>
-
 </div>
