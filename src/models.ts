@@ -8,3 +8,10 @@ export interface GameProject{
 export interface GameList{
     games?:GameProject[];
 }
+
+export interface Project{
+    title?:string;
+    description?:string;
+    imageUrl?:string;
+    links?:string[];
+}
