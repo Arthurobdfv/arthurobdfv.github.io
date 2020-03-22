@@ -9,25 +9,27 @@
 
 .backGround{
     background: radial-gradient(circle, $primary 0%, mat-color($arth-theme-primary,700) 100%);
-    height: 40%;
+    min-height: auto;
+    height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+.imageContainer{
+    flex:1;
+    align-items: center;
 }
 
 .myImage{
-    flex:1;
-    flex-basis:30%;
-    img{
-        border-radius: 50%;
-        border: 10px solid whitesmoke;
-        max-width: 60%;
-        height: auto;
-    }
-    align-items: center;
+    border-radius: 50%;
+    border: 5px solid #f5f5f5aa;
+    width: 100%;
+    height: auto;
 }
 
 .presentation-text {
     flex:3;
-    flex-basis: 60%;
-    font-style: {
-        color: whitesmoke;
-    };
+}
+.mat-h1,.mat-h4, .mat-body{
+    color: #f5f5f5;
 }

@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$arth-theme-primary: mat-palette($mat-light-blue);
+$arth-theme-primary: mat-palette($mat-indigo);
 $arth-theme-accent: mat-palette($mat-orange,A100, A200 ,A400);
 $arth-theme-warn: mat-palette($mat-red);
 
@@ -9,7 +9,7 @@ $primary:   mat-color($arth-theme-primary);
 $accent:    mat-color($arth-theme-accent);
 $warn:      mat-color($arth-theme-warn);
 
-$arth-theme: mat-light-theme($arth-theme-primary,$arth-theme-accent,$arth-theme-warn);
+$arth-theme: mat-dark-theme($arth-theme-primary,$arth-theme-accent,$arth-theme-warn);
 @include angular-material-theme($arth-theme);
 
 $custom-typography: mat-typography-config(
