@@ -1,6 +1,7 @@
 .project-display{
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 5%;
@@ -22,13 +23,19 @@
 
 img{
     border-radius: 15%;
-    max-width: 100%;
+    width: 100%;
     height: auto;
     resize: both;
 }
 
 .mat-divider{
-    width: 80%;    
+    display: block;
+    color:#121212;
+    inset: "true";
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-top-color: #12121212;
+    width: 80%;
 }
 
 .mat-display-3{
@@ -36,3 +43,6 @@ img{
     margin-top: 2%;
 }
 
+.mat-display-3, .mat-display-1, .mat-body-4, .mat-body-1{
+    color: #121212;
+}

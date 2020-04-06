@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppModule } from '../app/app.module';
+import { Linktype } from '../models';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,12 @@ import { AppModule } from '../app/app.module';
 })
 export class AppComponent {
   title = 'arthuro-portfolio';
+
+  ngOnInit(){
+    this.LoadIcons();
+  }
+
+  LoadIcons(){
+    console.log(Object.values(Linktype).map(link => ));
+  }
 }
