@@ -12456,6 +12456,446 @@ BidiModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjecto
 
 /***/ }),
 
+/***/ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/collections.js":
+/*!************************************************************************!*\
+  !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/collections.js ***!
+  \************************************************************************/
+/*! exports provided: ArrayDataSource, DataSource, SelectionModel, UniqueSelectionDispatcher, getMultipleValuesInSingleSelectionError, isDataSource */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ArrayDataSource", function() { return ArrayDataSource; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DataSource", function() { return DataSource; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SelectionModel", function() { return SelectionModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UniqueSelectionDispatcher", function() { return UniqueSelectionDispatcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMultipleValuesInSingleSelectionError", function() { return getMultipleValuesInSingleSelectionError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "isDataSource", function() { return isDataSource; });
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/collections/data-source.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * @abstract
+ * @template T
+ */
+
+class DataSource {
+}
+if (false) {}
+/**
+ * Checks whether an object is a data source.
+ * @param {?} value
+ * @return {?}
+ */
+function isDataSource(value) {
+    // Check if the value is a DataSource by observing if it has a connect function. Cannot
+    // be checked as an `instanceof DataSource` since people could create their own sources
+    // that match the interface, but don't extend DataSource.
+    return value && typeof value.connect === 'function';
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/collections/array-data-source.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * DataSource wrapper for a native array.
+ * @template T
+ */
+class ArrayDataSource extends DataSource {
+    /**
+     * @param {?} _data
+     */
+    constructor(_data) {
+        super();
+        this._data = _data;
+    }
+    /**
+     * @return {?}
+     */
+    connect() {
+        return this._data instanceof rxjs__WEBPACK_IMPORTED_MODULE_0__["Observable"] ? this._data : Object(rxjs__WEBPACK_IMPORTED_MODULE_0__["of"])(this._data);
+    }
+    /**
+     * @return {?}
+     */
+    disconnect() { }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/collections/collection-viewer.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Interface for any component that provides a view of some data collection and wants to provide
+ * information regarding the view and any changes made.
+ * @record
+ */
+function CollectionViewer() { }
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/collections/selection-model.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Class to be used to power selecting one or more options from a list.
+ * @template T
+ */
+class SelectionModel {
+    /**
+     * @param {?=} _multiple
+     * @param {?=} initiallySelectedValues
+     * @param {?=} _emitChanges
+     */
+    constructor(_multiple = false, initiallySelectedValues, _emitChanges = true) {
+        this._multiple = _multiple;
+        this._emitChanges = _emitChanges;
+        /**
+         * Currently-selected values.
+         */
+        this._selection = new Set();
+        /**
+         * Keeps track of the deselected options that haven't been emitted by the change event.
+         */
+        this._deselectedToEmit = [];
+        /**
+         * Keeps track of the selected options that haven't been emitted by the change event.
+         */
+        this._selectedToEmit = [];
+        /**
+         * Event emitted when the value has changed.
+         */
+        this.changed = new rxjs__WEBPACK_IMPORTED_MODULE_0__["Subject"]();
+        if (initiallySelectedValues && initiallySelectedValues.length) {
+            if (_multiple) {
+                initiallySelectedValues.forEach((/**
+                 * @param {?} value
+                 * @return {?}
+                 */
+                value => this._markSelected(value)));
+            }
+            else {
+                this._markSelected(initiallySelectedValues[0]);
+            }
+            // Clear the array in order to avoid firing the change event for preselected values.
+            this._selectedToEmit.length = 0;
+        }
+    }
+    /**
+     * Selected values.
+     * @return {?}
+     */
+    get selected() {
+        if (!this._selected) {
+            this._selected = Array.from(this._selection.values());
+        }
+        return this._selected;
+    }
+    /**
+     * Selects a value or an array of values.
+     * @param {...?} values
+     * @return {?}
+     */
+    select(...values) {
+        this._verifyValueAssignment(values);
+        values.forEach((/**
+         * @param {?} value
+         * @return {?}
+         */
+        value => this._markSelected(value)));
+        this._emitChangeEvent();
+    }
+    /**
+     * Deselects a value or an array of values.
+     * @param {...?} values
+     * @return {?}
+     */
+    deselect(...values) {
+        this._verifyValueAssignment(values);
+        values.forEach((/**
+         * @param {?} value
+         * @return {?}
+         */
+        value => this._unmarkSelected(value)));
+        this._emitChangeEvent();
+    }
+    /**
+     * Toggles a value between selected and deselected.
+     * @param {?} value
+     * @return {?}
+     */
+    toggle(value) {
+        this.isSelected(value) ? this.deselect(value) : this.select(value);
+    }
+    /**
+     * Clears all of the selected values.
+     * @return {?}
+     */
+    clear() {
+        this._unmarkAll();
+        this._emitChangeEvent();
+    }
+    /**
+     * Determines whether a value is selected.
+     * @param {?} value
+     * @return {?}
+     */
+    isSelected(value) {
+        return this._selection.has(value);
+    }
+    /**
+     * Determines whether the model does not have a value.
+     * @return {?}
+     */
+    isEmpty() {
+        return this._selection.size === 0;
+    }
+    /**
+     * Determines whether the model has a value.
+     * @return {?}
+     */
+    hasValue() {
+        return !this.isEmpty();
+    }
+    /**
+     * Sorts the selected values based on a predicate function.
+     * @param {?=} predicate
+     * @return {?}
+     */
+    sort(predicate) {
+        if (this._multiple && this.selected) {
+            (/** @type {?} */ (this._selected)).sort(predicate);
+        }
+    }
+    /**
+     * Gets whether multiple values can be selected.
+     * @return {?}
+     */
+    isMultipleSelection() {
+        return this._multiple;
+    }
+    /**
+     * Emits a change event and clears the records of selected and deselected values.
+     * @private
+     * @return {?}
+     */
+    _emitChangeEvent() {
+        // Clear the selected values so they can be re-cached.
+        this._selected = null;
+        if (this._selectedToEmit.length || this._deselectedToEmit.length) {
+            this.changed.next({
+                source: this,
+                added: this._selectedToEmit,
+                removed: this._deselectedToEmit
+            });
+            this._deselectedToEmit = [];
+            this._selectedToEmit = [];
+        }
+    }
+    /**
+     * Selects a value.
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    _markSelected(value) {
+        if (!this.isSelected(value)) {
+            if (!this._multiple) {
+                this._unmarkAll();
+            }
+            this._selection.add(value);
+            if (this._emitChanges) {
+                this._selectedToEmit.push(value);
+            }
+        }
+    }
+    /**
+     * Deselects a value.
+     * @private
+     * @param {?} value
+     * @return {?}
+     */
+    _unmarkSelected(value) {
+        if (this.isSelected(value)) {
+            this._selection.delete(value);
+            if (this._emitChanges) {
+                this._deselectedToEmit.push(value);
+            }
+        }
+    }
+    /**
+     * Clears out the selected values.
+     * @private
+     * @return {?}
+     */
+    _unmarkAll() {
+        if (!this.isEmpty()) {
+            this._selection.forEach((/**
+             * @param {?} value
+             * @return {?}
+             */
+            value => this._unmarkSelected(value)));
+        }
+    }
+    /**
+     * Verifies the value assignment and throws an error if the specified value array is
+     * including multiple values while the selection model is not supporting multiple values.
+     * @private
+     * @param {?} values
+     * @return {?}
+     */
+    _verifyValueAssignment(values) {
+        if (values.length > 1 && !this._multiple) {
+            throw getMultipleValuesInSingleSelectionError();
+        }
+    }
+}
+if (false) {}
+/**
+ * Event emitted when the value of a MatSelectionModel has changed.
+ * \@docs-private
+ * @record
+ * @template T
+ */
+function SelectionChange() { }
+if (false) {}
+/**
+ * Returns an error that reports that multiple values are passed into a selection model
+ * with a single value.
+ * \@docs-private
+ * @return {?}
+ */
+function getMultipleValuesInSingleSelectionError() {
+    return Error('Cannot pass multiple values into SelectionModel with single-value mode.');
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/collections/unique-selection-dispatcher.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Class to coordinate unique selection based on name.
+ * Intended to be consumed as an Angular service.
+ * This service is needed because native radio change events are only fired on the item currently
+ * being selected, and we still need to uncheck the previous selection.
+ *
+ * This service does not *store* any IDs and names because they may change at any time, so it is
+ * less error-prone if they are simply passed through when the events occur.
+ */
+class UniqueSelectionDispatcher {
+    constructor() {
+        this._listeners = [];
+    }
+    /**
+     * Notify other items that selection for the given name has been set.
+     * @param {?} id ID of the item.
+     * @param {?} name Name of the item.
+     * @return {?}
+     */
+    notify(id, name) {
+        for (let listener of this._listeners) {
+            listener(id, name);
+        }
+    }
+    /**
+     * Listen for future changes to item selection.
+     * @param {?} listener
+     * @return {?} Function used to deregister listener
+     */
+    listen(listener) {
+        this._listeners.push(listener);
+        return (/**
+         * @return {?}
+         */
+        () => {
+            this._listeners = this._listeners.filter((/**
+             * @param {?} registered
+             * @return {?}
+             */
+            (registered) => {
+                return listener !== registered;
+            }));
+        });
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._listeners = [];
+    }
+}
+UniqueSelectionDispatcher.ɵfac = function UniqueSelectionDispatcher_Factory(t) { return new (t || UniqueSelectionDispatcher)(); };
+/** @nocollapse */ UniqueSelectionDispatcher.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function UniqueSelectionDispatcher_Factory() { return new UniqueSelectionDispatcher(); }, token: UniqueSelectionDispatcher, providedIn: "root" });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](UniqueSelectionDispatcher, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{ providedIn: 'root' }]
+    }], function () { return []; }, null); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/collections/tree-adapter.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Interface for a class that can flatten hierarchical structured data and re-expand the flattened
+ * data back into its original structure. Should be used in conjunction with the cdk-tree.
+ * @record
+ * @template T
+ */
+function TreeDataNodeFlattener() { }
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/collections/public-api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=collections.js.map
+
+/***/ }),
+
 /***/ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js ***!
@@ -13611,6 +14051,2851 @@ function _supportsShadowDom() {
 
 
 //# sourceMappingURL=platform.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/portal.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/portal.js ***!
+  \*******************************************************************/
+/*! exports provided: BasePortalHost, BasePortalOutlet, CdkPortal, CdkPortalOutlet, ComponentPortal, DomPortal, DomPortalHost, DomPortalOutlet, Portal, PortalHostDirective, PortalInjector, PortalModule, TemplatePortal, TemplatePortalDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BasePortalHost", function() { return BasePortalHost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BasePortalOutlet", function() { return BasePortalOutlet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CdkPortal", function() { return CdkPortal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CdkPortalOutlet", function() { return CdkPortalOutlet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComponentPortal", function() { return ComponentPortal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DomPortal", function() { return DomPortal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DomPortalHost", function() { return DomPortalHost; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DomPortalOutlet", function() { return DomPortalOutlet; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Portal", function() { return Portal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortalHostDirective", function() { return PortalHostDirective; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortalInjector", function() { return PortalInjector; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PortalModule", function() { return PortalModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemplatePortal", function() { return TemplatePortal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemplatePortalDirective", function() { return TemplatePortalDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/portal/portal-errors.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Throws an exception when attempting to attach a null portal to a host.
+ * \@docs-private
+ * @return {?}
+ */
+
+function throwNullPortalError() {
+    throw Error('Must provide a portal to attach');
+}
+/**
+ * Throws an exception when attempting to attach a portal to a host that is already attached.
+ * \@docs-private
+ * @return {?}
+ */
+function throwPortalAlreadyAttachedError() {
+    throw Error('Host already has a portal attached');
+}
+/**
+ * Throws an exception when attempting to attach a portal to an already-disposed host.
+ * \@docs-private
+ * @return {?}
+ */
+function throwPortalOutletAlreadyDisposedError() {
+    throw Error('This PortalOutlet has already been disposed');
+}
+/**
+ * Throws an exception when attempting to attach an unknown portal type.
+ * \@docs-private
+ * @return {?}
+ */
+function throwUnknownPortalTypeError() {
+    throw Error('Attempting to attach an unknown Portal type. BasePortalOutlet accepts either ' +
+        'a ComponentPortal or a TemplatePortal.');
+}
+/**
+ * Throws an exception when attempting to attach a portal to a null host.
+ * \@docs-private
+ * @return {?}
+ */
+function throwNullPortalOutletError() {
+    throw Error('Attempting to attach a portal to a null PortalOutlet');
+}
+/**
+ * Throws an exception when attempting to detach a portal that is not attached.
+ * \@docs-private
+ * @return {?}
+ */
+function throwNoPortalAttachedError() {
+    throw Error('Attempting to detach a portal that is not attached to a host');
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/portal/portal.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Interface that can be used to generically type a class.
+ * @record
+ * @template T
+ */
+function ComponentType() { }
+/**
+ * A `Portal` is something that you want to render somewhere else.
+ * It can be attach to / detached from a `PortalOutlet`.
+ * @abstract
+ * @template T
+ */
+class Portal {
+    /**
+     * Attach this portal to a host.
+     * @param {?} host
+     * @return {?}
+     */
+    attach(host) {
+        if (host == null) {
+            throwNullPortalOutletError();
+        }
+        if (host.hasAttached()) {
+            throwPortalAlreadyAttachedError();
+        }
+        this._attachedHost = host;
+        return (/** @type {?} */ (host.attach(this)));
+    }
+    /**
+     * Detach this portal from its host
+     * @return {?}
+     */
+    detach() {
+        /** @type {?} */
+        let host = this._attachedHost;
+        if (host == null) {
+            throwNoPortalAttachedError();
+        }
+        else {
+            this._attachedHost = null;
+            host.detach();
+        }
+    }
+    /**
+     * Whether this portal is attached to a host.
+     * @return {?}
+     */
+    get isAttached() {
+        return this._attachedHost != null;
+    }
+    /**
+     * Sets the PortalOutlet reference without performing `attach()`. This is used directly by
+     * the PortalOutlet when it is performing an `attach()` or `detach()`.
+     * @param {?} host
+     * @return {?}
+     */
+    setAttachedHost(host) {
+        this._attachedHost = host;
+    }
+}
+if (false) {}
+/**
+ * A `ComponentPortal` is a portal that instantiates some Component upon attachment.
+ * @template T
+ */
+class ComponentPortal extends Portal {
+    /**
+     * @param {?} component
+     * @param {?=} viewContainerRef
+     * @param {?=} injector
+     * @param {?=} componentFactoryResolver
+     */
+    constructor(component, viewContainerRef, injector, componentFactoryResolver) {
+        super();
+        this.component = component;
+        this.viewContainerRef = viewContainerRef;
+        this.injector = injector;
+        this.componentFactoryResolver = componentFactoryResolver;
+    }
+}
+if (false) {}
+/**
+ * A `TemplatePortal` is a portal that represents some embedded template (TemplateRef).
+ * @template C
+ */
+class TemplatePortal extends Portal {
+    /**
+     * @param {?} template
+     * @param {?} viewContainerRef
+     * @param {?=} context
+     */
+    constructor(template, viewContainerRef, context) {
+        super();
+        this.templateRef = template;
+        this.viewContainerRef = viewContainerRef;
+        this.context = context;
+    }
+    /**
+     * @return {?}
+     */
+    get origin() {
+        return this.templateRef.elementRef;
+    }
+    /**
+     * Attach the portal to the provided `PortalOutlet`.
+     * When a context is provided it will override the `context` property of the `TemplatePortal`
+     * instance.
+     * @param {?} host
+     * @param {?=} context
+     * @return {?}
+     */
+    attach(host, context = this.context) {
+        this.context = context;
+        return super.attach(host);
+    }
+    /**
+     * @return {?}
+     */
+    detach() {
+        this.context = undefined;
+        return super.detach();
+    }
+}
+if (false) {}
+/**
+ * A `DomPortal` is a portal whose DOM element will be taken from its current position
+ * in the DOM and moved into a portal outlet, when it is attached. On detach, the content
+ * will be restored to its original position.
+ * @template T
+ */
+class DomPortal extends Portal {
+    /**
+     * @param {?} element
+     */
+    constructor(element) {
+        super();
+        this.element = element instanceof _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] ? element.nativeElement : element;
+    }
+}
+if (false) {}
+/**
+ * A `PortalOutlet` is an space that can contain a single `Portal`.
+ * @record
+ */
+function PortalOutlet() { }
+if (false) {}
+/**
+ * Partial implementation of PortalOutlet that handles attaching
+ * ComponentPortal and TemplatePortal.
+ * @abstract
+ */
+class BasePortalOutlet {
+    constructor() {
+        /**
+         * Whether this host has already been permanently disposed.
+         */
+        this._isDisposed = false;
+        // @breaking-change 10.0.0 `attachDomPortal` to become a required abstract method.
+        this.attachDomPortal = null;
+    }
+    /**
+     * Whether this host has an attached portal.
+     * @return {?}
+     */
+    hasAttached() {
+        return !!this._attachedPortal;
+    }
+    /**
+     * Attaches a portal.
+     * @param {?} portal
+     * @return {?}
+     */
+    attach(portal) {
+        if (!portal) {
+            throwNullPortalError();
+        }
+        if (this.hasAttached()) {
+            throwPortalAlreadyAttachedError();
+        }
+        if (this._isDisposed) {
+            throwPortalOutletAlreadyDisposedError();
+        }
+        if (portal instanceof ComponentPortal) {
+            this._attachedPortal = portal;
+            return this.attachComponentPortal(portal);
+        }
+        else if (portal instanceof TemplatePortal) {
+            this._attachedPortal = portal;
+            return this.attachTemplatePortal(portal);
+            // @breaking-change 10.0.0 remove null check for `this.attachDomPortal`.
+        }
+        else if (this.attachDomPortal && portal instanceof DomPortal) {
+            this._attachedPortal = portal;
+            return this.attachDomPortal(portal);
+        }
+        throwUnknownPortalTypeError();
+    }
+    /**
+     * Detaches a previously attached portal.
+     * @return {?}
+     */
+    detach() {
+        if (this._attachedPortal) {
+            this._attachedPortal.setAttachedHost(null);
+            this._attachedPortal = null;
+        }
+        this._invokeDisposeFn();
+    }
+    /**
+     * Permanently dispose of this portal host.
+     * @return {?}
+     */
+    dispose() {
+        if (this.hasAttached()) {
+            this.detach();
+        }
+        this._invokeDisposeFn();
+        this._isDisposed = true;
+    }
+    /**
+     * \@docs-private
+     * @param {?} fn
+     * @return {?}
+     */
+    setDisposeFn(fn) {
+        this._disposeFn = fn;
+    }
+    /**
+     * @private
+     * @return {?}
+     */
+    _invokeDisposeFn() {
+        if (this._disposeFn) {
+            this._disposeFn();
+            this._disposeFn = null;
+        }
+    }
+}
+if (false) {}
+/**
+ * @deprecated Use `BasePortalOutlet` instead.
+ * \@breaking-change 9.0.0
+ * @abstract
+ */
+class BasePortalHost extends BasePortalOutlet {
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/portal/dom-portal-outlet.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * A PortalOutlet for attaching portals to an arbitrary DOM element outside of the Angular
+ * application context.
+ */
+class DomPortalOutlet extends BasePortalOutlet {
+    /**
+     * @param {?} outletElement
+     * @param {?} _componentFactoryResolver
+     * @param {?} _appRef
+     * @param {?} _defaultInjector
+     * @param {?=} _document
+     */
+    constructor(outletElement, _componentFactoryResolver, _appRef, _defaultInjector, 
+    /**
+     * @deprecated `_document` Parameter to be made required.
+     * @breaking-change 10.0.0
+     */
+    _document) {
+        super();
+        this.outletElement = outletElement;
+        this._componentFactoryResolver = _componentFactoryResolver;
+        this._appRef = _appRef;
+        this._defaultInjector = _defaultInjector;
+        /**
+         * Attaches a DOM portal by transferring its content into the outlet.
+         * @param portal Portal to be attached.
+         * @deprecated To be turned into a method.
+         * \@breaking-change 10.0.0
+         */
+        this.attachDomPortal = (/**
+         * @param {?} portal
+         * @return {?}
+         */
+        (portal) => {
+            // @breaking-change 10.0.0 Remove check and error once the
+            // `_document` constructor parameter is required.
+            if (!this._document) {
+                throw Error('Cannot attach DOM portal without _document constructor parameter');
+            }
+            /** @type {?} */
+            const element = portal.element;
+            if (!element.parentNode) {
+                throw Error('DOM portal content must be attached to a parent node.');
+            }
+            // Anchor used to save the element's previous position so
+            // that we can restore it when the portal is detached.
+            /** @type {?} */
+            const anchorNode = this._document.createComment('dom-portal');
+            element.parentNode.insertBefore(anchorNode, element);
+            this.outletElement.appendChild(element);
+            super.setDisposeFn((/**
+             * @return {?}
+             */
+            () => {
+                // We can't use `replaceWith` here because IE doesn't support it.
+                if (anchorNode.parentNode) {
+                    anchorNode.parentNode.replaceChild(element, anchorNode);
+                }
+            }));
+        });
+        this._document = _document;
+    }
+    /**
+     * Attach the given ComponentPortal to DOM element using the ComponentFactoryResolver.
+     * @template T
+     * @param {?} portal Portal to be attached
+     * @return {?} Reference to the created component.
+     */
+    attachComponentPortal(portal) {
+        /** @type {?} */
+        const resolver = portal.componentFactoryResolver || this._componentFactoryResolver;
+        /** @type {?} */
+        const componentFactory = resolver.resolveComponentFactory(portal.component);
+        /** @type {?} */
+        let componentRef;
+        // If the portal specifies a ViewContainerRef, we will use that as the attachment point
+        // for the component (in terms of Angular's component tree, not rendering).
+        // When the ViewContainerRef is missing, we use the factory to create the component directly
+        // and then manually attach the view to the application.
+        if (portal.viewContainerRef) {
+            componentRef = portal.viewContainerRef.createComponent(componentFactory, portal.viewContainerRef.length, portal.injector || portal.viewContainerRef.injector);
+            this.setDisposeFn((/**
+             * @return {?}
+             */
+            () => componentRef.destroy()));
+        }
+        else {
+            componentRef = componentFactory.create(portal.injector || this._defaultInjector);
+            this._appRef.attachView(componentRef.hostView);
+            this.setDisposeFn((/**
+             * @return {?}
+             */
+            () => {
+                this._appRef.detachView(componentRef.hostView);
+                componentRef.destroy();
+            }));
+        }
+        // At this point the component has been instantiated, so we move it to the location in the DOM
+        // where we want it to be rendered.
+        this.outletElement.appendChild(this._getComponentRootNode(componentRef));
+        return componentRef;
+    }
+    /**
+     * Attaches a template portal to the DOM as an embedded view.
+     * @template C
+     * @param {?} portal Portal to be attached.
+     * @return {?} Reference to the created embedded view.
+     */
+    attachTemplatePortal(portal) {
+        /** @type {?} */
+        let viewContainer = portal.viewContainerRef;
+        /** @type {?} */
+        let viewRef = viewContainer.createEmbeddedView(portal.templateRef, portal.context);
+        viewRef.detectChanges();
+        // The method `createEmbeddedView` will add the view as a child of the viewContainer.
+        // But for the DomPortalOutlet the view can be added everywhere in the DOM
+        // (e.g Overlay Container) To move the view to the specified host element. We just
+        // re-append the existing root nodes.
+        viewRef.rootNodes.forEach((/**
+         * @param {?} rootNode
+         * @return {?}
+         */
+        rootNode => this.outletElement.appendChild(rootNode)));
+        this.setDisposeFn(((/**
+         * @return {?}
+         */
+        () => {
+            /** @type {?} */
+            let index = viewContainer.indexOf(viewRef);
+            if (index !== -1) {
+                viewContainer.remove(index);
+            }
+        })));
+        // TODO(jelbourn): Return locals from view.
+        return viewRef;
+    }
+    /**
+     * Clears out a portal from the DOM.
+     * @return {?}
+     */
+    dispose() {
+        super.dispose();
+        if (this.outletElement.parentNode != null) {
+            this.outletElement.parentNode.removeChild(this.outletElement);
+        }
+    }
+    /**
+     * Gets the root HTMLElement for an instantiated component.
+     * @private
+     * @param {?} componentRef
+     * @return {?}
+     */
+    _getComponentRootNode(componentRef) {
+        return (/** @type {?} */ (((/** @type {?} */ (componentRef.hostView))).rootNodes[0]));
+    }
+}
+if (false) {}
+/**
+ * @deprecated Use `DomPortalOutlet` instead.
+ * \@breaking-change 9.0.0
+ */
+class DomPortalHost extends DomPortalOutlet {
+}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/portal/portal-directives.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Directive version of a `TemplatePortal`. Because the directive *is* a TemplatePortal,
+ * the directive instance itself can be attached to a host, enabling declarative use of portals.
+ */
+class CdkPortal extends TemplatePortal {
+    /**
+     * @param {?} templateRef
+     * @param {?} viewContainerRef
+     */
+    constructor(templateRef, viewContainerRef) {
+        super(templateRef, viewContainerRef);
+    }
+}
+CdkPortal.ɵfac = function CdkPortal_Factory(t) { return new (t || CdkPortal)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"])); };
+CdkPortal.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: CdkPortal, selectors: [["", "cdkPortal", ""]], exportAs: ["cdkPortal"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+/** @nocollapse */
+CdkPortal.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CdkPortal, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[cdkPortal]',
+                exportAs: 'cdkPortal'
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }]; }, null); })();
+/**
+ * @deprecated Use `CdkPortal` instead.
+ * \@breaking-change 9.0.0
+ */
+class TemplatePortalDirective extends CdkPortal {
+}
+TemplatePortalDirective.ɵfac = function TemplatePortalDirective_Factory(t) { return ɵTemplatePortalDirective_BaseFactory(t || TemplatePortalDirective); };
+TemplatePortalDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: TemplatePortalDirective, selectors: [["", "cdk-portal", ""], ["", "portal", ""]], exportAs: ["cdkPortal"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{
+                provide: CdkPortal,
+                useExisting: TemplatePortalDirective
+            }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+const ɵTemplatePortalDirective_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](TemplatePortalDirective);
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](TemplatePortalDirective, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[cdk-portal], [portal]',
+                exportAs: 'cdkPortal',
+                providers: [{
+                        provide: CdkPortal,
+                        useExisting: TemplatePortalDirective
+                    }]
+            }]
+    }], null, null); })();
+/**
+ * Directive version of a PortalOutlet. Because the directive *is* a PortalOutlet, portals can be
+ * directly attached to it, enabling declarative use.
+ *
+ * Usage:
+ * `<ng-template [cdkPortalOutlet]="greeting"></ng-template>`
+ */
+class CdkPortalOutlet extends BasePortalOutlet {
+    /**
+     * @param {?} _componentFactoryResolver
+     * @param {?} _viewContainerRef
+     * @param {?=} _document
+     */
+    constructor(_componentFactoryResolver, _viewContainerRef, 
+    /**
+     * @deprecated `_document` parameter to be made required.
+     * @breaking-change 9.0.0
+     */
+    _document) {
+        super();
+        this._componentFactoryResolver = _componentFactoryResolver;
+        this._viewContainerRef = _viewContainerRef;
+        /**
+         * Whether the portal component is initialized.
+         */
+        this._isInitialized = false;
+        /**
+         * Emits when a portal is attached to the outlet.
+         */
+        this.attached = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Attaches the given DomPortal to this PortalHost by moving all of the portal content into it.
+         * @param portal Portal to be attached.
+         * @deprecated To be turned into a method.
+         * \@breaking-change 10.0.0
+         */
+        this.attachDomPortal = (/**
+         * @param {?} portal
+         * @return {?}
+         */
+        (portal) => {
+            // @breaking-change 9.0.0 Remove check and error once the
+            // `_document` constructor parameter is required.
+            if (!this._document) {
+                throw Error('Cannot attach DOM portal without _document constructor parameter');
+            }
+            /** @type {?} */
+            const element = portal.element;
+            if (!element.parentNode) {
+                throw Error('DOM portal content must be attached to a parent node.');
+            }
+            // Anchor used to save the element's previous position so
+            // that we can restore it when the portal is detached.
+            /** @type {?} */
+            const anchorNode = this._document.createComment('dom-portal');
+            portal.setAttachedHost(this);
+            element.parentNode.insertBefore(anchorNode, element);
+            this._getRootNode().appendChild(element);
+            super.setDisposeFn((/**
+             * @return {?}
+             */
+            () => {
+                if (anchorNode.parentNode) {
+                    (/** @type {?} */ (anchorNode.parentNode)).replaceChild(element, anchorNode);
+                }
+            }));
+        });
+        this._document = _document;
+    }
+    /**
+     * Portal associated with the Portal outlet.
+     * @return {?}
+     */
+    get portal() {
+        return this._attachedPortal;
+    }
+    /**
+     * @param {?} portal
+     * @return {?}
+     */
+    set portal(portal) {
+        // Ignore the cases where the `portal` is set to a falsy value before the lifecycle hooks have
+        // run. This handles the cases where the user might do something like `<div cdkPortalOutlet>`
+        // and attach a portal programmatically in the parent component. When Angular does the first CD
+        // round, it will fire the setter with empty string, causing the user's content to be cleared.
+        if (this.hasAttached() && !portal && !this._isInitialized) {
+            return;
+        }
+        if (this.hasAttached()) {
+            super.detach();
+        }
+        if (portal) {
+            super.attach(portal);
+        }
+        this._attachedPortal = portal;
+    }
+    /**
+     * Component or view reference that is attached to the portal.
+     * @return {?}
+     */
+    get attachedRef() {
+        return this._attachedRef;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this._isInitialized = true;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        super.dispose();
+        this._attachedPortal = null;
+        this._attachedRef = null;
+    }
+    /**
+     * Attach the given ComponentPortal to this PortalOutlet using the ComponentFactoryResolver.
+     *
+     * @template T
+     * @param {?} portal Portal to be attached to the portal outlet.
+     * @return {?} Reference to the created component.
+     */
+    attachComponentPortal(portal) {
+        portal.setAttachedHost(this);
+        // If the portal specifies an origin, use that as the logical location of the component
+        // in the application tree. Otherwise use the location of this PortalOutlet.
+        /** @type {?} */
+        const viewContainerRef = portal.viewContainerRef != null ?
+            portal.viewContainerRef :
+            this._viewContainerRef;
+        /** @type {?} */
+        const resolver = portal.componentFactoryResolver || this._componentFactoryResolver;
+        /** @type {?} */
+        const componentFactory = resolver.resolveComponentFactory(portal.component);
+        /** @type {?} */
+        const ref = viewContainerRef.createComponent(componentFactory, viewContainerRef.length, portal.injector || viewContainerRef.injector);
+        // If we're using a view container that's different from the injected one (e.g. when the portal
+        // specifies its own) we need to move the component into the outlet, otherwise it'll be rendered
+        // inside of the alternate view container.
+        if (viewContainerRef !== this._viewContainerRef) {
+            this._getRootNode().appendChild(((/** @type {?} */ (ref.hostView))).rootNodes[0]);
+        }
+        super.setDisposeFn((/**
+         * @return {?}
+         */
+        () => ref.destroy()));
+        this._attachedPortal = portal;
+        this._attachedRef = ref;
+        this.attached.emit(ref);
+        return ref;
+    }
+    /**
+     * Attach the given TemplatePortal to this PortalHost as an embedded View.
+     * @template C
+     * @param {?} portal Portal to be attached.
+     * @return {?} Reference to the created embedded view.
+     */
+    attachTemplatePortal(portal) {
+        portal.setAttachedHost(this);
+        /** @type {?} */
+        const viewRef = this._viewContainerRef.createEmbeddedView(portal.templateRef, portal.context);
+        super.setDisposeFn((/**
+         * @return {?}
+         */
+        () => this._viewContainerRef.clear()));
+        this._attachedPortal = portal;
+        this._attachedRef = viewRef;
+        this.attached.emit(viewRef);
+        return viewRef;
+    }
+    /**
+     * Gets the root node of the portal outlet.
+     * @private
+     * @return {?}
+     */
+    _getRootNode() {
+        /** @type {?} */
+        const nativeElement = this._viewContainerRef.element.nativeElement;
+        // The directive could be set on a template which will result in a comment
+        // node being the root. Use the comment's parent node if that is the case.
+        return (/** @type {?} */ ((nativeElement.nodeType === nativeElement.ELEMENT_NODE ?
+            nativeElement : (/** @type {?} */ (nativeElement.parentNode)))));
+    }
+}
+CdkPortalOutlet.ɵfac = function CdkPortalOutlet_Factory(t) { return new (t || CdkPortalOutlet)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"])); };
+CdkPortalOutlet.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: CdkPortalOutlet, selectors: [["", "cdkPortalOutlet", ""]], inputs: { portal: ["cdkPortalOutlet", "portal"] }, outputs: { attached: "attached" }, exportAs: ["cdkPortalOutlet"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+/** @nocollapse */
+CdkPortalOutlet.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"],] }] }
+];
+CdkPortalOutlet.propDecorators = {
+    attached: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] }]
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CdkPortalOutlet, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[cdkPortalOutlet]',
+                exportAs: 'cdkPortalOutlet',
+                inputs: ['portal: cdkPortalOutlet']
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["DOCUMENT"]]
+            }] }]; }, { attached: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }] }); })();
+if (false) {}
+/**
+ * @deprecated Use `CdkPortalOutlet` instead.
+ * \@breaking-change 9.0.0
+ */
+class PortalHostDirective extends CdkPortalOutlet {
+}
+PortalHostDirective.ɵfac = function PortalHostDirective_Factory(t) { return ɵPortalHostDirective_BaseFactory(t || PortalHostDirective); };
+PortalHostDirective.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: PortalHostDirective, selectors: [["", "cdkPortalHost", ""], ["", "portalHost", ""]], inputs: { portal: ["cdkPortalHost", "portal"] }, exportAs: ["cdkPortalHost"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵProvidersFeature"]([{
+                provide: CdkPortalOutlet,
+                useExisting: PortalHostDirective
+            }]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+const ɵPortalHostDirective_BaseFactory = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetInheritedFactory"](PortalHostDirective);
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PortalHostDirective, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[cdkPortalHost], [portalHost]',
+                exportAs: 'cdkPortalHost',
+                inputs: ['portal: cdkPortalHost'],
+                providers: [{
+                        provide: CdkPortalOutlet,
+                        useExisting: PortalHostDirective
+                    }]
+            }]
+    }], null, null); })();
+class PortalModule {
+}
+PortalModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: PortalModule });
+PortalModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function PortalModule_Factory(t) { return new (t || PortalModule)(); } });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](PortalModule, { declarations: [CdkPortal,
+        CdkPortalOutlet,
+        TemplatePortalDirective,
+        PortalHostDirective], exports: [CdkPortal,
+        CdkPortalOutlet,
+        TemplatePortalDirective,
+        PortalHostDirective] }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PortalModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                exports: [CdkPortal, CdkPortalOutlet, TemplatePortalDirective, PortalHostDirective],
+                declarations: [CdkPortal, CdkPortalOutlet, TemplatePortalDirective, PortalHostDirective]
+            }]
+    }], null, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/portal/portal-injector.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+/**
+ * Custom injector to be used when providing custom
+ * injection tokens to components inside a portal.
+ * \@docs-private
+ */
+class PortalInjector {
+    /**
+     * @param {?} _parentInjector
+     * @param {?} _customTokens
+     */
+    constructor(_parentInjector, _customTokens) {
+        this._parentInjector = _parentInjector;
+        this._customTokens = _customTokens;
+    }
+    /**
+     * @param {?} token
+     * @param {?=} notFoundValue
+     * @return {?}
+     */
+    get(token, notFoundValue) {
+        /** @type {?} */
+        const value = this._customTokens.get(token);
+        if (typeof value !== 'undefined') {
+            return value;
+        }
+        return this._parentInjector.get(token, notFoundValue);
+    }
+}
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/portal/public-api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=portal.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/scrolling.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/scrolling.js ***!
+  \**********************************************************************/
+/*! exports provided: CdkFixedSizeVirtualScroll, CdkScrollable, CdkVirtualForOf, CdkVirtualScrollViewport, DEFAULT_RESIZE_TIME, DEFAULT_SCROLL_TIME, FixedSizeVirtualScrollStrategy, ScrollDispatcher, ScrollingModule, VIRTUAL_SCROLL_STRATEGY, ViewportRuler, _fixedSizeVirtualScrollStrategyFactory */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CdkFixedSizeVirtualScroll", function() { return CdkFixedSizeVirtualScroll; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CdkScrollable", function() { return CdkScrollable; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CdkVirtualForOf", function() { return CdkVirtualForOf; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CdkVirtualScrollViewport", function() { return CdkVirtualScrollViewport; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_RESIZE_TIME", function() { return DEFAULT_RESIZE_TIME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DEFAULT_SCROLL_TIME", function() { return DEFAULT_SCROLL_TIME; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FixedSizeVirtualScrollStrategy", function() { return FixedSizeVirtualScrollStrategy; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScrollDispatcher", function() { return ScrollDispatcher; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ScrollingModule", function() { return ScrollingModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VIRTUAL_SCROLL_STRATEGY", function() { return VIRTUAL_SCROLL_STRATEGY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewportRuler", function() { return ViewportRuler; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_fixedSizeVirtualScrollStrategyFactory", function() { return _fixedSizeVirtualScrollStrategyFactory; });
+/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/cdk/coercion */ "./node_modules/@angular/cdk/fesm2015/coercion.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/cdk/platform */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
+/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
+/* harmony import */ var _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/cdk/collections */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/collections.js");
+
+
+
+
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/virtual-scroll-strategy.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * The injection token used to specify the virtual scrolling strategy.
+ * @type {?}
+ */
+
+
+
+
+const _c0 = ["contentWrapper"];
+const _c1 = ["*"];
+const VIRTUAL_SCROLL_STRATEGY = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('VIRTUAL_SCROLL_STRATEGY');
+/**
+ * A strategy that dictates which items should be rendered in the viewport.
+ * @record
+ */
+function VirtualScrollStrategy() { }
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/fixed-size-virtual-scroll.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Virtual scrolling strategy for lists with items of known fixed size.
+ */
+class FixedSizeVirtualScrollStrategy {
+    /**
+     * @param {?} itemSize The size of the items in the virtually scrolling list.
+     * @param {?} minBufferPx The minimum amount of buffer (in pixels) before needing to render more
+     * @param {?} maxBufferPx The amount of buffer (in pixels) to render when rendering more.
+     */
+    constructor(itemSize, minBufferPx, maxBufferPx) {
+        this._scrolledIndexChange = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        /**
+         * \@docs-private Implemented as part of VirtualScrollStrategy.
+         */
+        this.scrolledIndexChange = this._scrolledIndexChange.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["distinctUntilChanged"])());
+        /**
+         * The attached viewport.
+         */
+        this._viewport = null;
+        this._itemSize = itemSize;
+        this._minBufferPx = minBufferPx;
+        this._maxBufferPx = maxBufferPx;
+    }
+    /**
+     * Attaches this scroll strategy to a viewport.
+     * @param {?} viewport The viewport to attach this strategy to.
+     * @return {?}
+     */
+    attach(viewport) {
+        this._viewport = viewport;
+        this._updateTotalContentSize();
+        this._updateRenderedRange();
+    }
+    /**
+     * Detaches this scroll strategy from the currently attached viewport.
+     * @return {?}
+     */
+    detach() {
+        this._scrolledIndexChange.complete();
+        this._viewport = null;
+    }
+    /**
+     * Update the item size and buffer size.
+     * @param {?} itemSize The size of the items in the virtually scrolling list.
+     * @param {?} minBufferPx The minimum amount of buffer (in pixels) before needing to render more
+     * @param {?} maxBufferPx The amount of buffer (in pixels) to render when rendering more.
+     * @return {?}
+     */
+    updateItemAndBufferSize(itemSize, minBufferPx, maxBufferPx) {
+        if (maxBufferPx < minBufferPx) {
+            throw Error('CDK virtual scroll: maxBufferPx must be greater than or equal to minBufferPx');
+        }
+        this._itemSize = itemSize;
+        this._minBufferPx = minBufferPx;
+        this._maxBufferPx = maxBufferPx;
+        this._updateTotalContentSize();
+        this._updateRenderedRange();
+    }
+    /**
+     * \@docs-private Implemented as part of VirtualScrollStrategy.
+     * @return {?}
+     */
+    onContentScrolled() {
+        this._updateRenderedRange();
+    }
+    /**
+     * \@docs-private Implemented as part of VirtualScrollStrategy.
+     * @return {?}
+     */
+    onDataLengthChanged() {
+        this._updateTotalContentSize();
+        this._updateRenderedRange();
+    }
+    /**
+     * \@docs-private Implemented as part of VirtualScrollStrategy.
+     * @return {?}
+     */
+    onContentRendered() { }
+    /**
+     * \@docs-private Implemented as part of VirtualScrollStrategy.
+     * @return {?}
+     */
+    onRenderedOffsetChanged() { }
+    /**
+     * Scroll to the offset for the given index.
+     * @param {?} index The index of the element to scroll to.
+     * @param {?} behavior The ScrollBehavior to use when scrolling.
+     * @return {?}
+     */
+    scrollToIndex(index, behavior) {
+        if (this._viewport) {
+            this._viewport.scrollToOffset(index * this._itemSize, behavior);
+        }
+    }
+    /**
+     * Update the viewport's total content size.
+     * @private
+     * @return {?}
+     */
+    _updateTotalContentSize() {
+        if (!this._viewport) {
+            return;
+        }
+        this._viewport.setTotalContentSize(this._viewport.getDataLength() * this._itemSize);
+    }
+    /**
+     * Update the viewport's rendered range.
+     * @private
+     * @return {?}
+     */
+    _updateRenderedRange() {
+        if (!this._viewport) {
+            return;
+        }
+        /** @type {?} */
+        const scrollOffset = this._viewport.measureScrollOffset();
+        /** @type {?} */
+        const firstVisibleIndex = scrollOffset / this._itemSize;
+        /** @type {?} */
+        const renderedRange = this._viewport.getRenderedRange();
+        /** @type {?} */
+        const newRange = { start: renderedRange.start, end: renderedRange.end };
+        /** @type {?} */
+        const viewportSize = this._viewport.getViewportSize();
+        /** @type {?} */
+        const dataLength = this._viewport.getDataLength();
+        /** @type {?} */
+        const startBuffer = scrollOffset - newRange.start * this._itemSize;
+        if (startBuffer < this._minBufferPx && newRange.start != 0) {
+            /** @type {?} */
+            const expandStart = Math.ceil((this._maxBufferPx - startBuffer) / this._itemSize);
+            newRange.start = Math.max(0, newRange.start - expandStart);
+            newRange.end = Math.min(dataLength, Math.ceil(firstVisibleIndex + (viewportSize + this._minBufferPx) / this._itemSize));
+        }
+        else {
+            /** @type {?} */
+            const endBuffer = newRange.end * this._itemSize - (scrollOffset + viewportSize);
+            if (endBuffer < this._minBufferPx && newRange.end != dataLength) {
+                /** @type {?} */
+                const expandEnd = Math.ceil((this._maxBufferPx - endBuffer) / this._itemSize);
+                if (expandEnd > 0) {
+                    newRange.end = Math.min(dataLength, newRange.end + expandEnd);
+                    newRange.start = Math.max(0, Math.floor(firstVisibleIndex - this._minBufferPx / this._itemSize));
+                }
+            }
+        }
+        this._viewport.setRenderedRange(newRange);
+        this._viewport.setRenderedContentOffset(this._itemSize * newRange.start);
+        this._scrolledIndexChange.next(Math.floor(firstVisibleIndex));
+    }
+}
+if (false) {}
+/**
+ * Provider factory for `FixedSizeVirtualScrollStrategy` that simply extracts the already created
+ * `FixedSizeVirtualScrollStrategy` from the given directive.
+ * @param {?} fixedSizeDir The instance of `CdkFixedSizeVirtualScroll` to extract the
+ *     `FixedSizeVirtualScrollStrategy` from.
+ * @return {?}
+ */
+function _fixedSizeVirtualScrollStrategyFactory(fixedSizeDir) {
+    return fixedSizeDir._scrollStrategy;
+}
+/**
+ * A virtual scroll strategy that supports fixed-size items.
+ */
+class CdkFixedSizeVirtualScroll {
+    constructor() {
+        this._itemSize = 20;
+        this._minBufferPx = 100;
+        this._maxBufferPx = 200;
+        /**
+         * The scroll strategy used by this directive.
+         */
+        this._scrollStrategy = new FixedSizeVirtualScrollStrategy(this.itemSize, this.minBufferPx, this.maxBufferPx);
+    }
+    /**
+     * The size of the items in the list (in pixels).
+     * @return {?}
+     */
+    get itemSize() { return this._itemSize; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set itemSize(value) { this._itemSize = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceNumberProperty"])(value); }
+    /**
+     * The minimum amount of buffer rendered beyond the viewport (in pixels).
+     * If the amount of buffer dips below this number, more items will be rendered. Defaults to 100px.
+     * @return {?}
+     */
+    get minBufferPx() { return this._minBufferPx; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set minBufferPx(value) { this._minBufferPx = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceNumberProperty"])(value); }
+    /**
+     * The number of pixels worth of buffer to render for when rendering new items. Defaults to 200px.
+     * @return {?}
+     */
+    get maxBufferPx() { return this._maxBufferPx; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set maxBufferPx(value) { this._maxBufferPx = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_0__["coerceNumberProperty"])(value); }
+    /**
+     * @return {?}
+     */
+    ngOnChanges() {
+        this._scrollStrategy.updateItemAndBufferSize(this.itemSize, this.minBufferPx, this.maxBufferPx);
+    }
+}
+CdkFixedSizeVirtualScroll.ɵfac = function CdkFixedSizeVirtualScroll_Factory(t) { return new (t || CdkFixedSizeVirtualScroll)(); };
+CdkFixedSizeVirtualScroll.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({ type: CdkFixedSizeVirtualScroll, selectors: [["cdk-virtual-scroll-viewport", "itemSize", ""]], inputs: { itemSize: "itemSize", minBufferPx: "minBufferPx", maxBufferPx: "maxBufferPx" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵProvidersFeature"]([{
+                provide: VIRTUAL_SCROLL_STRATEGY,
+                useFactory: _fixedSizeVirtualScrollStrategyFactory,
+                deps: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(( /**
+                         * @return {?}
+                         */() => CdkFixedSizeVirtualScroll))]
+            }]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵNgOnChangesFeature"]()] });
+CdkFixedSizeVirtualScroll.propDecorators = {
+    itemSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    minBufferPx: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    maxBufferPx: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkFixedSizeVirtualScroll, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+                selector: 'cdk-virtual-scroll-viewport[itemSize]',
+                providers: [{
+                        provide: VIRTUAL_SCROLL_STRATEGY,
+                        useFactory: _fixedSizeVirtualScrollStrategyFactory,
+                        deps: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["forwardRef"])(( /**
+                                 * @return {?}
+                                 */() => CdkFixedSizeVirtualScroll))]
+                    }]
+            }]
+    }], function () { return []; }, { itemSize: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], minBufferPx: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], maxBufferPx: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }] }); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/scroll-dispatcher.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Time in ms to throttle the scrolling events by default.
+ * @type {?}
+ */
+const DEFAULT_SCROLL_TIME = 20;
+/**
+ * Service contained all registered Scrollable references and emits an event when any one of the
+ * Scrollable references emit a scrolled event.
+ */
+class ScrollDispatcher {
+    /**
+     * @param {?} _ngZone
+     * @param {?} _platform
+     */
+    constructor(_ngZone, _platform) {
+        this._ngZone = _ngZone;
+        this._platform = _platform;
+        /**
+         * Subject for notifying that a registered scrollable reference element has been scrolled.
+         */
+        this._scrolled = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        /**
+         * Keeps track of the global `scroll` and `resize` subscriptions.
+         */
+        this._globalSubscription = null;
+        /**
+         * Keeps track of the amount of subscriptions to `scrolled`. Used for cleaning up afterwards.
+         */
+        this._scrolledCount = 0;
+        /**
+         * Map of all the scrollable references that are registered with the service and their
+         * scroll event subscriptions.
+         */
+        this.scrollContainers = new Map();
+    }
+    /**
+     * Registers a scrollable instance with the service and listens for its scrolled events. When the
+     * scrollable is scrolled, the service emits the event to its scrolled observable.
+     * @param {?} scrollable Scrollable instance to be registered.
+     * @return {?}
+     */
+    register(scrollable) {
+        if (!this.scrollContainers.has(scrollable)) {
+            this.scrollContainers.set(scrollable, scrollable.elementScrolled()
+                .subscribe((/**
+             * @return {?}
+             */
+            () => this._scrolled.next(scrollable))));
+        }
+    }
+    /**
+     * Deregisters a Scrollable reference and unsubscribes from its scroll event observable.
+     * @param {?} scrollable Scrollable instance to be deregistered.
+     * @return {?}
+     */
+    deregister(scrollable) {
+        /** @type {?} */
+        const scrollableReference = this.scrollContainers.get(scrollable);
+        if (scrollableReference) {
+            scrollableReference.unsubscribe();
+            this.scrollContainers.delete(scrollable);
+        }
+    }
+    /**
+     * Returns an observable that emits an event whenever any of the registered Scrollable
+     * references (or window, document, or body) fire a scrolled event. Can provide a time in ms
+     * to override the default "throttle" time.
+     *
+     * **Note:** in order to avoid hitting change detection for every scroll event,
+     * all of the events emitted from this stream will be run outside the Angular zone.
+     * If you need to update any data bindings as a result of a scroll event, you have
+     * to run the callback using `NgZone.run`.
+     * @param {?=} auditTimeInMs
+     * @return {?}
+     */
+    scrolled(auditTimeInMs = DEFAULT_SCROLL_TIME) {
+        if (!this._platform.isBrowser) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])();
+        }
+        return new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"]((/**
+         * @param {?} observer
+         * @return {?}
+         */
+        (observer) => {
+            if (!this._globalSubscription) {
+                this._addGlobalListener();
+            }
+            // In the case of a 0ms delay, use an observable without auditTime
+            // since it does add a perceptible delay in processing overhead.
+            /** @type {?} */
+            const subscription = auditTimeInMs > 0 ?
+                this._scrolled.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["auditTime"])(auditTimeInMs)).subscribe(observer) :
+                this._scrolled.subscribe(observer);
+            this._scrolledCount++;
+            return (/**
+             * @return {?}
+             */
+            () => {
+                subscription.unsubscribe();
+                this._scrolledCount--;
+                if (!this._scrolledCount) {
+                    this._removeGlobalListener();
+                }
+            });
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._removeGlobalListener();
+        this.scrollContainers.forEach((/**
+         * @param {?} _
+         * @param {?} container
+         * @return {?}
+         */
+        (_, container) => this.deregister(container)));
+        this._scrolled.complete();
+    }
+    /**
+     * Returns an observable that emits whenever any of the
+     * scrollable ancestors of an element are scrolled.
+     * @param {?} elementRef Element whose ancestors to listen for.
+     * @param {?=} auditTimeInMs Time to throttle the scroll events.
+     * @return {?}
+     */
+    ancestorScrolled(elementRef, auditTimeInMs) {
+        /** @type {?} */
+        const ancestors = this.getAncestorScrollContainers(elementRef);
+        return this.scrolled(auditTimeInMs).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])((/**
+         * @param {?} target
+         * @return {?}
+         */
+        target => {
+            return !target || ancestors.indexOf(target) > -1;
+        })));
+    }
+    /**
+     * Returns all registered Scrollables that contain the provided element.
+     * @param {?} elementRef
+     * @return {?}
+     */
+    getAncestorScrollContainers(elementRef) {
+        /** @type {?} */
+        const scrollingContainers = [];
+        this.scrollContainers.forEach((/**
+         * @param {?} _subscription
+         * @param {?} scrollable
+         * @return {?}
+         */
+        (_subscription, scrollable) => {
+            if (this._scrollableContainsElement(scrollable, elementRef)) {
+                scrollingContainers.push(scrollable);
+            }
+        }));
+        return scrollingContainers;
+    }
+    /**
+     * Returns true if the element is contained within the provided Scrollable.
+     * @private
+     * @param {?} scrollable
+     * @param {?} elementRef
+     * @return {?}
+     */
+    _scrollableContainsElement(scrollable, elementRef) {
+        /** @type {?} */
+        let element = elementRef.nativeElement;
+        /** @type {?} */
+        let scrollableElement = scrollable.getElementRef().nativeElement;
+        // Traverse through the element parents until we reach null, checking if any of the elements
+        // are the scrollable's element.
+        do {
+            if (element == scrollableElement) {
+                return true;
+            }
+        } while (element = (/** @type {?} */ (element)).parentElement);
+        return false;
+    }
+    /**
+     * Sets up the global scroll listeners.
+     * @private
+     * @return {?}
+     */
+    _addGlobalListener() {
+        this._globalSubscription = this._ngZone.runOutsideAngular((/**
+         * @return {?}
+         */
+        () => {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["fromEvent"])(window.document, 'scroll').subscribe((/**
+             * @return {?}
+             */
+            () => this._scrolled.next()));
+        }));
+    }
+    /**
+     * Cleans up the global scroll listener.
+     * @private
+     * @return {?}
+     */
+    _removeGlobalListener() {
+        if (this._globalSubscription) {
+            this._globalSubscription.unsubscribe();
+            this._globalSubscription = null;
+        }
+    }
+}
+ScrollDispatcher.ɵfac = function ScrollDispatcher_Factory(t) { return new (t || ScrollDispatcher)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"])); };
+/** @nocollapse */
+ScrollDispatcher.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }
+];
+/** @nocollapse */ ScrollDispatcher.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function ScrollDispatcher_Factory() { return new ScrollDispatcher(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"])); }, token: ScrollDispatcher, providedIn: "root" });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ScrollDispatcher, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{ providedIn: 'root' }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }]; }, null); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/scrollable.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Sends an event when the directive's element is scrolled. Registers itself with the
+ * ScrollDispatcher service to include itself as part of its collection of scrolling events that it
+ * can be listened to through the service.
+ */
+class CdkScrollable {
+    /**
+     * @param {?} elementRef
+     * @param {?} scrollDispatcher
+     * @param {?} ngZone
+     * @param {?=} dir
+     */
+    constructor(elementRef, scrollDispatcher, ngZone, dir) {
+        this.elementRef = elementRef;
+        this.scrollDispatcher = scrollDispatcher;
+        this.ngZone = ngZone;
+        this.dir = dir;
+        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this._elementScrolled = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"]((/**
+         * @param {?} observer
+         * @return {?}
+         */
+        (observer) => this.ngZone.runOutsideAngular((/**
+         * @return {?}
+         */
+        () => Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["fromEvent"])(this.elementRef.nativeElement, 'scroll').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this._destroyed))
+            .subscribe(observer)))));
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this.scrollDispatcher.register(this);
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.scrollDispatcher.deregister(this);
+        this._destroyed.next();
+        this._destroyed.complete();
+    }
+    /**
+     * Returns observable that emits when a scroll event is fired on the host element.
+     * @return {?}
+     */
+    elementScrolled() {
+        return this._elementScrolled;
+    }
+    /**
+     * Gets the ElementRef for the viewport.
+     * @return {?}
+     */
+    getElementRef() {
+        return this.elementRef;
+    }
+    /**
+     * Scrolls to the specified offsets. This is a normalized version of the browser's native scrollTo
+     * method, since browsers are not consistent about what scrollLeft means in RTL. For this method
+     * left and right always refer to the left and right side of the scrolling container irrespective
+     * of the layout direction. start and end refer to left and right in an LTR context and vice-versa
+     * in an RTL context.
+     * @param {?} options specified the offsets to scroll to.
+     * @return {?}
+     */
+    scrollTo(options) {
+        /** @type {?} */
+        const el = this.elementRef.nativeElement;
+        /** @type {?} */
+        const isRtl = this.dir && this.dir.value == 'rtl';
+        // Rewrite start & end offsets as right or left offsets.
+        options.left = options.left == null ? (isRtl ? options.end : options.start) : options.left;
+        options.right = options.right == null ? (isRtl ? options.start : options.end) : options.right;
+        // Rewrite the bottom offset as a top offset.
+        if (options.bottom != null) {
+            ((/** @type {?} */ (options))).top =
+                el.scrollHeight - el.clientHeight - options.bottom;
+        }
+        // Rewrite the right offset as a left offset.
+        if (isRtl && Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["getRtlScrollAxisType"])() != _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["RtlScrollAxisType"].NORMAL) {
+            if (options.left != null) {
+                ((/** @type {?} */ (options))).right =
+                    el.scrollWidth - el.clientWidth - options.left;
+            }
+            if (Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["getRtlScrollAxisType"])() == _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["RtlScrollAxisType"].INVERTED) {
+                options.left = options.right;
+            }
+            else if (Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["getRtlScrollAxisType"])() == _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["RtlScrollAxisType"].NEGATED) {
+                options.left = options.right ? -options.right : options.right;
+            }
+        }
+        else {
+            if (options.right != null) {
+                ((/** @type {?} */ (options))).left =
+                    el.scrollWidth - el.clientWidth - options.right;
+            }
+        }
+        this._applyScrollToOptions(options);
+    }
+    /**
+     * @private
+     * @param {?} options
+     * @return {?}
+     */
+    _applyScrollToOptions(options) {
+        /** @type {?} */
+        const el = this.elementRef.nativeElement;
+        if (Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["supportsScrollBehavior"])()) {
+            el.scrollTo(options);
+        }
+        else {
+            if (options.top != null) {
+                el.scrollTop = options.top;
+            }
+            if (options.left != null) {
+                el.scrollLeft = options.left;
+            }
+        }
+    }
+    /**
+     * Measures the scroll offset relative to the specified edge of the viewport. This method can be
+     * used instead of directly checking scrollLeft or scrollTop, since browsers are not consistent
+     * about what scrollLeft means in RTL. The values returned by this method are normalized such that
+     * left and right always refer to the left and right side of the scrolling container irrespective
+     * of the layout direction. start and end refer to left and right in an LTR context and vice-versa
+     * in an RTL context.
+     * @param {?} from The edge to measure from.
+     * @return {?}
+     */
+    measureScrollOffset(from) {
+        /** @type {?} */
+        const LEFT = 'left';
+        /** @type {?} */
+        const RIGHT = 'right';
+        /** @type {?} */
+        const el = this.elementRef.nativeElement;
+        if (from == 'top') {
+            return el.scrollTop;
+        }
+        if (from == 'bottom') {
+            return el.scrollHeight - el.clientHeight - el.scrollTop;
+        }
+        // Rewrite start & end as left or right offsets.
+        /** @type {?} */
+        const isRtl = this.dir && this.dir.value == 'rtl';
+        if (from == 'start') {
+            from = isRtl ? RIGHT : LEFT;
+        }
+        else if (from == 'end') {
+            from = isRtl ? LEFT : RIGHT;
+        }
+        if (isRtl && Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["getRtlScrollAxisType"])() == _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["RtlScrollAxisType"].INVERTED) {
+            // For INVERTED, scrollLeft is (scrollWidth - clientWidth) when scrolled all the way left and
+            // 0 when scrolled all the way right.
+            if (from == LEFT) {
+                return el.scrollWidth - el.clientWidth - el.scrollLeft;
+            }
+            else {
+                return el.scrollLeft;
+            }
+        }
+        else if (isRtl && Object(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["getRtlScrollAxisType"])() == _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["RtlScrollAxisType"].NEGATED) {
+            // For NEGATED, scrollLeft is -(scrollWidth - clientWidth) when scrolled all the way left and
+            // 0 when scrolled all the way right.
+            if (from == LEFT) {
+                return el.scrollLeft + el.scrollWidth - el.clientWidth;
+            }
+            else {
+                return -el.scrollLeft;
+            }
+        }
+        else {
+            // For NORMAL, as well as non-RTL contexts, scrollLeft is 0 when scrolled all the way left and
+            // (scrollWidth - clientWidth) when scrolled all the way right.
+            if (from == LEFT) {
+                return el.scrollLeft;
+            }
+            else {
+                return el.scrollWidth - el.clientWidth - el.scrollLeft;
+            }
+        }
+    }
+}
+CdkScrollable.ɵfac = function CdkScrollable_Factory(t) { return new (t || CdkScrollable)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ScrollDispatcher), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], 8)); };
+CdkScrollable.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({ type: CdkScrollable, selectors: [["", "cdk-scrollable", ""], ["", "cdkScrollable", ""]] });
+/** @nocollapse */
+CdkScrollable.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+    { type: ScrollDispatcher },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }] }
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkScrollable, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+                selector: '[cdk-scrollable], [cdkScrollable]'
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }, { type: ScrollDispatcher }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+            }] }]; }, null); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/viewport-ruler.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Time in ms to throttle the resize events by default.
+ * @type {?}
+ */
+const DEFAULT_RESIZE_TIME = 20;
+/**
+ * Object that holds the scroll position of the viewport in each direction.
+ * @record
+ */
+function ViewportScrollPosition() { }
+if (false) {}
+/**
+ * Simple utility for getting the bounds of the browser viewport.
+ * \@docs-private
+ */
+class ViewportRuler {
+    /**
+     * @param {?} _platform
+     * @param {?} ngZone
+     */
+    constructor(_platform, ngZone) {
+        this._platform = _platform;
+        ngZone.runOutsideAngular((/**
+         * @return {?}
+         */
+        () => {
+            this._change = _platform.isBrowser ?
+                Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["merge"])(Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["fromEvent"])(window, 'resize'), Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["fromEvent"])(window, 'orientationchange')) :
+                Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])();
+            // Note that we need to do the subscription inside `runOutsideAngular`
+            // since subscribing is what causes the event listener to be added.
+            this._invalidateCache = this.change().subscribe((/**
+             * @return {?}
+             */
+            () => this._updateViewportSize()));
+        }));
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._invalidateCache.unsubscribe();
+    }
+    /**
+     * Returns the viewport's width and height.
+     * @return {?}
+     */
+    getViewportSize() {
+        if (!this._viewportSize) {
+            this._updateViewportSize();
+        }
+        /** @type {?} */
+        const output = { width: this._viewportSize.width, height: this._viewportSize.height };
+        // If we're not on a browser, don't cache the size since it'll be mocked out anyway.
+        if (!this._platform.isBrowser) {
+            this._viewportSize = (/** @type {?} */ (null));
+        }
+        return output;
+    }
+    /**
+     * Gets a ClientRect for the viewport's bounds.
+     * @return {?}
+     */
+    getViewportRect() {
+        // Use the document element's bounding rect rather than the window scroll properties
+        // (e.g. pageYOffset, scrollY) due to in issue in Chrome and IE where window scroll
+        // properties and client coordinates (boundingClientRect, clientX/Y, etc.) are in different
+        // conceptual viewports. Under most circumstances these viewports are equivalent, but they
+        // can disagree when the page is pinch-zoomed (on devices that support touch).
+        // See https://bugs.chromium.org/p/chromium/issues/detail?id=489206#c4
+        // We use the documentElement instead of the body because, by default (without a css reset)
+        // browsers typically give the document body an 8px margin, which is not included in
+        // getBoundingClientRect().
+        /** @type {?} */
+        const scrollPosition = this.getViewportScrollPosition();
+        const { width, height } = this.getViewportSize();
+        return {
+            top: scrollPosition.top,
+            left: scrollPosition.left,
+            bottom: scrollPosition.top + height,
+            right: scrollPosition.left + width,
+            height,
+            width,
+        };
+    }
+    /**
+     * Gets the (top, left) scroll position of the viewport.
+     * @return {?}
+     */
+    getViewportScrollPosition() {
+        // While we can get a reference to the fake document
+        // during SSR, it doesn't have getBoundingClientRect.
+        if (!this._platform.isBrowser) {
+            return { top: 0, left: 0 };
+        }
+        // The top-left-corner of the viewport is determined by the scroll position of the document
+        // body, normally just (scrollLeft, scrollTop). However, Chrome and Firefox disagree about
+        // whether `document.body` or `document.documentElement` is the scrolled element, so reading
+        // `scrollTop` and `scrollLeft` is inconsistent. However, using the bounding rect of
+        // `document.documentElement` works consistently, where the `top` and `left` values will
+        // equal negative the scroll position.
+        /** @type {?} */
+        const documentElement = (/** @type {?} */ (document.documentElement));
+        /** @type {?} */
+        const documentRect = documentElement.getBoundingClientRect();
+        /** @type {?} */
+        const top = -documentRect.top || document.body.scrollTop || window.scrollY ||
+            documentElement.scrollTop || 0;
+        /** @type {?} */
+        const left = -documentRect.left || document.body.scrollLeft || window.scrollX ||
+            documentElement.scrollLeft || 0;
+        return { top, left };
+    }
+    /**
+     * Returns a stream that emits whenever the size of the viewport changes.
+     * @param {?=} throttleTime Time in milliseconds to throttle the stream.
+     * @return {?}
+     */
+    change(throttleTime = DEFAULT_RESIZE_TIME) {
+        return throttleTime > 0 ? this._change.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["auditTime"])(throttleTime)) : this._change;
+    }
+    /**
+     * Updates the cached viewport size.
+     * @private
+     * @return {?}
+     */
+    _updateViewportSize() {
+        this._viewportSize = this._platform.isBrowser ?
+            { width: window.innerWidth, height: window.innerHeight } :
+            { width: 0, height: 0 };
+    }
+}
+ViewportRuler.ɵfac = function ViewportRuler_Factory(t) { return new (t || ViewportRuler)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"])); };
+/** @nocollapse */
+ViewportRuler.ctorParameters = () => [
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+/** @nocollapse */ ViewportRuler.ɵprov = Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjectable"])({ factory: function ViewportRuler_Factory() { return new ViewportRuler(Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"])(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"])); }, token: ViewportRuler, providedIn: "root" });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ViewportRuler, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"],
+        args: [{ providedIn: 'root' }]
+    }], function () { return [{ type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["Platform"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }]; }, null); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/virtual-scroll-viewport.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Checks if the given ranges are equal.
+ * @param {?} r1
+ * @param {?} r2
+ * @return {?}
+ */
+function rangesEqual(r1, r2) {
+    return r1.start == r2.start && r1.end == r2.end;
+}
+/**
+ * Scheduler to be used for scroll events. Needs to fall back to
+ * something that doesn't rely on requestAnimationFrame on environments
+ * that don't support it (e.g. server-side rendering).
+ * @type {?}
+ */
+const SCROLL_SCHEDULER = typeof requestAnimationFrame !== 'undefined' ? rxjs__WEBPACK_IMPORTED_MODULE_2__["animationFrameScheduler"] : rxjs__WEBPACK_IMPORTED_MODULE_2__["asapScheduler"];
+/**
+ * A viewport that virtualizes its scrolling with the help of `CdkVirtualForOf`.
+ */
+class CdkVirtualScrollViewport extends CdkScrollable {
+    /**
+     * @param {?} elementRef
+     * @param {?} _changeDetectorRef
+     * @param {?} ngZone
+     * @param {?} _scrollStrategy
+     * @param {?} dir
+     * @param {?} scrollDispatcher
+     * @param {?=} viewportRuler
+     */
+    constructor(elementRef, _changeDetectorRef, ngZone, _scrollStrategy, dir, scrollDispatcher, 
+    /**
+     * @deprecated `viewportRuler` parameter to become required.
+     * @breaking-change 11.0.0
+     */
+    viewportRuler) {
+        super(elementRef, scrollDispatcher, ngZone, dir);
+        this.elementRef = elementRef;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._scrollStrategy = _scrollStrategy;
+        /**
+         * Emits when the viewport is detached from a CdkVirtualForOf.
+         */
+        this._detachedSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        /**
+         * Emits when the rendered range changes.
+         */
+        this._renderedRangeSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this._orientation = 'vertical';
+        // Note: we don't use the typical EventEmitter here because we need to subscribe to the scroll
+        // strategy lazily (i.e. only if the user is actually listening to the events). We do this because
+        // depending on how the strategy calculates the scrolled index, it may come at a cost to
+        // performance.
+        /**
+         * Emits when the index of the first element visible in the viewport changes.
+         */
+        this.scrolledIndexChange = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"]((/**
+         * @param {?} observer
+         * @return {?}
+         */
+        (observer) => this._scrollStrategy.scrolledIndexChange.subscribe((/**
+         * @param {?} index
+         * @return {?}
+         */
+        index => Promise.resolve().then((/**
+         * @return {?}
+         */
+        () => this.ngZone.run((/**
+         * @return {?}
+         */
+        () => observer.next(index)))))))));
+        /**
+         * A stream that emits whenever the rendered range changes.
+         */
+        this.renderedRangeStream = this._renderedRangeSubject.asObservable();
+        /**
+         * The total size of all content (in pixels), including content that is not currently rendered.
+         */
+        this._totalContentSize = 0;
+        /**
+         * A string representing the `style.width` property value to be used for the spacer element.
+         */
+        this._totalContentWidth = '';
+        /**
+         * A string representing the `style.height` property value to be used for the spacer element.
+         */
+        this._totalContentHeight = '';
+        /**
+         * The currently rendered range of indices.
+         */
+        this._renderedRange = { start: 0, end: 0 };
+        /**
+         * The length of the data bound to this viewport (in number of items).
+         */
+        this._dataLength = 0;
+        /**
+         * The size of the viewport (in pixels).
+         */
+        this._viewportSize = 0;
+        /**
+         * The last rendered content offset that was set.
+         */
+        this._renderedContentOffset = 0;
+        /**
+         * Whether the last rendered content offset was to the end of the content (and therefore needs to
+         * be rewritten as an offset to the start of the content).
+         */
+        this._renderedContentOffsetNeedsRewrite = false;
+        /**
+         * Whether there is a pending change detection cycle.
+         */
+        this._isChangeDetectionPending = false;
+        /**
+         * A list of functions to run after the next change detection cycle.
+         */
+        this._runAfterChangeDetection = [];
+        /**
+         * Subscription to changes in the viewport size.
+         */
+        this._viewportChanges = rxjs__WEBPACK_IMPORTED_MODULE_2__["Subscription"].EMPTY;
+        if (!_scrollStrategy) {
+            throw Error('Error: cdk-virtual-scroll-viewport requires the "itemSize" property to be set.');
+        }
+        // @breaking-change 11.0.0 Remove null check for `viewportRuler`.
+        if (viewportRuler) {
+            this._viewportChanges = viewportRuler.change().subscribe((/**
+             * @return {?}
+             */
+            () => {
+                this.checkViewportSize();
+            }));
+        }
+    }
+    /**
+     * The direction the viewport scrolls.
+     * @return {?}
+     */
+    get orientation() {
+        return this._orientation;
+    }
+    /**
+     * @param {?} orientation
+     * @return {?}
+     */
+    set orientation(orientation) {
+        if (this._orientation !== orientation) {
+            this._orientation = orientation;
+            this._calculateSpacerSize();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        super.ngOnInit();
+        // It's still too early to measure the viewport at this point. Deferring with a promise allows
+        // the Viewport to be rendered with the correct size before we measure. We run this outside the
+        // zone to avoid causing more change detection cycles. We handle the change detection loop
+        // ourselves instead.
+        this.ngZone.runOutsideAngular((/**
+         * @return {?}
+         */
+        () => Promise.resolve().then((/**
+         * @return {?}
+         */
+        () => {
+            this._measureViewportSize();
+            this._scrollStrategy.attach(this);
+            this.elementScrolled()
+                .pipe(
+            // Start off with a fake scroll event so we properly detect our initial position.
+            Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["startWith"])((/** @type {?} */ (null))), 
+            // Collect multiple events into one until the next animation frame. This way if
+            // there are multiple scroll events in the same frame we only need to recheck
+            // our layout once.
+            Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["auditTime"])(0, SCROLL_SCHEDULER))
+                .subscribe((/**
+             * @return {?}
+             */
+            () => this._scrollStrategy.onContentScrolled()));
+            this._markChangeDetectionNeeded();
+        }))));
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this.detach();
+        this._scrollStrategy.detach();
+        // Complete all subjects
+        this._renderedRangeSubject.complete();
+        this._detachedSubject.complete();
+        this._viewportChanges.unsubscribe();
+        super.ngOnDestroy();
+    }
+    /**
+     * Attaches a `CdkVirtualForOf` to this viewport.
+     * @param {?} forOf
+     * @return {?}
+     */
+    attach(forOf) {
+        if (this._forOf) {
+            throw Error('CdkVirtualScrollViewport is already attached.');
+        }
+        // Subscribe to the data stream of the CdkVirtualForOf to keep track of when the data length
+        // changes. Run outside the zone to avoid triggering change detection, since we're managing the
+        // change detection loop ourselves.
+        this.ngZone.runOutsideAngular((/**
+         * @return {?}
+         */
+        () => {
+            this._forOf = forOf;
+            this._forOf.dataStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this._detachedSubject)).subscribe((/**
+             * @param {?} data
+             * @return {?}
+             */
+            data => {
+                /** @type {?} */
+                const newLength = data.length;
+                if (newLength !== this._dataLength) {
+                    this._dataLength = newLength;
+                    this._scrollStrategy.onDataLengthChanged();
+                }
+                this._doChangeDetection();
+            }));
+        }));
+    }
+    /**
+     * Detaches the current `CdkVirtualForOf`.
+     * @return {?}
+     */
+    detach() {
+        this._forOf = null;
+        this._detachedSubject.next();
+    }
+    /**
+     * Gets the length of the data bound to this viewport (in number of items).
+     * @return {?}
+     */
+    getDataLength() {
+        return this._dataLength;
+    }
+    /**
+     * Gets the size of the viewport (in pixels).
+     * @return {?}
+     */
+    getViewportSize() {
+        return this._viewportSize;
+    }
+    // TODO(mmalerba): This is technically out of sync with what's really rendered until a render
+    // cycle happens. I'm being careful to only call it after the render cycle is complete and before
+    // setting it to something else, but its error prone and should probably be split into
+    // `pendingRange` and `renderedRange`, the latter reflecting whats actually in the DOM.
+    /**
+     * Get the current rendered range of items.
+     * @return {?}
+     */
+    getRenderedRange() {
+        return this._renderedRange;
+    }
+    /**
+     * Sets the total size of all content (in pixels), including content that is not currently
+     * rendered.
+     * @param {?} size
+     * @return {?}
+     */
+    setTotalContentSize(size) {
+        if (this._totalContentSize !== size) {
+            this._totalContentSize = size;
+            this._calculateSpacerSize();
+            this._markChangeDetectionNeeded();
+        }
+    }
+    /**
+     * Sets the currently rendered range of indices.
+     * @param {?} range
+     * @return {?}
+     */
+    setRenderedRange(range) {
+        if (!rangesEqual(this._renderedRange, range)) {
+            this._renderedRangeSubject.next(this._renderedRange = range);
+            this._markChangeDetectionNeeded((/**
+             * @return {?}
+             */
+            () => this._scrollStrategy.onContentRendered()));
+        }
+    }
+    /**
+     * Gets the offset from the start of the viewport to the start of the rendered data (in pixels).
+     * @return {?}
+     */
+    getOffsetToRenderedContentStart() {
+        return this._renderedContentOffsetNeedsRewrite ? null : this._renderedContentOffset;
+    }
+    /**
+     * Sets the offset from the start of the viewport to either the start or end of the rendered data
+     * (in pixels).
+     * @param {?} offset
+     * @param {?=} to
+     * @return {?}
+     */
+    setRenderedContentOffset(offset, to = 'to-start') {
+        // For a horizontal viewport in a right-to-left language we need to translate along the x-axis
+        // in the negative direction.
+        /** @type {?} */
+        const isRtl = this.dir && this.dir.value == 'rtl';
+        /** @type {?} */
+        const isHorizontal = this.orientation == 'horizontal';
+        /** @type {?} */
+        const axis = isHorizontal ? 'X' : 'Y';
+        /** @type {?} */
+        const axisDirection = isHorizontal && isRtl ? -1 : 1;
+        /** @type {?} */
+        let transform = `translate${axis}(${Number(axisDirection * offset)}px)`;
+        this._renderedContentOffset = offset;
+        if (to === 'to-end') {
+            transform += ` translate${axis}(-100%)`;
+            // The viewport should rewrite this as a `to-start` offset on the next render cycle. Otherwise
+            // elements will appear to expand in the wrong direction (e.g. `mat-expansion-panel` would
+            // expand upward).
+            this._renderedContentOffsetNeedsRewrite = true;
+        }
+        if (this._renderedContentTransform != transform) {
+            // We know this value is safe because we parse `offset` with `Number()` before passing it
+            // into the string.
+            this._renderedContentTransform = transform;
+            this._markChangeDetectionNeeded((/**
+             * @return {?}
+             */
+            () => {
+                if (this._renderedContentOffsetNeedsRewrite) {
+                    this._renderedContentOffset -= this.measureRenderedContentSize();
+                    this._renderedContentOffsetNeedsRewrite = false;
+                    this.setRenderedContentOffset(this._renderedContentOffset);
+                }
+                else {
+                    this._scrollStrategy.onRenderedOffsetChanged();
+                }
+            }));
+        }
+    }
+    /**
+     * Scrolls to the given offset from the start of the viewport. Please note that this is not always
+     * the same as setting `scrollTop` or `scrollLeft`. In a horizontal viewport with right-to-left
+     * direction, this would be the equivalent of setting a fictional `scrollRight` property.
+     * @param {?} offset The offset to scroll to.
+     * @param {?=} behavior The ScrollBehavior to use when scrolling. Default is behavior is `auto`.
+     * @return {?}
+     */
+    scrollToOffset(offset, behavior = 'auto') {
+        /** @type {?} */
+        const options = { behavior };
+        if (this.orientation === 'horizontal') {
+            options.start = offset;
+        }
+        else {
+            options.top = offset;
+        }
+        this.scrollTo(options);
+    }
+    /**
+     * Scrolls to the offset for the given index.
+     * @param {?} index The index of the element to scroll to.
+     * @param {?=} behavior The ScrollBehavior to use when scrolling. Default is behavior is `auto`.
+     * @return {?}
+     */
+    scrollToIndex(index, behavior = 'auto') {
+        this._scrollStrategy.scrollToIndex(index, behavior);
+    }
+    /**
+     * Gets the current scroll offset from the start of the viewport (in pixels).
+     * @param {?=} from The edge to measure the offset from. Defaults to 'top' in vertical mode and 'start'
+     *     in horizontal mode.
+     * @return {?}
+     */
+    measureScrollOffset(from) {
+        return super.measureScrollOffset(from ? from : this.orientation === 'horizontal' ? 'start' : 'top');
+    }
+    /**
+     * Measure the combined size of all of the rendered items.
+     * @return {?}
+     */
+    measureRenderedContentSize() {
+        /** @type {?} */
+        const contentEl = this._contentWrapper.nativeElement;
+        return this.orientation === 'horizontal' ? contentEl.offsetWidth : contentEl.offsetHeight;
+    }
+    /**
+     * Measure the total combined size of the given range. Throws if the range includes items that are
+     * not rendered.
+     * @param {?} range
+     * @return {?}
+     */
+    measureRangeSize(range) {
+        if (!this._forOf) {
+            return 0;
+        }
+        return this._forOf.measureRangeSize(range, this.orientation);
+    }
+    /**
+     * Update the viewport dimensions and re-render.
+     * @return {?}
+     */
+    checkViewportSize() {
+        // TODO: Cleanup later when add logic for handling content resize
+        this._measureViewportSize();
+        this._scrollStrategy.onDataLengthChanged();
+    }
+    /**
+     * Measure the viewport size.
+     * @private
+     * @return {?}
+     */
+    _measureViewportSize() {
+        /** @type {?} */
+        const viewportEl = this.elementRef.nativeElement;
+        this._viewportSize = this.orientation === 'horizontal' ?
+            viewportEl.clientWidth : viewportEl.clientHeight;
+    }
+    /**
+     * Queue up change detection to run.
+     * @private
+     * @param {?=} runAfter
+     * @return {?}
+     */
+    _markChangeDetectionNeeded(runAfter) {
+        if (runAfter) {
+            this._runAfterChangeDetection.push(runAfter);
+        }
+        // Use a Promise to batch together calls to `_doChangeDetection`. This way if we set a bunch of
+        // properties sequentially we only have to run `_doChangeDetection` once at the end.
+        if (!this._isChangeDetectionPending) {
+            this._isChangeDetectionPending = true;
+            this.ngZone.runOutsideAngular((/**
+             * @return {?}
+             */
+            () => Promise.resolve().then((/**
+             * @return {?}
+             */
+            () => {
+                this._doChangeDetection();
+            }))));
+        }
+    }
+    /**
+     * Run change detection.
+     * @private
+     * @return {?}
+     */
+    _doChangeDetection() {
+        this._isChangeDetectionPending = false;
+        // Apply the content transform. The transform can't be set via an Angular binding because
+        // bypassSecurityTrustStyle is banned in Google. However the value is safe, it's composed of
+        // string literals, a variable that can only be 'X' or 'Y', and user input that is run through
+        // the `Number` function first to coerce it to a numeric value.
+        this._contentWrapper.nativeElement.style.transform = this._renderedContentTransform;
+        // Apply changes to Angular bindings. Note: We must call `markForCheck` to run change detection
+        // from the root, since the repeated items are content projected in. Calling `detectChanges`
+        // instead does not properly check the projected content.
+        this.ngZone.run((/**
+         * @return {?}
+         */
+        () => this._changeDetectorRef.markForCheck()));
+        /** @type {?} */
+        const runAfterChangeDetection = this._runAfterChangeDetection;
+        this._runAfterChangeDetection = [];
+        for (const fn of runAfterChangeDetection) {
+            fn();
+        }
+    }
+    /**
+     * Calculates the `style.width` and `style.height` for the spacer element.
+     * @private
+     * @return {?}
+     */
+    _calculateSpacerSize() {
+        this._totalContentHeight =
+            this.orientation === 'horizontal' ? '' : `${this._totalContentSize}px`;
+        this._totalContentWidth =
+            this.orientation === 'horizontal' ? `${this._totalContentSize}px` : '';
+    }
+}
+CdkVirtualScrollViewport.ɵfac = function CdkVirtualScrollViewport_Factory(t) { return new (t || CdkVirtualScrollViewport)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](VIRTUAL_SCROLL_STRATEGY, 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ScrollDispatcher), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ViewportRuler, 8)); };
+CdkVirtualScrollViewport.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: CdkVirtualScrollViewport, selectors: [["cdk-virtual-scroll-viewport"]], viewQuery: function CdkVirtualScrollViewport_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstaticViewQuery"](_c0, true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵloadQuery"]()) && (ctx._contentWrapper = _t.first);
+    } }, hostAttrs: [1, "cdk-virtual-scroll-viewport"], hostVars: 4, hostBindings: function CdkVirtualScrollViewport_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵclassProp"]("cdk-virtual-scroll-orientation-horizontal", ctx.orientation === "horizontal")("cdk-virtual-scroll-orientation-vertical", ctx.orientation !== "horizontal");
+    } }, inputs: { orientation: "orientation" }, outputs: { scrolledIndexChange: "scrolledIndexChange" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵProvidersFeature"]([{
+                provide: CdkScrollable,
+                useExisting: CdkVirtualScrollViewport
+            }]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c1, decls: 4, vars: 4, consts: [[1, "cdk-virtual-scroll-content-wrapper"], ["contentWrapper", ""], [1, "cdk-virtual-scroll-spacer"]], template: function CdkVirtualScrollViewport_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵprojectionDef"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵprojection"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "div", 2);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵstyleProp"]("width", ctx._totalContentWidth)("height", ctx._totalContentHeight);
+    } }, styles: ["cdk-virtual-scroll-viewport{display:block;position:relative;overflow:auto;contain:strict;transform:translateZ(0);will-change:scroll-position;-webkit-overflow-scrolling:touch}.cdk-virtual-scroll-content-wrapper{position:absolute;top:0;left:0;contain:content}[dir=rtl] .cdk-virtual-scroll-content-wrapper{right:0;left:auto}.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper{min-height:100%}.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>dl:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>ol:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>table:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>ul:not([cdkVirtualFor]){padding-left:0;padding-right:0;margin-left:0;margin-right:0;border-left-width:0;border-right-width:0;outline:none}.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper{min-width:100%}.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>dl:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>ol:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>table:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>ul:not([cdkVirtualFor]){padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0;border-top-width:0;border-bottom-width:0;outline:none}.cdk-virtual-scroll-spacer{position:absolute;top:0;left:0;height:1px;width:1px;transform-origin:0 0}[dir=rtl] .cdk-virtual-scroll-spacer{right:0;left:auto;transform-origin:100% 0}\n"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+CdkVirtualScrollViewport.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [VIRTUAL_SCROLL_STRATEGY,] }] },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }] },
+    { type: ScrollDispatcher },
+    { type: ViewportRuler, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"] }] }
+];
+CdkVirtualScrollViewport.propDecorators = {
+    orientation: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    scrolledIndexChange: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }],
+    _contentWrapper: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"], args: ['contentWrapper', { static: true },] }]
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkVirtualScrollViewport, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+        args: [{
+                selector: 'cdk-virtual-scroll-viewport',
+                template: "<!--\n  Wrap the rendered content in an element that will be used to offset it based on the scroll\n  position.\n-->\n<div #contentWrapper class=\"cdk-virtual-scroll-content-wrapper\">\n  <ng-content></ng-content>\n</div>\n<!--\n  Spacer used to force the scrolling container to the correct size for the *total* number of items\n  so that the scrollbar captures the size of the entire data set.\n-->\n<div class=\"cdk-virtual-scroll-spacer\"\n     [style.width]=\"_totalContentWidth\" [style.height]=\"_totalContentHeight\"></div>\n",
+                host: {
+                    'class': 'cdk-virtual-scroll-viewport',
+                    '[class.cdk-virtual-scroll-orientation-horizontal]': 'orientation === "horizontal"',
+                    '[class.cdk-virtual-scroll-orientation-vertical]': 'orientation !== "horizontal"'
+                },
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectionStrategy"].OnPush,
+                providers: [{
+                        provide: CdkScrollable,
+                        useExisting: CdkVirtualScrollViewport
+                    }],
+                styles: ["cdk-virtual-scroll-viewport{display:block;position:relative;overflow:auto;contain:strict;transform:translateZ(0);will-change:scroll-position;-webkit-overflow-scrolling:touch}.cdk-virtual-scroll-content-wrapper{position:absolute;top:0;left:0;contain:content}[dir=rtl] .cdk-virtual-scroll-content-wrapper{right:0;left:auto}.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper{min-height:100%}.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>dl:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>ol:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>table:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-horizontal .cdk-virtual-scroll-content-wrapper>ul:not([cdkVirtualFor]){padding-left:0;padding-right:0;margin-left:0;margin-right:0;border-left-width:0;border-right-width:0;outline:none}.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper{min-width:100%}.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>dl:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>ol:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>table:not([cdkVirtualFor]),.cdk-virtual-scroll-orientation-vertical .cdk-virtual-scroll-content-wrapper>ul:not([cdkVirtualFor]){padding-top:0;padding-bottom:0;margin-top:0;margin-bottom:0;border-top-width:0;border-bottom-width:0;outline:none}.cdk-virtual-scroll-spacer{position:absolute;top:0;left:0;height:1px;width:1px;transform-origin:0 0}[dir=rtl] .cdk-virtual-scroll-spacer{right:0;left:auto;transform-origin:100% 0}\n"]
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ChangeDetectorRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"],
+                args: [VIRTUAL_SCROLL_STRATEGY]
+            }] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+            }] }, { type: ScrollDispatcher }, { type: ViewportRuler, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"]
+            }] }]; }, { scrolledIndexChange: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
+        }], orientation: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], _contentWrapper: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"],
+            args: ['contentWrapper', { static: true }]
+        }] }); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/virtual-for-of.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+/**
+ * Helper to extract size from a DOM Node.
+ * @param {?} orientation
+ * @param {?} node
+ * @return {?}
+ */
+function getSize(orientation, node) {
+    /** @type {?} */
+    const el = (/** @type {?} */ (node));
+    if (!el.getBoundingClientRect) {
+        return 0;
+    }
+    /** @type {?} */
+    const rect = el.getBoundingClientRect();
+    return orientation == 'horizontal' ? rect.width : rect.height;
+}
+/**
+ * A directive similar to `ngForOf` to be used for rendering data inside a virtual scrolling
+ * container.
+ * @template T
+ */
+class CdkVirtualForOf {
+    /**
+     * @param {?} _viewContainerRef
+     * @param {?} _template
+     * @param {?} _differs
+     * @param {?} _viewport
+     * @param {?} ngZone
+     */
+    constructor(_viewContainerRef, _template, _differs, _viewport, ngZone) {
+        this._viewContainerRef = _viewContainerRef;
+        this._template = _template;
+        this._differs = _differs;
+        this._viewport = _viewport;
+        /**
+         * Emits when the rendered view of the data changes.
+         */
+        this.viewChange = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        /**
+         * Subject that emits when a new DataSource instance is given.
+         */
+        this._dataSourceChanges = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        /**
+         * The size of the cache used to store templates that are not being used for re-use later.
+         * Setting the cache size to `0` will disable caching. Defaults to 20 templates.
+         */
+        this.cdkVirtualForTemplateCacheSize = 20;
+        /**
+         * Emits whenever the data in the current DataSource changes.
+         */
+        this.dataStream = this._dataSourceChanges
+            .pipe(
+        // Start off with null `DataSource`.
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["startWith"])((/** @type {?} */ (null))), 
+        // Bundle up the previous and current data sources so we can work with both.
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["pairwise"])(), 
+        // Use `_changeDataSource` to disconnect from the previous data source and connect to the
+        // new one, passing back a stream of data changes which we run through `switchMap` to give
+        // us a data stream that emits the latest data from whatever the current `DataSource` is.
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["switchMap"])((/**
+         * @param {?} __0
+         * @return {?}
+         */
+        ([prev, cur]) => this._changeDataSource(prev, cur))), 
+        // Replay the last emitted data when someone subscribes.
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["shareReplay"])(1));
+        /**
+         * The differ used to calculate changes to the data.
+         */
+        this._differ = null;
+        /**
+         * The template cache used to hold on ot template instancess that have been stamped out, but don't
+         * currently need to be rendered. These instances will be reused in the future rather than
+         * stamping out brand new ones.
+         */
+        this._templateCache = [];
+        /**
+         * Whether the rendered data should be updated during the next ngDoCheck cycle.
+         */
+        this._needsUpdate = false;
+        this._destroyed = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.dataStream.subscribe((/**
+         * @param {?} data
+         * @return {?}
+         */
+        data => {
+            this._data = data;
+            this._onRenderedDataChange();
+        }));
+        this._viewport.renderedRangeStream.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["takeUntil"])(this._destroyed)).subscribe((/**
+         * @param {?} range
+         * @return {?}
+         */
+        range => {
+            this._renderedRange = range;
+            ngZone.run((/**
+             * @return {?}
+             */
+            () => this.viewChange.next(this._renderedRange)));
+            this._onRenderedDataChange();
+        }));
+        this._viewport.attach(this);
+    }
+    /**
+     * The DataSource to display.
+     * @return {?}
+     */
+    get cdkVirtualForOf() {
+        return this._cdkVirtualForOf;
+    }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set cdkVirtualForOf(value) {
+        this._cdkVirtualForOf = value;
+        /** @type {?} */
+        const ds = Object(_angular_cdk_collections__WEBPACK_IMPORTED_MODULE_6__["isDataSource"])(value) ? value :
+            // Slice the value if its an NgIterable to ensure we're working with an array.
+            new _angular_cdk_collections__WEBPACK_IMPORTED_MODULE_6__["ArrayDataSource"](value instanceof rxjs__WEBPACK_IMPORTED_MODULE_2__["Observable"] ? value : Array.prototype.slice.call(value || []));
+        this._dataSourceChanges.next(ds);
+    }
+    /**
+     * The `TrackByFunction` to use for tracking changes. The `TrackByFunction` takes the index and
+     * the item and produces a value to be used as the item's identity when tracking changes.
+     * @return {?}
+     */
+    get cdkVirtualForTrackBy() {
+        return this._cdkVirtualForTrackBy;
+    }
+    /**
+     * @param {?} fn
+     * @return {?}
+     */
+    set cdkVirtualForTrackBy(fn) {
+        this._needsUpdate = true;
+        this._cdkVirtualForTrackBy = fn ?
+            (/**
+             * @param {?} index
+             * @param {?} item
+             * @return {?}
+             */
+            (index, item) => fn(index + (this._renderedRange ? this._renderedRange.start : 0), item)) :
+            undefined;
+    }
+    /**
+     * The template used to stamp out new elements.
+     * @param {?} value
+     * @return {?}
+     */
+    set cdkVirtualForTemplate(value) {
+        if (value) {
+            this._needsUpdate = true;
+            this._template = value;
+        }
+    }
+    /**
+     * Measures the combined size (width for horizontal orientation, height for vertical) of all items
+     * in the specified range. Throws an error if the range includes items that are not currently
+     * rendered.
+     * @param {?} range
+     * @param {?} orientation
+     * @return {?}
+     */
+    measureRangeSize(range, orientation) {
+        if (range.start >= range.end) {
+            return 0;
+        }
+        if (range.start < this._renderedRange.start || range.end > this._renderedRange.end) {
+            throw Error(`Error: attempted to measure an item that isn't rendered.`);
+        }
+        // The index into the list of rendered views for the first item in the range.
+        /** @type {?} */
+        const renderedStartIndex = range.start - this._renderedRange.start;
+        // The length of the range we're measuring.
+        /** @type {?} */
+        const rangeLen = range.end - range.start;
+        // Loop over all root nodes for all items in the range and sum up their size.
+        /** @type {?} */
+        let totalSize = 0;
+        /** @type {?} */
+        let i = rangeLen;
+        while (i--) {
+            /** @type {?} */
+            const view = (/** @type {?} */ (this._viewContainerRef.get(i + renderedStartIndex)));
+            /** @type {?} */
+            let j = view ? view.rootNodes.length : 0;
+            while (j--) {
+                totalSize += getSize(orientation, (/** @type {?} */ (view)).rootNodes[j]);
+            }
+        }
+        return totalSize;
+    }
+    /**
+     * @return {?}
+     */
+    ngDoCheck() {
+        if (this._differ && this._needsUpdate) {
+            // TODO(mmalerba): We should differentiate needs update due to scrolling and a new portion of
+            // this list being rendered (can use simpler algorithm) vs needs update due to data actually
+            // changing (need to do this diff).
+            /** @type {?} */
+            const changes = this._differ.diff(this._renderedItems);
+            if (!changes) {
+                this._updateContext();
+            }
+            else {
+                this._applyChanges(changes);
+            }
+            this._needsUpdate = false;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._viewport.detach();
+        this._dataSourceChanges.next();
+        this._dataSourceChanges.complete();
+        this.viewChange.complete();
+        this._destroyed.next();
+        this._destroyed.complete();
+        for (let view of this._templateCache) {
+            view.destroy();
+        }
+    }
+    /**
+     * React to scroll state changes in the viewport.
+     * @private
+     * @return {?}
+     */
+    _onRenderedDataChange() {
+        if (!this._renderedRange) {
+            return;
+        }
+        this._renderedItems = this._data.slice(this._renderedRange.start, this._renderedRange.end);
+        if (!this._differ) {
+            this._differ = this._differs.find(this._renderedItems).create(this.cdkVirtualForTrackBy);
+        }
+        this._needsUpdate = true;
+    }
+    /**
+     * Swap out one `DataSource` for another.
+     * @private
+     * @param {?} oldDs
+     * @param {?} newDs
+     * @return {?}
+     */
+    _changeDataSource(oldDs, newDs) {
+        if (oldDs) {
+            oldDs.disconnect(this);
+        }
+        this._needsUpdate = true;
+        return newDs ? newDs.connect(this) : Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["of"])();
+    }
+    /**
+     * Update the `CdkVirtualForOfContext` for all views.
+     * @private
+     * @return {?}
+     */
+    _updateContext() {
+        /** @type {?} */
+        const count = this._data.length;
+        /** @type {?} */
+        let i = this._viewContainerRef.length;
+        while (i--) {
+            /** @type {?} */
+            let view = (/** @type {?} */ (this._viewContainerRef.get(i)));
+            view.context.index = this._renderedRange.start + i;
+            view.context.count = count;
+            this._updateComputedContextProperties(view.context);
+            view.detectChanges();
+        }
+    }
+    /**
+     * Apply changes to the DOM.
+     * @private
+     * @param {?} changes
+     * @return {?}
+     */
+    _applyChanges(changes) {
+        // Rearrange the views to put them in the right location.
+        changes.forEachOperation((/**
+         * @param {?} record
+         * @param {?} adjustedPreviousIndex
+         * @param {?} currentIndex
+         * @return {?}
+         */
+        (record, adjustedPreviousIndex, currentIndex) => {
+            if (record.previousIndex == null) { // Item added.
+                // Item added.
+                /** @type {?} */
+                const view = this._insertViewForNewItem((/** @type {?} */ (currentIndex)));
+                view.context.$implicit = record.item;
+            }
+            else if (currentIndex == null) { // Item removed.
+                this._cacheView(this._detachView((/** @type {?} */ (adjustedPreviousIndex))));
+            }
+            else { // Item moved.
+                // Item moved.
+                /** @type {?} */
+                const view = (/** @type {?} */ (this._viewContainerRef.get((/** @type {?} */ (adjustedPreviousIndex)))));
+                this._viewContainerRef.move(view, currentIndex);
+                view.context.$implicit = record.item;
+            }
+        }));
+        // Update $implicit for any items that had an identity change.
+        changes.forEachIdentityChange((/**
+         * @param {?} record
+         * @return {?}
+         */
+        (record) => {
+            /** @type {?} */
+            const view = (/** @type {?} */ (this._viewContainerRef.get((/** @type {?} */ (record.currentIndex)))));
+            view.context.$implicit = record.item;
+        }));
+        // Update the context variables on all items.
+        /** @type {?} */
+        const count = this._data.length;
+        /** @type {?} */
+        let i = this._viewContainerRef.length;
+        while (i--) {
+            /** @type {?} */
+            const view = (/** @type {?} */ (this._viewContainerRef.get(i)));
+            view.context.index = this._renderedRange.start + i;
+            view.context.count = count;
+            this._updateComputedContextProperties(view.context);
+        }
+    }
+    /**
+     * Cache the given detached view.
+     * @private
+     * @param {?} view
+     * @return {?}
+     */
+    _cacheView(view) {
+        if (this._templateCache.length < this.cdkVirtualForTemplateCacheSize) {
+            this._templateCache.push(view);
+        }
+        else {
+            /** @type {?} */
+            const index = this._viewContainerRef.indexOf(view);
+            // It's very unlikely that the index will ever be -1, but just in case,
+            // destroy the view on its own, otherwise destroy it through the
+            // container to ensure that all the references are removed.
+            if (index === -1) {
+                view.destroy();
+            }
+            else {
+                this._viewContainerRef.remove(index);
+            }
+        }
+    }
+    /**
+     * Inserts a view for a new item, either from the cache or by creating a new one.
+     * @private
+     * @param {?} index
+     * @return {?}
+     */
+    _insertViewForNewItem(index) {
+        return this._insertViewFromCache(index) || this._createEmbeddedViewAt(index);
+    }
+    /**
+     * Update the computed properties on the `CdkVirtualForOfContext`.
+     * @private
+     * @param {?} context
+     * @return {?}
+     */
+    _updateComputedContextProperties(context) {
+        context.first = context.index === 0;
+        context.last = context.index === context.count - 1;
+        context.even = context.index % 2 === 0;
+        context.odd = !context.even;
+    }
+    /**
+     * Creates a new embedded view and moves it to the given index
+     * @private
+     * @param {?} index
+     * @return {?}
+     */
+    _createEmbeddedViewAt(index) {
+        // Note that it's important that we insert the item directly at the proper index,
+        // rather than inserting it and the moving it in place, because if there's a directive
+        // on the same node that injects the `ViewContainerRef`, Angular will insert another
+        // comment node which can throw off the move when it's being repeated for all items.
+        return this._viewContainerRef.createEmbeddedView(this._template, {
+            $implicit: (/** @type {?} */ (null)),
+            // It's guaranteed that the iterable is not "undefined" or "null" because we only
+            // generate views for elements if the "cdkVirtualForOf" iterable has elements.
+            cdkVirtualForOf: (/** @type {?} */ (this._cdkVirtualForOf)),
+            index: -1,
+            count: -1,
+            first: false,
+            last: false,
+            odd: false,
+            even: false
+        }, index);
+    }
+    /**
+     * Inserts a recycled view from the cache at the given index.
+     * @private
+     * @param {?} index
+     * @return {?}
+     */
+    _insertViewFromCache(index) {
+        /** @type {?} */
+        const cachedView = this._templateCache.pop();
+        if (cachedView) {
+            this._viewContainerRef.insert(cachedView, index);
+        }
+        return cachedView || null;
+    }
+    /**
+     * Detaches the embedded view at the given index.
+     * @private
+     * @param {?} index
+     * @return {?}
+     */
+    _detachView(index) {
+        return (/** @type {?} */ (this._viewContainerRef.detach(index)));
+    }
+}
+CdkVirtualForOf.ɵfac = function CdkVirtualForOf_Factory(t) { return new (t || CdkVirtualForOf)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](CdkVirtualScrollViewport, 4), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"])); };
+CdkVirtualForOf.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineDirective"]({ type: CdkVirtualForOf, selectors: [["", "cdkVirtualFor", "", "cdkVirtualForOf", ""]], inputs: { cdkVirtualForTemplateCacheSize: "cdkVirtualForTemplateCacheSize", cdkVirtualForOf: "cdkVirtualForOf", cdkVirtualForTrackBy: "cdkVirtualForTrackBy", cdkVirtualForTemplate: "cdkVirtualForTemplate" } });
+/** @nocollapse */
+CdkVirtualForOf.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"] },
+    { type: CdkVirtualScrollViewport, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"] }] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
+];
+CdkVirtualForOf.propDecorators = {
+    cdkVirtualForOf: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    cdkVirtualForTrackBy: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    cdkVirtualForTemplate: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }],
+    cdkVirtualForTemplateCacheSize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"] }]
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](CdkVirtualForOf, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Directive"],
+        args: [{
+                selector: '[cdkVirtualFor][cdkVirtualForOf]'
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewContainerRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["TemplateRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["IterableDiffers"] }, { type: CdkVirtualScrollViewport, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["SkipSelf"]
+            }] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }]; }, { cdkVirtualForTemplateCacheSize: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], cdkVirtualForOf: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], cdkVirtualForTrackBy: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }], cdkVirtualForTemplate: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"]
+        }] }); })();
+if (false) {}
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/scrolling-module.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+class ScrollingModule {
+}
+ScrollingModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({ type: ScrollingModule });
+ScrollingModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector"]({ factory: function ScrollingModule_Factory(t) { return new (t || ScrollingModule)(); }, imports: [[_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["BidiModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]],
+        _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["BidiModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsetNgModuleScope"](ScrollingModule, { declarations: function () { return [CdkFixedSizeVirtualScroll,
+        CdkScrollable,
+        CdkVirtualForOf,
+        CdkVirtualScrollViewport]; }, imports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["BidiModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]]; }, exports: function () { return [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["BidiModule"],
+        CdkFixedSizeVirtualScroll,
+        CdkScrollable,
+        CdkVirtualForOf,
+        CdkVirtualScrollViewport]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](ScrollingModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"],
+        args: [{
+                imports: [_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["BidiModule"], _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_4__["PlatformModule"]],
+                exports: [
+                    _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["BidiModule"],
+                    CdkFixedSizeVirtualScroll,
+                    CdkScrollable,
+                    CdkVirtualForOf,
+                    CdkVirtualScrollViewport,
+                ],
+                declarations: [
+                    CdkFixedSizeVirtualScroll,
+                    CdkScrollable,
+                    CdkVirtualForOf,
+                    CdkVirtualScrollViewport,
+                ]
+            }]
+    }], null, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * Generated from: src/cdk/scrolling/public-api.ts
+ * @suppress {checkTypes,constantProperty,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+
+/**
+ * Generated bundle index. Do not edit.
+ */
+
+
+
+//# sourceMappingURL=scrolling.js.map
 
 /***/ }),
 
@@ -70126,6 +73411,3004 @@ MatGridListModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
 
 
 //# sourceMappingURL=grid-list.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/icon.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@angular/material/__ivy_ngcc__/esm2015/icon.js ***!
+  \*********************************************************************/
+/*! exports provided: MatIconModule, MatIconBase, _MatIconMixinBase, MatIcon, getMatIconNameNotFoundError, getMatIconNoHttpProviderError, getMatIconFailedToSanitizeUrlError, getMatIconFailedToSanitizeLiteralError, MatIconRegistry, ICON_REGISTRY_PROVIDER_FACTORY, ICON_REGISTRY_PROVIDER */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatIconModule", function() { return MatIconModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatIconBase", function() { return MatIconBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MatIconMixinBase", function() { return _MatIconMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatIcon", function() { return MatIcon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMatIconNameNotFoundError", function() { return getMatIconNameNotFoundError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMatIconNoHttpProviderError", function() { return getMatIconNoHttpProviderError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMatIconFailedToSanitizeUrlError", function() { return getMatIconFailedToSanitizeUrlError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getMatIconFailedToSanitizeLiteralError", function() { return getMatIconFailedToSanitizeLiteralError; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatIconRegistry", function() { return MatIconRegistry; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ICON_REGISTRY_PROVIDER_FACTORY", function() { return ICON_REGISTRY_PROVIDER_FACTORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ICON_REGISTRY_PROVIDER", function() { return ICON_REGISTRY_PROVIDER; });
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/core.js");
+/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/cdk/coercion */ "./node_modules/@angular/cdk/fesm2015/coercion.js");
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+
+
+
+
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Returns an exception to be thrown in the case when attempting to
+ * load an icon with a name that cannot be found.
+ * \@docs-private
+ * @param {?} iconName
+ * @return {?}
+ */
+
+
+
+
+const _c0 = ["*"];
+function getMatIconNameNotFoundError(iconName) {
+    return Error(`Unable to find icon with the name "${iconName}"`);
+}
+/**
+ * Returns an exception to be thrown when the consumer attempts to use
+ * `<mat-icon>` without including \@angular/http.
+ * \@docs-private
+ * @return {?}
+ */
+function getMatIconNoHttpProviderError() {
+    return Error('Could not find HttpClient provider for use with Angular Material icons. ' +
+        'Please include the HttpClientModule from @angular/common/http in your ' +
+        'app imports.');
+}
+/**
+ * Returns an exception to be thrown when a URL couldn't be sanitized.
+ * \@docs-private
+ * @param {?} url URL that was attempted to be sanitized.
+ * @return {?}
+ */
+function getMatIconFailedToSanitizeUrlError(url) {
+    return Error(`The URL provided to MatIconRegistry was not trusted as a resource URL ` +
+        `via Angular's DomSanitizer. Attempted URL was "${url}".`);
+}
+/**
+ * Returns an exception to be thrown when a HTML string couldn't be sanitized.
+ * \@docs-private
+ * @param {?} literal HTML that was attempted to be sanitized.
+ * @return {?}
+ */
+function getMatIconFailedToSanitizeLiteralError(literal) {
+    return Error(`The literal provided to MatIconRegistry was not trusted as safe HTML by ` +
+        `Angular's DomSanitizer. Attempted literal was "${literal}".`);
+}
+/**
+ * Configuration for an icon, including the URL and possibly the cached SVG element.
+ * \@docs-private
+ */
+class SvgIconConfig {
+    /**
+     * @param {?} data
+     */
+    constructor(data) {
+        // Note that we can't use `instanceof SVGElement` here,
+        // because it'll break during server-side rendering.
+        if (!!(/** @type {?} */ (data)).nodeName) {
+            this.svgElement = /** @type {?} */ (data);
+        }
+        else {
+            this.url = /** @type {?} */ (data);
+        }
+    }
+}
+/**
+ * Service to register and display icons used by the `<mat-icon>` component.
+ * - Registers icon URLs by namespace and name.
+ * - Registers icon set URLs by namespace.
+ * - Registers aliases for CSS classes, for use with icon fonts.
+ * - Loads icons from URLs and extracts individual icons from icon sets.
+ */
+class MatIconRegistry {
+    /**
+     * @param {?} _httpClient
+     * @param {?} _sanitizer
+     * @param {?} document
+     */
+    constructor(_httpClient, _sanitizer, document) {
+        this._httpClient = _httpClient;
+        this._sanitizer = _sanitizer;
+        /**
+         * URLs and cached SVG elements for individual icons. Keys are of the format "[namespace]:[icon]".
+         */
+        this._svgIconConfigs = new Map();
+        /**
+         * SvgIconConfig objects and cached SVG elements for icon sets, keyed by namespace.
+         * Multiple icon sets can be registered under the same namespace.
+         */
+        this._iconSetConfigs = new Map();
+        /**
+         * Cache for icons loaded by direct URLs.
+         */
+        this._cachedIconsByUrl = new Map();
+        /**
+         * In-progress icon fetches. Used to coalesce multiple requests to the same URL.
+         */
+        this._inProgressUrlFetches = new Map();
+        /**
+         * Map from font identifiers to their CSS class names. Used for icon fonts.
+         */
+        this._fontCssClassesByAlias = new Map();
+        /**
+         * The CSS class to apply when an `<mat-icon>` component has no icon name, url, or font specified.
+         * The default 'material-icons' value assumes that the material icon font has been loaded as
+         * described at http://google.github.io/material-design-icons/#icon-font-for-the-web
+         */
+        this._defaultFontSetClass = 'material-icons';
+        this._document = document;
+    }
+    /**
+     * Registers an icon by URL in the default namespace.
+     * @param {?} iconName Name under which the icon should be registered.
+     * @param {?} url
+     * @return {?}
+     */
+    addSvgIcon(iconName, url) {
+        return this.addSvgIconInNamespace('', iconName, url);
+    }
+    /**
+     * Registers an icon using an HTML string in the default namespace.
+     * @param {?} iconName Name under which the icon should be registered.
+     * @param {?} literal SVG source of the icon.
+     * @return {?}
+     */
+    addSvgIconLiteral(iconName, literal) {
+        return this.addSvgIconLiteralInNamespace('', iconName, literal);
+    }
+    /**
+     * Registers an icon by URL in the specified namespace.
+     * @param {?} namespace Namespace in which the icon should be registered.
+     * @param {?} iconName Name under which the icon should be registered.
+     * @param {?} url
+     * @return {?}
+     */
+    addSvgIconInNamespace(namespace, iconName, url) {
+        return this._addSvgIconConfig(namespace, iconName, new SvgIconConfig(url));
+    }
+    /**
+     * Registers an icon using an HTML string in the specified namespace.
+     * @param {?} namespace Namespace in which the icon should be registered.
+     * @param {?} iconName Name under which the icon should be registered.
+     * @param {?} literal SVG source of the icon.
+     * @return {?}
+     */
+    addSvgIconLiteralInNamespace(namespace, iconName, literal) {
+        const /** @type {?} */ sanitizedLiteral = this._sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_2__["SecurityContext"].HTML, literal);
+        if (!sanitizedLiteral) {
+            throw getMatIconFailedToSanitizeLiteralError(literal);
+        }
+        const /** @type {?} */ svgElement = this._createSvgElementForSingleIcon(sanitizedLiteral);
+        return this._addSvgIconConfig(namespace, iconName, new SvgIconConfig(svgElement));
+    }
+    /**
+     * Registers an icon set by URL in the default namespace.
+     * @param {?} url
+     * @return {?}
+     */
+    addSvgIconSet(url) {
+        return this.addSvgIconSetInNamespace('', url);
+    }
+    /**
+     * Registers an icon set using an HTML string in the default namespace.
+     * @param {?} literal SVG source of the icon set.
+     * @return {?}
+     */
+    addSvgIconSetLiteral(literal) {
+        return this.addSvgIconSetLiteralInNamespace('', literal);
+    }
+    /**
+     * Registers an icon set by URL in the specified namespace.
+     * @param {?} namespace Namespace in which to register the icon set.
+     * @param {?} url
+     * @return {?}
+     */
+    addSvgIconSetInNamespace(namespace, url) {
+        return this._addSvgIconSetConfig(namespace, new SvgIconConfig(url));
+    }
+    /**
+     * Registers an icon set using an HTML string in the specified namespace.
+     * @param {?} namespace Namespace in which to register the icon set.
+     * @param {?} literal SVG source of the icon set.
+     * @return {?}
+     */
+    addSvgIconSetLiteralInNamespace(namespace, literal) {
+        const /** @type {?} */ sanitizedLiteral = this._sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_2__["SecurityContext"].HTML, literal);
+        if (!sanitizedLiteral) {
+            throw getMatIconFailedToSanitizeLiteralError(literal);
+        }
+        const /** @type {?} */ svgElement = this._svgElementFromString(sanitizedLiteral);
+        return this._addSvgIconSetConfig(namespace, new SvgIconConfig(svgElement));
+    }
+    /**
+     * Defines an alias for a CSS class name to be used for icon fonts. Creating an matIcon
+     * component with the alias as the fontSet input will cause the class name to be applied
+     * to the `<mat-icon>` element.
+     *
+     * @param {?} alias Alias for the font.
+     * @param {?=} className Class name override to be used instead of the alias.
+     * @return {?}
+     */
+    registerFontClassAlias(alias, className = alias) {
+        this._fontCssClassesByAlias.set(alias, className);
+        return this;
+    }
+    /**
+     * Returns the CSS class name associated with the alias by a previous call to
+     * registerFontClassAlias. If no CSS class has been associated, returns the alias unmodified.
+     * @param {?} alias
+     * @return {?}
+     */
+    classNameForFontAlias(alias) {
+        return this._fontCssClassesByAlias.get(alias) || alias;
+    }
+    /**
+     * Sets the CSS class name to be used for icon fonts when an `<mat-icon>` component does not
+     * have a fontSet input value, and is not loading an icon by name or URL.
+     *
+     * @param {?} className
+     * @return {?}
+     */
+    setDefaultFontSetClass(className) {
+        this._defaultFontSetClass = className;
+        return this;
+    }
+    /**
+     * Returns the CSS class name to be used for icon fonts when an `<mat-icon>` component does not
+     * have a fontSet input value, and is not loading an icon by name or URL.
+     * @return {?}
+     */
+    getDefaultFontSetClass() {
+        return this._defaultFontSetClass;
+    }
+    /**
+     * Returns an Observable that produces the icon (as an `<svg>` DOM element) from the given URL.
+     * The response from the URL may be cached so this will not always cause an HTTP request, but
+     * the produced element will always be a new copy of the originally fetched icon. (That is,
+     * it will not contain any modifications made to elements previously returned).
+     *
+     * @param {?} safeUrl URL from which to fetch the SVG icon.
+     * @return {?}
+     */
+    getSvgIconFromUrl(safeUrl) {
+        const /** @type {?} */ url = this._sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_2__["SecurityContext"].RESOURCE_URL, safeUrl);
+        if (!url) {
+            throw getMatIconFailedToSanitizeUrlError(safeUrl);
+        }
+        const /** @type {?} */ cachedIcon = this._cachedIconsByUrl.get(url);
+        if (cachedIcon) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(cloneSvg(cachedIcon));
+        }
+        return this._loadSvgIconFromConfig(new SvgIconConfig(safeUrl)).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(svg => this._cachedIconsByUrl.set(/** @type {?} */ ((url)), svg)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(svg => cloneSvg(svg)));
+    }
+    /**
+     * Returns an Observable that produces the icon (as an `<svg>` DOM element) with the given name
+     * and namespace. The icon must have been previously registered with addIcon or addIconSet;
+     * if not, the Observable will throw an error.
+     *
+     * @param {?} name Name of the icon to be retrieved.
+     * @param {?=} namespace Namespace in which to look for the icon.
+     * @return {?}
+     */
+    getNamedSvgIcon(name, namespace = '') {
+        // Return (copy of) cached icon if possible.
+        const /** @type {?} */ key = iconKey(namespace, name);
+        const /** @type {?} */ config = this._svgIconConfigs.get(key);
+        if (config) {
+            return this._getSvgFromConfig(config);
+        }
+        // See if we have any icon sets registered for the namespace.
+        const /** @type {?} */ iconSetConfigs = this._iconSetConfigs.get(namespace);
+        if (iconSetConfigs) {
+            return this._getSvgFromIconSetConfigs(name, iconSetConfigs);
+        }
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["throwError"])(getMatIconNameNotFoundError(key));
+    }
+    /**
+     * Returns the cached icon for a SvgIconConfig if available, or fetches it from its URL if not.
+     * @param {?} config
+     * @return {?}
+     */
+    _getSvgFromConfig(config) {
+        if (config.svgElement) {
+            // We already have the SVG element for this icon, return a copy.
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(cloneSvg(config.svgElement));
+        }
+        else {
+            // Fetch the icon from the config's URL, cache it, and return a copy.
+            return this._loadSvgIconFromConfig(config).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["tap"])(svg => config.svgElement = svg), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(svg => cloneSvg(svg)));
+        }
+    }
+    /**
+     * Attempts to find an icon with the specified name in any of the SVG icon sets.
+     * First searches the available cached icons for a nested element with a matching name, and
+     * if found copies the element to a new `<svg>` element. If not found, fetches all icon sets
+     * that have not been cached, and searches again after all fetches are completed.
+     * The returned Observable produces the SVG element if possible, and throws
+     * an error if no icon with the specified name can be found.
+     * @param {?} name
+     * @param {?} iconSetConfigs
+     * @return {?}
+     */
+    _getSvgFromIconSetConfigs(name, iconSetConfigs) {
+        // For all the icon set SVG elements we've fetched, see if any contain an icon with the
+        // requested name.
+        const /** @type {?} */ namedIcon = this._extractIconWithNameFromAnySet(name, iconSetConfigs);
+        if (namedIcon) {
+            // We could cache namedIcon in _svgIconConfigs, but since we have to make a copy every
+            // time anyway, there's probably not much advantage compared to just always extracting
+            // it from the icon set.
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(namedIcon);
+        }
+        // Not found in any cached icon sets. If there are icon sets with URLs that we haven't
+        // fetched, fetch them now and look for iconName in the results.
+        const /** @type {?} */ iconSetFetchRequests = iconSetConfigs
+            .filter(iconSetConfig => !iconSetConfig.svgElement)
+            .map(iconSetConfig => {
+            return this._loadSvgIconSetFromConfig(iconSetConfig).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["catchError"])((err) => {
+                const /** @type {?} */ url = this._sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_2__["SecurityContext"].RESOURCE_URL, iconSetConfig.url);
+                // Swallow errors fetching individual URLs so the
+                // combined Observable won't necessarily fail.
+                console.error(`Loading icon set URL: ${url} failed: ${err.message}`);
+                return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(null);
+            }));
+        });
+        // Fetch all the icon set URLs. When the requests complete, every IconSet should have a
+        // cached SVG element (unless the request failed), and we can check again for the icon.
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["forkJoin"])(iconSetFetchRequests).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(() => {
+            const /** @type {?} */ foundIcon = this._extractIconWithNameFromAnySet(name, iconSetConfigs);
+            if (!foundIcon) {
+                throw getMatIconNameNotFoundError(name);
+            }
+            return foundIcon;
+        }));
+    }
+    /**
+     * Searches the cached SVG elements for the given icon sets for a nested icon element whose "id"
+     * tag matches the specified name. If found, copies the nested element to a new SVG element and
+     * returns it. Returns null if no matching element is found.
+     * @param {?} iconName
+     * @param {?} iconSetConfigs
+     * @return {?}
+     */
+    _extractIconWithNameFromAnySet(iconName, iconSetConfigs) {
+        // Iterate backwards, so icon sets added later have precedence.
+        for (let /** @type {?} */ i = iconSetConfigs.length - 1; i >= 0; i--) {
+            const /** @type {?} */ config = iconSetConfigs[i];
+            if (config.svgElement) {
+                const /** @type {?} */ foundIcon = this._extractSvgIconFromSet(config.svgElement, iconName);
+                if (foundIcon) {
+                    return foundIcon;
+                }
+            }
+        }
+        return null;
+    }
+    /**
+     * Loads the content of the icon URL specified in the SvgIconConfig and creates an SVG element
+     * from it.
+     * @param {?} config
+     * @return {?}
+     */
+    _loadSvgIconFromConfig(config) {
+        return this._fetchUrl(config.url)
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(svgText => this._createSvgElementForSingleIcon(svgText)));
+    }
+    /**
+     * Loads the content of the icon set URL specified in the SvgIconConfig and creates an SVG element
+     * from it.
+     * @param {?} config
+     * @return {?}
+     */
+    _loadSvgIconSetFromConfig(config) {
+        // If the SVG for this icon set has already been parsed, do nothing.
+        if (config.svgElement) {
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(config.svgElement);
+        }
+        return this._fetchUrl(config.url).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["map"])(svgText => {
+            // It is possible that the icon set was parsed and cached by an earlier request, so parsing
+            // only needs to occur if the cache is yet unset.
+            if (!config.svgElement) {
+                config.svgElement = this._svgElementFromString(svgText);
+            }
+            return config.svgElement;
+        }));
+    }
+    /**
+     * Creates a DOM element from the given SVG string, and adds default attributes.
+     * @param {?} responseText
+     * @return {?}
+     */
+    _createSvgElementForSingleIcon(responseText) {
+        const /** @type {?} */ svg = this._svgElementFromString(responseText);
+        this._setSvgAttributes(svg);
+        return svg;
+    }
+    /**
+     * Searches the cached element of the given SvgIconConfig for a nested icon element whose "id"
+     * tag matches the specified name. If found, copies the nested element to a new SVG element and
+     * returns it. Returns null if no matching element is found.
+     * @param {?} iconSet
+     * @param {?} iconName
+     * @return {?}
+     */
+    _extractSvgIconFromSet(iconSet, iconName) {
+        const /** @type {?} */ iconSource = iconSet.querySelector('#' + iconName);
+        if (!iconSource) {
+            return null;
+        }
+        // Clone the element and remove the ID to prevent multiple elements from being added
+        // to the page with the same ID.
+        const /** @type {?} */ iconElement = /** @type {?} */ (iconSource.cloneNode(true));
+        iconElement.removeAttribute('id');
+        // If the icon node is itself an <svg> node, clone and return it directly. If not, set it as
+        // the content of a new <svg> node.
+        if (iconElement.nodeName.toLowerCase() === 'svg') {
+            return this._setSvgAttributes(/** @type {?} */ (iconElement));
+        }
+        // If the node is a <symbol>, it won't be rendered so we have to convert it into <svg>. Note
+        // that the same could be achieved by referring to it via <use href="#id">, however the <use>
+        // tag is problematic on Firefox, because it needs to include the current page path.
+        if (iconElement.nodeName.toLowerCase() === 'symbol') {
+            return this._setSvgAttributes(this._toSvgElement(iconElement));
+        }
+        // createElement('SVG') doesn't work as expected; the DOM ends up with
+        // the correct nodes, but the SVG content doesn't render. Instead we
+        // have to create an empty SVG node using innerHTML and append its content.
+        // Elements created using DOMParser.parseFromString have the same problem.
+        // http://stackoverflow.com/questions/23003278/svg-innerhtml-in-firefox-can-not-display
+        const /** @type {?} */ svg = this._svgElementFromString('<svg></svg>');
+        // Clone the node so we don't remove it from the parent icon set element.
+        svg.appendChild(iconElement);
+        return this._setSvgAttributes(svg);
+    }
+    /**
+     * Creates a DOM element from the given SVG string.
+     * @param {?} str
+     * @return {?}
+     */
+    _svgElementFromString(str) {
+        const /** @type {?} */ div = this._document.createElement('DIV');
+        div.innerHTML = str;
+        const /** @type {?} */ svg = /** @type {?} */ (div.querySelector('svg'));
+        if (!svg) {
+            throw Error('<svg> tag not found');
+        }
+        return svg;
+    }
+    /**
+     * Converts an element into an SVG node by cloning all of its children.
+     * @param {?} element
+     * @return {?}
+     */
+    _toSvgElement(element) {
+        let /** @type {?} */ svg = this._svgElementFromString('<svg></svg>');
+        for (let /** @type {?} */ i = 0; i < element.childNodes.length; i++) {
+            if (element.childNodes[i].nodeType === this._document.ELEMENT_NODE) {
+                svg.appendChild(element.childNodes[i].cloneNode(true));
+            }
+        }
+        return svg;
+    }
+    /**
+     * Sets the default attributes for an SVG element to be used as an icon.
+     * @param {?} svg
+     * @return {?}
+     */
+    _setSvgAttributes(svg) {
+        svg.setAttribute('fit', '');
+        svg.setAttribute('height', '100%');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        svg.setAttribute('focusable', 'false'); // Disable IE11 default behavior to make SVGs focusable.
+        return svg;
+    }
+    /**
+     * Returns an Observable which produces the string contents of the given URL. Results may be
+     * cached, so future calls with the same URL may not cause another HTTP request.
+     * @param {?} safeUrl
+     * @return {?}
+     */
+    _fetchUrl(safeUrl) {
+        if (!this._httpClient) {
+            throw getMatIconNoHttpProviderError();
+        }
+        if (safeUrl == null) {
+            throw Error(`Cannot fetch icon from URL "${safeUrl}".`);
+        }
+        const /** @type {?} */ url = this._sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_2__["SecurityContext"].RESOURCE_URL, safeUrl);
+        if (!url) {
+            throw getMatIconFailedToSanitizeUrlError(safeUrl);
+        }
+        // Store in-progress fetches to avoid sending a duplicate request for a URL when there is
+        // already a request in progress for that URL. It's necessary to call share() on the
+        // Observable returned by http.get() so that multiple subscribers don't cause multiple XHRs.
+        const /** @type {?} */ inProgressFetch = this._inProgressUrlFetches.get(url);
+        if (inProgressFetch) {
+            return inProgressFetch;
+        }
+        // TODO(jelbourn): for some reason, the `finalize` operator "loses" the generic type on the
+        // Observable. Figure out why and fix it.
+        const /** @type {?} */ req = this._httpClient.get(url, { responseType: 'text' }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["finalize"])(() => this._inProgressUrlFetches.delete(url)), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["share"])());
+        this._inProgressUrlFetches.set(url, req);
+        return req;
+    }
+    /**
+     * Registers an icon config by name in the specified namespace.
+     * @param {?} namespace Namespace in which to register the icon config.
+     * @param {?} iconName Name under which to register the config.
+     * @param {?} config Config to be registered.
+     * @return {?}
+     */
+    _addSvgIconConfig(namespace, iconName, config) {
+        this._svgIconConfigs.set(iconKey(namespace, iconName), config);
+        return this;
+    }
+    /**
+     * Registers an icon set config in the specified namespace.
+     * @param {?} namespace Namespace in which to register the icon config.
+     * @param {?} config Config to be registered.
+     * @return {?}
+     */
+    _addSvgIconSetConfig(namespace, config) {
+        const /** @type {?} */ configNamespace = this._iconSetConfigs.get(namespace);
+        if (configNamespace) {
+            configNamespace.push(config);
+        }
+        else {
+            this._iconSetConfigs.set(namespace, [config]);
+        }
+        return this;
+    }
+}
+MatIconRegistry.ɵfac = function MatIconRegistry_Factory(t) { return new (t || MatIconRegistry)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8)); };
+MatIconRegistry.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjectable"]({ token: MatIconRegistry, factory: MatIconRegistry.ɵfac, providedIn: 'root' });
+/** @nocollapse */
+MatIconRegistry.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"] },] },
+    { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"], },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"], args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"],] },] },
+];
+/** @nocollapse */ MatIconRegistry.ngInjectableDef = Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["defineInjectable"])({ factory: function MatIconRegistry_Factory() { return new MatIconRegistry(Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["inject"])(_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], 8), Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["inject"])(_angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"]), Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["inject"])(_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"], 8)); }, token: MatIconRegistry, providedIn: "root" });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](MatIconRegistry, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"],
+        args: [{ providedIn: 'root' }]
+    }], function () { return [{ type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]
+            }] }, { type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"],
+                args: [_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"]]
+            }] }]; }, null); })();
+/**
+ * \@docs-private
+ * @param {?} parentRegistry
+ * @param {?} httpClient
+ * @param {?} sanitizer
+ * @param {?=} document
+ * @return {?}
+ */
+function ICON_REGISTRY_PROVIDER_FACTORY(parentRegistry, httpClient, sanitizer, document) {
+    return parentRegistry || new MatIconRegistry(httpClient, sanitizer, document);
+}
+/**
+ * \@docs-private
+ */
+const /** @type {?} */ ICON_REGISTRY_PROVIDER = {
+    // If there is already an MatIconRegistry available, use that. Otherwise, provide a new one.
+    provide: MatIconRegistry,
+    deps: [
+        [new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"](), new _angular_core__WEBPACK_IMPORTED_MODULE_2__["SkipSelf"](), MatIconRegistry],
+        [new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"](), _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]],
+        _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["DomSanitizer"],
+        [new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"](), /** @type {?} */ (_angular_common__WEBPACK_IMPORTED_MODULE_0__["DOCUMENT"])],
+    ],
+    useFactory: ICON_REGISTRY_PROVIDER_FACTORY,
+};
+/**
+ * Clones an SVGElement while preserving type information.
+ * @param {?} svg
+ * @return {?}
+ */
+function cloneSvg(svg) {
+    return /** @type {?} */ (svg.cloneNode(true));
+}
+/**
+ * Returns the cache key to use for an icon namespace and name.
+ * @param {?} namespace
+ * @param {?} name
+ * @return {?}
+ */
+function iconKey(namespace, name) {
+    return namespace + ':' + name;
+}
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * \@docs-private
+ */
+class MatIconBase {
+    /**
+     * @param {?} _elementRef
+     */
+    constructor(_elementRef) {
+        this._elementRef = _elementRef;
+    }
+}
+const /** @type {?} */ _MatIconMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_6__["mixinColor"])(MatIconBase);
+/**
+ * Component to display an icon. It can be used in the following ways:
+ *
+ * - Specify the svgIcon input to load an SVG icon from a URL previously registered with the
+ *   addSvgIcon, addSvgIconInNamespace, addSvgIconSet, or addSvgIconSetInNamespace methods of
+ *   MatIconRegistry. If the svgIcon value contains a colon it is assumed to be in the format
+ *   "[namespace]:[name]", if not the value will be the name of an icon in the default namespace.
+ *   Examples:
+ *     `<mat-icon svgIcon="left-arrow"></mat-icon>
+ *     <mat-icon svgIcon="animals:cat"></mat-icon>`
+ *
+ * - Use a font ligature as an icon by putting the ligature text in the content of the `<mat-icon>`
+ *   component. By default the Material icons font is used as described at
+ *   http://google.github.io/material-design-icons/#icon-font-for-the-web. You can specify an
+ *   alternate font by setting the fontSet input to either the CSS class to apply to use the
+ *   desired font, or to an alias previously registered with MatIconRegistry.registerFontClassAlias.
+ *   Examples:
+ *     `<mat-icon>home</mat-icon>
+ *     <mat-icon fontSet="myfont">sun</mat-icon>`
+ *
+ * - Specify a font glyph to be included via CSS rules by setting the fontSet input to specify the
+ *   font, and the fontIcon input to specify the icon. Typically the fontIcon will specify a
+ *   CSS class which causes the glyph to be displayed via a :before selector, as in
+ *   https://fortawesome.github.io/Font-Awesome/examples/
+ *   Example:
+ *     `<mat-icon fontSet="fa" fontIcon="alarm"></mat-icon>`
+ */
+class MatIcon extends _MatIconMixinBase {
+    /**
+     * @param {?} elementRef
+     * @param {?} _iconRegistry
+     * @param {?} ariaHidden
+     */
+    constructor(elementRef, _iconRegistry, ariaHidden) {
+        super(elementRef);
+        this._iconRegistry = _iconRegistry;
+        this._inline = false;
+        // If the user has not explicitly set aria-hidden, mark the icon as hidden, as this is
+        // the right thing to do for the majority of icon use-cases.
+        if (!ariaHidden) {
+            elementRef.nativeElement.setAttribute('aria-hidden', 'true');
+        }
+    }
+    /**
+     * Whether the icon should be inlined, automatically sizing the icon to match the font size of
+     * the element the icon is contained in.
+     * @return {?}
+     */
+    get inline() {
+        return this._inline;
+    }
+    /**
+     * @param {?} inline
+     * @return {?}
+     */
+    set inline(inline) {
+        this._inline = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_7__["coerceBooleanProperty"])(inline);
+    }
+    /**
+     * Font set that the icon is a part of.
+     * @return {?}
+     */
+    get fontSet() { return this._fontSet; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set fontSet(value) {
+        this._fontSet = this._cleanupFontValue(value);
+    }
+    /**
+     * Name of an icon within a font set.
+     * @return {?}
+     */
+    get fontIcon() { return this._fontIcon; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set fontIcon(value) {
+        this._fontIcon = this._cleanupFontValue(value);
+    }
+    /**
+     * Splits an svgIcon binding value into its icon set and icon name components.
+     * Returns a 2-element array of [(icon set), (icon name)].
+     * The separator for the two fields is ':'. If there is no separator, an empty
+     * string is returned for the icon set and the entire value is returned for
+     * the icon name. If the argument is falsy, returns an array of two empty strings.
+     * Throws an error if the name contains two or more ':' separators.
+     * Examples:
+     *   `'social:cake' -> ['social', 'cake']
+     *   'penguin' -> ['', 'penguin']
+     *   null -> ['', '']
+     *   'a:b:c' -> (throws Error)`
+     * @param {?} iconName
+     * @return {?}
+     */
+    _splitIconName(iconName) {
+        if (!iconName) {
+            return ['', ''];
+        }
+        const /** @type {?} */ parts = iconName.split(':');
+        switch (parts.length) {
+            case 1: return ['', parts[0]]; // Use default namespace.
+            case 2: return /** @type {?} */ (parts);
+            default: throw Error(`Invalid icon name: "${iconName}"`);
+        }
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        // Only update the inline SVG icon if the inputs changed, to avoid unnecessary DOM operations.
+        if (changes["svgIcon"]) {
+            if (this.svgIcon) {
+                const [namespace, iconName] = this._splitIconName(this.svgIcon);
+                this._iconRegistry.getNamedSvgIcon(iconName, namespace).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_5__["take"])(1)).subscribe(svg => this._setSvgElement(svg), (err) => console.log(`Error retrieving icon: ${err.message}`));
+            }
+            else {
+                this._clearSvgElement();
+            }
+        }
+        if (this._usingFontIcon()) {
+            this._updateFontIconClasses();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        // Update font classes because ngOnChanges won't be called if none of the inputs are present,
+        // e.g. <mat-icon>arrow</mat-icon> In this case we need to add a CSS class for the default font.
+        if (this._usingFontIcon()) {
+            this._updateFontIconClasses();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    _usingFontIcon() {
+        return !this.svgIcon;
+    }
+    /**
+     * @param {?} svg
+     * @return {?}
+     */
+    _setSvgElement(svg) {
+        this._clearSvgElement();
+        this._elementRef.nativeElement.appendChild(svg);
+    }
+    /**
+     * @return {?}
+     */
+    _clearSvgElement() {
+        const /** @type {?} */ layoutElement = this._elementRef.nativeElement;
+        const /** @type {?} */ childCount = layoutElement.childNodes.length;
+        // Remove existing child nodes and add the new SVG element. Note that we can't
+        // use innerHTML, because IE will throw if the element has a data binding.
+        for (let /** @type {?} */ i = 0; i < childCount; i++) {
+            layoutElement.removeChild(layoutElement.childNodes[i]);
+        }
+    }
+    /**
+     * @return {?}
+     */
+    _updateFontIconClasses() {
+        if (!this._usingFontIcon()) {
+            return;
+        }
+        const /** @type {?} */ elem = this._elementRef.nativeElement;
+        const /** @type {?} */ fontSetClass = this.fontSet ?
+            this._iconRegistry.classNameForFontAlias(this.fontSet) :
+            this._iconRegistry.getDefaultFontSetClass();
+        if (fontSetClass != this._previousFontSetClass) {
+            if (this._previousFontSetClass) {
+                elem.classList.remove(this._previousFontSetClass);
+            }
+            if (fontSetClass) {
+                elem.classList.add(fontSetClass);
+            }
+            this._previousFontSetClass = fontSetClass;
+        }
+        if (this.fontIcon != this._previousFontIconClass) {
+            if (this._previousFontIconClass) {
+                elem.classList.remove(this._previousFontIconClass);
+            }
+            if (this.fontIcon) {
+                elem.classList.add(this.fontIcon);
+            }
+            this._previousFontIconClass = this.fontIcon;
+        }
+    }
+    /**
+     * Cleans up a value to be used as a fontIcon or fontSet.
+     * Since the value ends up being assigned as a CSS class, we
+     * have to trim the value and omit space-separated values.
+     * @param {?} value
+     * @return {?}
+     */
+    _cleanupFontValue(value) {
+        return typeof value === 'string' ? value.trim().split(' ')[0] : value;
+    }
+}
+MatIcon.ɵfac = function MatIcon_Factory(t) { return new (t || MatIcon)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdirectiveInject"](MatIconRegistry), _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinjectAttribute"]('aria-hidden')); };
+MatIcon.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: MatIcon, selectors: [["mat-icon"]], hostAttrs: ["role", "img", 1, "mat-icon"], hostVars: 2, hostBindings: function MatIcon_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassProp"]("mat-icon-inline", ctx.inline);
+    } }, inputs: { color: "color", inline: "inline", fontSet: "fontSet", fontIcon: "fontIcon", svgIcon: "svgIcon" }, exportAs: ["matIcon"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵInheritDefinitionFeature"], _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵNgOnChangesFeature"]()], ngContentSelectors: _c0, decls: 1, vars: 0, template: function MatIcon_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojectionDef"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵprojection"](0);
+    } }, styles: [".mat-icon{background-repeat:no-repeat;display:inline-block;fill:currentColor;height:24px;width:24px}.mat-icon.mat-icon-inline{font-size:inherit;height:inherit;line-height:inherit;width:inherit}[dir=rtl] .mat-icon-rtl-mirror{transform:scale(-1,1)}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon{display:block}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-icon{margin:auto}"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+MatIcon.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"], },
+    { type: MatIconRegistry, },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Attribute"], args: ['aria-hidden',] },] },
+];
+MatIcon.propDecorators = {
+    "inline": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"] },],
+    "svgIcon": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"] },],
+    "fontSet": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"] },],
+    "fontIcon": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](MatIcon, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"],
+        args: [{ template: '<ng-content></ng-content>',
+                selector: 'mat-icon',
+                exportAs: 'matIcon',
+                styles: [".mat-icon{background-repeat:no-repeat;display:inline-block;fill:currentColor;height:24px;width:24px}.mat-icon.mat-icon-inline{font-size:inherit;height:inherit;line-height:inherit;width:inherit}[dir=rtl] .mat-icon-rtl-mirror{transform:scale(-1,1)}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon{display:block}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-icon{margin:auto}"],
+                inputs: ['color'],
+                host: {
+                    'role': 'img',
+                    'class': 'mat-icon',
+                    '[class.mat-icon-inline]': 'inline'
+                },
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ChangeDetectionStrategy"].OnPush
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ElementRef"] }, { type: MatIconRegistry }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Attribute"],
+                args: ['aria-hidden']
+            }] }]; }, { inline: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"]
+        }], fontSet: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"]
+        }], fontIcon: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"]
+        }], svgIcon: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["Input"]
+        }] }); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+class MatIconModule {
+}
+MatIconModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineNgModule"]({ type: MatIconModule });
+MatIconModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineInjector"]({ factory: function MatIconModule_Factory(t) { return new (t || MatIconModule)(); }, imports: [[_angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]],
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵsetNgModuleScope"](MatIconModule, { declarations: function () { return [MatIcon]; }, imports: function () { return [_angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]]; }, exports: function () { return [MatIcon,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](MatIconModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"],
+        args: [{
+                imports: [_angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]],
+                exports: [MatIcon, _angular_material_core__WEBPACK_IMPORTED_MODULE_6__["MatCommonModule"]],
+                declarations: [MatIcon]
+            }]
+    }], null, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+
+
+//# sourceMappingURL=icon.js.map
+
+/***/ }),
+
+/***/ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/tabs.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@angular/material/__ivy_ngcc__/esm2015/tabs.js ***!
+  \*********************************************************************/
+/*! exports provided: MatInkBar, _MAT_INK_BAR_POSITIONER, MatTabBody, MatTabBodyPortal, MatTabHeader, MatTabLabelWrapper, MatTab, MatTabLabel, MatTabNav, MatTabLink, MatTabContent, MatTabsModule, MatTabChangeEvent, MatTabGroupBase, _MatTabGroupMixinBase, MatTabGroup, matTabsAnimations, ɵa23, ɵf23, ɵg23, ɵb23, ɵc23, ɵd23, ɵe23, ɵj23, ɵh23, ɵk23, ɵi23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatInkBar", function() { return MatInkBar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MAT_INK_BAR_POSITIONER", function() { return _MAT_INK_BAR_POSITIONER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabBody", function() { return MatTabBody; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabBodyPortal", function() { return MatTabBodyPortal; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabHeader", function() { return MatTabHeader; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabLabelWrapper", function() { return MatTabLabelWrapper; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTab", function() { return MatTab; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabLabel", function() { return MatTabLabel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabNav", function() { return MatTabNav; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabLink", function() { return MatTabLink; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabContent", function() { return MatTabContent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabsModule", function() { return MatTabsModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabChangeEvent", function() { return MatTabChangeEvent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabGroupBase", function() { return MatTabGroupBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "_MatTabGroupMixinBase", function() { return _MatTabGroupMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MatTabGroup", function() { return MatTabGroup; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "matTabsAnimations", function() { return matTabsAnimations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵa23", function() { return _MAT_INK_BAR_POSITIONER_FACTORY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵf23", function() { return MatTabBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵg23", function() { return _MatTabMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵb23", function() { return MatTabHeaderBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵc23", function() { return _MatTabHeaderMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵd23", function() { return MatTabLabelWrapperBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵe23", function() { return _MatTabLabelWrapperMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵj23", function() { return MatTabLinkBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵh23", function() { return MatTabNavBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵk23", function() { return _MatTabLinkMixinBase; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵi23", function() { return _MatTabNavMixinBase; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/portal */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/portal.js");
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/core */ "./node_modules/@angular/material/__ivy_ngcc__/esm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var _angular_animations__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/animations */ "./node_modules/@angular/animations/__ivy_ngcc__/fesm2015/animations.js");
+/* harmony import */ var _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/cdk/bidi */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/bidi.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
+/* harmony import */ var _angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/cdk/coercion */ "./node_modules/@angular/cdk/fesm2015/coercion.js");
+/* harmony import */ var _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/cdk/keycodes */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/keycodes.js");
+/* harmony import */ var _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/cdk/scrolling */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/scrolling.js");
+/* harmony import */ var _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/cdk/platform */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/platform.js");
+/* harmony import */ var _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/cdk/observers */ "./node_modules/@angular/cdk/__ivy_ngcc__/fesm2015/observers.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/**
+ * @license
+ * Copyright Google LLC All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Injection token for the MatInkBar's Positioner.
+ */
+
+
+
+
+
+
+
+
+
+function MatTab_ng_template_0_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](0);
+} }
+const _c0 = ["*"];
+function MatTabBody_ng_template_2_Template(rf, ctx) { }
+const _c1 = ["tabListContainer"];
+const _c2 = ["tabList"];
+const _c3 = ["tabBodyWrapper"];
+const _c4 = ["tabHeader"];
+function MatTabGroup_div_2_ng_template_2_ng_template_0_Template(rf, ctx) { }
+function MatTabGroup_div_2_ng_template_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MatTabGroup_div_2_ng_template_2_ng_template_0_Template, 0, 0, "ng-template", 9);
+} if (rf & 2) {
+    const tab_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("cdkPortalOutlet", tab_r33.templateLabel);
+} }
+function MatTabGroup_div_2_ng_template_3_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](0);
+} if (rf & 2) {
+    const tab_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](tab_r33.textLabel);
+} }
+function MatTabGroup_div_2_Template(rf, ctx) { if (rf & 1) {
+    const _r41 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 6);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MatTabGroup_div_2_Template_div_click_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r41); const tab_r33 = ctx.$implicit; const i_r34 = ctx.index; const ctx_r40 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); const _r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](1); return ctx_r40._handleClick(tab_r33, _r29, i_r34); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 7);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, MatTabGroup_div_2_ng_template_2_Template, 1, 1, "ng-template", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, MatTabGroup_div_2_ng_template_3_Template, 1, 1, "ng-template", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const tab_r33 = ctx.$implicit;
+    const i_r34 = ctx.index;
+    const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-label-active", ctx_r30.selectedIndex == i_r34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("id", ctx_r30._getTabLabelId(i_r34))("disabled", tab_r33.disabled)("matRippleDisabled", tab_r33.disabled || ctx_r30.disableRipple);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("tabIndex", ctx_r30._getTabIndex(tab_r33, i_r34))("aria-controls", ctx_r30._getTabContentId(i_r34))("aria-selected", ctx_r30.selectedIndex == i_r34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", tab_r33.templateLabel);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !tab_r33.templateLabel);
+} }
+function MatTabGroup_mat_tab_body_5_Template(rf, ctx) { if (rf & 1) {
+    const _r45 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-tab-body", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("_onCentered", function MatTabGroup_mat_tab_body_5_Template_mat_tab_body__onCentered_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r45); const ctx_r44 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r44._removeTabBodyWrapperHeight(); })("_onCentering", function MatTabGroup_mat_tab_body_5_Template_mat_tab_body__onCentering_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r45); const ctx_r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r46._setTabBodyWrapperHeight($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const tab_r42 = ctx.$implicit;
+    const i_r43 = ctx.index;
+    const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-body-active", ctx_r32.selectedIndex == i_r43);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("id", ctx_r32._getTabContentId(i_r43))("content", tab_r42.content)("position", tab_r42.position)("origin", tab_r42.origin);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("aria-labelledby", ctx_r32._getTabLabelId(i_r43));
+} }
+const _c5 = ["mat-tab-nav-bar", ""];
+const /** @type {?} */ _MAT_INK_BAR_POSITIONER = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionToken"]('MatInkBarPositioner', {
+    providedIn: 'root',
+    factory: _MAT_INK_BAR_POSITIONER_FACTORY
+});
+/**
+ * The default positioner function for the MatInkBar.
+ * \@docs-private
+ * @return {?}
+ */
+function _MAT_INK_BAR_POSITIONER_FACTORY() {
+    const /** @type {?} */ method = (element) => ({
+        left: element ? (element.offsetLeft || 0) + 'px' : '0',
+        width: element ? (element.offsetWidth || 0) + 'px' : '0',
+    });
+    return method;
+}
+/**
+ * The ink-bar is used to display and animate the line underneath the current active tab label.
+ * \@docs-private
+ */
+class MatInkBar {
+    /**
+     * @param {?} _elementRef
+     * @param {?} _ngZone
+     * @param {?} _inkBarPositioner
+     */
+    constructor(_elementRef, _ngZone, _inkBarPositioner) {
+        this._elementRef = _elementRef;
+        this._ngZone = _ngZone;
+        this._inkBarPositioner = _inkBarPositioner;
+    }
+    /**
+     * Calculates the styles from the provided element in order to align the ink-bar to that element.
+     * Shows the ink bar if previously set as hidden.
+     * @param {?} element
+     * @return {?}
+     */
+    alignToElement(element) {
+        this.show();
+        if (typeof requestAnimationFrame !== 'undefined') {
+            this._ngZone.runOutsideAngular(() => {
+                requestAnimationFrame(() => this._setStyles(element));
+            });
+        }
+        else {
+            this._setStyles(element);
+        }
+    }
+    /**
+     * Shows the ink bar.
+     * @return {?}
+     */
+    show() {
+        this._elementRef.nativeElement.style.visibility = 'visible';
+    }
+    /**
+     * Hides the ink bar.
+     * @return {?}
+     */
+    hide() {
+        this._elementRef.nativeElement.style.visibility = 'hidden';
+    }
+    /**
+     * Sets the proper styles to the ink bar element.
+     * @param {?} element
+     * @return {?}
+     */
+    _setStyles(element) {
+        const /** @type {?} */ positions = this._inkBarPositioner(element);
+        const /** @type {?} */ inkBar = this._elementRef.nativeElement;
+        inkBar.style.left = positions.left;
+        inkBar.style.width = positions.width;
+    }
+}
+MatInkBar.ɵfac = function MatInkBar_Factory(t) { return new (t || MatInkBar)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_MAT_INK_BAR_POSITIONER)); };
+MatInkBar.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatInkBar, selectors: [["mat-ink-bar"]], hostAttrs: [1, "mat-ink-bar"] });
+/** @nocollapse */
+MatInkBar.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_MAT_INK_BAR_POSITIONER,] },] },
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatInkBar, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: 'mat-ink-bar',
+                host: {
+                    'class': 'mat-ink-bar'
+                }
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [_MAT_INK_BAR_POSITIONER]
+            }] }]; }, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Used to flag tab labels for use with the portal directive
+ */
+class MatTabLabel extends _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["CdkPortal"] {
+    /**
+     * @param {?} templateRef
+     * @param {?} viewContainerRef
+     */
+    constructor(templateRef, viewContainerRef) {
+        super(templateRef, viewContainerRef);
+    }
+}
+MatTabLabel.ɵfac = function MatTabLabel_Factory(t) { return new (t || MatTabLabel)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"])); };
+MatTabLabel.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatTabLabel, selectors: [["", "mat-tab-label", ""], ["", "matTabLabel", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+/** @nocollapse */
+MatTabLabel.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"], },
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabLabel, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[mat-tab-label], [matTabLabel]'
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }]; }, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Decorates the `ng-template` tags and reads out the template from it.
+ */
+class MatTabContent {
+    /**
+     * @param {?} template
+     */
+    constructor(template) {
+        this.template = template;
+    }
+}
+MatTabContent.ɵfac = function MatTabContent_Factory(t) { return new (t || MatTabContent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"])); };
+MatTabContent.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatTabContent, selectors: [["", "matTabContent", ""]] });
+/** @nocollapse */
+MatTabContent.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"], },
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabContent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{ selector: '[matTabContent]' }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }]; }, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * \@docs-private
+ */
+class MatTabBase {
+}
+const /** @type {?} */ _MatTabMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisabled"])(MatTabBase);
+class MatTab extends _MatTabMixinBase {
+    /**
+     * @param {?} _viewContainerRef
+     */
+    constructor(_viewContainerRef) {
+        super();
+        this._viewContainerRef = _viewContainerRef;
+        /**
+         * The plain text label for the tab, used when there is no template label.
+         */
+        this.textLabel = '';
+        /**
+         * The portal that will be the hosted content of the tab
+         */
+        this._contentPortal = null;
+        /**
+         * Emits whenever the label changes.
+         */
+        this._labelChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        /**
+         * Emits whenever the disable changes
+         */
+        this._disableChange = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        /**
+         * The relatively indexed position where 0 represents the center, negative is left, and positive
+         * represents the right.
+         */
+        this.position = null;
+        /**
+         * The initial relatively index origin of the tab if it was created and selected after there
+         * was already a selected tab. Provides context of what position the tab should originate from.
+         */
+        this.origin = null;
+        /**
+         * Whether the tab is currently active.
+         */
+        this.isActive = false;
+    }
+    /**
+     * \@docs-private
+     * @return {?}
+     */
+    get content() {
+        return this._contentPortal;
+    }
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ngOnChanges(changes) {
+        if (changes.hasOwnProperty('textLabel')) {
+            this._labelChange.next();
+        }
+        if (changes.hasOwnProperty('disabled')) {
+            this._disableChange.next();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._disableChange.complete();
+        this._labelChange.complete();
+    }
+    /**
+     * @return {?}
+     */
+    ngOnInit() {
+        this._contentPortal = new _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["TemplatePortal"](this._explicitContent || this._implicitContent, this._viewContainerRef);
+    }
+}
+MatTab.ɵfac = function MatTab_Factory(t) { return new (t || MatTab)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"])); };
+MatTab.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatTab, selectors: [["mat-tab"]], contentQueries: function MatTab_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, MatTabLabel, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, MatTabContent, true, _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.templateLabel = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._explicitContent = _t.first);
+    } }, viewQuery: function MatTab_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"], true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._implicitContent = _t.first);
+    } }, inputs: { disabled: "disabled", textLabel: ["label", "textLabel"] }, exportAs: ["matTab"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"], _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵNgOnChangesFeature"]()], ngContentSelectors: _c0, decls: 1, vars: 0, template: function MatTab_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, MatTab_ng_template_0_Template, 1, 0, "ng-template");
+    } }, encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+MatTab.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"], },
+];
+MatTab.propDecorators = {
+    "templateLabel": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"], args: [MatTabLabel,] },],
+    "_explicitContent": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"], args: [MatTabContent, { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] },] },],
+    "_implicitContent": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"],] },],
+    "textLabel": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['label',] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTab, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{ selector: 'mat-tab',
+                template: "<ng-template><ng-content></ng-content></ng-template>",
+                inputs: ['disabled'],
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+                exportAs: 'matTab'
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }]; }, { textLabel: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+            args: ['label']
+        }], templateLabel: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"],
+            args: [MatTabLabel]
+        }], _explicitContent: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChild"],
+            args: [MatTabContent, { read: _angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"] }]
+        }], _implicitContent: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["TemplateRef"]]
+        }] }); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Animations used by the Material tabs.
+ */
+const /** @type {?} */ matTabsAnimations = {
+    /** Animation translates a tab along the X axis. */
+    translateTab: Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["trigger"])('translateTab', [
+        // Note: transitions to `none` instead of 0, because some browsers might blur the content.
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('center, void, left-origin-center, right-origin-center', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ transform: 'none' })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('left', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ transform: 'translate3d(-100%, 0, 0)' })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["state"])('right', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ transform: 'translate3d(100%, 0, 0)' })),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('* => left, * => right, left => center, right => center', Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms cubic-bezier(0.35, 0, 0.25, 1)')),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('void => left-origin-center', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ transform: 'translate3d(-100%, 0, 0)' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms cubic-bezier(0.35, 0, 0.25, 1)')
+        ]),
+        Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["transition"])('void => right-origin-center', [
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["style"])({ transform: 'translate3d(100%, 0, 0)' }),
+            Object(_angular_animations__WEBPACK_IMPORTED_MODULE_4__["animate"])('500ms cubic-bezier(0.35, 0, 0.25, 1)')
+        ])
+    ])
+};
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * The portal host directive for the contents of the tab.
+ * \@docs-private
+ */
+class MatTabBodyPortal extends _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["CdkPortalOutlet"] {
+    /**
+     * @param {?} componentFactoryResolver
+     * @param {?} viewContainerRef
+     * @param {?} _host
+     */
+    constructor(componentFactoryResolver, viewContainerRef, _host) {
+        super(componentFactoryResolver, viewContainerRef);
+        this._host = _host;
+        /**
+         * Subscription to events for when the tab body begins centering.
+         */
+        this._centeringSub = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
+        /**
+         * Subscription to events for when the tab body finishes leaving from center position.
+         */
+        this._leavingSub = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
+    }
+    /**
+     * Set initial visibility or set up subscription for changing visibility.
+     * @return {?}
+     */
+    ngOnInit() {
+        super.ngOnInit();
+        this._centeringSub = this._host._beforeCentering
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["startWith"])(this._host._isCenterPosition(this._host._position)))
+            .subscribe((isCentering) => {
+            if (isCentering && !this.hasAttached()) {
+                this.attach(this._host._content);
+            }
+        });
+        this._leavingSub = this._host._afterLeavingCenter.subscribe(() => {
+            this.detach();
+        });
+    }
+    /**
+     * Clean up centering subscription.
+     * @return {?}
+     */
+    ngOnDestroy() {
+        super.ngOnDestroy();
+        this._centeringSub.unsubscribe();
+        this._leavingSub.unsubscribe();
+    }
+}
+MatTabBodyPortal.ɵfac = function MatTabBodyPortal_Factory(t) { return new (t || MatTabBodyPortal)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(() => MatTabBody))); };
+MatTabBodyPortal.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatTabBodyPortal, selectors: [["", "matTabBodyHost", ""]], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+/** @nocollapse */
+MatTabBodyPortal.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"], },
+    { type: MatTabBody, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(() => MatTabBody),] },] },
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabBodyPortal, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[matTabBodyHost]'
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ComponentFactoryResolver"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewContainerRef"] }, { type: MatTabBody, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(() => MatTabBody)]
+            }] }]; }, null); })();
+/**
+ * Wrapper for the contents of a tab.
+ * \@docs-private
+ */
+class MatTabBody {
+    /**
+     * @param {?} _elementRef
+     * @param {?} _dir
+     */
+    constructor(_elementRef, _dir) {
+        this._elementRef = _elementRef;
+        this._dir = _dir;
+        /**
+         * Event emitted when the tab begins to animate towards the center as the active tab.
+         */
+        this._onCentering = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted before the centering of the tab begins.
+         */
+        this._beforeCentering = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted before the centering of the tab begins.
+         */
+        this._afterLeavingCenter = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when the tab completes its animation towards the center.
+         */
+        this._onCentered = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](true);
+    }
+    /**
+     * The shifted index position of the tab body, where zero represents the active center tab.
+     * @param {?} position
+     * @return {?}
+     */
+    set position(position) {
+        if (position < 0) {
+            this._position = this._getLayoutDirection() == 'ltr' ? 'left' : 'right';
+        }
+        else if (position > 0) {
+            this._position = this._getLayoutDirection() == 'ltr' ? 'right' : 'left';
+        }
+        else {
+            this._position = 'center';
+        }
+    }
+    /**
+     * The origin position from which this tab should appear when it is centered into view.
+     * @param {?} origin
+     * @return {?}
+     */
+    set origin(origin) {
+        if (origin == null) {
+            return;
+        }
+        const /** @type {?} */ dir = this._getLayoutDirection();
+        if ((dir == 'ltr' && origin <= 0) || (dir == 'rtl' && origin > 0)) {
+            this._origin = 'left';
+        }
+        else {
+            this._origin = 'right';
+        }
+    }
+    /**
+     * After initialized, check if the content is centered and has an origin. If so, set the
+     * special position states that transition the tab from the left or right before centering.
+     * @return {?}
+     */
+    ngOnInit() {
+        if (this._position == 'center' && this._origin) {
+            this._position = this._origin == 'left' ? 'left-origin-center' : 'right-origin-center';
+        }
+    }
+    /**
+     * @param {?} e
+     * @return {?}
+     */
+    _onTranslateTabStarted(e) {
+        const /** @type {?} */ isCentering = this._isCenterPosition(e.toState);
+        this._beforeCentering.emit(isCentering);
+        if (isCentering) {
+            this._onCentering.emit(this._elementRef.nativeElement.clientHeight);
+        }
+    }
+    /**
+     * @param {?} e
+     * @return {?}
+     */
+    _onTranslateTabComplete(e) {
+        // If the transition to the center is complete, emit an event.
+        if (this._isCenterPosition(e.toState) && this._isCenterPosition(this._position)) {
+            this._onCentered.emit();
+        }
+        if (this._isCenterPosition(e.fromState) && !this._isCenterPosition(this._position)) {
+            this._afterLeavingCenter.emit();
+        }
+    }
+    /**
+     * The text direction of the containing app.
+     * @return {?}
+     */
+    _getLayoutDirection() {
+        return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
+    }
+    /**
+     * Whether the provided position state is considered center, regardless of origin.
+     * @param {?} position
+     * @return {?}
+     */
+    _isCenterPosition(position) {
+        return position == 'center' ||
+            position == 'left-origin-center' ||
+            position == 'right-origin-center';
+    }
+}
+MatTabBody.ɵfac = function MatTabBody_Factory(t) { return new (t || MatTabBody)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], 8)); };
+MatTabBody.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatTabBody, selectors: [["mat-tab-body"]], viewQuery: function MatTabBody_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["PortalHostDirective"], true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._portalHost = _t.first);
+    } }, hostAttrs: [1, "mat-tab-body"], inputs: { position: "position", origin: "origin", _content: ["content", "_content"] }, outputs: { _onCentering: "_onCentering", _beforeCentering: "_beforeCentering", _afterLeavingCenter: "_afterLeavingCenter", _onCentered: "_onCentered" }, decls: 3, vars: 1, consts: [[1, "mat-tab-body-content"], ["content", ""], ["matTabBodyHost", ""]], template: function MatTabBody_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("@translateTab.start", function MatTabBody_Template_div_animation_translateTab_start_0_listener($event) { return ctx._onTranslateTabStarted($event); })("@translateTab.done", function MatTabBody_Template_div_animation_translateTab_done_0_listener($event) { return ctx._onTranslateTabComplete($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, MatTabBody_ng_template_2_Template, 0, 0, "ng-template", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("@translateTab", ctx._position);
+    } }, directives: [MatTabBodyPortal], styles: [".mat-tab-body-content{height:100%;overflow:auto}.mat-tab-group-dynamic-height .mat-tab-body-content{overflow:hidden}"], encapsulation: 2, data: { animation: [matTabsAnimations.translateTab] }, changeDetection: 0 });
+/** @nocollapse */
+MatTabBody.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] },] },
+];
+MatTabBody.propDecorators = {
+    "_onCentering": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "_beforeCentering": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "_afterLeavingCenter": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "_onCentered": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "_portalHost": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: [_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["PortalHostDirective"],] },],
+    "_content": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"], args: ['content',] },],
+    "position": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "origin": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabBody, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{ selector: 'mat-tab-body',
+                template: "<div class=\"mat-tab-body-content\" #content [@translateTab]=\"_position\" (@translateTab.start)=\"_onTranslateTabStarted($event)\" (@translateTab.done)=\"_onTranslateTabComplete($event)\"><ng-template matTabBodyHost></ng-template></div>",
+                styles: [".mat-tab-body-content{height:100%;overflow:auto}.mat-tab-group-dynamic-height .mat-tab-body-content{overflow:hidden}"],
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+                animations: [matTabsAnimations.translateTab],
+                host: {
+                    'class': 'mat-tab-body'
+                }
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }] }]; }, { _onCentering: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], _beforeCentering: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], _afterLeavingCenter: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], _onCentered: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], position: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], origin: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], _portalHost: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: [_angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["PortalHostDirective"]]
+        }], _content: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"],
+            args: ['content']
+        }] }); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * \@docs-private
+ */
+class MatTabLabelWrapperBase {
+}
+const /** @type {?} */ _MatTabLabelWrapperMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisabled"])(MatTabLabelWrapperBase);
+/**
+ * Used in the `mat-tab-group` view to display tab labels.
+ * \@docs-private
+ */
+class MatTabLabelWrapper extends _MatTabLabelWrapperMixinBase {
+    /**
+     * @param {?} elementRef
+     */
+    constructor(elementRef) {
+        super();
+        this.elementRef = elementRef;
+    }
+    /**
+     * Sets focus on the wrapper element
+     * @return {?}
+     */
+    focus() {
+        this.elementRef.nativeElement.focus();
+    }
+    /**
+     * @return {?}
+     */
+    getOffsetLeft() {
+        return this.elementRef.nativeElement.offsetLeft;
+    }
+    /**
+     * @return {?}
+     */
+    getOffsetWidth() {
+        return this.elementRef.nativeElement.offsetWidth;
+    }
+}
+MatTabLabelWrapper.ɵfac = function MatTabLabelWrapper_Factory(t) { return new (t || MatTabLabelWrapper)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"])); };
+MatTabLabelWrapper.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatTabLabelWrapper, selectors: [["", "matTabLabelWrapper", ""]], hostVars: 2, hostBindings: function MatTabLabelWrapper_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-disabled", ctx.disabled);
+    } }, inputs: { disabled: "disabled" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+/** @nocollapse */
+MatTabLabelWrapper.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+];
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabLabelWrapper, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[matTabLabelWrapper]',
+                inputs: ['disabled'],
+                host: {
+                    '[class.mat-tab-disabled]': 'disabled'
+                }
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }]; }, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * The distance in pixels that will be overshot when scrolling a tab label into view. This helps
+ * provide a small affordance to the label next to it.
+ */
+const /** @type {?} */ EXAGGERATED_OVERSCROLL = 60;
+/**
+ * \@docs-private
+ */
+class MatTabHeaderBase {
+}
+const /** @type {?} */ _MatTabHeaderMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisableRipple"])(MatTabHeaderBase);
+/**
+ * The header of the tab group which displays a list of all the tabs in the tab group. Includes
+ * an ink bar that follows the currently selected tab. When the tabs list's width exceeds the
+ * width of the header container, then arrows will be displayed to allow the user to scroll
+ * left and right across the header.
+ * \@docs-private
+ */
+class MatTabHeader extends _MatTabHeaderMixinBase {
+    /**
+     * @param {?} _elementRef
+     * @param {?} _changeDetectorRef
+     * @param {?} _viewportRuler
+     * @param {?} _dir
+     */
+    constructor(_elementRef, _changeDetectorRef, _viewportRuler, _dir) {
+        super();
+        this._elementRef = _elementRef;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._viewportRuler = _viewportRuler;
+        this._dir = _dir;
+        /**
+         * The tab index that is focused.
+         */
+        this._focusIndex = 0;
+        /**
+         * The distance in pixels that the tab labels should be translated to the left.
+         */
+        this._scrollDistance = 0;
+        /**
+         * Whether the header should scroll to the selected index after the view has been checked.
+         */
+        this._selectedIndexChanged = false;
+        /**
+         * Combines listeners that will re-align the ink bar whenever they're invoked.
+         */
+        this._realignInkBar = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
+        /**
+         * Whether the controls for pagination should be displayed
+         */
+        this._showPaginationControls = false;
+        /**
+         * Whether the tab list can be scrolled more towards the end of the tab label list.
+         */
+        this._disableScrollAfter = true;
+        /**
+         * Whether the tab list can be scrolled more towards the beginning of the tab label list.
+         */
+        this._disableScrollBefore = true;
+        this._selectedIndex = 0;
+        /**
+         * Event emitted when the option is selected.
+         */
+        this.selectFocusedIndex = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when a label is focused.
+         */
+        this.indexFocused = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+    }
+    /**
+     * The index of the active tab.
+     * @return {?}
+     */
+    get selectedIndex() { return this._selectedIndex; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set selectedIndex(value) {
+        value = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_7__["coerceNumberProperty"])(value);
+        this._selectedIndexChanged = this._selectedIndex != value;
+        this._selectedIndex = value;
+        this._focusIndex = value;
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterContentChecked() {
+        // If the number of tab labels have changed, check if scrolling should be enabled
+        if (this._tabLabelCount != this._labelWrappers.length) {
+            this._updatePagination();
+            this._tabLabelCount = this._labelWrappers.length;
+            this._changeDetectorRef.markForCheck();
+        }
+        // If the selected index has changed, scroll to the label and check if the scrolling controls
+        // should be disabled.
+        if (this._selectedIndexChanged) {
+            this._scrollToLabel(this._selectedIndex);
+            this._checkScrollingControls();
+            this._alignInkBarToSelectedTab();
+            this._selectedIndexChanged = false;
+            this._changeDetectorRef.markForCheck();
+        }
+        // If the scroll distance has been changed (tab selected, focused, scroll controls activated),
+        // then translate the header to reflect this.
+        if (this._scrollDistanceChanged) {
+            this._updateTabScrollPosition();
+            this._scrollDistanceChanged = false;
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+    /**
+     * @param {?} event
+     * @return {?}
+     */
+    _handleKeydown(event) {
+        switch (event.keyCode) {
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["RIGHT_ARROW"]:
+                this._focusNextTab();
+                break;
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["LEFT_ARROW"]:
+                this._focusPreviousTab();
+                break;
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["HOME"]:
+                this._focusFirstTab();
+                event.preventDefault();
+                break;
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["END"]:
+                this._focusLastTab();
+                event.preventDefault();
+                break;
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["ENTER"]:
+            case _angular_cdk_keycodes__WEBPACK_IMPORTED_MODULE_8__["SPACE"]:
+                this.selectFocusedIndex.emit(this.focusIndex);
+                event.preventDefault();
+                break;
+        }
+    }
+    /**
+     * Aligns the ink bar to the selected tab on load.
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        const /** @type {?} */ dirChange = this._dir ? this._dir.change : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null);
+        const /** @type {?} */ resize = this._viewportRuler.change(150);
+        const /** @type {?} */ realign = () => {
+            this._updatePagination();
+            this._alignInkBarToSelectedTab();
+        };
+        // Defer the first call in order to allow for slower browsers to lay out the elements.
+        // This helps in cases where the user lands directly on a page with paginated tabs.
+        typeof requestAnimationFrame !== 'undefined' ? requestAnimationFrame(realign) : realign();
+        this._realignInkBar = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["merge"])(dirChange, resize).subscribe(realign);
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._realignInkBar.unsubscribe();
+    }
+    /**
+     * Callback for when the MutationObserver detects that the content has changed.
+     * @return {?}
+     */
+    _onContentChanges() {
+        this._updatePagination();
+        this._alignInkBarToSelectedTab();
+        this._changeDetectorRef.markForCheck();
+    }
+    /**
+     * Updating the view whether pagination should be enabled or not
+     * @return {?}
+     */
+    _updatePagination() {
+        this._checkPaginationEnabled();
+        this._checkScrollingControls();
+        this._updateTabScrollPosition();
+    }
+    /**
+     * Tracks which element has focus; used for keyboard navigation
+     * @return {?}
+     */
+    get focusIndex() {
+        return this._focusIndex;
+    }
+    /**
+     * When the focus index is set, we must manually send focus to the correct label
+     * @param {?} value
+     * @return {?}
+     */
+    set focusIndex(value) {
+        if (!this._isValidIndex(value) || this._focusIndex == value) {
+            return;
+        }
+        this._focusIndex = value;
+        this.indexFocused.emit(value);
+        this._setTabFocus(value);
+    }
+    /**
+     * Determines if an index is valid.  If the tabs are not ready yet, we assume that the user is
+     * providing a valid index and return true.
+     * @param {?} index
+     * @return {?}
+     */
+    _isValidIndex(index) {
+        if (!this._labelWrappers) {
+            return true;
+        }
+        const /** @type {?} */ tab = this._labelWrappers ? this._labelWrappers.toArray()[index] : null;
+        return !!tab && !tab.disabled;
+    }
+    /**
+     * Sets focus on the HTML element for the label wrapper and scrolls it into the view if
+     * scrolling is enabled.
+     * @param {?} tabIndex
+     * @return {?}
+     */
+    _setTabFocus(tabIndex) {
+        if (this._showPaginationControls) {
+            this._scrollToLabel(tabIndex);
+        }
+        if (this._labelWrappers && this._labelWrappers.length) {
+            this._labelWrappers.toArray()[tabIndex].focus();
+            // Do not let the browser manage scrolling to focus the element, this will be handled
+            // by using translation. In LTR, the scroll left should be 0. In RTL, the scroll width
+            // should be the full width minus the offset width.
+            const /** @type {?} */ containerEl = this._tabListContainer.nativeElement;
+            const /** @type {?} */ dir = this._getLayoutDirection();
+            if (dir == 'ltr') {
+                containerEl.scrollLeft = 0;
+            }
+            else {
+                containerEl.scrollLeft = containerEl.scrollWidth - containerEl.offsetWidth;
+            }
+        }
+    }
+    /**
+     * Moves the focus towards the beginning or the end of the list depending on the offset provided.
+     * Valid offsets are 1 and -1.
+     * @param {?} offset
+     * @return {?}
+     */
+    _moveFocus(offset) {
+        if (this._labelWrappers) {
+            const /** @type {?} */ tabs = this._labelWrappers.toArray();
+            for (let /** @type {?} */ i = this.focusIndex + offset; i < tabs.length && i >= 0; i += offset) {
+                if (this._isValidIndex(i)) {
+                    this.focusIndex = i;
+                    return;
+                }
+            }
+        }
+    }
+    /**
+     * Increment the focus index by 1 until a valid tab is found.
+     * @return {?}
+     */
+    _focusNextTab() {
+        this._moveFocus(this._getLayoutDirection() == 'ltr' ? 1 : -1);
+    }
+    /**
+     * Decrement the focus index by 1 until a valid tab is found.
+     * @return {?}
+     */
+    _focusPreviousTab() {
+        this._moveFocus(this._getLayoutDirection() == 'ltr' ? -1 : 1);
+    }
+    /**
+     * Focuses the first tab.
+     * @return {?}
+     */
+    _focusFirstTab() {
+        for (let /** @type {?} */ i = 0; i < this._labelWrappers.length; i++) {
+            if (this._isValidIndex(i)) {
+                this.focusIndex = i;
+                break;
+            }
+        }
+    }
+    /**
+     * Focuses the last tab.
+     * @return {?}
+     */
+    _focusLastTab() {
+        for (let /** @type {?} */ i = this._labelWrappers.length - 1; i > -1; i--) {
+            if (this._isValidIndex(i)) {
+                this.focusIndex = i;
+                break;
+            }
+        }
+    }
+    /**
+     * The layout direction of the containing app.
+     * @return {?}
+     */
+    _getLayoutDirection() {
+        return this._dir && this._dir.value === 'rtl' ? 'rtl' : 'ltr';
+    }
+    /**
+     * Performs the CSS transformation on the tab list that will cause the list to scroll.
+     * @return {?}
+     */
+    _updateTabScrollPosition() {
+        const /** @type {?} */ scrollDistance = this.scrollDistance;
+        const /** @type {?} */ translateX = this._getLayoutDirection() === 'ltr' ? -scrollDistance : scrollDistance;
+        this._tabList.nativeElement.style.transform = `translate3d(${translateX}px, 0, 0)`;
+    }
+    /**
+     * Sets the distance in pixels that the tab header should be transformed in the X-axis.
+     * @return {?}
+     */
+    get scrollDistance() { return this._scrollDistance; }
+    /**
+     * @param {?} v
+     * @return {?}
+     */
+    set scrollDistance(v) {
+        this._scrollDistance = Math.max(0, Math.min(this._getMaxScrollDistance(), v));
+        // Mark that the scroll distance has changed so that after the view is checked, the CSS
+        // transformation can move the header.
+        this._scrollDistanceChanged = true;
+        this._checkScrollingControls();
+    }
+    /**
+     * Moves the tab list in the 'before' or 'after' direction (towards the beginning of the list or
+     * the end of the list, respectively). The distance to scroll is computed to be a third of the
+     * length of the tab list view window.
+     *
+     * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+     * should be called sparingly.
+     * @param {?} scrollDir
+     * @return {?}
+     */
+    _scrollHeader(scrollDir) {
+        const /** @type {?} */ viewLength = this._tabListContainer.nativeElement.offsetWidth;
+        // Move the scroll distance one-third the length of the tab list's viewport.
+        this.scrollDistance += (scrollDir == 'before' ? -1 : 1) * viewLength / 3;
+    }
+    /**
+     * Moves the tab list such that the desired tab label (marked by index) is moved into view.
+     *
+     * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+     * should be called sparingly.
+     * @param {?} labelIndex
+     * @return {?}
+     */
+    _scrollToLabel(labelIndex) {
+        const /** @type {?} */ selectedLabel = this._labelWrappers ? this._labelWrappers.toArray()[labelIndex] : null;
+        if (!selectedLabel) {
+            return;
+        }
+        // The view length is the visible width of the tab labels.
+        const /** @type {?} */ viewLength = this._tabListContainer.nativeElement.offsetWidth;
+        let /** @type {?} */ labelBeforePos, /** @type {?} */ labelAfterPos;
+        if (this._getLayoutDirection() == 'ltr') {
+            labelBeforePos = selectedLabel.getOffsetLeft();
+            labelAfterPos = labelBeforePos + selectedLabel.getOffsetWidth();
+        }
+        else {
+            labelAfterPos = this._tabList.nativeElement.offsetWidth - selectedLabel.getOffsetLeft();
+            labelBeforePos = labelAfterPos - selectedLabel.getOffsetWidth();
+        }
+        const /** @type {?} */ beforeVisiblePos = this.scrollDistance;
+        const /** @type {?} */ afterVisiblePos = this.scrollDistance + viewLength;
+        if (labelBeforePos < beforeVisiblePos) {
+            // Scroll header to move label to the before direction
+            this.scrollDistance -= beforeVisiblePos - labelBeforePos + EXAGGERATED_OVERSCROLL;
+        }
+        else if (labelAfterPos > afterVisiblePos) {
+            // Scroll header to move label to the after direction
+            this.scrollDistance += labelAfterPos - afterVisiblePos + EXAGGERATED_OVERSCROLL;
+        }
+    }
+    /**
+     * Evaluate whether the pagination controls should be displayed. If the scroll width of the
+     * tab list is wider than the size of the header container, then the pagination controls should
+     * be shown.
+     *
+     * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+     * should be called sparingly.
+     * @return {?}
+     */
+    _checkPaginationEnabled() {
+        const /** @type {?} */ isEnabled = this._tabList.nativeElement.scrollWidth > this._elementRef.nativeElement.offsetWidth;
+        if (!isEnabled) {
+            this.scrollDistance = 0;
+        }
+        if (isEnabled !== this._showPaginationControls) {
+            this._changeDetectorRef.markForCheck();
+        }
+        this._showPaginationControls = isEnabled;
+    }
+    /**
+     * Evaluate whether the before and after controls should be enabled or disabled.
+     * If the header is at the beginning of the list (scroll distance is equal to 0) then disable the
+     * before button. If the header is at the end of the list (scroll distance is equal to the
+     * maximum distance we can scroll), then disable the after button.
+     *
+     * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+     * should be called sparingly.
+     * @return {?}
+     */
+    _checkScrollingControls() {
+        // Check if the pagination arrows should be activated.
+        this._disableScrollBefore = this.scrollDistance == 0;
+        this._disableScrollAfter = this.scrollDistance == this._getMaxScrollDistance();
+        this._changeDetectorRef.markForCheck();
+    }
+    /**
+     * Determines what is the maximum length in pixels that can be set for the scroll distance. This
+     * is equal to the difference in width between the tab list container and tab header container.
+     *
+     * This is an expensive call that forces a layout reflow to compute box and scroll metrics and
+     * should be called sparingly.
+     * @return {?}
+     */
+    _getMaxScrollDistance() {
+        const /** @type {?} */ lengthOfTabList = this._tabList.nativeElement.scrollWidth;
+        const /** @type {?} */ viewLength = this._tabListContainer.nativeElement.offsetWidth;
+        return (lengthOfTabList - viewLength) || 0;
+    }
+    /**
+     * Tells the ink-bar to align itself to the current label wrapper
+     * @return {?}
+     */
+    _alignInkBarToSelectedTab() {
+        const /** @type {?} */ selectedLabelWrapper = this._labelWrappers && this._labelWrappers.length ?
+            this._labelWrappers.toArray()[this.selectedIndex].elementRef.nativeElement :
+            null;
+        this._inkBar.alignToElement(selectedLabelWrapper);
+    }
+}
+MatTabHeader.ɵfac = function MatTabHeader_Factory(t) { return new (t || MatTabHeader)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], 8)); };
+MatTabHeader.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatTabHeader, selectors: [["mat-tab-header"]], contentQueries: function MatTabHeader_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, MatTabLabelWrapper, false);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._labelWrappers = _t);
+    } }, viewQuery: function MatTabHeader_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](MatInkBar, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c1, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c2, true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._inkBar = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._tabListContainer = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._tabList = _t.first);
+    } }, hostAttrs: [1, "mat-tab-header"], hostVars: 4, hostBindings: function MatTabHeader_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-header-pagination-controls-enabled", ctx._showPaginationControls)("mat-tab-header-rtl", ctx._getLayoutDirection() == "rtl");
+    } }, inputs: { disableRipple: "disableRipple", selectedIndex: "selectedIndex" }, outputs: { selectFocusedIndex: "selectFocusedIndex", indexFocused: "indexFocused" }, features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], ngContentSelectors: _c0, decls: 11, vars: 6, consts: [["aria-hidden", "true", "mat-ripple", "", 1, "mat-tab-header-pagination", "mat-tab-header-pagination-before", "mat-elevation-z4", 3, "matRippleDisabled", "click"], [1, "mat-tab-header-pagination-chevron"], [1, "mat-tab-label-container", 3, "keydown"], ["tabListContainer", ""], ["role", "tablist", 1, "mat-tab-list", 3, "cdkObserveContent"], ["tabList", ""], [1, "mat-tab-labels"], ["aria-hidden", "true", "mat-ripple", "", 1, "mat-tab-header-pagination", "mat-tab-header-pagination-after", "mat-elevation-z4", 3, "matRippleDisabled", "click"]], template: function MatTabHeader_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MatTabHeader_Template_div_click_0_listener($event) { return ctx._scrollHeader("before"); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2, 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("keydown", function MatTabHeader_Template_div_keydown_2_listener($event) { return ctx._handleKeydown($event); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 4, 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("cdkObserveContent", function MatTabHeader_Template_div_cdkObserveContent_4_listener($event) { return ctx._onContentChanges(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "mat-ink-bar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MatTabHeader_Template_div_click_9_listener($event) { return ctx._scrollHeader("after"); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-header-pagination-disabled", ctx._disableScrollBefore);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matRippleDisabled", ctx._disableScrollBefore || ctx.disableRipple);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-header-pagination-disabled", ctx._disableScrollAfter);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matRippleDisabled", ctx._disableScrollAfter || ctx.disableRipple);
+    } }, directives: [_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatRipple"], _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_11__["CdkObserveContent"], MatInkBar], styles: [".mat-tab-header{display:flex;overflow:hidden;position:relative;flex-shrink:0}.mat-tab-label{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;position:relative}.mat-tab-label:focus{outline:0}.mat-tab-label:focus:not(.mat-tab-disabled){opacity:1}.mat-tab-label.mat-tab-disabled{cursor:default}.mat-tab-label .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}@media (max-width:599px){.mat-tab-label{min-width:72px}}.mat-ink-bar{position:absolute;bottom:0;height:2px;transition:.5s cubic-bezier(.35,0,.25,1)}.mat-tab-group-inverted-header .mat-ink-bar{bottom:auto;top:0}@media screen and (-ms-high-contrast:active){.mat-ink-bar{outline:solid 2px;height:0}}.mat-tab-header-pagination{position:relative;display:none;justify-content:center;align-items:center;min-width:32px;cursor:pointer;z-index:2}.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{display:flex}.mat-tab-header-pagination-before,.mat-tab-header-rtl .mat-tab-header-pagination-after{padding-left:4px}.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-after .mat-tab-header-pagination-chevron{transform:rotate(-135deg)}.mat-tab-header-pagination-after,.mat-tab-header-rtl .mat-tab-header-pagination-before{padding-right:4px}.mat-tab-header-pagination-after .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-before .mat-tab-header-pagination-chevron{transform:rotate(45deg)}.mat-tab-header-pagination-chevron{border-style:solid;border-width:2px 2px 0 0;content:'';height:8px;width:8px}.mat-tab-header-pagination-disabled{box-shadow:none;cursor:default}.mat-tab-label-container{display:flex;flex-grow:1;overflow:hidden;z-index:1}.mat-tab-list{flex-grow:1;position:relative;transition:transform .5s cubic-bezier(.35,0,.25,1)}.mat-tab-labels{display:flex}"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+MatTabHeader.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"], },
+    { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"], },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] },] },
+];
+MatTabHeader.propDecorators = {
+    "_labelWrappers": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"], args: [MatTabLabelWrapper,] },],
+    "_inkBar": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: [MatInkBar,] },],
+    "_tabListContainer": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: ['tabListContainer',] },],
+    "_tabList": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: ['tabList',] },],
+    "selectedIndex": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "selectFocusedIndex": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "indexFocused": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabHeader, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{ selector: 'mat-tab-header',
+                template: "<div class=\"mat-tab-header-pagination mat-tab-header-pagination-before mat-elevation-z4\" aria-hidden=\"true\" mat-ripple [matRippleDisabled]=\"_disableScrollBefore || disableRipple\" [class.mat-tab-header-pagination-disabled]=\"_disableScrollBefore\" (click)=\"_scrollHeader('before')\"><div class=\"mat-tab-header-pagination-chevron\"></div></div><div class=\"mat-tab-label-container\" #tabListContainer (keydown)=\"_handleKeydown($event)\"><div class=\"mat-tab-list\" #tabList role=\"tablist\" (cdkObserveContent)=\"_onContentChanges()\"><div class=\"mat-tab-labels\"><ng-content></ng-content></div><mat-ink-bar></mat-ink-bar></div></div><div class=\"mat-tab-header-pagination mat-tab-header-pagination-after mat-elevation-z4\" aria-hidden=\"true\" mat-ripple [matRippleDisabled]=\"_disableScrollAfter || disableRipple\" [class.mat-tab-header-pagination-disabled]=\"_disableScrollAfter\" (click)=\"_scrollHeader('after')\"><div class=\"mat-tab-header-pagination-chevron\"></div></div>",
+                styles: [".mat-tab-header{display:flex;overflow:hidden;position:relative;flex-shrink:0}.mat-tab-label{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;position:relative}.mat-tab-label:focus{outline:0}.mat-tab-label:focus:not(.mat-tab-disabled){opacity:1}.mat-tab-label.mat-tab-disabled{cursor:default}.mat-tab-label .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}@media (max-width:599px){.mat-tab-label{min-width:72px}}.mat-ink-bar{position:absolute;bottom:0;height:2px;transition:.5s cubic-bezier(.35,0,.25,1)}.mat-tab-group-inverted-header .mat-ink-bar{bottom:auto;top:0}@media screen and (-ms-high-contrast:active){.mat-ink-bar{outline:solid 2px;height:0}}.mat-tab-header-pagination{position:relative;display:none;justify-content:center;align-items:center;min-width:32px;cursor:pointer;z-index:2}.mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination{display:flex}.mat-tab-header-pagination-before,.mat-tab-header-rtl .mat-tab-header-pagination-after{padding-left:4px}.mat-tab-header-pagination-before .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-after .mat-tab-header-pagination-chevron{transform:rotate(-135deg)}.mat-tab-header-pagination-after,.mat-tab-header-rtl .mat-tab-header-pagination-before{padding-right:4px}.mat-tab-header-pagination-after .mat-tab-header-pagination-chevron,.mat-tab-header-rtl .mat-tab-header-pagination-before .mat-tab-header-pagination-chevron{transform:rotate(45deg)}.mat-tab-header-pagination-chevron{border-style:solid;border-width:2px 2px 0 0;content:'';height:8px;width:8px}.mat-tab-header-pagination-disabled{box-shadow:none;cursor:default}.mat-tab-label-container{display:flex;flex-grow:1;overflow:hidden;z-index:1}.mat-tab-list{flex-grow:1;position:relative;transition:transform .5s cubic-bezier(.35,0,.25,1)}.mat-tab-labels{display:flex}"],
+                inputs: ['disableRipple'],
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+                host: {
+                    'class': 'mat-tab-header',
+                    '[class.mat-tab-header-pagination-controls-enabled]': '_showPaginationControls',
+                    '[class.mat-tab-header-rtl]': "_getLayoutDirection() == 'rtl'"
+                }
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }, { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }] }]; }, { selectFocusedIndex: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], indexFocused: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], selectedIndex: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], _labelWrappers: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+            args: [MatTabLabelWrapper]
+        }], _inkBar: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: [MatInkBar]
+        }], _tabListContainer: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['tabListContainer']
+        }], _tabList: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['tabList']
+        }] }); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Used to generate unique ID's for each tab component
+ */
+let /** @type {?} */ nextId = 0;
+/**
+ * A simple change event emitted on focus or selection changes.
+ */
+class MatTabChangeEvent {
+}
+/**
+ * \@docs-private
+ */
+class MatTabGroupBase {
+    /**
+     * @param {?} _elementRef
+     */
+    constructor(_elementRef) {
+        this._elementRef = _elementRef;
+    }
+}
+const /** @type {?} */ _MatTabGroupMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinColor"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisableRipple"])(MatTabGroupBase), 'primary');
+/**
+ * Material design tab-group component.  Supports basic tab pairs (label + content) and includes
+ * animated ink-bar, keyboard navigation, and screen reader.
+ * See: https://material.io/design/components/tabs.html
+ */
+class MatTabGroup extends _MatTabGroupMixinBase {
+    /**
+     * @param {?} elementRef
+     * @param {?} _changeDetectorRef
+     */
+    constructor(elementRef, _changeDetectorRef) {
+        super(elementRef);
+        this._changeDetectorRef = _changeDetectorRef;
+        /**
+         * The tab index that should be selected after the content has been checked.
+         */
+        this._indexToSelect = 0;
+        /**
+         * Snapshot of the height of the tab body wrapper before another tab is activated.
+         */
+        this._tabBodyWrapperHeight = 0;
+        /**
+         * Subscription to tabs being added/removed.
+         */
+        this._tabsSubscription = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
+        /**
+         * Subscription to changes in the tab labels.
+         */
+        this._tabLabelSubscription = rxjs__WEBPACK_IMPORTED_MODULE_3__["Subscription"].EMPTY;
+        this._dynamicHeight = false;
+        this._selectedIndex = null;
+        /**
+         * Position of the tab header.
+         */
+        this.headerPosition = 'above';
+        /**
+         * Output to enable support for two-way binding on `[(selectedIndex)]`
+         */
+        this.selectedIndexChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when focus has changed within a tab group.
+         */
+        this.focusChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when the body animation has completed
+         */
+        this.animationDone = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]();
+        /**
+         * Event emitted when the tab selection has changed.
+         */
+        this.selectedTabChange = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"](true);
+        this._groupId = nextId++;
+    }
+    /**
+     * Whether the tab group should grow to the size of the active tab.
+     * @return {?}
+     */
+    get dynamicHeight() { return this._dynamicHeight; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set dynamicHeight(value) { this._dynamicHeight = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_7__["coerceBooleanProperty"])(value); }
+    /**
+     * The index of the active tab.
+     * @return {?}
+     */
+    get selectedIndex() { return this._selectedIndex; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set selectedIndex(value) {
+        this._indexToSelect = Object(_angular_cdk_coercion__WEBPACK_IMPORTED_MODULE_7__["coerceNumberProperty"])(value, null);
+    }
+    /**
+     * Background color of the tab group.
+     * @return {?}
+     */
+    get backgroundColor() { return this._backgroundColor; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set backgroundColor(value) {
+        const /** @type {?} */ nativeElement = this._elementRef.nativeElement;
+        nativeElement.classList.remove(`mat-background-${this.backgroundColor}`);
+        if (value) {
+            nativeElement.classList.add(`mat-background-${value}`);
+        }
+        this._backgroundColor = value;
+    }
+    /**
+     * After the content is checked, this component knows what tabs have been defined
+     * and what the selected index should be. This is where we can know exactly what position
+     * each tab should be in according to the new selected index, and additionally we know how
+     * a new selected tab should transition in (from the left or right).
+     * @return {?}
+     */
+    ngAfterContentChecked() {
+        // Clamp the next selected index to the boundsof 0 and the tabs length.
+        // Note the `|| 0`, which ensures that values like NaN can't get through
+        // and which would otherwise throw the component into an infinite loop
+        // (since Math.max(NaN, 0) === NaN).
+        let /** @type {?} */ indexToSelect = this._indexToSelect =
+            Math.min(this._tabs.length - 1, Math.max(this._indexToSelect || 0, 0));
+        // If there is a change in selected index, emit a change event. Should not trigger if
+        // the selected index has not yet been initialized.
+        if (this._selectedIndex != indexToSelect && this._selectedIndex != null) {
+            const /** @type {?} */ tabChangeEvent = this._createChangeEvent(indexToSelect);
+            this.selectedTabChange.emit(tabChangeEvent);
+            // Emitting this value after change detection has run
+            // since the checked content may contain this variable'
+            Promise.resolve().then(() => this.selectedIndexChange.emit(indexToSelect));
+        }
+        // Setup the position for each tab and optionally setup an origin on the next selected tab.
+        this._tabs.forEach((tab, index) => {
+            tab.position = index - indexToSelect;
+            tab.isActive = index === indexToSelect;
+            // If there is already a selected tab, then set up an origin for the next selected tab
+            // if it doesn't have one already.
+            if (this._selectedIndex != null && tab.position == 0 && !tab.origin) {
+                tab.origin = indexToSelect - this._selectedIndex;
+            }
+        });
+        if (this._selectedIndex !== indexToSelect) {
+            this._selectedIndex = indexToSelect;
+            this._changeDetectorRef.markForCheck();
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        this._subscribeToTabLabels();
+        // Subscribe to changes in the amount of tabs, in order to be
+        // able to re-render the content as new tabs are added or removed.
+        this._tabsSubscription = this._tabs.changes.subscribe(() => {
+            this._subscribeToTabLabels();
+            this._changeDetectorRef.markForCheck();
+        });
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._tabsSubscription.unsubscribe();
+        this._tabLabelSubscription.unsubscribe();
+    }
+    /**
+     * Re-aligns the ink bar to the selected tab element.
+     * @return {?}
+     */
+    realignInkBar() {
+        if (this._tabHeader) {
+            this._tabHeader._alignInkBarToSelectedTab();
+        }
+    }
+    /**
+     * @param {?} index
+     * @return {?}
+     */
+    _focusChanged(index) {
+        this.focusChange.emit(this._createChangeEvent(index));
+    }
+    /**
+     * @param {?} index
+     * @return {?}
+     */
+    _createChangeEvent(index) {
+        const /** @type {?} */ event = new MatTabChangeEvent;
+        event.index = index;
+        if (this._tabs && this._tabs.length) {
+            event.tab = this._tabs.toArray()[index];
+        }
+        return event;
+    }
+    /**
+     * Subscribes to changes in the tab labels. This is needed, because the \@Input for the label is
+     * on the MatTab component, whereas the data binding is inside the MatTabGroup. In order for the
+     * binding to be updated, we need to subscribe to changes in it and trigger change detection
+     * manually.
+     * @return {?}
+     */
+    _subscribeToTabLabels() {
+        if (this._tabLabelSubscription) {
+            this._tabLabelSubscription.unsubscribe();
+        }
+        this._tabLabelSubscription = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["merge"])(...this._tabs.map(tab => tab._disableChange), ...this._tabs.map(tab => tab._labelChange)).subscribe(() => {
+            this._changeDetectorRef.markForCheck();
+        });
+    }
+    /**
+     * Returns a unique id for each tab label element
+     * @param {?} i
+     * @return {?}
+     */
+    _getTabLabelId(i) {
+        return `mat-tab-label-${this._groupId}-${i}`;
+    }
+    /**
+     * Returns a unique id for each tab content element
+     * @param {?} i
+     * @return {?}
+     */
+    _getTabContentId(i) {
+        return `mat-tab-content-${this._groupId}-${i}`;
+    }
+    /**
+     * Sets the height of the body wrapper to the height of the activating tab if dynamic
+     * height property is true.
+     * @param {?} tabHeight
+     * @return {?}
+     */
+    _setTabBodyWrapperHeight(tabHeight) {
+        if (!this._dynamicHeight || !this._tabBodyWrapperHeight) {
+            return;
+        }
+        const /** @type {?} */ wrapper = this._tabBodyWrapper.nativeElement;
+        wrapper.style.height = this._tabBodyWrapperHeight + 'px';
+        // This conditional forces the browser to paint the height so that
+        // the animation to the new height can have an origin.
+        if (this._tabBodyWrapper.nativeElement.offsetHeight) {
+            wrapper.style.height = tabHeight + 'px';
+        }
+    }
+    /**
+     * Removes the height of the tab body wrapper.
+     * @return {?}
+     */
+    _removeTabBodyWrapperHeight() {
+        this._tabBodyWrapperHeight = this._tabBodyWrapper.nativeElement.clientHeight;
+        this._tabBodyWrapper.nativeElement.style.height = '';
+        this.animationDone.emit();
+    }
+    /**
+     * Handle click events, setting new selected index if appropriate.
+     * @param {?} tab
+     * @param {?} tabHeader
+     * @param {?} idx
+     * @return {?}
+     */
+    _handleClick(tab, tabHeader, idx) {
+        if (!tab.disabled) {
+            this.selectedIndex = tabHeader.focusIndex = idx;
+        }
+    }
+    /**
+     * Retrieves the tabindex for the tab.
+     * @param {?} tab
+     * @param {?} idx
+     * @return {?}
+     */
+    _getTabIndex(tab, idx) {
+        if (tab.disabled) {
+            return null;
+        }
+        return this.selectedIndex === idx ? 0 : -1;
+    }
+}
+MatTabGroup.ɵfac = function MatTabGroup_Factory(t) { return new (t || MatTabGroup)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"])); };
+MatTabGroup.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatTabGroup, selectors: [["mat-tab-group"]], contentQueries: function MatTabGroup_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, MatTab, false);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._tabs = _t);
+    } }, viewQuery: function MatTabGroup_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c3, true);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](_c4, true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._tabBodyWrapper = _t.first);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._tabHeader = _t.first);
+    } }, hostAttrs: [1, "mat-tab-group"], hostVars: 4, hostBindings: function MatTabGroup_HostBindings(rf, ctx) { if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-group-dynamic-height", ctx.dynamicHeight)("mat-tab-group-inverted-header", ctx.headerPosition === "below");
+    } }, inputs: { color: "color", disableRipple: "disableRipple", headerPosition: "headerPosition", dynamicHeight: "dynamicHeight", selectedIndex: "selectedIndex", backgroundColor: "backgroundColor" }, outputs: { selectedIndexChange: "selectedIndexChange", focusChange: "focusChange", animationDone: "animationDone", selectedTabChange: "selectedTabChange" }, exportAs: ["matTabGroup"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], decls: 6, vars: 4, consts: [[3, "selectedIndex", "disableRipple", "indexFocused", "selectFocusedIndex"], ["tabHeader", ""], ["class", "mat-tab-label", "role", "tab", "matTabLabelWrapper", "", "mat-ripple", "", 3, "id", "mat-tab-label-active", "disabled", "matRippleDisabled", "click", 4, "ngFor", "ngForOf"], [1, "mat-tab-body-wrapper"], ["tabBodyWrapper", ""], ["role", "tabpanel", 3, "id", "mat-tab-body-active", "content", "position", "origin", "_onCentered", "_onCentering", 4, "ngFor", "ngForOf"], ["role", "tab", "matTabLabelWrapper", "", "mat-ripple", "", 1, "mat-tab-label", 3, "id", "disabled", "matRippleDisabled", "click"], [1, "mat-tab-label-content"], [3, "ngIf"], [3, "cdkPortalOutlet"], ["role", "tabpanel", 3, "id", "content", "position", "origin", "_onCentered", "_onCentering"]], template: function MatTabGroup_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-tab-header", 0, 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("indexFocused", function MatTabGroup_Template_mat_tab_header_indexFocused_0_listener($event) { return ctx._focusChanged($event); })("selectFocusedIndex", function MatTabGroup_Template_mat_tab_header_selectFocusedIndex_0_listener($event) { return ctx.selectedIndex = $event; });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, MatTabGroup_div_2_Template, 4, 10, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3, 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, MatTabGroup_mat_tab_body_5_Template, 1, 7, "mat-tab-body", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("selectedIndex", ctx.selectedIndex)("disableRipple", ctx.disableRipple);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx._tabs);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx._tabs);
+    } }, directives: [MatTabHeader, _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgForOf"], MatTabLabelWrapper, _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatRipple"], _angular_common__WEBPACK_IMPORTED_MODULE_12__["NgIf"], _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["CdkPortalOutlet"], MatTabBody], styles: [".mat-tab-group{display:flex;flex-direction:column}.mat-tab-group.mat-tab-group-inverted-header{flex-direction:column-reverse}.mat-tab-label{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;position:relative}.mat-tab-label:focus{outline:0}.mat-tab-label:focus:not(.mat-tab-disabled){opacity:1}.mat-tab-label.mat-tab-disabled{cursor:default}.mat-tab-label .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}@media (max-width:599px){.mat-tab-label{padding:0 12px}}@media (max-width:959px){.mat-tab-label{padding:0 12px}}.mat-tab-group[mat-stretch-tabs] .mat-tab-label{flex-basis:0;flex-grow:1}.mat-tab-body-wrapper{position:relative;overflow:hidden;display:flex;transition:height .5s cubic-bezier(.35,0,.25,1)}.mat-tab-body{top:0;left:0;right:0;bottom:0;position:absolute;display:block;overflow:hidden;flex-basis:100%}.mat-tab-body.mat-tab-body-active{position:relative;overflow-x:hidden;overflow-y:auto;z-index:1;flex-grow:1}.mat-tab-group.mat-tab-group-dynamic-height .mat-tab-body.mat-tab-body-active{overflow-y:hidden}"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+MatTabGroup.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"], },
+];
+MatTabGroup.propDecorators = {
+    "_tabs": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"], args: [MatTab,] },],
+    "_tabBodyWrapper": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: ['tabBodyWrapper',] },],
+    "_tabHeader": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: ['tabHeader',] },],
+    "dynamicHeight": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "selectedIndex": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "headerPosition": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "backgroundColor": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+    "selectedIndexChange": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "focusChange": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "animationDone": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+    "selectedTabChange": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabGroup, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{ selector: 'mat-tab-group',
+                exportAs: 'matTabGroup',
+                template: "<mat-tab-header #tabHeader [selectedIndex]=\"selectedIndex\" [disableRipple]=\"disableRipple\" (indexFocused)=\"_focusChanged($event)\" (selectFocusedIndex)=\"selectedIndex = $event\"><div class=\"mat-tab-label\" role=\"tab\" matTabLabelWrapper mat-ripple *ngFor=\"let tab of _tabs; let i = index\" [id]=\"_getTabLabelId(i)\" [attr.tabIndex]=\"_getTabIndex(tab, i)\" [attr.aria-controls]=\"_getTabContentId(i)\" [attr.aria-selected]=\"selectedIndex == i\" [class.mat-tab-label-active]=\"selectedIndex == i\" [disabled]=\"tab.disabled\" [matRippleDisabled]=\"tab.disabled || disableRipple\" (click)=\"_handleClick(tab, tabHeader, i)\"><div class=\"mat-tab-label-content\"><ng-template [ngIf]=\"tab.templateLabel\"><ng-template [cdkPortalOutlet]=\"tab.templateLabel\"></ng-template></ng-template><ng-template [ngIf]=\"!tab.templateLabel\">{{tab.textLabel}}</ng-template></div></div></mat-tab-header><div class=\"mat-tab-body-wrapper\" #tabBodyWrapper><mat-tab-body role=\"tabpanel\" *ngFor=\"let tab of _tabs; let i = index\" [id]=\"_getTabContentId(i)\" [attr.aria-labelledby]=\"_getTabLabelId(i)\" [class.mat-tab-body-active]=\"selectedIndex == i\" [content]=\"tab.content\" [position]=\"tab.position\" [origin]=\"tab.origin\" (_onCentered)=\"_removeTabBodyWrapperHeight()\" (_onCentering)=\"_setTabBodyWrapperHeight($event)\"></mat-tab-body></div>",
+                styles: [".mat-tab-group{display:flex;flex-direction:column}.mat-tab-group.mat-tab-group-inverted-header{flex-direction:column-reverse}.mat-tab-label{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;position:relative}.mat-tab-label:focus{outline:0}.mat-tab-label:focus:not(.mat-tab-disabled){opacity:1}.mat-tab-label.mat-tab-disabled{cursor:default}.mat-tab-label .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}@media (max-width:599px){.mat-tab-label{padding:0 12px}}@media (max-width:959px){.mat-tab-label{padding:0 12px}}.mat-tab-group[mat-stretch-tabs] .mat-tab-label{flex-basis:0;flex-grow:1}.mat-tab-body-wrapper{position:relative;overflow:hidden;display:flex;transition:height .5s cubic-bezier(.35,0,.25,1)}.mat-tab-body{top:0;left:0;right:0;bottom:0;position:absolute;display:block;overflow:hidden;flex-basis:100%}.mat-tab-body.mat-tab-body-active{position:relative;overflow-x:hidden;overflow-y:auto;z-index:1;flex-grow:1}.mat-tab-group.mat-tab-group-dynamic-height .mat-tab-body.mat-tab-body-active{overflow-y:hidden}"],
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush,
+                inputs: ['color', 'disableRipple'],
+                host: {
+                    'class': 'mat-tab-group',
+                    '[class.mat-tab-group-dynamic-height]': 'dynamicHeight',
+                    '[class.mat-tab-group-inverted-header]': 'headerPosition === "below"'
+                }
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }]; }, { headerPosition: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], selectedIndexChange: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], focusChange: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], animationDone: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], selectedTabChange: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Output"]
+        }], dynamicHeight: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], selectedIndex: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], backgroundColor: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], _tabs: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+            args: [MatTab]
+        }], _tabBodyWrapper: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['tabBodyWrapper']
+        }], _tabHeader: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: ['tabHeader']
+        }] }); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * \@docs-private
+ */
+class MatTabNavBase {
+    /**
+     * @param {?} _elementRef
+     */
+    constructor(_elementRef) {
+        this._elementRef = _elementRef;
+    }
+}
+const /** @type {?} */ _MatTabNavMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisableRipple"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinColor"])(MatTabNavBase, 'primary'));
+/**
+ * Navigation component matching the styles of the tab group header.
+ * Provides anchored navigation with animated ink bar.
+ */
+class MatTabNav extends _MatTabNavMixinBase {
+    /**
+     * @param {?} elementRef
+     * @param {?} _dir
+     * @param {?} _ngZone
+     * @param {?} _changeDetectorRef
+     * @param {?} _viewportRuler
+     */
+    constructor(elementRef, _dir, _ngZone, _changeDetectorRef, _viewportRuler) {
+        super(elementRef);
+        this._dir = _dir;
+        this._ngZone = _ngZone;
+        this._changeDetectorRef = _changeDetectorRef;
+        this._viewportRuler = _viewportRuler;
+        /**
+         * Subject that emits when the component has been destroyed.
+         */
+        this._onDestroy = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+    }
+    /**
+     * Background color of the tab nav.
+     * @return {?}
+     */
+    get backgroundColor() { return this._backgroundColor; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set backgroundColor(value) {
+        const /** @type {?} */ nativeElement = this._elementRef.nativeElement;
+        nativeElement.classList.remove(`mat-background-${this.backgroundColor}`);
+        if (value) {
+            nativeElement.classList.add(`mat-background-${value}`);
+        }
+        this._backgroundColor = value;
+    }
+    /**
+     * Notifies the component that the active link has been changed.
+     * \@deletion-target 7.0.0 `element` parameter to be removed.
+     * @param {?} element
+     * @return {?}
+     */
+    updateActiveLink(element) {
+        // Note: keeping the `element` for backwards-compat, but isn't being used for anything.
+        // @deletion-target 7.0.0
+        this._activeLinkChanged = !!element;
+        this._changeDetectorRef.markForCheck();
+    }
+    /**
+     * @return {?}
+     */
+    ngAfterContentInit() {
+        this._ngZone.runOutsideAngular(() => {
+            const /** @type {?} */ dirChange = this._dir ? this._dir.change : Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["of"])(null);
+            return Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["merge"])(dirChange, this._viewportRuler.change(10))
+                .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["takeUntil"])(this._onDestroy))
+                .subscribe(() => this._alignInkBar());
+        });
+    }
+    /**
+     * Checks if the active link has been changed and, if so, will update the ink bar.
+     * @return {?}
+     */
+    ngAfterContentChecked() {
+        if (this._activeLinkChanged) {
+            const /** @type {?} */ activeTab = this._tabLinks.find(tab => tab.active);
+            this._activeLinkElement = activeTab ? activeTab._elementRef : null;
+            this._alignInkBar();
+            this._activeLinkChanged = false;
+        }
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._onDestroy.next();
+        this._onDestroy.complete();
+    }
+    /**
+     * Aligns the ink bar to the active link.
+     * @return {?}
+     */
+    _alignInkBar() {
+        if (this._activeLinkElement) {
+            this._inkBar.show();
+            this._inkBar.alignToElement(this._activeLinkElement.nativeElement);
+        }
+        else {
+            this._inkBar.hide();
+        }
+    }
+}
+MatTabNav.ɵfac = function MatTabNav_Factory(t) { return new (t || MatTabNav)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"])); };
+MatTabNav.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MatTabNav, selectors: [["", "mat-tab-nav-bar", ""]], contentQueries: function MatTabNav_ContentQueries(rf, ctx, dirIndex) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵcontentQuery"](dirIndex, MatTabLink, true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._tabLinks = _t);
+    } }, viewQuery: function MatTabNav_Query(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵviewQuery"](MatInkBar, true);
+    } if (rf & 2) {
+        var _t;
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx._inkBar = _t.first);
+    } }, hostAttrs: [1, "mat-tab-nav-bar"], inputs: { color: "color", disableRipple: "disableRipple", backgroundColor: "backgroundColor" }, exportAs: ["matTabNavBar", "matTabNav"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]], attrs: _c5, ngContentSelectors: _c0, decls: 3, vars: 0, consts: [[1, "mat-tab-links", 3, "cdkObserveContent"]], template: function MatTabNav_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("cdkObserveContent", function MatTabNav_Template_div_cdkObserveContent_0_listener($event) { return ctx._alignInkBar(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojection"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "mat-ink-bar");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, directives: [_angular_cdk_observers__WEBPACK_IMPORTED_MODULE_11__["CdkObserveContent"], MatInkBar], styles: [".mat-tab-nav-bar{overflow:hidden;position:relative;flex-shrink:0}.mat-tab-links{position:relative;display:flex}.mat-tab-link{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;vertical-align:top;text-decoration:none;position:relative;overflow:hidden}.mat-tab-link:focus{outline:0}.mat-tab-link:focus:not(.mat-tab-disabled){opacity:1}.mat-tab-link.mat-tab-disabled{cursor:default}.mat-tab-link .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}[mat-stretch-tabs] .mat-tab-link{flex-basis:0;flex-grow:1}@media (max-width:599px){.mat-tab-link{min-width:72px}}.mat-ink-bar{position:absolute;bottom:0;height:2px;transition:.5s cubic-bezier(.35,0,.25,1)}.mat-tab-group-inverted-header .mat-ink-bar{bottom:auto;top:0}@media screen and (-ms-high-contrast:active){.mat-ink-bar{outline:solid 2px;height:0}}"], encapsulation: 2, changeDetection: 0 });
+/** @nocollapse */
+MatTabNav.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] },] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"], },
+    { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"], },
+];
+MatTabNav.propDecorators = {
+    "_inkBar": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"], args: [MatInkBar,] },],
+    "_tabLinks": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"], args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(() => MatTabLink), { descendants: true },] },],
+    "backgroundColor": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabNav, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{ selector: '[mat-tab-nav-bar]',
+                exportAs: 'matTabNavBar, matTabNav',
+                inputs: ['color', 'disableRipple'],
+                template: "<div class=\"mat-tab-links\" (cdkObserveContent)=\"_alignInkBar()\"><ng-content></ng-content><mat-ink-bar></mat-ink-bar></div>",
+                styles: [".mat-tab-nav-bar{overflow:hidden;position:relative;flex-shrink:0}.mat-tab-links{position:relative;display:flex}.mat-tab-link{height:48px;padding:0 24px;cursor:pointer;box-sizing:border-box;opacity:.6;min-width:160px;text-align:center;display:inline-flex;justify-content:center;align-items:center;white-space:nowrap;vertical-align:top;text-decoration:none;position:relative;overflow:hidden}.mat-tab-link:focus{outline:0}.mat-tab-link:focus:not(.mat-tab-disabled){opacity:1}.mat-tab-link.mat-tab-disabled{cursor:default}.mat-tab-link .mat-tab-label-content{display:inline-flex;justify-content:center;align-items:center;white-space:nowrap}[mat-stretch-tabs] .mat-tab-link{flex-basis:0;flex-grow:1}@media (max-width:599px){.mat-tab-link{min-width:72px}}.mat-ink-bar{position:absolute;bottom:0;height:2px;transition:.5s cubic-bezier(.35,0,.25,1)}.mat-tab-group-inverted-header .mat-ink-bar{bottom:auto;top:0}@media screen and (-ms-high-contrast:active){.mat-ink-bar{outline:solid 2px;height:0}}"],
+                host: { 'class': 'mat-tab-nav-bar' },
+                encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None,
+                changeDetection: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectionStrategy"].OnPush
+            }]
+    }], function () { return [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_cdk_bidi__WEBPACK_IMPORTED_MODULE_5__["Directionality"], decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ChangeDetectorRef"] }, { type: _angular_cdk_scrolling__WEBPACK_IMPORTED_MODULE_9__["ViewportRuler"] }]; }, { backgroundColor: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }], _inkBar: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"],
+            args: [MatInkBar]
+        }], _tabLinks: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ContentChildren"],
+            args: [Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["forwardRef"])(() => MatTabLink), { descendants: true }]
+        }] }); })();
+class MatTabLinkBase {
+}
+const /** @type {?} */ _MatTabLinkMixinBase = Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinTabIndex"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisableRipple"])(Object(_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["mixinDisabled"])(MatTabLinkBase)));
+/**
+ * Link inside of a `mat-tab-nav-bar`.
+ */
+class MatTabLink extends _MatTabLinkMixinBase {
+    /**
+     * @param {?} _tabNavBar
+     * @param {?} _elementRef
+     * @param {?} ngZone
+     * @param {?} platform
+     * @param {?} globalOptions
+     * @param {?} tabIndex
+     */
+    constructor(_tabNavBar, _elementRef, ngZone, platform, globalOptions, tabIndex) {
+        super();
+        this._tabNavBar = _tabNavBar;
+        this._elementRef = _elementRef;
+        /**
+         * Whether the tab link is active or not.
+         */
+        this._isActive = false;
+        /**
+         * Ripple configuration for ripples that are launched on pointer down.
+         * \@docs-private
+         */
+        this.rippleConfig = {};
+        this._tabLinkRipple = new _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["RippleRenderer"](this, ngZone, _elementRef, platform);
+        this._tabLinkRipple.setupTriggerEvents(_elementRef.nativeElement);
+        this.tabIndex = parseInt(tabIndex) || 0;
+        if (globalOptions) {
+            this.rippleConfig = {
+                terminateOnPointerUp: globalOptions.terminateOnPointerUp,
+                speedFactor: globalOptions.baseSpeedFactor,
+                animation: globalOptions.animation,
+            };
+        }
+    }
+    /**
+     * Whether the link is active.
+     * @return {?}
+     */
+    get active() { return this._isActive; }
+    /**
+     * @param {?} value
+     * @return {?}
+     */
+    set active(value) {
+        if (value !== this._isActive) {
+            this._isActive = value;
+            this._tabNavBar.updateActiveLink(this._elementRef);
+        }
+    }
+    /**
+     * Whether ripples are disabled on interaction
+     * \@docs-private
+     * @return {?}
+     */
+    get rippleDisabled() {
+        return this.disabled || this.disableRipple || this._tabNavBar.disableRipple;
+    }
+    /**
+     * @return {?}
+     */
+    ngOnDestroy() {
+        this._tabLinkRipple._removeTriggerEvents();
+    }
+    /**
+     * Handles the click event, preventing default navigation if the tab link is disabled.
+     * @param {?} event
+     * @return {?}
+     */
+    _handleClick(event) {
+        if (this.disabled) {
+            event.preventDefault();
+        }
+    }
+}
+MatTabLink.ɵfac = function MatTabLink_Factory(t) { return new (t || MatTabLink)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](MatTabNav), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_cdk_platform__WEBPACK_IMPORTED_MODULE_10__["Platform"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MAT_RIPPLE_GLOBAL_OPTIONS"], 8), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinjectAttribute"]('tabindex')); };
+MatTabLink.ɵdir = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineDirective"]({ type: MatTabLink, selectors: [["", "mat-tab-link", ""], ["", "matTabLink", ""]], hostAttrs: [1, "mat-tab-link"], hostVars: 6, hostBindings: function MatTabLink_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MatTabLink_click_HostBindingHandler($event) { return ctx._handleClick($event); });
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵattribute"]("aria-disabled", ctx.disabled.toString())("tabIndex", ctx.tabIndex);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵclassProp"]("mat-tab-disabled", ctx.disabled)("mat-tab-label-active", ctx.active);
+    } }, inputs: { disabled: "disabled", disableRipple: "disableRipple", tabIndex: "tabIndex", active: "active" }, exportAs: ["matTabLink"], features: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵInheritDefinitionFeature"]] });
+/** @nocollapse */
+MatTabLink.ctorParameters = () => [
+    { type: MatTabNav, },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"], },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"], },
+    { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_10__["Platform"], },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MAT_RIPPLE_GLOBAL_OPTIONS"],] },] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"], args: ['tabindex',] },] },
+];
+MatTabLink.propDecorators = {
+    "active": [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"] },],
+};
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabLink, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"],
+        args: [{
+                selector: '[mat-tab-link], [matTabLink]',
+                exportAs: 'matTabLink',
+                inputs: ['disabled', 'disableRipple', 'tabIndex'],
+                host: {
+                    'class': 'mat-tab-link',
+                    '[attr.aria-disabled]': 'disabled.toString()',
+                    '[attr.tabIndex]': 'tabIndex',
+                    '[class.mat-tab-disabled]': 'disabled',
+                    '[class.mat-tab-label-active]': 'active',
+                    '(click)': '_handleClick($event)'
+                }
+            }]
+    }], function () { return [{ type: MatTabNav }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"] }, { type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgZone"] }, { type: _angular_cdk_platform__WEBPACK_IMPORTED_MODULE_10__["Platform"] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"]
+            }, {
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MAT_RIPPLE_GLOBAL_OPTIONS"]]
+            }] }, { type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Attribute"],
+                args: ['tabindex']
+            }] }]; }, { active: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"]
+        }] }); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+class MatTabsModule {
+}
+MatTabsModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MatTabsModule });
+MatTabsModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ factory: function MatTabsModule_Factory(t) { return new (t || MatTabsModule)(); }, imports: [[
+            _angular_common__WEBPACK_IMPORTED_MODULE_12__["CommonModule"],
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"],
+            _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["PortalModule"],
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatRippleModule"],
+            _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_11__["ObserversModule"],
+        ],
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"]] });
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MatTabsModule, { declarations: function () { return [MatTabGroup,
+        MatTabLabel,
+        MatTab,
+        MatInkBar,
+        MatTabLabelWrapper,
+        MatTabNav,
+        MatTabLink,
+        MatTabBody,
+        MatTabBodyPortal,
+        MatTabHeader,
+        MatTabContent]; }, imports: function () { return [_angular_common__WEBPACK_IMPORTED_MODULE_12__["CommonModule"],
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"],
+        _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["PortalModule"],
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatRippleModule"],
+        _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_11__["ObserversModule"]]; }, exports: function () { return [_angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"],
+        MatTabGroup,
+        MatTabLabel,
+        MatTab,
+        MatTabNav,
+        MatTabLink,
+        MatTabContent]; } }); })();
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MatTabsModule, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
+        args: [{
+                imports: [
+                    _angular_common__WEBPACK_IMPORTED_MODULE_12__["CommonModule"],
+                    _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"],
+                    _angular_cdk_portal__WEBPACK_IMPORTED_MODULE_1__["PortalModule"],
+                    _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatRippleModule"],
+                    _angular_cdk_observers__WEBPACK_IMPORTED_MODULE_11__["ObserversModule"],
+                ],
+                // Don't export all components because some are only to be used internally.
+                exports: [
+                    _angular_material_core__WEBPACK_IMPORTED_MODULE_2__["MatCommonModule"],
+                    MatTabGroup,
+                    MatTabLabel,
+                    MatTab,
+                    MatTabNav,
+                    MatTabLink,
+                    MatTabContent,
+                ],
+                declarations: [
+                    MatTabGroup,
+                    MatTabLabel,
+                    MatTab,
+                    MatInkBar,
+                    MatTabLabelWrapper,
+                    MatTabNav,
+                    MatTabLink,
+                    MatTabBody,
+                    MatTabBodyPortal,
+                    MatTabHeader,
+                    MatTabContent,
+                ]
+            }]
+    }], null, null); })();
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+
+
+
+//# sourceMappingURL=tabs.js.map
 
 /***/ }),
 
