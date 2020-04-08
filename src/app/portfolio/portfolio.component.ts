@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../../models';
 import { ProjectList } from '../../mock-projects';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-portfolio',

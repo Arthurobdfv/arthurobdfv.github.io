@@ -15,7 +15,7 @@ import { map, tap } from 'rxjs/operators';
 })
 export class GameProjectsComponent implements OnInit {
 
-  m_itchBaseUrl:string = "https://itch.io/api/1/DJg2wXLElfwueKfkYj2dgiim0Zq4JPZobGKUEvh7/my-games"
+  m_itchBaseUrl:string = "https://arthuro-backend.herokuapp.com/games"
 
   m_gameProjects:GameProject[];
 
@@ -32,9 +32,9 @@ export class GameProjectsComponent implements OnInit {
 }
 
   getProjHttp(){
-    return this.http.get<GameProject[]>("https://cors-anywhere.herokuapp.com/https://itch.io/api/1/DJg2wXLElfwueKfkYj2dgiim0Zq4JPZobGKUEvh7/my-games")
+    return this.http.get<GameProject[]>(this.m_itchBaseUrl)
     .pipe(map((data)=>{
-      return (data as any).games;
+      return (data as any);
     }));
   }
 

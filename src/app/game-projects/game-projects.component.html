@@ -2,5 +2,9 @@
 <ul>
     <li *ngFor="let gp of m_gameProjects">
         <p>{{gp.title}} | {{gp.short_text}}</p>
+        <a href={{gp.url}}>
+            <img class="icon" src="assets/icons/itchio-logo-textless-black.svg"/>
+        </a>
+        <img src={{gp.cover_url}}/>
     </li>
 </ul>

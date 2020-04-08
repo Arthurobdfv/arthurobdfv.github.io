@@ -3,6 +3,7 @@ export interface GameProject{
     short_text?:string;
     title?:string;
     views_count?:string;
+    url?:string;
 }
 
 export interface GameList{

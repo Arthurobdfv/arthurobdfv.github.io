@@ -15,6 +15,6 @@ export class AppComponent {
   }
 
   LoadIcons(){
-    console.log(Object.values(Linktype).map(link => ));
+    console.log(Object.values(Linktype).map(link => Linktype[link]));
   }
 }
