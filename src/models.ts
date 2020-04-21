@@ -14,14 +14,14 @@ export interface Project{
     title?:string;
     description?:string;
     imageUrl?:string;
-    links?:string[];
+    links?:Link[];
 }
 
 export enum Linktype{
-    Github = "./assets/icons/itchio-logo.textless-black.svg",
-    ItchIO = "icoItchIO",
-    Instagram = "icoInstagram",
-    Linkedin = "icoLinkedin"
+    Github = "github",
+    ItchIO = "itch-io",
+    Instagram = "instagram",
+    Linkedin = "linkedin"
 }
 
 export class Link{

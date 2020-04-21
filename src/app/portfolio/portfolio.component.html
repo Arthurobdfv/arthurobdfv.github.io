@@ -10,7 +10,9 @@
                 <h2 class="mat-display-1">{{item.title}}</h2>
                 <p class="mat-body-4">{{item.description}}</p>
                 <mat-divider></mat-divider>
-                <p class="Links mat-body-1">Links will be placed here</p>
+                <div>
+                    <p *ngFor="let link of item.links" class="Links mat-body-1">{{link.linkType}}</p>
+                </div>
             </div>
         </div>
 </div>

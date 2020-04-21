@@ -4,6 +4,8 @@ import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -20,11 +22,14 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     AppComponent,
     PresentationComponent,
     GameProjectsComponent,
-    PortfolioComponent
+    PortfolioComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
+    FaIconLibrary,
+    NgbModule,
     MatGridListModule,
     MatCardModule,
     MatDividerModule,
