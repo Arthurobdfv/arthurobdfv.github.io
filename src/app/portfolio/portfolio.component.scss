@@ -12,10 +12,14 @@
 
 .inverted .project-infos-display{
     padding-left: 0;
+    padding-right: 10%;
 }
 
 .project-image-display{
-    flex:1;
+    flex:2;
+    width: 100%;
+    height:auto;
+    overflow: hidden;
 }
 
 .iconSection{
@@ -26,19 +30,23 @@
     align-items: center;
 }
 
+.projectImage{
+    background: linear-gradient(transparent,white);
+}
+
 :hover.iconSection a:hover{
     cursor: pointer;
 }
 
 
 .project-infos-display{
-    flex:2;
+    flex:3;
     padding-left: 10%;
-    align-content: center;
+    text-align: center;
 }
 
 img{
-    border-radius: 15%;
+    //border-radius: 15%;
     width: 100%;
     height: auto;
     resize: both;
@@ -63,4 +71,5 @@ img{
 
 .mat-display-3, .mat-display-1, .mat-body-4, .mat-body-1{
     color: #121212;
+    white-space: pre-wrap;
 }
