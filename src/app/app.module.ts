@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faGithub, faItchIo, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -28,7 +29,6 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     BrowserModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    FaIconLibrary,
     NgbModule,
     MatGridListModule,
     MatCardModule,
@@ -42,4 +42,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
   providers: [],
   bootstrap: [AppComponent, PresentationComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary){
+    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram);
+  }
+ }

@@ -24,5 +24,8 @@ export class PortfolioComponent implements OnInit {
     }
     else return "";
   }
+  goToLink(url: string){
+    window.open(url, "_blank");
+  }
 
 }

@@ -10,8 +10,10 @@
                 <h2 class="mat-display-1">{{item.title}}</h2>
                 <p class="mat-body-4">{{item.description}}</p>
                 <mat-divider></mat-divider>
-                <div>
-                    <p *ngFor="let link of item.links" class="Links mat-body-1">{{link.linkType}}</p>
+                <div class="iconSection">
+                    <a class="iconLink" *ngFor="let link of item.links"  (click)="goToLink(link.url)">
+                        <fa-icon [icon]="['fab' ,[link.linkType]]" size="3x" class="Links mat-body-1"></fa-icon>
+                    </a>
                 </div>
             </div>
         </div>
