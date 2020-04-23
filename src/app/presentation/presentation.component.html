@@ -7,23 +7,21 @@
             <h1 class="mat-h1">Arthuro  Veríssimo</h1>
             <h4 class="mat-h4">Fullstack Developer | Indie Game Developer</h4>
             <p class="mat-body">Hi! I'm a Fullstack Software and Game Developer enthusiast that really enjoy learning new things and challenge myself!<br>
-            This is my portfolio, so down below you can see some of my public projects and also some of my published games.</p>
+            This is my portfolio, so down below you can see some of my public projects and also some of my published games.<br></p>
+            <p class="mat-body">This portfolio was build using angular, bootstrap and with a help of one nodejs backend that I've developed with NodeJS</p>
+            <mat-divider></mat-divider>
+            <div class="icon-section">
+                <fa-icon class="icon" [icon]="['fab','angular']" size="3x"></fa-icon>
+                <fa-icon class="icon" [icon]="['fab','bootstrap']" size="3x"></fa-icon>
+                <fa-icon class="icon" [icon]="['fab','node-js']" size="3x"></fa-icon>
+            </div>
         </section>
     </div>
 </div>
-        <div class="navBar">
-            <ul class="nav nav-pills justify-content-center">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Projects</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Other Games</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Curriculum</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contact</a>
-                </li>
-              </ul>
-        </div>
+          <nav class="navbar navbar-expand-lg navbar-dark justify-content-center">
+              <div class="navbar-nav">
+                  <a *ngFor="let link of links" class="nav-item nav-link" [routerLink]="link.fragment">{{link.title}}</a>
+              </div>
+          </nav>
+          <router-outlet></router-outlet>     
+          

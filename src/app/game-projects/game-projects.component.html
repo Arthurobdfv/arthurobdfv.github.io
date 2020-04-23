@@ -1,4 +1,16 @@
 <p>game-projects works!</p>
+<div class="card-holder">
+    <div class="card text-center" *ngFor="let gp of m_gameProjects">
+        <img src="{{gp.cover_url}}" class="card-img-top"/>
+        <div class="card-body">
+            <h5 class="card-title">{{gp.title}}</h5>
+            <p class="card-text">{{gp.short_text}}</p>
+            <a [href]="gp.url" class="btn btn-primary">
+                <fa-icon [icon]="['fab','itch-io']" size="3x"></fa-icon>
+            </a>
+        </div>
+    </div>
+</div>
 <ul>
     <li *ngFor="let gp of m_gameProjects">
         <p>{{gp.title}} | {{gp.short_text}}</p>

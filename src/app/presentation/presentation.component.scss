@@ -31,6 +31,17 @@
 .presentationText {
     flex:3;
 }
+.presentationText mat-divider{
+    margin-left: 10%;
+}
+.icon-section {
+    color: #FAFAFA;
+    display:flex;
+    justify-content: center;
+}
 .mat-h1,.mat-h4, .mat-body{
-    color: #f5f5f5;
+    color: #FAFAFAFA;
+}
+nav {
+    background-color: mat-color($arth-theme-primary,900);
 }

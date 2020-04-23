@@ -1,3 +1,4 @@
+@import '../../arth-theme.scss';
 .project-display{
     display: flex;
     justify-content: space-between;
@@ -5,21 +6,23 @@
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 5%;
-}
-.inverted{
-    flex-direction: row-reverse;
+
+    &:nth-child(even){
+        flex-direction:row-reverse;
+        .project-infos-display{
+            padding-left: 0;
+            padding-right: 10%;
+        }   
+    }
 }
 
-.inverted .project-infos-display{
-    padding-left: 0;
-    padding-right: 10%;
-}
 
 .project-image-display{
     flex:2;
     width: 100%;
     height:auto;
     overflow: hidden;
+    background-color: #FAFAFA;
 }
 
 .iconSection{
@@ -28,6 +31,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    color: mat-color($arth-theme-accent,700);
 }
 
 .projectImage{
@@ -54,7 +58,6 @@ img{
 
 .mat-divider{
     display: block;
-    color:#121212;
     inset: "true";
     border-top-width: 2px;
     border-top-style: solid;
@@ -67,9 +70,14 @@ img{
 .mat-display-3{
     text-align: center;
     margin-top: 2%;
+    color: #121212
 }
 
-.mat-display-3, .mat-display-1, .mat-body-4, .mat-body-1{
+.mat-display-3, .mat-display-1, .mat-body-4, .mat-body-1, .mat-h1{
     color: #121212;
     white-space: pre-wrap;
+}
+
+.icon{
+    color: mat-color($arth-theme-accent,800);
 }

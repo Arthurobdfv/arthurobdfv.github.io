@@ -1,4 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -9,9 +10,14 @@ import { Component, OnInit, NgModule } from '@angular/core';
 })
 export class PresentationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
+
+  links = [
+    {title: 'Projects', fragment:''},
+    {title: 'Games', fragment:'games'}
+  ]
 
 }

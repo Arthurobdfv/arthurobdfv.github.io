@@ -1,0 +1,32 @@
+@import '../../arth-theme.scss';
+.card-holder {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 10%;
+    color: #121212;
+    .card{
+        flex: 1;
+        margin: 10px;
+        min-width: 15rem;
+        max-width: 15rem;
+        padding: 5px;
+        background-color: #FAFAFA;
+    }
+}
+
+.card-holder .card img{
+    width: 100%;
+    height:auto;
+}
+.card-holder .card a{
+    color: mat-color($arth-theme-accent,600);
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.card-body {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

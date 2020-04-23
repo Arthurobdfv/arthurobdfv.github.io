@@ -16,7 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 import { GameProjectsComponent } from './game-projects/game-projects.component';
-import { PortfolioComponent } from './portfolio/portfolio.component'
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { AppRoutingModule } from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component'
     MatIconModule,
     MatTabsModule,
     HttpClientModule,
-    HttpClientJsonpModule
+    HttpClientJsonpModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent, PresentationComponent],

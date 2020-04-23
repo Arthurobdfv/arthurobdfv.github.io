@@ -1,8 +1,8 @@
-<div class="Projects-Div">
+<div class="projects-div">
         <div class="Projects-Title">
             <h3 class="mat-display-3">Projects</h3>
         </div>
-        <div class="project-display {{InvertBasedOnIndex(indexOfelement)}}" *ngFor="let item of m_projectList; let indexOfelement=index;" >
+        <div class="project-display" *ngFor="let item of m_projectList;" >
             <div class="project-image-display">
                 <img [class.mat-elevation-z6]="true" class="projectImage" src="{{item.imageUrl}}"/>
             </div>
@@ -11,8 +11,8 @@
                 <p class="mat-body-4">{{item.description}}</p>
                 <mat-divider></mat-divider>
                 <div class="iconSection">
-                    <a class="iconLink" *ngFor="let link of item.links"  (click)="goToLink(link.url)">
-                        <fa-icon [icon]="['fab' ,[link.linkType]]" size="3x" class="Links mat-body-1"></fa-icon>
+                    <a class="icon" *ngFor="let link of item.links"  (click)="goToLink(link.url)">
+                        <fa-icon [icon]="['fab' ,[link.linkType]]" size="3x" class="Links"></fa-icon>
                     </a>
                 </div>
             </div>
