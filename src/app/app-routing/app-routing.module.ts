@@ -5,13 +5,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { PortfolioComponent } from '../portfolio/portfolio.component'
 import { GameProjectsComponent } from '../game-projects/game-projects.component'
 import { CvComponent } from '../cv/cv.component';
-import { AboutComponent } from '../about/about.component'
+import { AboutComponent } from '../about/about.component';
+import { ContactComponent } from '../contact/contact.component'; 
 
 const routes: Routes = [
   { path: '', component: PortfolioComponent },
   { path: 'games', component: GameProjectsComponent},
   { path: 'resume', component: CvComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'about', component: AboutComponent },
+  { path: 'contact', component: ContactComponent }
 ]
 
 

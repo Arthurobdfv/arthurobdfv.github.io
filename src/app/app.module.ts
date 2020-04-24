@@ -7,7 +7,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFile } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faItchIo, faInstagram, faLinkedin, faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faItchIo, faInstagram, faLinkedin, faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faCuttlefish } from '@fortawesome/free-brands-svg-icons';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -21,6 +21,7 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CvComponent } from './cv/cv.component';
 import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AboutComponent } from './about/about.component';
     PortfolioComponent,
     CvComponent,
     AboutComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +53,6 @@ import { AboutComponent } from './about/about.component';
 })
 export class AppModule {
   constructor(library: FaIconLibrary){
-    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile);
+    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish);
   }
  }

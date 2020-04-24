@@ -6,16 +6,19 @@
     align-items: center;
     margin: 0 5%;
     height: auto;
+    flex-wrap: wrap;
 }
 
 .imageContainer{
-    flex:1
+    flex:1;
+    min-width: 200px;
 }
 
 .backGround{
     background: radial-gradient(circle, $primary 0%, mat-color($arth-theme-primary,700) 100%);
     min-height: auto;
-    height: 400px;
+    flex-wrap: wrap;
+    padding: 50px 0;
     display: flex;
     align-items: center;
 }
@@ -30,6 +33,7 @@
 
 .presentationText {
     flex:3;
+    min-width: 300;
 }
 .presentationText mat-divider{
     margin-left: 10%;
@@ -44,4 +48,5 @@
 }
 nav {
     background-color: mat-color($arth-theme-primary,900);
+    text-align: center;
 }

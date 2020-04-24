@@ -1,0 +1,27 @@
+.icon-section {
+    .icon{
+        margin: 10px 10px;
+    }
+    i{
+    font-size: 3em;
+    vertical-align: bottom;
+    }
+}
+.about-me{
+    text-align: center;
+    margin: 0 10%;  
+    .content{
+        display:flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        .technology-stack{
+            flex:1;
+            min-width: 200px;
+        } 
+        .text-about{
+            flex:1;
+            min-width: 200px;
+        }
+    }
+}

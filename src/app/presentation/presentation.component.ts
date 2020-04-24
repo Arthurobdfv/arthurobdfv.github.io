@@ -19,7 +19,8 @@ export class PresentationComponent implements OnInit {
     {title: 'Projects', fragment:''},
     {title: 'Games', fragment:'games'},
     {title:'Resume', fragment:'resume'},
-    {title:'About Me', fragment:'about'}
+    {title:'About Me', fragment:'about'},
+    {title:'Contact', fragment:'contact'}
   ]
 
 }
