@@ -1,6 +1,11 @@
-<p>game-projects works!</p>
+<div class="page-introduction">
+    <h3 class="mat-display-3">Published Games</h3>
+    <h3 class="mat-h3">This section shows my published games hosted by Itch.io. Those items are fetched using my NodeJS backend that consumes the Itch.io API and filters the games to get only the published ones, as the itch.io returns all hosted games, even the ones on draft mode.<br>The items might take a little to load as my backend is hosted by heroku with a free license that after sometime without using it enters on a hibernate state and it awakes when it's requested again.<br>All of my games are developed using the Unity game engine and the C# language.</h3>
+    <mat-divider></mat-divider>
+    <fa-icon [icon]="['fab','unity']" class="icon" size="5x"></fa-icon>
+</div>
 <div class="card-holder">
-    <div class="card text-center" *ngFor="let gp of m_gameProjects">
+    <div class="card text-center" [class.mat-elevation-z3]="true" *ngFor="let gp of m_gameProjects">
         <img src="{{gp.cover_url}}" class="card-img-top"/>
         <div class="card-body">
             <h5 class="card-title">{{gp.title}}</h5>
@@ -11,12 +16,3 @@
         </div>
     </div>
 </div>
-<ul>
-    <li *ngFor="let gp of m_gameProjects">
-        <p>{{gp.title}} | {{gp.short_text}}</p>
-        <a href={{gp.url}}>
-            <img class="icon" src="assets/icons/itchio-logo-textless-black.svg"/>
-        </a>
-        <img src={{gp.cover_url}}/>
-    </li>
-</ul>

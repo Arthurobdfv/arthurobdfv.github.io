@@ -17,7 +17,9 @@ export class PresentationComponent implements OnInit {
 
   links = [
     {title: 'Projects', fragment:''},
-    {title: 'Games', fragment:'games'}
+    {title: 'Games', fragment:'games'},
+    {title:'Resume', fragment:'resume'},
+    {title:'About Me', fragment:'about'}
   ]
 
 }

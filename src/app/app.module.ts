@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faFile } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faItchIo, faInstagram, faLinkedin, faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap } from '@fortawesome/free-brands-svg-icons';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +19,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { GameProjectsComponent } from './game-projects/game-projects.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
+import { CvComponent } from './cv/cv.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,8 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
     PresentationComponent,
     GameProjectsComponent,
     PortfolioComponent,
+    CvComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 })
 export class AppModule {
   constructor(library: FaIconLibrary){
-    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap);
+    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile);
   }
  }

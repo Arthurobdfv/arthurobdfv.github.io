@@ -1,0 +1,14 @@
+@import '../../arth-theme.scss';
+
+.resume-info {
+    text-align: center;
+    margin: 0 10%;
+    .icon{
+        color: mat-color($arth-theme-primary,600);
+    }
+}
+
+.mat-display-3, .mat-h3{
+    margin-top: 2%;
+    color: #121212
+}

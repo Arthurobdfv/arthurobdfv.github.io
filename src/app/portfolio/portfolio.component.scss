@@ -1,18 +1,15 @@
 @import '../../arth-theme.scss';
 .project-display{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 5%;
+    margin-bottom: 50px;
 
     &:nth-child(even){
         flex-direction:row-reverse;
-        .project-infos-display{
-            padding-left: 0;
-            padding-right: 10%;
-        }   
     }
 }
 
@@ -22,7 +19,9 @@
     width: 100%;
     height:auto;
     overflow: hidden;
-    background-color: #FAFAFA;
+    min-width: 300px;
+    //background-color: #FAFAFA;
+    
 }
 
 .iconSection{
@@ -38,14 +37,14 @@
     background: linear-gradient(transparent,white);
 }
 
-:hover.iconSection a:hover{
+.iconSection a:hover{
     cursor: pointer;
 }
 
 
 .project-infos-display{
     flex:3;
-    padding-left: 10%;
+    margin: 0 5%;
     text-align: center;
 }
 
