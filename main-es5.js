@@ -721,7 +721,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "a", 3);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ContactComponent_Template_a_click_7_listener() {
-            return ctx.openLink("www.linkedin.com/in/arthuro-verissimo");
+            return ctx.openLink("https://www.linkedin.com/in/arthuro-verissimo");
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "fa-icon", 4);
