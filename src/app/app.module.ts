@@ -53,6 +53,7 @@ import { ContactComponent } from './contact/contact.component';
 })
 export class AppModule {
   constructor(library: FaIconLibrary){
-    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish);
+    library.addIconPacks(faLinkedin)
+    //,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish);
   }
  }

@@ -5,7 +5,7 @@
     <fa-icon [icon]="['fab','unity']" class="icon" size="5x"></fa-icon>
 </div>
 <div class="card-holder">
-    <div class="card text-center" [class.mat-elevation-z3]="true" *ngFor="let gp of m_gameProjects">
+    <div class="card text-center" [class.mat-elevation-z3]="true" *ngFor="let gp of gameProjects$">
         <img src="{{gp.cover_url}}" class="card-img-top"/>
         <div class="card-body">
             <h5 class="card-title">{{gp.title}}</h5>

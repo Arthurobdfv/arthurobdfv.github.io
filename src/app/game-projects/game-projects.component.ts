@@ -5,6 +5,7 @@ import { HttpClient, HttpClientJsonpModule } from '@angular/common/http';
 import { mapToMapExpression } from '@angular/compiler/src/render3/util';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { GameProjectService } from './services/game-project.service';
 @Component({
   selector: 'app-game-projects',
   templateUrl: './game-projects.component.html',
@@ -17,32 +18,14 @@ export class GameProjectsComponent implements OnInit {
 
   m_itchBaseUrl:string = "https://arthuro-backend.herokuapp.com/games"
 
-  m_gameProjects:GameProject[];
-
-  m_objsGameProjects:Observable<GameProject[]>
+  gameProjects$:Observable<GameProject[]>
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private projectService: GameProjectService
     ) {}
 
   ngOnInit(): void {
-    var x = this.getProjHttp().subscribe((data) => {
-        this.m_gameProjects = data;
-    });
-}
-
-  getProjHttp(){
-    return this.http.get<GameProject[]>(this.m_itchBaseUrl)
-    .pipe(map((data)=>{
-      return (data as any);
-    }));
+    this.gameProjects$ = this.projectService.getGameProjects();
   }
-
-
-  setProjects(values:GameProject[]){
-    this.m_gameProjects = values;
-  }
-  
-
-
 }
