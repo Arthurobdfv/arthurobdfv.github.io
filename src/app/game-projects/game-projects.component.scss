@@ -20,6 +20,11 @@
             color: mat-color($arth-theme-accent,600);
             background-color: transparent;
             border-color: transparent;
+            :hover {
+                transition: 0.3s;
+                cursor: pointer;
+                color: darken(mat-color($arth-theme-accent,700), 10%);     
+            }
         }
     }
 }

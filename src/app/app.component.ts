@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { AppModule } from '../app/app.module';
 import { Linktype } from '../models';
 
@@ -9,7 +10,11 @@ import { Linktype } from '../models';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'arthuro-portfolio';
+  title = 'Arthuro Verissimo';
+
+  constructor(private titleService: Title) {
+    this.titleService.setTitle(this.title);
+  }
 
   ngOnInit(){
   }

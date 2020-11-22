@@ -31,14 +31,15 @@
     justify-content: center;
     align-items: center;
     color: mat-color($arth-theme-accent,700);
+    a:hover{
+        transition: 0.3s;
+        cursor: pointer;
+        color: darken(mat-color($arth-theme-accent,700), 10%);      
+    }
 }
 
 .projectImage{
     background: linear-gradient(transparent,white);
-}
-
-.iconSection a:hover{
-    cursor: pointer;
 }
 
 
