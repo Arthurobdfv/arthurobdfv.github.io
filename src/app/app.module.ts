@@ -22,6 +22,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { CvComponent } from './cv/cv.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ContactComponent } from './contact/contact.component';
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     HttpClientJsonpModule,
     AppRoutingModule
@@ -53,7 +55,6 @@ import { ContactComponent } from './contact/contact.component';
 })
 export class AppModule {
   constructor(library: FaIconLibrary){
-    library.addIconPacks(faLinkedin)
-    //,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish);
+    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish);
   }
  }

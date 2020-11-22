@@ -4,8 +4,8 @@
     <mat-divider></mat-divider>
     <fa-icon [icon]="['fab','unity']" class="icon" size="5x"></fa-icon>
 </div>
-<div class="card-holder">
-    <div class="card text-center" [class.mat-elevation-z3]="true" *ngFor="let gp of gameProjects$">
+<div class="card-holder" *ngIf="(gameProjects$ | async) else isLoading">
+    <div class="card text-center" [class.mat-elevation-z3]="true" *ngFor="let gp of (gameProjects$ | async)">
         <img src="{{gp.cover_url}}" class="card-img-top"/>
         <div class="card-body">
             <h5 class="card-title">{{gp.title}}</h5>
@@ -16,3 +16,8 @@
         </div>
     </div>
 </div>
+<ng-template #isLoading>
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
