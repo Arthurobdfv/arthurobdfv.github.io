@@ -381,7 +381,7 @@
       !*** ./src/models.ts ***!
       \***********************/
 
-    /*! exports provided: Linktype, Technology, Link */
+    /*! exports provided: Linktype, IconType, Technology, Link */
 
     /***/
     function Ndaz(module, __webpack_exports__, __webpack_require__) {
@@ -393,6 +393,12 @@
 
       __webpack_require__.d(__webpack_exports__, "Linktype", function () {
         return Linktype;
+      });
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "IconType", function () {
+        return IconType;
       });
       /* harmony export (binding) */
 
@@ -414,7 +420,15 @@
         Linktype["ItchIO"] = "itch-io";
         Linktype["Instagram"] = "instagram";
         Linktype["Linkedin"] = "linkedin";
+        Linktype["Play"] = "play";
       })(Linktype || (Linktype = {}));
+
+      var IconType;
+
+      (function (IconType) {
+        IconType["Brand"] = "fab";
+        IconType["Common"] = "fas";
+      })(IconType || (IconType = {}));
 
       var Technology;
 
@@ -959,7 +973,7 @@
       var AppModule = function AppModule(library) {
         _classCallCheck(this, AppModule);
 
-        library.addIcons(_fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faLinkedin"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faGithub"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faItchIo"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faInstagram"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUnity"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngular"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faPython"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faNodeJs"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faReact"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBootstrap"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faFile"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCuttlefish"]);
+        library.addIcons(_fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faLinkedin"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faGithub"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faItchIo"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faInstagram"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faUnity"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faAngular"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faPython"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faNodeJs"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faReact"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faBootstrap"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faFile"], _fortawesome_free_brands_svg_icons__WEBPACK_IMPORTED_MODULE_8__["faCuttlefish"], _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__["faPlay"]);
       };
 
       AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineNgModule"]({
@@ -1173,11 +1187,38 @@
       "Ndaz");
 
       var ProjectList = [{
+        title: "FPS Sample",
+        description: " Simple prototype I've built to learn more about FPS games and to learn some 3D modeling and shader development. Currently the project is on development on its Early stages but I'll encorage you to take a look at the Scripts session if you are interested on seeing how it the project architectured.\n\nYou can play it live by clicking the Play icon!",
+        imageUrl: "../assets/Images/fpsSample.png",
+        links: [{
+          linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].Github,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Brand,
+          url: "https://github.com/Arthurobdfv/FPSSample"
+        }, {
+          linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].Play,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Common,
+          url: "https://arthurobdfv.github.io/FPSSample/"
+        }]
+      }, {
+        title: "Move It",
+        description: "We spend a lot of time in front of a coputer screen, and that can make some damages on your spine / eyes / joints if you dont take care. Move it is an app on which will remind you do to some exercises in form of a challenge on a fixed amount of time, so you can focus on your work but still remain healthy :).\n\nThis is a simple project I've made to learn more about NextJS.\n\nYou can check the project Live by clicking on the play button",
+        imageUrl: "../assets/Images/moveIt.PNG",
+        links: [{
+          linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].Github,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Brand,
+          url: "https://github.com/Arthurobdfv/Moveit-next"
+        }, {
+          linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].Play,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Common,
+          url: "https://github.com/Arthurobdfv/Moveit-next"
+        }]
+      }, {
         title: "NeonSlash",
         description: "Neon Slash is a snake-inspired game that I've built the main game loop in under 24h as a challenge. After it was done I was really happy with the result and decided to turn it into a finished end product, with some of the features that a lot of games has on these days.\n\nThis project made me learn about Google Play services such as Signing in, implementing custom leaderboards and Firebase integration that I'll use it as a data analisys tool in the future.\n\nThis project is currently available to be downloaded on google play store, and you can check the Itch.io project page down here, where it has a link to the version that I've ended up after the 24h challenge.",
         imageUrl: "https://img.itch.zone/aW1nLzMxMjAwMzcucG5n/original/jXgJ8V.png",
         links: [{
           linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].ItchIO,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Brand,
           url: "https://arthuro-verissimo.itch.io/neon-slash"
         }]
       }, {
@@ -1186,6 +1227,7 @@
         imageUrl: "https://github.com/Arthurobdfv/BeTheHero/raw/master/.github/logo.svg?sanitize=true",
         links: [{
           linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].Github,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Brand,
           url: "https://github.com/Arthurobdfv/BeTheHero"
         }]
       }, {
@@ -1194,9 +1236,11 @@
         imageUrl: "https://img.itch.zone/aW1nLzMwNDMyODIucG5n/315x250%23c/iqb8LL.png",
         links: [{
           linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].Github,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Brand,
           url: "https://github.com/Arthurobdfv/Checkers3D"
         }, {
           linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].ItchIO,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Brand,
           url: "https://arthuro-verissimo.itch.io/3d-checkers-prototype"
         }]
       }, {
@@ -1205,6 +1249,7 @@
         imageUrl: "../assets/Images/software-learn-programming.jpg",
         links: [{
           linkType: _models__WEBPACK_IMPORTED_MODULE_0__["Linktype"].Github,
+          iconType: _models__WEBPACK_IMPORTED_MODULE_0__["IconType"].Brand,
           url: "https://github.com/elipsesoftware/epmtagport"
         }]
       }];
@@ -1796,8 +1841,8 @@
         return [a0];
       };
 
-      var _c1 = function _c1(a1) {
-        return ["fab", a1];
+      var _c1 = function _c1(a0, a1) {
+        return [a0, a1];
       };
 
       function PortfolioComponent_div_4_a_10_Template(rf, ctx) {
@@ -1826,7 +1871,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c1, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](1, _c0, link_r3.linkType)));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("icon", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction2"](5, _c1, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](1, _c0, link_r3.iconType), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction1"](3, _c0, link_r3.linkType)));
         }
       }
 
@@ -1858,7 +1903,7 @@
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 10);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, PortfolioComponent_div_4_a_10_Template, 2, 5, "a", 11);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, PortfolioComponent_div_4_a_10_Template, 2, 8, "a", 11);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
