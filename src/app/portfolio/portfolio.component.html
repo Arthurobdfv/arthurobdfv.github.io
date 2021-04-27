@@ -12,7 +12,7 @@
                 <mat-divider></mat-divider>
                 <div class="iconSection">
                     <a class="icon" *ngFor="let link of item.links"  (click)="goToLink(link.url)">
-                        <fa-icon [icon]="['fab' ,[link.linkType]]" size="3x" class="links"></fa-icon>
+                        <fa-icon [icon]="[[link.iconType] ,[link.linkType]]" size="3x" class="links"></fa-icon>
                     </a>
                 </div>
             </div>

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faFile } from '@fortawesome/free-solid-svg-icons';
+import { faFile, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faItchIo, faInstagram, faLinkedin, faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faCuttlefish } from '@fortawesome/free-brands-svg-icons';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,6 +55,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class AppModule {
   constructor(library: FaIconLibrary){
-    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish);
+    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish, faPlay);
   }
  }

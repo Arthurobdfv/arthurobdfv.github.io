@@ -21,7 +21,13 @@ export enum Linktype{
     Github = "github",
     ItchIO = "itch-io",
     Instagram = "instagram",
-    Linkedin = "linkedin"
+    Linkedin = "linkedin",
+    Play = "play"
+}
+
+export enum IconType{
+    Brand = 'fab',
+    Common = 'fas'
 }
 
 export enum Technology{
@@ -35,5 +41,6 @@ export enum Technology{
 
 export class Link{
     linkType:Linktype;
+    iconType: IconType;
     url:string;
 }
