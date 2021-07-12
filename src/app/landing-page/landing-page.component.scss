@@ -1,0 +1,25 @@
+@import '../../arth-theme.scss';
+
+
+.landing-page {
+    height: 100vh;
+    width: 100%;
+    background: radial-gradient(circle, $primary 0%, mat-color($arth-theme-primary,700) 100%);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    &__greetings {
+        color: #FAFAFAFA;
+    }
+
+    &__header-bar {
+        position: absolute;
+        display: flex;
+        padding: 5%;
+        left: 0;
+        top: 0;
+        a {
+            color: #FAFAFAFA;
+        }
+    }
+}
