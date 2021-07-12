@@ -1,0 +1,10 @@
+<div class="landing-page">
+    <div class="landing-page__header-bar">
+            <a *ngFor="let link of links" class="nav-item nav-link" [routerLink]="link.fragment">{{link.title}}</a>
+    </div>
+
+    <div class="landing-page__greetings">
+        <h1>Arthuro Verissimo</h1>
+        <h2>Fullstack Developer | Indie Game Developer</h2>
+    </div>
+</div>

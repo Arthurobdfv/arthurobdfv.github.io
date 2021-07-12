@@ -2,6 +2,15 @@ import { Project, Linktype, Link, IconType } from './models';
 
 export var ProjectList:Project[] = [
     {
+        title: "LetMeAsk",
+        description:"LetMeAsk is a React application for managing Q&A session rooms. You can either create your own room or join an existing one. Log in with your google account and start asking!\n\nYou can ask questions, like other people's question and also highlight the question that is being answered.\n\nThis project was build using react and also using Firebase integration for realtime database and authentication. You can check the app like on the link down below (play icon) or check the source code on Github!",
+        imageUrl:"../assets/Images/letmeask.PNG",
+        links:[
+            {linkType: Linktype.Github, iconType: IconType.Brand, url:"https://github.com/Arthurobdfv/LetMeAsk"},
+            {linkType: Linktype.Play, iconType: IconType.Common, url:"https://letmeask-162cd.web.app/"}
+        ]
+    },
+    {
         title: "FPS Sample",
         description:" Simple prototype I've built to learn more about FPS games and to learn some 3D modeling and shader development. Currently the project is on development on its Early stages but I'll encorage you to take a look at the Scripts session if you are interested on seeing how it the project architectured.\n\nYou can play it live by clicking the Play icon!",
         imageUrl:"../assets/Images/fpsSample.png",
@@ -11,12 +20,20 @@ export var ProjectList:Project[] = [
         ]
     },
     {
+        title: "JokesApp",
+        description:"A Fullstack application with .Net 5.0 as backend with SQL Server and React as front end. The mains idea is to be a joke social media where you can follow people, post jokes, like and comment on other people's post.\n\nThis application is under development as I'm using it in order to learn .Net 5.0 changes and also learn about Docker / Kubernetes and practice my React skills.",
+        imageUrl:"../assets/Images/Application.PNG",
+        links:[
+            {linkType: Linktype.Github, iconType: IconType.Brand, url:"https://github.com/Arthurobdfv/JokesApp"},
+        ]
+    },
+    {
         title: "Move It",
         description:"We spend a lot of time in front of a coputer screen, and that can make some damages on your spine / eyes / joints if you dont take care. Move it is an app on which will remind you do to some exercises in form of a challenge on a fixed amount of time, so you can focus on your work but still remain healthy :).\n\nThis is a simple project I've made to learn more about NextJS.\n\nYou can check the project Live by clicking on the play button",
         imageUrl:"../assets/Images/moveIt.PNG",
         links:[
             {linkType: Linktype.Github, iconType: IconType.Brand, url:"https://github.com/Arthurobdfv/Moveit-next"},
-            {linkType: Linktype.Play, iconType: IconType.Common, url:"https://github.com/Arthurobdfv/Moveit-next"}
+            {linkType: Linktype.Play, iconType: IconType.Common, url:"https://moveit-arthurobdfv.vercel.app/"}
         ]
     },
     {

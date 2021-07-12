@@ -6,10 +6,16 @@
     align-items: center;
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 50px;
+    margin-bottom: 50px;;
+    border-radius: 50px 0 0 50px;
+    
 
     &:nth-child(even){
         flex-direction:row-reverse;
+        .project-image-display {
+            //background-color: #FAFAFA;
+            border-radius: 0 50px 50px 0;
+        }
     }
 }
 
@@ -19,9 +25,8 @@
     width: 100%;
     height:auto;
     overflow: hidden;
-    min-width: 300px;
-    //background-color: #FAFAFA;
-    
+    min-width: 300px;    
+    border-radius: 50px 0 0 50px;
 }
 
 .iconSection{
@@ -32,9 +37,10 @@
     align-items: center;
     color: mat-color($arth-theme-accent,700);
     a:hover{
-        transition: 0.3s;
+        transition: 0.2s;
         cursor: pointer;
-        color: darken(mat-color($arth-theme-accent,700), 10%);      
+        color: darken(mat-color($arth-theme-accent,700), 10%);
+        filter: drop-shadow(0.2rem 0.1rem 0.1rem #5555);      
     }
 }
 
