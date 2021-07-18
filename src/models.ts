@@ -15,6 +15,7 @@ export interface Project{
     description?:string;
     imageUrl?:string;
     links?:Link[];
+    technologies?:Technology[]
 }
 
 export enum Linktype{
@@ -30,17 +31,36 @@ export enum IconType{
     Common = 'fas'
 }
 
-export enum Technology{
+export enum Technology  {
     Unity = "unity",
     Angular = "angular",
-    NodeJS = "node-js",
+    NodeJS = "nodejs",
     React = "react",
     Python = "python",
-    Bootstrap = "bootstrap"
+    Bootstrap = "bootstrap",
+    CSharp = "csharp",
+    Cpp = "cpp",
+    JavaScript = "javascript",
+    TypeScript = "typescript"
 }
 
-export class Link{
+export enum IconImageType {
+    FortAwesome = "FortAwesome",
+    ExternalLink = "ExternalLink",
+}
+
+export class Link {
     linkType:Linktype;
     iconType: IconType;
     url:string;
+}
+
+export class DisplayIcon {
+    iconType: IconType;
+    iconImageType: IconImageType;
+    iconHTMLString: string;
+}
+
+export type EnumDictionary<T extends string | symbol | number, U> = {
+    [K in T]: U;
 }

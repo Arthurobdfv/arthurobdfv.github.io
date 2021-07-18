@@ -7,7 +7,7 @@ import { PresentationComponent } from './presentation/presentation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faFile, faPlay } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faItchIo, faInstagram, faLinkedin, faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faCuttlefish } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faItchIo, faInstagram, faLinkedin, faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faCuttlefish, faJsSquare } from '@fortawesome/free-brands-svg-icons';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -23,6 +23,11 @@ import { CvComponent } from './cv/cv.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFirestoreModule } from '@angular/fire/firestore'
+import { firebaseConfig } from 'src/environments/environment';
+import { TechnologySelectorComponent } from './technology-selector/technology-selector/technology-selector.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     CvComponent,
     AboutComponent,
     ContactComponent,
+    TechnologySelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,13 +54,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatProgressSpinnerModule,
     HttpClientModule,
     HttpClientJsonpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent, PresentationComponent],
 })
 export class AppModule {
   constructor(library: FaIconLibrary){
-    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish, faPlay);
+    library.addIcons(faLinkedin,faGithub,faItchIo,faInstagram,faUnity, faAngular, faPython, faNodeJs, faReact, faBootstrap, faFile, faCuttlefish, faPlay, faJsSquare);
   }
  }

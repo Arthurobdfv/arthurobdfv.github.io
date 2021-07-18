@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<div class="technology-filter">
+    <div *ngFor="let item of technologies | keyvalue">
+        <container-element [ngSwitch]="item.value.icon.iconImageType">
+            <div [class]="item.value.selected ? 'filter selected' : 'filter'" [class.mat-elevation-z3]="true" (click)="buttonClicked(item.key)" *ngSwitchCase="iconImgType.FortAwesome">
+                <fa-icon class="icon" [icon]="[[item.value.icon.iconType],[item.value.icon.iconHTMLString]]" size="3x"></fa-icon>
+            </div>
+            <div [class]="item.value.selected ? 'filter selected' : 'filter'" (click)="buttonClicked(item.key)" *ngSwitchCase="iconImgType.ExternalLink">
+                <i [class]="[item.value.icon.iconHTMLString]+' icon'"></i>
+            </div>
+        </container-element>
+    </div>
+</div>

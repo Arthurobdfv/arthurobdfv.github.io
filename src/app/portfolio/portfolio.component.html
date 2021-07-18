@@ -1,19 +1,22 @@
 <div class="projects-div">
+    <app-technology-selector (selectedFilter)="onFilterChange($event)"></app-technology-selector>
         <div class="Projects-Title">
             <h3 class="mat-display-3">Projects</h3>
         </div>
-        <div class="project-display" *ngFor="let item of m_projectList;" >
-            <div class="project-image-display">
-                <img [class.mat-elevation-z6]="true" class="projectImage" src="{{item.imageUrl}}"/>
-            </div>
-            <div class="project-infos-display">
-                <h2 class="mat-h1">{{item.title}}</h2>
-                <p class="mat-body-4">{{item.description}}</p>
-                <mat-divider></mat-divider>
-                <div class="iconSection">
-                    <a class="icon" *ngFor="let link of item.links"  (click)="goToLink(link.url)">
-                        <fa-icon [icon]="[[link.iconType] ,[link.linkType]]" size="3x" class="links"></fa-icon>
-                    </a>
+        <div *ngIf="(m_projectList | async)">
+            <div class="project-display" *ngFor="let item of (m_projectList | async)" >
+                <div class="project-image-display">
+                    <img [class.mat-elevation-z6]="true" class="projectImage" src="{{item.imageUrl}}"/>
+                </div>
+                <div class="project-infos-display">
+                    <h2 class="mat-h1">{{item.title}}</h2>
+                    <p class="mat-body-4">{{item.description}}</p>
+                    <mat-divider></mat-divider>
+                    <div class="iconSection">
+                        <a class="icon" *ngFor="let link of item.links"  (click)="goToLink(link.url)">
+                            <fa-icon [icon]="[[link.iconType] ,[link.linkType]]" size="3x" class="links"></fa-icon>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
