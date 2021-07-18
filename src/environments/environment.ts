@@ -6,6 +6,15 @@ export const environment = {
   production: false
 };
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyASReMQXcx2gaRYvNi2JUVrt55zFrwQbTs",
+  authDomain: "arthuro-portfolio.firebaseapp.com",
+  projectId: "arthuro-portfolio",
+  storageBucket: "arthuro-portfolio.appspot.com",
+  messagingSenderId: "475755503616",
+  appId: "1:475755503616:web:0bf53696511235772ef8e5"
+};
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
